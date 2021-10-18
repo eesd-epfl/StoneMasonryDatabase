@@ -3,7 +3,8 @@ import numpy as np
 from os.path import dirname, join
 from bokeh.io import curdoc, output_file, show
 from bokeh.layouts import column, row, widgetbox, layout
-from bokeh.models import CheckboxGroup, CustomJS, TableColumn, DataTable, ColumnDataSource, Panel, Tabs, Paragraph, Dropdown
+from bokeh.models import CheckboxGroup, CustomJS, TableColumn, DataTable, ColumnDataSource, Panel, Tabs, \
+    Paragraph, Dropdown, Slider
 from bokeh.plotting import show, output_file, save, figure
 from bokeh.client import push_session
 
@@ -19,17 +20,18 @@ data = pd.read_excel(join(dirname('C:\\Users\\patri\\eesd-dashboard\\epfl_git\\b
 
 # Filter only columns of interest
 prep_data = data[['ID', 'Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
-                  'Stone masonry typology', 'H [mm]', 'L [mm]', 't [mm]', 'H0 [mm]', 'H0/H']]
+                  'Stone masonry typology', 'H [mm]', 'L [mm]', 't [mm]', 'H0 [mm]', 'H0/H', 'Keff,+ [kN/mm]']]
 
 # Prepare a filter for only 'A' Typology:
 # prep_data.iloc('Test unit name') ='A'
+
 
 source = ColumnDataSource(prep_data)
 original_source = ColumnDataSource(prep_data)
 
 # Get Stone Masonry Typology list:
 data = data['Stone masonry typology'].unique()
-labels = np.sort(data).tolist() #+ ['ALL']
+labels = np.sort(data).tolist()  # + ['ALL']
 
 # Make Interactive Data Table:
 columns = [TableColumn(field="ID", title="ID"),
@@ -42,6 +44,7 @@ columns = [TableColumn(field="ID", title="ID"),
            TableColumn(field="t [mm]", title="t [mm]"),
            TableColumn(field="H0 [mm]", title="H0 [mm]"),
            TableColumn(field="H0/H", title="H0/H"),
+           TableColumn(field="Keff,+ [kN/mm]", title="Keff,+ [kN/mm]")
            ]
 
 data_table = DataTable(source=source, columns=columns)
@@ -131,7 +134,6 @@ for i in enumerate(final_data['Test unit name']):
         scatter_plots.append(figure(width=200, height=200))
         scatter_plots[i[0]].scatter(x=x, y=y)
 
-
 # scatter_layout = layout(children=scatter_plots)
 
 # Paragraph for testing:
@@ -162,10 +164,17 @@ source.js_on_change('selected', CustomJS(args=dict(checkbox=checkbox), code=sour
 
 checkbox.js_on_change('active', CustomJS(args=dict(table=data_table, source=source), code=checkbox_code))
 
+# Create all the sliders:
+stiffness_slider = Slider(start=final_data['Keff,+ [kN/mm]'].min(), end=final_data['Keff,+ [kN/mm]'].max(),
+                          value=final_data['Keff,+ [kN/mm]'].max(), step=1, title='Stiffness')
+
+strength_slider = Slider(start=0, end=10, value=1, step=10, title='strength')  # strength = fc
+
+drift_slider = Slider(start=0, end=10, value=1, step=10, title='drift')  #
 # Making the interface:
 page2 = layout(children=[
     row(p),
-    [checkbox, data_table,scatter_plots]
+    [[checkbox, stiffness_slider, strength_slider, drift_slider], data_table, scatter_plots]
 ])
 
 menu = [('Version 1, version_1')]
