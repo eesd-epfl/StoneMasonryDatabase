@@ -105,6 +105,8 @@ for (var key in original_data) {
     }
 }
 source.data = filtered_data
+target_obj.change.emit();
+target_obj.trigger('change')
 """
 
 # Dictionary with all the required data for callback:
