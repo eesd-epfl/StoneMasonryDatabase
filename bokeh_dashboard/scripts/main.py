@@ -26,7 +26,6 @@ original_source = ColumnDataSource(data)
 # Get curves dataframe from curves.py
 curves_dataframe = curves()
 
-
 # 2 - Creating each element of the page:
 # 2.1 - Interactive Data table
 columns = [TableColumn(field="ID", title="ID"),
@@ -43,7 +42,6 @@ columns = [TableColumn(field="ID", title="ID"),
            ]
 
 data_table = DataTable(source=source, columns=columns, width=600, height=600)
-
 
 # 2.2 -  Initial paragraph
 p = Paragraph(text="""The paper Vanin et al. (2017) "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature" contains a database of quasi-static cyclic tests on stone masonry walls. This database is maintained and updated as new test results become available. This web application allows to display graphs, which show the important parameters and their distribution within the database for the updated versions of the database. These plots reproduce subplots of Figure 4 in the paper.
@@ -81,47 +79,29 @@ checkbox.js_on_change('active', CustomJS(args=dict(table=data_table, source=sour
 # 2.4 - Sliders
 # Create all the sliders:
 stiffness_slider = Slider(start=data['Keff,+ [kN/mm]'].min(), end=data['Keff,+ [kN/mm]'].max(),
-                          value=data['Keff,+ [kN/mm]'].max(), step=1, title='Stiffness')
+                          value=data['Keff,+ [kN/mm]'].min(), step=1, title='Stiffness')
 
 strength_slider = Slider(start=0, end=10, value=1, step=10, title='strength')  # strength = fc
 
 drift_slider = Slider(start=0, end=10, value=1, step=10, title='drift')
 
-# Create interactivity for the first slider as an example: - NOT WORKING #TODO
-# Widget Callback code:
-widget_callback_code = """
-var filtered_data = filtered_source.get('data');
-var original_data = original_source.get('data');
 
-var strength_slider = strength_slider.get('value');
-
-// now construct the new data object based on the filtered values
-for (var key in original_data) {
-    filtered_data[key] = [];
-    for (var i = 0; i < original_data[key].length; ++i) {
-        if (original_data["Keff,+ [kN/mm]"][i] >= strength_slider) {
-            filtered_data[key].push(original_data[key][i]);
-        }
-    }
-}
-source.data = filtered_data
-target_obj.change.emit();
-target_obj.trigger('change')
-"""
-
-# Dictionary with all the required data for callback:
-arg_dct = dict(
-    filtered_source=source,
-    original_source=original_source,
-    strength_slider=strength_slider,
-    target_obj=data_table
-)
-generic_callback = CustomJS(args=arg_dct, code=widget_callback_code)
-
-# Slider interactivity on change:
-strength_slider.js_on_change('value', generic_callback)
+# # Create interactivity for the first slider as an example:
+def select_data():
+    stiffness_val = data[(data['Keff,+ [kN/mm]'] >= stiffness_slider.value)]
+    print(stiffness_val)
+    return stiffness_val
 
 
+def update():
+    df = select_data()
+    source.data = df
+
+
+controls = [stiffness_slider]
+
+for control in controls:
+    control.on_change('value', lambda attr, old, new: update())
 # 2.5 - Multi scatter plots
 
 # First merge curves dataframe to main file dataframe
@@ -160,9 +140,10 @@ tab2 = Panel(child=page2, title="Overview DB")
 
 tabs = Tabs(tabs=[tab1, tab2])
 
-show(tabs)
+update()
+# show(tabs)
 
 # # To run Bokeh as a webapp:
-# curdoc().add_root(column(tabs))
-# session = push_session(curdoc())
-# session.show()
+curdoc().add_root(column(tabs))
+session = push_session(curdoc())
+session.show()
