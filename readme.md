@@ -8,7 +8,7 @@ The database can also be accessed [here](https://zenodo.org/record/812146#.YXaBU
 The first tab consists of plots that correspond to the subplots of Figure 4 in the paper, which represents the database of shear-compression tests on the stone masonry walls.
 ![Fig 4](./images/fig4_paper.png)
 
-The second tab shows the actual data of the database in a data table, along with the corresponding force-displacement response curves for each line.
+The second tab shows the actual data of the database in a filterable data table, along with the corresponding force-displacement response curves for each line.
 ![example DB tests](./images/DB_tests_sample.png)
 ## Project status
 The dashboard is under active development. A first version will be available by Dec 2021.
