@@ -1,5 +1,5 @@
 # EESD Stone Masonry Database Dashboard
-The aim of this web application is to give an interactive and intuitive representation of the database from the paper [Vanin et al. (2017) "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature"](https://doi.org/10.1007/s10518-017-0188-5)].
+The aim of this web application is to give an interactive and intuitive representation of the database from the paper [Vanin et al. (2017) "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature"](https://doi.org/10.1007/s10518-017-0188-5).
 
 The data consists of quasi-static cyclic tests on stone masonry walls and the graphs show the important parameters and their distribution within the database.
 
