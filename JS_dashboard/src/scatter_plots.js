@@ -1,31 +1,26 @@
-  
-  onReady('#chart', function() {
-    var chart2 = c3.generate({
-        data: {
-            columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-              ]
-        },
-        axis: {
-            y: {
-            padding: {
-                bottom: 0
-            },  
-            min: 0
-            },
-            x: {
-            padding: {
-                left: 0
-            },
-            min: 0,
-            show: false
-            }
-      }
-    });
-  });
+let d = new Date()
+document.body.innerHTML = "<h1>Today's date is " + d + "</h1>"
 
-  onReady('#chart2', function() {
+import c3 from "c3"
+import * as fs from "fs"
+
+fs.readFile('curve001.csv','utf8',function(err,data){
+  if(err){
+    throw err;
+  }
+  let btn_upload = document.getElementById('btn-csv').addEventListener('click',()=>{
+      console.log('Button clicked')
+      Papa.parse(data, {
+          header: false,
+          complete: function(results){
+              console.log(results)
+            }
+        });
+    })
+})
+
+
+onReady('#chart2', function() {
     var chart = c3.generate({
         data: {
             url: 'curve001.csv',
@@ -48,7 +43,6 @@
       }
     });
   });
-
 
   // Set a timeout so that we can ensure that the `chart` element is created.
   function onReady(selector, callback) {
