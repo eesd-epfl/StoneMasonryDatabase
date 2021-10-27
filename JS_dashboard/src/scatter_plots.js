@@ -1,8 +1,3 @@
-let d = new Date()
-document.body.innerHTML = "<h1>Today's date is " + d + "</h1>"
-
-import c3 from "c3"
-import * as fs from "fs"
 
 fs.readFile('curve001.csv','utf8',function(err,data){
   if(err){
