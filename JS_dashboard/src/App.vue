@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <p>Chart 1</p>
     <vue-c3 :handler="handler"></vue-c3>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 // import axios from 'axios'
 import Papa from 'papaparse'
 // import c3 from 'c3'
 import Vue from 'vue'
 import VueC3 from 'vue-c3'
+import 'c3/c3.min.css'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    // HelloWorld,
     VueC3
   },
   data: () => ({
@@ -36,24 +38,25 @@ export default {
       })
     }
   },
-  created(){
-      Papa.parse('curve001.csv',{
+  mounted(){
+      Papa.parse('curve001.json',{
         download: true,
         header: false,
         complete: (results) => {
-          var myJson = JSON.stringify(results.data)
-          console.log("Papa parse results are: " + results.data[0][0])
-          console.log(typeof myJson)
+          console.log(typeof results.data)
+          console.log(results.data)
           const options = {
-            data: myJson
+            data: {
+              columns: [
+                ['data1', 2, 4, 1, 5, 2, 1],
+                ['data2', 7, 2, 4, 6, 10, 1]
+              ]
             }
+          }
           this.handler.$emit('init', options)
           }
       })
     },
-  mounted(){
-    // this.handler.$emit('init', this.options)
-  }
 }
 </script>
 
