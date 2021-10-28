@@ -3,16 +3,16 @@ from os.path import dirname, join
 from os import listdir
 from bokeh.plotting import show, figure
 
-directory = r'C:\\Users\\patri\\eesd-dashboard\\epfl_git\\bokeh_dashboard\\data\\01_experimental_curves'
+directory = r'C:\\Users\\patri\\eesd-dashboard\\epfl_git\\eesd-dashboard\\bokeh_dashboard\\data\\01_experimental_curves'
 
 
 def curves():
     curve_dict = {}
     for ID, filename in enumerate(listdir(directory)):
         # Get the test unit name and data from the file:
-        unit_name = pd.read_csv(join(dirname('C:\\Users\\patri\\eesd-dashboard\\epfl_git\\bokeh_dashboard\\data\\'),
+        unit_name = pd.read_csv(join(dirname('C:\\Users\\patri\\eesd-dashboard\\epfl_git\\eesd-dashboard\\bokeh_dashboard\\data\\'),
                                      '01_experimental_curves', filename), header=None, nrows=1)[1][0]
-        data = pd.read_csv(join(dirname('C:\\Users\\patri\\eesd-dashboard\\epfl_git\\bokeh_dashboard\\data\\'),
+        data = pd.read_csv(join(dirname('C:\\Users\\patri\\eesd-dashboard\\epfl_git\\eesd-dashboard\\bokeh_dashboard\\data\\'),
                                 '01_experimental_curves', filename), header=2, skiprows=[3])
 
         # Create the curve data dictionary for each file
