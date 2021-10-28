@@ -1,0 +1,4350 @@
+[
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -16.5
+    },
+    {
+      "top_displacement": -1.54,
+      "horizontal_force": -16.5
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -15.6
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -13.1
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -10.5
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -8.1
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -5.9
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -3.9
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": -2.1
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": -0.5
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -0.1
+    },
+    {
+      "top_displacement": -0.21,
+      "horizontal_force": 1.5
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": 3
+    },
+    {
+      "top_displacement": 0.04,
+      "horizontal_force": 4.1
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": 5.9
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 7.1
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": 8.4
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": 9.9
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 11.3
+    },
+    {
+      "top_displacement": 0.96,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 13.9
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": 15.8
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 17.9
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": 19.3
+    },
+    {
+      "top_displacement": 1.95,
+      "horizontal_force": 20.1
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 21.1
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 21.8
+    },
+    {
+      "top_displacement": 2.12,
+      "horizontal_force": 20.1
+    },
+    {
+      "top_displacement": 1.95,
+      "horizontal_force": 17.3
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 15.1
+    },
+    {
+      "top_displacement": 1.54,
+      "horizontal_force": 13.1
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": 11
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 9.1
+    },
+    {
+      "top_displacement": 0.96,
+      "horizontal_force": 7.1
+    },
+    {
+      "top_displacement": 0.71,
+      "horizontal_force": 5
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": 2.4
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 1.5
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": 0.2
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": -1
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": -1.8
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": -3.6
+    },
+    {
+      "top_displacement": -0.21,
+      "horizontal_force": -5.5
+    },
+    {
+      "top_displacement": -0.37,
+      "horizontal_force": -7.1
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -8.7
+    },
+    {
+      "top_displacement": -0.62,
+      "horizontal_force": -10.2
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -11.8
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -12.8
+    },
+    {
+      "top_displacement": -1.04,
+      "horizontal_force": -14.4
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -16.1
+    },
+    {
+      "top_displacement": -1.46,
+      "horizontal_force": -17.6
+    },
+    {
+      "top_displacement": -1.46,
+      "horizontal_force": -16.5
+    },
+    {
+      "top_displacement": -1.29,
+      "horizontal_force": -14.4
+    },
+    {
+      "top_displacement": -1.12,
+      "horizontal_force": -11.8
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -9.6
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -7.1
+    },
+    {
+      "top_displacement": -0.62,
+      "horizontal_force": -5.5
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": -3
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -1.6
+    },
+    {
+      "top_displacement": -0.12,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 0.04,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": 3.3
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": 3.8
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 5.6
+    },
+    {
+      "top_displacement": 0.54,
+      "horizontal_force": 7.5
+    },
+    {
+      "top_displacement": 0.71,
+      "horizontal_force": 8.8
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 11
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": 13.9
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": 15.4
+    },
+    {
+      "top_displacement": 1.62,
+      "horizontal_force": 17.3
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": 18.5
+    },
+    {
+      "top_displacement": 2.04,
+      "horizontal_force": 20.2
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 21.1
+    },
+    {
+      "top_displacement": 2.29,
+      "horizontal_force": 22.1
+    },
+    {
+      "top_displacement": 2.12,
+      "horizontal_force": 19.3
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": 16.7
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 14.7
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": 12.8
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": 11
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 8.7
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 6.8
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": 4.7
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": 3.6
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 1.8
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 0.2
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": -0.5
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 0.12,
+      "horizontal_force": -2.1
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": -3.9
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -5.5
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -6.4
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -8.7
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -9.9
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -11.8
+    },
+    {
+      "top_displacement": -1.04,
+      "horizontal_force": -12.8
+    },
+    {
+      "top_displacement": -1.12,
+      "horizontal_force": -14.7
+    },
+    {
+      "top_displacement": -1.29,
+      "horizontal_force": -16.5
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -3.53,
+      "horizontal_force": -30.8
+    },
+    {
+      "top_displacement": -3.53,
+      "horizontal_force": -29.6
+    },
+    {
+      "top_displacement": -3.53,
+      "horizontal_force": -30.2
+    },
+    {
+      "top_displacement": -3.37,
+      "horizontal_force": -27.7
+    },
+    {
+      "top_displacement": -3.12,
+      "horizontal_force": -26.1
+    },
+    {
+      "top_displacement": -2.87,
+      "horizontal_force": -23.9
+    },
+    {
+      "top_displacement": -2.79,
+      "horizontal_force": -22.2
+    },
+    {
+      "top_displacement": -2.54,
+      "horizontal_force": -20.1
+    },
+    {
+      "top_displacement": -2.37,
+      "horizontal_force": -18.5
+    },
+    {
+      "top_displacement": -2.29,
+      "horizontal_force": -16.8
+    },
+    {
+      "top_displacement": -1.95,
+      "horizontal_force": -15
+    },
+    {
+      "top_displacement": -1.87,
+      "horizontal_force": -13.1
+    },
+    {
+      "top_displacement": -1.7,
+      "horizontal_force": -11.5
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -9.9
+    },
+    {
+      "top_displacement": -1.46,
+      "horizontal_force": -8.4
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -6.7
+    },
+    {
+      "top_displacement": -1.12,
+      "horizontal_force": -5.5
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -3.6
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -1.8
+    },
+    {
+      "top_displacement": -0.62,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": -0.62,
+      "horizontal_force": 0.2
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": 0.8
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": 2.4
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": 3.6
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": 5.3
+    },
+    {
+      "top_displacement": 0.04,
+      "horizontal_force": 7.1
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": 8.8
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": 9.9
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": 11.3
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 13.8
+    },
+    {
+      "top_displacement": 1.04,
+      "horizontal_force": 15.4
+    },
+    {
+      "top_displacement": 1.21,
+      "horizontal_force": 17.3
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": 18.8
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 20.2
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": 21.8
+    },
+    {
+      "top_displacement": 2.04,
+      "horizontal_force": 23
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 23.9
+    },
+    {
+      "top_displacement": 2.29,
+      "horizontal_force": 24.7
+    },
+    {
+      "top_displacement": 2.62,
+      "horizontal_force": 26.2
+    },
+    {
+      "top_displacement": 2.87,
+      "horizontal_force": 26.8
+    },
+    {
+      "top_displacement": 3.12,
+      "horizontal_force": 28.1
+    },
+    {
+      "top_displacement": 3.2,
+      "horizontal_force": 28.4
+    },
+    {
+      "top_displacement": 4.12,
+      "horizontal_force": 30.1
+    },
+    {
+      "top_displacement": 4.28,
+      "horizontal_force": 30.5
+    },
+    {
+      "top_displacement": 4.45,
+      "horizontal_force": 30.5
+    },
+    {
+      "top_displacement": 4.7,
+      "horizontal_force": 31
+    },
+    {
+      "top_displacement": 4.53,
+      "horizontal_force": 30.5
+    },
+    {
+      "top_displacement": 4.03,
+      "horizontal_force": 27.4
+    },
+    {
+      "top_displacement": 3.78,
+      "horizontal_force": 25.6
+    },
+    {
+      "top_displacement": 3.53,
+      "horizontal_force": 24.2
+    },
+    {
+      "top_displacement": 3.53,
+      "horizontal_force": 22.4
+    },
+    {
+      "top_displacement": 3.2,
+      "horizontal_force": 20.2
+    },
+    {
+      "top_displacement": 3.12,
+      "horizontal_force": 18.8
+    },
+    {
+      "top_displacement": 2.79,
+      "horizontal_force": 15.1
+    },
+    {
+      "top_displacement": 2.45,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 2.37,
+      "horizontal_force": 11
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 9.1
+    },
+    {
+      "top_displacement": 1.95,
+      "horizontal_force": 7.5
+    },
+    {
+      "top_displacement": 1.87,
+      "horizontal_force": 5.6
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 4.1
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": 1.5
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.21,
+      "horizontal_force": -1.6
+    },
+    {
+      "top_displacement": 1.21,
+      "horizontal_force": -3
+    },
+    {
+      "top_displacement": 1.04,
+      "horizontal_force": -4.5
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": -6.4
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": -7.1
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": -9
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": -10.8
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": -12.5
+    },
+    {
+      "top_displacement": 0.12,
+      "horizontal_force": -15.6
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": -15.6
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -17.6
+    },
+    {
+      "top_displacement": -0.37,
+      "horizontal_force": -18.8
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -20.4
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -22.2
+    },
+    {
+      "top_displacement": -0.87,
+      "horizontal_force": -23.6
+    },
+    {
+      "top_displacement": -1.04,
+      "horizontal_force": -25.1
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -26.5
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -27.7
+    },
+    {
+      "top_displacement": -1.46,
+      "horizontal_force": -29
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -30.5
+    },
+    {
+      "top_displacement": -1.87,
+      "horizontal_force": -31.6
+    },
+    {
+      "top_displacement": -2.04,
+      "horizontal_force": -32.8
+    },
+    {
+      "top_displacement": -2.2,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -2.37,
+      "horizontal_force": -33.9
+    },
+    {
+      "top_displacement": -2.62,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -2.79,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -2.87,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -3.12,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -3.37,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -3.28,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -3.2,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -2.87,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -2.62,
+      "horizontal_force": -32.7
+    },
+    {
+      "top_displacement": -2.45,
+      "horizontal_force": -31.6
+    },
+    {
+      "top_displacement": -2.29,
+      "horizontal_force": -30.2
+    },
+    {
+      "top_displacement": -2.12,
+      "horizontal_force": -28.7
+    },
+    {
+      "top_displacement": -1.95,
+      "horizontal_force": -27
+    },
+    {
+      "top_displacement": -1.79,
+      "horizontal_force": -25.4
+    },
+    {
+      "top_displacement": -1.54,
+      "horizontal_force": -23.6
+    },
+    {
+      "top_displacement": -1.46,
+      "horizontal_force": -21.9
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -19.4
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -15.6
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -14.4
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -12.5
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": -11.5
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -9.9
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": -7.8
+    },
+    {
+      "top_displacement": 0.12,
+      "horizontal_force": -5.5
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": -3.3
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": -1.6
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": -0.1
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": 0.5
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": 0.8
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 0.96,
+      "horizontal_force": 3.6
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 5.3
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": 7.1
+    },
+    {
+      "top_displacement": 1.46,
+      "horizontal_force": 9.1
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 11
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 2.04,
+      "horizontal_force": 13.9
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 16.1
+    },
+    {
+      "top_displacement": 2.29,
+      "horizontal_force": 17.6
+    },
+    {
+      "top_displacement": 2.54,
+      "horizontal_force": 19.1
+    },
+    {
+      "top_displacement": 2.7,
+      "horizontal_force": 20.8
+    },
+    {
+      "top_displacement": 2.79,
+      "horizontal_force": 22.1
+    },
+    {
+      "top_displacement": 2.95,
+      "horizontal_force": 23.1
+    },
+    {
+      "top_displacement": 3.12,
+      "horizontal_force": 24.4
+    },
+    {
+      "top_displacement": 3.37,
+      "horizontal_force": 25.6
+    },
+    {
+      "top_displacement": 3.45,
+      "horizontal_force": 26.8
+    },
+    {
+      "top_displacement": 3.78,
+      "horizontal_force": 28.7
+    },
+    {
+      "top_displacement": 3.95,
+      "horizontal_force": 29.3
+    },
+    {
+      "top_displacement": 4.2,
+      "horizontal_force": 29.7
+    },
+    {
+      "top_displacement": 4.28,
+      "horizontal_force": 30.1
+    },
+    {
+      "top_displacement": 4.7,
+      "horizontal_force": 31.3
+    },
+    {
+      "top_displacement": 4.95,
+      "horizontal_force": 31
+    },
+    {
+      "top_displacement": 4.78,
+      "horizontal_force": 29.7
+    },
+    {
+      "top_displacement": 4.53,
+      "horizontal_force": 27.7
+    },
+    {
+      "top_displacement": 4.28,
+      "horizontal_force": 25.6
+    },
+    {
+      "top_displacement": 4.03,
+      "horizontal_force": 23.6
+    },
+    {
+      "top_displacement": 3.87,
+      "horizontal_force": 21.1
+    },
+    {
+      "top_displacement": 3.62,
+      "horizontal_force": 19.3
+    },
+    {
+      "top_displacement": 3.45,
+      "horizontal_force": 17
+    },
+    {
+      "top_displacement": 3.37,
+      "horizontal_force": 15.1
+    },
+    {
+      "top_displacement": 3.12,
+      "horizontal_force": 13.1
+    },
+    {
+      "top_displacement": 3.04,
+      "horizontal_force": 11.3
+    },
+    {
+      "top_displacement": 2.7,
+      "horizontal_force": 9.1
+    },
+    {
+      "top_displacement": 2.54,
+      "horizontal_force": 7.5
+    },
+    {
+      "top_displacement": 2.45,
+      "horizontal_force": 5.6
+    },
+    {
+      "top_displacement": 2.29,
+      "horizontal_force": 3.8
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 2.04,
+      "horizontal_force": 0.5
+    },
+    {
+      "top_displacement": 1.95,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.87,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": -1.3
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": -3
+    },
+    {
+      "top_displacement": 1.54,
+      "horizontal_force": -4.8
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": -6.4
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": -7.8
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": -9.6
+    },
+    {
+      "top_displacement": 0.96,
+      "horizontal_force": -10.8
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": -12.5
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": -14.1
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": -16.1
+    },
+    {
+      "top_displacement": 0.29,
+      "horizontal_force": -17.9
+    },
+    {
+      "top_displacement": 0.12,
+      "horizontal_force": -19.4
+    },
+    {
+      "top_displacement": -0.12,
+      "horizontal_force": -21.4
+    },
+    {
+      "top_displacement": -0.21,
+      "horizontal_force": -23
+    },
+    {
+      "top_displacement": -0.37,
+      "horizontal_force": -24.2
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -25.7
+    },
+    {
+      "top_displacement": -0.71,
+      "horizontal_force": -27.4
+    },
+    {
+      "top_displacement": -0.79,
+      "horizontal_force": -28.7
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -29.9
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -31.4
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -32.4
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -1.7,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -1.95,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -2.12,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -2.29,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -2.54,
+      "horizontal_force": -35.6
+    },
+    {
+      "top_displacement": -2.62,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -3.04,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -5.61,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -5.11,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -4.12,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -3.04,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -2.15,
+      "horizontal_force": -31.8
+    },
+    {
+      "top_displacement": -1.75,
+      "horizontal_force": -29.5
+    },
+    {
+      "top_displacement": -1.17,
+      "horizontal_force": -25
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -18.8
+    },
+    {
+      "top_displacement": 0.24,
+      "horizontal_force": -9.6
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": -2.4
+    },
+    {
+      "top_displacement": 1.52,
+      "horizontal_force": 3.9
+    },
+    {
+      "top_displacement": 2.25,
+      "horizontal_force": 12.1
+    },
+    {
+      "top_displacement": 2.62,
+      "horizontal_force": 15.1
+    },
+    {
+      "top_displacement": 3.64,
+      "horizontal_force": 24.3
+    },
+    {
+      "top_displacement": 4.4,
+      "horizontal_force": 29.5
+    },
+    {
+      "top_displacement": 5.23,
+      "horizontal_force": 30.9
+    },
+    {
+      "top_displacement": 6.36,
+      "horizontal_force": 32.2
+    },
+    {
+      "top_displacement": 7.2,
+      "horizontal_force": 32.2
+    },
+    {
+      "top_displacement": 6.35,
+      "horizontal_force": 30.4
+    },
+    {
+      "top_displacement": 5.42,
+      "horizontal_force": 24.1
+    },
+    {
+      "top_displacement": 4.85,
+      "horizontal_force": 19
+    },
+    {
+      "top_displacement": 4.45,
+      "horizontal_force": 13.5
+    },
+    {
+      "top_displacement": 3.77,
+      "horizontal_force": 6.4
+    },
+    {
+      "top_displacement": 3.31,
+      "horizontal_force": 0.7
+    },
+    {
+      "top_displacement": 2.91,
+      "horizontal_force": -3
+    },
+    {
+      "top_displacement": 2.28,
+      "horizontal_force": -10.7
+    },
+    {
+      "top_displacement": 1.94,
+      "horizontal_force": -15.4
+    },
+    {
+      "top_displacement": 1.28,
+      "horizontal_force": -20.6
+    },
+    {
+      "top_displacement": 0.58,
+      "horizontal_force": -27.1
+    },
+    {
+      "top_displacement": 0.09,
+      "horizontal_force": -30.5
+    },
+    {
+      "top_displacement": -0.44,
+      "horizontal_force": -32.8
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -2.18,
+      "horizontal_force": -36.6
+    },
+    {
+      "top_displacement": -3.03,
+      "horizontal_force": -37
+    },
+    {
+      "top_displacement": -4.02,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -5,
+      "horizontal_force": -38.4
+    },
+    {
+      "top_displacement": -5.61,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -4.62,
+      "horizontal_force": -36.6
+    },
+    {
+      "top_displacement": -3.56,
+      "horizontal_force": -35.5
+    },
+    {
+      "top_displacement": -2.41,
+      "horizontal_force": -34.1
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -32.1
+    },
+    {
+      "top_displacement": -0.54,
+      "horizontal_force": -27.7
+    },
+    {
+      "top_displacement": -0.04,
+      "horizontal_force": -24.5
+    },
+    {
+      "top_displacement": 0.48,
+      "horizontal_force": -18.4
+    },
+    {
+      "top_displacement": 1.34,
+      "horizontal_force": -10.4
+    },
+    {
+      "top_displacement": 2.13,
+      "horizontal_force": -1.9
+    },
+    {
+      "top_displacement": 2.3,
+      "horizontal_force": 0.7
+    },
+    {
+      "top_displacement": 3.04,
+      "horizontal_force": 8.4
+    },
+    {
+      "top_displacement": 3.45,
+      "horizontal_force": 13.1
+    },
+    {
+      "top_displacement": 4.19,
+      "horizontal_force": 21.4
+    },
+    {
+      "top_displacement": 5.14,
+      "horizontal_force": 28.7
+    },
+    {
+      "top_displacement": 5.28,
+      "horizontal_force": 30.5
+    },
+    {
+      "top_displacement": 6.35,
+      "horizontal_force": 32.3
+    },
+    {
+      "top_displacement": 7.28,
+      "horizontal_force": 32.8
+    },
+    {
+      "top_displacement": 6.36,
+      "horizontal_force": 30.7
+    },
+    {
+      "top_displacement": 5.78,
+      "horizontal_force": 25.8
+    },
+    {
+      "top_displacement": 5.07,
+      "horizontal_force": 18.5
+    },
+    {
+      "top_displacement": 4.4,
+      "horizontal_force": 9.3
+    },
+    {
+      "top_displacement": 3.82,
+      "horizontal_force": 3.3
+    },
+    {
+      "top_displacement": 3.2,
+      "horizontal_force": -3.3
+    },
+    {
+      "top_displacement": 2.79,
+      "horizontal_force": -9
+    },
+    {
+      "top_displacement": 1.42,
+      "horizontal_force": -22.5
+    },
+    {
+      "top_displacement": 0.84,
+      "horizontal_force": -27.1
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": -30.2
+    },
+    {
+      "top_displacement": -0.27,
+      "horizontal_force": -33.6
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -35.6
+    },
+    {
+      "top_displacement": -1.95,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -2.69,
+      "horizontal_force": -36.9
+    },
+    {
+      "top_displacement": -3.7,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -4.95,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -5.28,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -8.02,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -7.68,
+      "horizontal_force": -38.6
+    },
+    {
+      "top_displacement": -6.51,
+      "horizontal_force": -37.1
+    },
+    {
+      "top_displacement": -5.19,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -3.87,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -2.7,
+      "horizontal_force": -33.9
+    },
+    {
+      "top_displacement": -1.65,
+      "horizontal_force": -32.3
+    },
+    {
+      "top_displacement": -1.02,
+      "horizontal_force": -29.4
+    },
+    {
+      "top_displacement": -0.21,
+      "horizontal_force": -24.2
+    },
+    {
+      "top_displacement": 0.8,
+      "horizontal_force": -16.7
+    },
+    {
+      "top_displacement": 1.53,
+      "horizontal_force": -8.9
+    },
+    {
+      "top_displacement": 2.04,
+      "horizontal_force": -2.8
+    },
+    {
+      "top_displacement": 2.64,
+      "horizontal_force": 2.7
+    },
+    {
+      "top_displacement": 3.34,
+      "horizontal_force": 10.7
+    },
+    {
+      "top_displacement": 3.71,
+      "horizontal_force": 15.3
+    },
+    {
+      "top_displacement": 4.12,
+      "horizontal_force": 20.2
+    },
+    {
+      "top_displacement": 4.78,
+      "horizontal_force": 25.9
+    },
+    {
+      "top_displacement": 5.35,
+      "horizontal_force": 30.3
+    },
+    {
+      "top_displacement": 6.04,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 7.4,
+      "horizontal_force": 34
+    },
+    {
+      "top_displacement": 8.61,
+      "horizontal_force": 34.5
+    },
+    {
+      "top_displacement": 9.77,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 8.79,
+      "horizontal_force": 32.9
+    },
+    {
+      "top_displacement": 7.44,
+      "horizontal_force": 31.9
+    },
+    {
+      "top_displacement": 6.55,
+      "horizontal_force": 31.2
+    },
+    {
+      "top_displacement": 5.98,
+      "horizontal_force": 28.5
+    },
+    {
+      "top_displacement": 5.86,
+      "horizontal_force": 25.6
+    },
+    {
+      "top_displacement": 5.35,
+      "horizontal_force": 22.2
+    },
+    {
+      "top_displacement": 4.46,
+      "horizontal_force": 13.7
+    },
+    {
+      "top_displacement": 3.87,
+      "horizontal_force": 7.6
+    },
+    {
+      "top_displacement": 3.24,
+      "horizontal_force": -0.1
+    },
+    {
+      "top_displacement": 2.87,
+      "horizontal_force": -4.8
+    },
+    {
+      "top_displacement": 2.36,
+      "horizontal_force": -10.2
+    },
+    {
+      "top_displacement": 1.52,
+      "horizontal_force": -17.8
+    },
+    {
+      "top_displacement": 0.77,
+      "horizontal_force": -25
+    },
+    {
+      "top_displacement": -0.03,
+      "horizontal_force": -30.7
+    },
+    {
+      "top_displacement": -0.59,
+      "horizontal_force": -33.1
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -2.79,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -4.04,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -5.28,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -6.62,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -8.07,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -7.17,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -5.78,
+      "horizontal_force": -37
+    },
+    {
+      "top_displacement": -4.62,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -3.32,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -2.29,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -1.47,
+      "horizontal_force": -29.5
+    },
+    {
+      "top_displacement": -0.63,
+      "horizontal_force": -24
+    },
+    {
+      "top_displacement": -0.03,
+      "horizontal_force": -20.2
+    },
+    {
+      "top_displacement": 0.56,
+      "horizontal_force": -14.5
+    },
+    {
+      "top_displacement": 1.5,
+      "horizontal_force": -5.1
+    },
+    {
+      "top_displacement": 2.2,
+      "horizontal_force": 1.9
+    },
+    {
+      "top_displacement": 2.49,
+      "horizontal_force": 5.8
+    },
+    {
+      "top_displacement": 3,
+      "horizontal_force": 11.6
+    },
+    {
+      "top_displacement": 3.75,
+      "horizontal_force": 19.2
+    },
+    {
+      "top_displacement": 4.37,
+      "horizontal_force": 24.7
+    },
+    {
+      "top_displacement": 5,
+      "horizontal_force": 30.2
+    },
+    {
+      "top_displacement": 5.77,
+      "horizontal_force": 33.2
+    },
+    {
+      "top_displacement": 6.73,
+      "horizontal_force": 33.3
+    },
+    {
+      "top_displacement": 7.78,
+      "horizontal_force": 33.9
+    },
+    {
+      "top_displacement": 8.61,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 9.69,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 8.79,
+      "horizontal_force": 33.3
+    },
+    {
+      "top_displacement": 7.5,
+      "horizontal_force": 32
+    },
+    {
+      "top_displacement": 6.34,
+      "horizontal_force": 31.3
+    },
+    {
+      "top_displacement": 5.45,
+      "horizontal_force": 28.4
+    },
+    {
+      "top_displacement": 5.09,
+      "horizontal_force": 25.3
+    },
+    {
+      "top_displacement": 4.23,
+      "horizontal_force": 17.1
+    },
+    {
+      "top_displacement": 3.77,
+      "horizontal_force": 12.4
+    },
+    {
+      "top_displacement": 2.97,
+      "horizontal_force": 2.2
+    },
+    {
+      "top_displacement": 2.55,
+      "horizontal_force": -3.1
+    },
+    {
+      "top_displacement": 1.54,
+      "horizontal_force": -12.8
+    },
+    {
+      "top_displacement": 0.89,
+      "horizontal_force": -20
+    },
+    {
+      "top_displacement": 0.41,
+      "horizontal_force": -23.5
+    },
+    {
+      "top_displacement": -0.29,
+      "horizontal_force": -29.6
+    },
+    {
+      "top_displacement": -1.23,
+      "horizontal_force": -34.2
+    },
+    {
+      "top_displacement": -2.2,
+      "horizontal_force": -35.6
+    },
+    {
+      "top_displacement": -3.34,
+      "horizontal_force": -36.9
+    },
+    {
+      "top_displacement": -4.37,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -5.84,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -6.95,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -7.86,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -10.6,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -9.7,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -8.44,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -7.12,
+      "horizontal_force": -36.8
+    },
+    {
+      "top_displacement": -5.66,
+      "horizontal_force": -36.1
+    },
+    {
+      "top_displacement": -4.23,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -2.99,
+      "horizontal_force": -33.7
+    },
+    {
+      "top_displacement": -2.05,
+      "horizontal_force": -29.6
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -25.4
+    },
+    {
+      "top_displacement": -0.89,
+      "horizontal_force": -21.7
+    },
+    {
+      "top_displacement": -0.16,
+      "horizontal_force": -15
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": -8.7
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": 0.5
+    },
+    {
+      "top_displacement": 1.56,
+      "horizontal_force": 3.5
+    },
+    {
+      "top_displacement": 2.45,
+      "horizontal_force": 11.9
+    },
+    {
+      "top_displacement": 3.49,
+      "horizontal_force": 22.7
+    },
+    {
+      "top_displacement": 4.12,
+      "horizontal_force": 28.7
+    },
+    {
+      "top_displacement": 4.75,
+      "horizontal_force": 32.8
+    },
+    {
+      "top_displacement": 5.92,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 7.26,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 8.82,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 10.19,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 11.57,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 11.62,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 10.02,
+      "horizontal_force": 33.6
+    },
+    {
+      "top_displacement": 8.71,
+      "horizontal_force": 32.8
+    },
+    {
+      "top_displacement": 7.34,
+      "horizontal_force": 31.9
+    },
+    {
+      "top_displacement": 6.12,
+      "horizontal_force": 31.4
+    },
+    {
+      "top_displacement": 5.03,
+      "horizontal_force": 29.7
+    },
+    {
+      "top_displacement": 4.73,
+      "horizontal_force": 26.7
+    },
+    {
+      "top_displacement": 3.61,
+      "horizontal_force": 17.1
+    },
+    {
+      "top_displacement": 2.96,
+      "horizontal_force": 9.2
+    },
+    {
+      "top_displacement": 1.88,
+      "horizontal_force": -1.9
+    },
+    {
+      "top_displacement": 1.16,
+      "horizontal_force": -10.4
+    },
+    {
+      "top_displacement": 0.42,
+      "horizontal_force": -17.7
+    },
+    {
+      "top_displacement": -0.03,
+      "horizontal_force": -22.2
+    },
+    {
+      "top_displacement": -0.57,
+      "horizontal_force": -26.2
+    },
+    {
+      "top_displacement": -0.99,
+      "horizontal_force": -29.6
+    },
+    {
+      "top_displacement": -1.44,
+      "horizontal_force": -32.8
+    },
+    {
+      "top_displacement": -2.62,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -4,
+      "horizontal_force": -36.5
+    },
+    {
+      "top_displacement": -5.1,
+      "horizontal_force": -37.6
+    },
+    {
+      "top_displacement": -6.58,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -7.69,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -8.86,
+      "horizontal_force": -39.3
+    },
+    {
+      "top_displacement": -10.22,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -10.19,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -8.75,
+      "horizontal_force": -37.4
+    },
+    {
+      "top_displacement": -7.4,
+      "horizontal_force": -36.4
+    },
+    {
+      "top_displacement": -6.07,
+      "horizontal_force": -36
+    },
+    {
+      "top_displacement": -4.88,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -3.53,
+      "horizontal_force": -33.9
+    },
+    {
+      "top_displacement": -2.87,
+      "horizontal_force": -31.6
+    },
+    {
+      "top_displacement": -2.34,
+      "horizontal_force": -28.5
+    },
+    {
+      "top_displacement": -1.67,
+      "horizontal_force": -24
+    },
+    {
+      "top_displacement": -0.97,
+      "horizontal_force": -18.7
+    },
+    {
+      "top_displacement": -0.12,
+      "horizontal_force": -10.4
+    },
+    {
+      "top_displacement": 0.51,
+      "horizontal_force": -3.4
+    },
+    {
+      "top_displacement": 0.79,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.12,
+      "horizontal_force": 2.4
+    },
+    {
+      "top_displacement": 1.74,
+      "horizontal_force": 9.1
+    },
+    {
+      "top_displacement": 2.14,
+      "horizontal_force": 13.9
+    },
+    {
+      "top_displacement": 2.62,
+      "horizontal_force": 18.4
+    },
+    {
+      "top_displacement": 2.97,
+      "horizontal_force": 22.5
+    },
+    {
+      "top_displacement": 3.7,
+      "horizontal_force": 29
+    },
+    {
+      "top_displacement": 4.67,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 6.16,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 7.06,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 8.58,
+      "horizontal_force": 35.3
+    },
+    {
+      "top_displacement": 9.88,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 11.28,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 11.41,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 9.78,
+      "horizontal_force": 34.1
+    },
+    {
+      "top_displacement": 8.48,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 7.03,
+      "horizontal_force": 32.2
+    },
+    {
+      "top_displacement": 5.53,
+      "horizontal_force": 31.3
+    },
+    {
+      "top_displacement": 4.73,
+      "horizontal_force": 28.9
+    },
+    {
+      "top_displacement": 3.1,
+      "horizontal_force": 13.7
+    },
+    {
+      "top_displacement": 2.26,
+      "horizontal_force": 4.3
+    },
+    {
+      "top_displacement": 1.89,
+      "horizontal_force": -0.6
+    },
+    {
+      "top_displacement": 1.47,
+      "horizontal_force": -3.9
+    },
+    {
+      "top_displacement": 0.98,
+      "horizontal_force": -10.3
+    },
+    {
+      "top_displacement": 0.19,
+      "horizontal_force": -17.9
+    },
+    {
+      "top_displacement": -0.78,
+      "horizontal_force": -26
+    },
+    {
+      "top_displacement": -1.24,
+      "horizontal_force": -29.8
+    },
+    {
+      "top_displacement": -1.74,
+      "horizontal_force": -32.4
+    },
+    {
+      "top_displacement": -2.46,
+      "horizontal_force": -35.1
+    },
+    {
+      "top_displacement": -3.53,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -5.03,
+      "horizontal_force": -37
+    },
+    {
+      "top_displacement": -6.36,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -7.35,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -8.7,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -10.22,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -10.6,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -13.35,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -11.93,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -10.44,
+      "horizontal_force": -37.4
+    },
+    {
+      "top_displacement": -8.85,
+      "horizontal_force": -36.6
+    },
+    {
+      "top_displacement": -7.26,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -6.03,
+      "horizontal_force": -35
+    },
+    {
+      "top_displacement": -4.7,
+      "horizontal_force": -34.1
+    },
+    {
+      "top_displacement": -3.56,
+      "horizontal_force": -32.9
+    },
+    {
+      "top_displacement": -2.1,
+      "horizontal_force": -24.3
+    },
+    {
+      "top_displacement": -1.48,
+      "horizontal_force": -19.8
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -14.4
+    },
+    {
+      "top_displacement": -0.08,
+      "horizontal_force": -6.7
+    },
+    {
+      "top_displacement": 0.54,
+      "horizontal_force": 0.2
+    },
+    {
+      "top_displacement": 1.14,
+      "horizontal_force": 6
+    },
+    {
+      "top_displacement": 1.88,
+      "horizontal_force": 14.4
+    },
+    {
+      "top_displacement": 2.62,
+      "horizontal_force": 21.5
+    },
+    {
+      "top_displacement": 3.1,
+      "horizontal_force": 26.6
+    },
+    {
+      "top_displacement": 3.63,
+      "horizontal_force": 30.3
+    },
+    {
+      "top_displacement": 4.95,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 6.11,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 7.36,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 8.86,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 10.06,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 11.5,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 13.16,
+      "horizontal_force": 36.6
+    },
+    {
+      "top_displacement": 14.18,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 13.18,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 11.77,
+      "horizontal_force": 34.1
+    },
+    {
+      "top_displacement": 10.4,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 9.18,
+      "horizontal_force": 34.1
+    },
+    {
+      "top_displacement": 7.72,
+      "horizontal_force": 34.1
+    },
+    {
+      "top_displacement": 6.19,
+      "horizontal_force": 32.9
+    },
+    {
+      "top_displacement": 4.82,
+      "horizontal_force": 32
+    },
+    {
+      "top_displacement": 4.34,
+      "horizontal_force": 28.7
+    },
+    {
+      "top_displacement": 3.11,
+      "horizontal_force": 16.8
+    },
+    {
+      "top_displacement": 2.16,
+      "horizontal_force": 5.6
+    },
+    {
+      "top_displacement": 1.7,
+      "horizontal_force": 0.2
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": -4.5
+    },
+    {
+      "top_displacement": 0.73,
+      "horizontal_force": -11.1
+    },
+    {
+      "top_displacement": -0.69,
+      "horizontal_force": -24.4
+    },
+    {
+      "top_displacement": -1.52,
+      "horizontal_force": -30.9
+    },
+    {
+      "top_displacement": -2.51,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -3.79,
+      "horizontal_force": -37.6
+    },
+    {
+      "top_displacement": -5.26,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -6.53,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -7.61,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -9.19,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -10.77,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -12.38,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -13.1,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -15.93,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -15.01,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -13.41,
+      "horizontal_force": -39.5
+    },
+    {
+      "top_displacement": -11.72,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -10.28,
+      "horizontal_force": -38.7
+    },
+    {
+      "top_displacement": -8.86,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -7.44,
+      "horizontal_force": -37
+    },
+    {
+      "top_displacement": -6.2,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -4.92,
+      "horizontal_force": -35.6
+    },
+    {
+      "top_displacement": -3.45,
+      "horizontal_force": -32.8
+    },
+    {
+      "top_displacement": -2.04,
+      "horizontal_force": -24.2
+    },
+    {
+      "top_displacement": -1.62,
+      "horizontal_force": -19.8
+    },
+    {
+      "top_displacement": -0.51,
+      "horizontal_force": -10.2
+    },
+    {
+      "top_displacement": 0.3,
+      "horizontal_force": -1.9
+    },
+    {
+      "top_displacement": 0.54,
+      "horizontal_force": 1.4
+    },
+    {
+      "top_displacement": 1.35,
+      "horizontal_force": 10
+    },
+    {
+      "top_displacement": 2.22,
+      "horizontal_force": 19
+    },
+    {
+      "top_displacement": 2.84,
+      "horizontal_force": 25.8
+    },
+    {
+      "top_displacement": 3.57,
+      "horizontal_force": 31.4
+    },
+    {
+      "top_displacement": 4.64,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 5.85,
+      "horizontal_force": 35.5
+    },
+    {
+      "top_displacement": 7.5,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 9.05,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 10.38,
+      "horizontal_force": 37.5
+    },
+    {
+      "top_displacement": 11.65,
+      "horizontal_force": 37.7
+    },
+    {
+      "top_displacement": 12.93,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 14.59,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 16.09,
+      "horizontal_force": 38.3
+    },
+    {
+      "top_displacement": 15.84,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 14.35,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 12.67,
+      "horizontal_force": 35.2
+    },
+    {
+      "top_displacement": 11.39,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 10.04,
+      "horizontal_force": 33.5
+    },
+    {
+      "top_displacement": 8.72,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 7.2,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 5.61,
+      "horizontal_force": 32.5
+    },
+    {
+      "top_displacement": 4.67,
+      "horizontal_force": 30.3
+    },
+    {
+      "top_displacement": 4.2,
+      "horizontal_force": 25.6
+    },
+    {
+      "top_displacement": 3.29,
+      "horizontal_force": 17.6
+    },
+    {
+      "top_displacement": 2.33,
+      "horizontal_force": 6.9
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 1.42,
+      "horizontal_force": -3.6
+    },
+    {
+      "top_displacement": 0.73,
+      "horizontal_force": -11.8
+    },
+    {
+      "top_displacement": 0.18,
+      "horizontal_force": -16.9
+    },
+    {
+      "top_displacement": -1.21,
+      "horizontal_force": -29.9
+    },
+    {
+      "top_displacement": -2.02,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -2.96,
+      "horizontal_force": -36.8
+    },
+    {
+      "top_displacement": -4.44,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -5.91,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -7.3,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -8.79,
+      "horizontal_force": -40.6
+    },
+    {
+      "top_displacement": -10.35,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -12.12,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -13.73,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -16.01,
+      "horizontal_force": -42
+    },
+    {
+      "top_displacement": -15.01,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -13.27,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -11.68,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -10.24,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -8.95,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -7.47,
+      "horizontal_force": -37.4
+    },
+    {
+      "top_displacement": -5.95,
+      "horizontal_force": -36.5
+    },
+    {
+      "top_displacement": -4.38,
+      "horizontal_force": -35.2
+    },
+    {
+      "top_displacement": -2.99,
+      "horizontal_force": -31.4
+    },
+    {
+      "top_displacement": -1.43,
+      "horizontal_force": -19.8
+    },
+    {
+      "top_displacement": -0.96,
+      "horizontal_force": -15.3
+    },
+    {
+      "top_displacement": -0.31,
+      "horizontal_force": -9.1
+    },
+    {
+      "top_displacement": 0.46,
+      "horizontal_force": -0.4
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 2.7
+    },
+    {
+      "top_displacement": 1.92,
+      "horizontal_force": 14.2
+    },
+    {
+      "top_displacement": 2.37,
+      "horizontal_force": 20.1
+    },
+    {
+      "top_displacement": 3.16,
+      "horizontal_force": 26.9
+    },
+    {
+      "top_displacement": 3.7,
+      "horizontal_force": 32.5
+    },
+    {
+      "top_displacement": 4.75,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 5.62,
+      "horizontal_force": 35.5
+    },
+    {
+      "top_displacement": 6.97,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 8.44,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 10.07,
+      "horizontal_force": 37
+    },
+    {
+      "top_displacement": 11.62,
+      "horizontal_force": 37.2
+    },
+    {
+      "top_displacement": 12.36,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 13.73,
+      "horizontal_force": 37.7
+    },
+    {
+      "top_displacement": 15.58,
+      "horizontal_force": 37.9
+    },
+    {
+      "top_displacement": 15.93,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 14.32,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 12.85,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 11.32,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 9.78,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 8.52,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 7.11,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 5.7,
+      "horizontal_force": 32.5
+    },
+    {
+      "top_displacement": 4.84,
+      "horizontal_force": 29.9
+    },
+    {
+      "top_displacement": 3.36,
+      "horizontal_force": 15.6
+    },
+    {
+      "top_displacement": 2.76,
+      "horizontal_force": 8.2
+    },
+    {
+      "top_displacement": 2.22,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 1.79,
+      "horizontal_force": -2.1
+    },
+    {
+      "top_displacement": 0.93,
+      "horizontal_force": -11.4
+    },
+    {
+      "top_displacement": 0.14,
+      "horizontal_force": -19.8
+    },
+    {
+      "top_displacement": -0.88,
+      "horizontal_force": -28
+    },
+    {
+      "top_displacement": -1.29,
+      "horizontal_force": -31.4
+    },
+    {
+      "top_displacement": -1.84,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -3.04,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -4.45,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -5.78,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -7.18,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -8.76,
+      "horizontal_force": -40.3
+    },
+    {
+      "top_displacement": -10.44,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -11.68,
+      "horizontal_force": -41.3
+    },
+    {
+      "top_displacement": -13.76,
+      "horizontal_force": -41.3
+    },
+    {
+      "top_displacement": -15.17,
+      "horizontal_force": -41.7
+    },
+    {
+      "top_displacement": -15.84,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -18.59,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -17.51,
+      "horizontal_force": -40.2
+    },
+    {
+      "top_displacement": -15.43,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -13.7,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -11.97,
+      "horizontal_force": -38.6
+    },
+    {
+      "top_displacement": -10.51,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -8.67,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -7.03,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -5.58,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -4.01,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -3,
+      "horizontal_force": -31.9
+    },
+    {
+      "top_displacement": -2.2,
+      "horizontal_force": -27.1
+    },
+    {
+      "top_displacement": -1.35,
+      "horizontal_force": -20.4
+    },
+    {
+      "top_displacement": -0.52,
+      "horizontal_force": -12.4
+    },
+    {
+      "top_displacement": 0.25,
+      "horizontal_force": -4.4
+    },
+    {
+      "top_displacement": 0.87,
+      "horizontal_force": 1.7
+    },
+    {
+      "top_displacement": 1.74,
+      "horizontal_force": 11.2
+    },
+    {
+      "top_displacement": 2.29,
+      "horizontal_force": 18.2
+    },
+    {
+      "top_displacement": 4.09,
+      "horizontal_force": 32.6
+    },
+    {
+      "top_displacement": 5.03,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 6.72,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 8.47,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 9.82,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 11.22,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 12.85,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 14.26,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 16.11,
+      "horizontal_force": 37.9
+    },
+    {
+      "top_displacement": 18.01,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 17.98,
+      "horizontal_force": 36.3
+    },
+    {
+      "top_displacement": 16.34,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 14.65,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 13.2,
+      "horizontal_force": 35.3
+    },
+    {
+      "top_displacement": 11.6,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 10.21,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 8.38,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 7.11,
+      "horizontal_force": 32.8
+    },
+    {
+      "top_displacement": 5.75,
+      "horizontal_force": 32.2
+    },
+    {
+      "top_displacement": 4.98,
+      "horizontal_force": 29.7
+    },
+    {
+      "top_displacement": 4.21,
+      "horizontal_force": 23.5
+    },
+    {
+      "top_displacement": 3.29,
+      "horizontal_force": 13.4
+    },
+    {
+      "top_displacement": 2.23,
+      "horizontal_force": 1
+    },
+    {
+      "top_displacement": 1.48,
+      "horizontal_force": -7.1
+    },
+    {
+      "top_displacement": 0.49,
+      "horizontal_force": -16.9
+    },
+    {
+      "top_displacement": -0.49,
+      "horizontal_force": -25.9
+    },
+    {
+      "top_displacement": -1.08,
+      "horizontal_force": -30.9
+    },
+    {
+      "top_displacement": -1.76,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -3.03,
+      "horizontal_force": -37
+    },
+    {
+      "top_displacement": -4.38,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -6.03,
+      "horizontal_force": -38.8
+    },
+    {
+      "top_displacement": -7.69,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -9.14,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -10.85,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -12.31,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -13.83,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -15.47,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -17.22,
+      "horizontal_force": -42
+    },
+    {
+      "top_displacement": -18.45,
+      "horizontal_force": -41.4
+    },
+    {
+      "top_displacement": -17.09,
+      "horizontal_force": -40.3
+    },
+    {
+      "top_displacement": -15.68,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -14.05,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -12.39,
+      "horizontal_force": -38.9
+    },
+    {
+      "top_displacement": -11.04,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -9.27,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -7.73,
+      "horizontal_force": -37.1
+    },
+    {
+      "top_displacement": -5.95,
+      "horizontal_force": -36.4
+    },
+    {
+      "top_displacement": -4.53,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -3.26,
+      "horizontal_force": -33.4
+    },
+    {
+      "top_displacement": -2.15,
+      "horizontal_force": -27.6
+    },
+    {
+      "top_displacement": -1.37,
+      "horizontal_force": -22.4
+    },
+    {
+      "top_displacement": -0.65,
+      "horizontal_force": -15.3
+    },
+    {
+      "top_displacement": -0.16,
+      "horizontal_force": -11
+    },
+    {
+      "top_displacement": 0.2,
+      "horizontal_force": -6.3
+    },
+    {
+      "top_displacement": 0.98,
+      "horizontal_force": 2.3
+    },
+    {
+      "top_displacement": 1.91,
+      "horizontal_force": 11.3
+    },
+    {
+      "top_displacement": 2.63,
+      "horizontal_force": 18.4
+    },
+    {
+      "top_displacement": 3.2,
+      "horizontal_force": 25
+    },
+    {
+      "top_displacement": 4.22,
+      "horizontal_force": 32.6
+    },
+    {
+      "top_displacement": 5.2,
+      "horizontal_force": 34.7
+    },
+    {
+      "top_displacement": 6.69,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 8.44,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 9.58,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 11.16,
+      "horizontal_force": 37
+    },
+    {
+      "top_displacement": 12.82,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 14.31,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 15.95,
+      "horizontal_force": 37.8
+    },
+    {
+      "top_displacement": 17.57,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 18.5,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 17.17,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 15.46,
+      "horizontal_force": 35.9
+    },
+    {
+      "top_displacement": 13.49,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 12.02,
+      "horizontal_force": 35
+    },
+    {
+      "top_displacement": 10.46,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 8.69,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 7.14,
+      "horizontal_force": 33.2
+    },
+    {
+      "top_displacement": 5.77,
+      "horizontal_force": 32.4
+    },
+    {
+      "top_displacement": 4.99,
+      "horizontal_force": 29.2
+    },
+    {
+      "top_displacement": 4.7,
+      "horizontal_force": 25.9
+    },
+    {
+      "top_displacement": 3.93,
+      "horizontal_force": 18.8
+    },
+    {
+      "top_displacement": 2.95,
+      "horizontal_force": 8.7
+    },
+    {
+      "top_displacement": 2.59,
+      "horizontal_force": 3.4
+    },
+    {
+      "top_displacement": 1.93,
+      "horizontal_force": -2.8
+    },
+    {
+      "top_displacement": 1.04,
+      "horizontal_force": -13.8
+    },
+    {
+      "top_displacement": 0.37,
+      "horizontal_force": -18.8
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -23.83,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": -22.08,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -20.12,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -18,
+      "horizontal_force": -39.6
+    },
+    {
+      "top_displacement": -15.73,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -13.1,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -11.13,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -9.25,
+      "horizontal_force": -37.4
+    },
+    {
+      "top_displacement": -7.53,
+      "horizontal_force": -36.5
+    },
+    {
+      "top_displacement": -5.61,
+      "horizontal_force": -35.6
+    },
+    {
+      "top_displacement": -3.65,
+      "horizontal_force": -34.4
+    },
+    {
+      "top_displacement": -2.73,
+      "horizontal_force": -30
+    },
+    {
+      "top_displacement": -1.44,
+      "horizontal_force": -22
+    },
+    {
+      "top_displacement": -0.4,
+      "horizontal_force": -12
+    },
+    {
+      "top_displacement": 1.04,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 1.77,
+      "horizontal_force": 11.1
+    },
+    {
+      "top_displacement": 2.59,
+      "horizontal_force": 19.9
+    },
+    {
+      "top_displacement": 4.07,
+      "horizontal_force": 32
+    },
+    {
+      "top_displacement": 5.15,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 7.03,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 8.82,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 10.6,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 12.57,
+      "horizontal_force": 37.5
+    },
+    {
+      "top_displacement": 15.34,
+      "horizontal_force": 37.9
+    },
+    {
+      "top_displacement": 17.17,
+      "horizontal_force": 37.9
+    },
+    {
+      "top_displacement": 18.87,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 20.88,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 22.38,
+      "horizontal_force": 38.8
+    },
+    {
+      "top_displacement": 22.83,
+      "horizontal_force": 37
+    },
+    {
+      "top_displacement": 20.87,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 18.53,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 16.13,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 14.39,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 12.79,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 11.1,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 9.36,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 7.31,
+      "horizontal_force": 32.5
+    },
+    {
+      "top_displacement": 5.59,
+      "horizontal_force": 31.7
+    },
+    {
+      "top_displacement": 4.48,
+      "horizontal_force": 24.3
+    },
+    {
+      "top_displacement": 2.85,
+      "horizontal_force": 8.7
+    },
+    {
+      "top_displacement": 2.25,
+      "horizontal_force": 1.7
+    },
+    {
+      "top_displacement": 1.88,
+      "horizontal_force": -2.3
+    },
+    {
+      "top_displacement": 1.39,
+      "horizontal_force": -8.9
+    },
+    {
+      "top_displacement": 0.39,
+      "horizontal_force": -18.7
+    },
+    {
+      "top_displacement": -0.46,
+      "horizontal_force": -26
+    },
+    {
+      "top_displacement": -1.12,
+      "horizontal_force": -31.6
+    },
+    {
+      "top_displacement": -1.67,
+      "horizontal_force": -35.2
+    },
+    {
+      "top_displacement": -3.32,
+      "horizontal_force": -37.3
+    },
+    {
+      "top_displacement": -4.15,
+      "horizontal_force": -38.6
+    },
+    {
+      "top_displacement": -5.78,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -7.61,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -9.41,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -10.77,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -12.69,
+      "horizontal_force": -40.8
+    },
+    {
+      "top_displacement": -14.75,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -19.04,
+      "horizontal_force": -41.7
+    },
+    {
+      "top_displacement": -21.17,
+      "horizontal_force": -42.3
+    },
+    {
+      "top_displacement": -22.89,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": -23.44,
+      "horizontal_force": -41.3
+    },
+    {
+      "top_displacement": -21.41,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -19.75,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -17.57,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -15.34,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -13.67,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -11.45,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -9.39,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -7.84,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -5.78,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -3.94,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -2.79,
+      "horizontal_force": -31.4
+    },
+    {
+      "top_displacement": -1.41,
+      "horizontal_force": -22
+    },
+    {
+      "top_displacement": -0.02,
+      "horizontal_force": -9.4
+    },
+    {
+      "top_displacement": 1.37,
+      "horizontal_force": 6.2
+    },
+    {
+      "top_displacement": 1.97,
+      "horizontal_force": 12.5
+    },
+    {
+      "top_displacement": 2.58,
+      "horizontal_force": 18.7
+    },
+    {
+      "top_displacement": 3.53,
+      "horizontal_force": 27.1
+    },
+    {
+      "top_displacement": 4.45,
+      "horizontal_force": 33.7
+    },
+    {
+      "top_displacement": 5.95,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 7.69,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 9.53,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 11.43,
+      "horizontal_force": 37
+    },
+    {
+      "top_displacement": 13.26,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 13.51,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": 13.51,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 15.34,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 17.34,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 19.3,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 21.08,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 22.79,
+      "horizontal_force": 38.6
+    },
+    {
+      "top_displacement": 22.41,
+      "horizontal_force": 36.7
+    },
+    {
+      "top_displacement": 20.57,
+      "horizontal_force": 36.2
+    },
+    {
+      "top_displacement": 18.58,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 16.42,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 14.5,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 12.86,
+      "horizontal_force": 35.4
+    },
+    {
+      "top_displacement": 11.1,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 9.11,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 7.39,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 5.61,
+      "horizontal_force": 31.9
+    },
+    {
+      "top_displacement": 4.78,
+      "horizontal_force": 28.1
+    },
+    {
+      "top_displacement": 4,
+      "horizontal_force": 19.6
+    },
+    {
+      "top_displacement": 3.17,
+      "horizontal_force": 11.8
+    },
+    {
+      "top_displacement": 2.15,
+      "horizontal_force": -1.5
+    },
+    {
+      "top_displacement": 1.23,
+      "horizontal_force": -10.6
+    },
+    {
+      "top_displacement": 0.08,
+      "horizontal_force": -21.9
+    },
+    {
+      "top_displacement": -0.75,
+      "horizontal_force": -28.8
+    },
+    {
+      "top_displacement": -1.79,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -3.14,
+      "horizontal_force": -37.2
+    },
+    {
+      "top_displacement": -4.57,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -6,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -7.62,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -9.69,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -11.74,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -13.61,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -16.26,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -17.97,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -19.8,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -21.82,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": -23.66,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -28.98,
+      "horizontal_force": -42.8
+    },
+    {
+      "top_displacement": -27.82,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -25.61,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -23.39,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -21.04,
+      "horizontal_force": -39.7
+    },
+    {
+      "top_displacement": -19.15,
+      "horizontal_force": -39.3
+    },
+    {
+      "top_displacement": -16.8,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -14.93,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -13.01,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -10.63,
+      "horizontal_force": -37.8
+    },
+    {
+      "top_displacement": -8.36,
+      "horizontal_force": -37.4
+    },
+    {
+      "top_displacement": -6.64,
+      "horizontal_force": -36.6
+    },
+    {
+      "top_displacement": -4.86,
+      "horizontal_force": -35.3
+    },
+    {
+      "top_displacement": -3.46,
+      "horizontal_force": -33.9
+    },
+    {
+      "top_displacement": -2.79,
+      "horizontal_force": -30.7
+    },
+    {
+      "top_displacement": -1.23,
+      "horizontal_force": -19.6
+    },
+    {
+      "top_displacement": 0.4,
+      "horizontal_force": -3.7
+    },
+    {
+      "top_displacement": 1.02,
+      "horizontal_force": 3.3
+    },
+    {
+      "top_displacement": 2.14,
+      "horizontal_force": 13
+    },
+    {
+      "top_displacement": 2.81,
+      "horizontal_force": 20.3
+    },
+    {
+      "top_displacement": 4.03,
+      "horizontal_force": 32.2
+    },
+    {
+      "top_displacement": 5.36,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 7.38,
+      "horizontal_force": 35.9
+    },
+    {
+      "top_displacement": 9.36,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 11,
+      "horizontal_force": 37
+    },
+    {
+      "top_displacement": 12.91,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 14.68,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 17.03,
+      "horizontal_force": 37.8
+    },
+    {
+      "top_displacement": 19.5,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 21.58,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 23.53,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 25.16,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 27.09,
+      "horizontal_force": 38.7
+    },
+    {
+      "top_displacement": 27.23,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 25.34,
+      "horizontal_force": 36.6
+    },
+    {
+      "top_displacement": 23.33,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 19.25,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 17.09,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 15.05,
+      "horizontal_force": 35.6
+    },
+    {
+      "top_displacement": 12.77,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 10.83,
+      "horizontal_force": 34.5
+    },
+    {
+      "top_displacement": 8.94,
+      "horizontal_force": 33.4
+    },
+    {
+      "top_displacement": 7.03,
+      "horizontal_force": 32.8
+    },
+    {
+      "top_displacement": 5.28,
+      "horizontal_force": 30.7
+    },
+    {
+      "top_displacement": 3.89,
+      "horizontal_force": 18
+    },
+    {
+      "top_displacement": 2.57,
+      "horizontal_force": 4.2
+    },
+    {
+      "top_displacement": 1.29,
+      "horizontal_force": -9.9
+    },
+    {
+      "top_displacement": 0.21,
+      "horizontal_force": -21.9
+    },
+    {
+      "top_displacement": -0.47,
+      "horizontal_force": -26.5
+    },
+    {
+      "top_displacement": -2.29,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -3.64,
+      "horizontal_force": -37.2
+    },
+    {
+      "top_displacement": -5.61,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -7.32,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -9.19,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -11.52,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -13.24,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -14.95,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -16.84,
+      "horizontal_force": -41.3
+    },
+    {
+      "top_displacement": -18.88,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -23.49,
+      "horizontal_force": -42
+    },
+    {
+      "top_displacement": -25.73,
+      "horizontal_force": -42.8
+    },
+    {
+      "top_displacement": -27.15,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": -29.15,
+      "horizontal_force": -42.3
+    },
+    {
+      "top_displacement": -27.23,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -25.14,
+      "horizontal_force": -40.5
+    },
+    {
+      "top_displacement": -23.41,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -21.33,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -19.36,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -17.09,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -15.3,
+      "horizontal_force": -39
+    },
+    {
+      "top_displacement": -13.49,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -12.1,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -10.33,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -9.69,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -9.69,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -7.74,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -5.7,
+      "horizontal_force": -35.9
+    },
+    {
+      "top_displacement": -4.12,
+      "horizontal_force": -34.7
+    },
+    {
+      "top_displacement": -2.63,
+      "horizontal_force": -30.4
+    },
+    {
+      "top_displacement": -1.7,
+      "horizontal_force": -23.9
+    },
+    {
+      "top_displacement": 0.62,
+      "horizontal_force": -1.3
+    },
+    {
+      "top_displacement": 1.08,
+      "horizontal_force": 3.5
+    },
+    {
+      "top_displacement": 1.88,
+      "horizontal_force": 12.1
+    },
+    {
+      "top_displacement": 2.73,
+      "horizontal_force": 19.8
+    },
+    {
+      "top_displacement": 3.17,
+      "horizontal_force": 24.7
+    },
+    {
+      "top_displacement": 4.07,
+      "horizontal_force": 31.7
+    },
+    {
+      "top_displacement": 5.03,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 6.67,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 8.36,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 10.58,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 12.84,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 15.03,
+      "horizontal_force": 37.6
+    },
+    {
+      "top_displacement": 16.9,
+      "horizontal_force": 38.1
+    },
+    {
+      "top_displacement": 18.79,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 20.58,
+      "horizontal_force": 38.2
+    },
+    {
+      "top_displacement": 22.97,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 25.16,
+      "horizontal_force": 38.5
+    },
+    {
+      "top_displacement": 27,
+      "horizontal_force": 38.6
+    },
+    {
+      "top_displacement": 26.59,
+      "horizontal_force": 37.3
+    },
+    {
+      "top_displacement": 24.66,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 22.87,
+      "horizontal_force": 36.4
+    },
+    {
+      "top_displacement": 20.75,
+      "horizontal_force": 36
+    },
+    {
+      "top_displacement": 18.26,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 16.53,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 14.72,
+      "horizontal_force": 35.1
+    },
+    {
+      "top_displacement": 13.06,
+      "horizontal_force": 34.8
+    },
+    {
+      "top_displacement": 11.37,
+      "horizontal_force": 34.6
+    },
+    {
+      "top_displacement": 10.02,
+      "horizontal_force": 34.1
+    },
+    {
+      "top_displacement": 8.05,
+      "horizontal_force": 33.1
+    },
+    {
+      "top_displacement": 6.11,
+      "horizontal_force": 32.5
+    },
+    {
+      "top_displacement": 5.01,
+      "horizontal_force": 28.8
+    },
+    {
+      "top_displacement": 3.9,
+      "horizontal_force": 18.8
+    },
+    {
+      "top_displacement": 2.52,
+      "horizontal_force": 3.8
+    },
+    {
+      "top_displacement": 1.66,
+      "horizontal_force": -7.1
+    },
+    {
+      "top_displacement": 0.83,
+      "horizontal_force": -15.5
+    },
+    {
+      "top_displacement": -0.16,
+      "horizontal_force": -23.7
+    },
+    {
+      "top_displacement": -1.79,
+      "horizontal_force": -35.2
+    },
+    {
+      "top_displacement": -3.7,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -5.36,
+      "horizontal_force": -38.2
+    },
+    {
+      "top_displacement": -7.48,
+      "horizontal_force": -39.1
+    },
+    {
+      "top_displacement": -9.64,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -11.5,
+      "horizontal_force": -40.4
+    },
+    {
+      "top_displacement": -13.35,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -15.67,
+      "horizontal_force": -41
+    },
+    {
+      "top_displacement": -17.67,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -19.67,
+      "horizontal_force": -41.6
+    },
+    {
+      "top_displacement": -21.78,
+      "horizontal_force": -41.9
+    },
+    {
+      "top_displacement": -24.99,
+      "horizontal_force": -42
+    },
+    {
+      "top_displacement": -26.65,
+      "horizontal_force": -42
+    },
+    {
+      "top_displacement": -28.65,
+      "horizontal_force": -42.8
+    },
+    {
+      "top_displacement": -29.06,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": "NaN",
+      "horizontal_force": "NaN"
+    },
+    {
+      "top_displacement": -34.47,
+      "horizontal_force": -42.5
+    },
+    {
+      "top_displacement": -32.77,
+      "horizontal_force": -41.3
+    },
+    {
+      "top_displacement": -31.06,
+      "horizontal_force": -40.7
+    },
+    {
+      "top_displacement": -29.12,
+      "horizontal_force": -40.6
+    },
+    {
+      "top_displacement": -27.37,
+      "horizontal_force": -39.9
+    },
+    {
+      "top_displacement": -25.32,
+      "horizontal_force": -40
+    },
+    {
+      "top_displacement": -23.46,
+      "horizontal_force": -39.3
+    },
+    {
+      "top_displacement": -21.25,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -19.37,
+      "horizontal_force": -39.3
+    },
+    {
+      "top_displacement": -16.51,
+      "horizontal_force": -39.4
+    },
+    {
+      "top_displacement": -14.61,
+      "horizontal_force": -38.5
+    },
+    {
+      "top_displacement": -12.69,
+      "horizontal_force": -37.9
+    },
+    {
+      "top_displacement": -10.48,
+      "horizontal_force": -37.7
+    },
+    {
+      "top_displacement": -8.3,
+      "horizontal_force": -36.7
+    },
+    {
+      "top_displacement": -6.11,
+      "horizontal_force": -36.2
+    },
+    {
+      "top_displacement": -3.56,
+      "horizontal_force": -33.9
+    },
+    {
+      "top_displacement": -2.12,
+      "horizontal_force": -26.5
+    },
+    {
+      "top_displacement": -1.44,
+      "horizontal_force": -22.1
+    },
+    {
+      "top_displacement": -0.65,
+      "horizontal_force": -15.5
+    },
+    {
+      "top_displacement": 0,
+      "horizontal_force": -8.1
+    },
+    {
+      "top_displacement": 1.01,
+      "horizontal_force": 2.1
+    },
+    {
+      "top_displacement": 2.54,
+      "horizontal_force": 17.9
+    },
+    {
+      "top_displacement": 3.39,
+      "horizontal_force": 25.7
+    },
+    {
+      "top_displacement": 4.14,
+      "horizontal_force": 32.1
+    },
+    {
+      "top_displacement": 5.19,
+      "horizontal_force": 34.4
+    },
+    {
+      "top_displacement": 7.17,
+      "horizontal_force": 35.7
+    },
+    {
+      "top_displacement": 8.61,
+      "horizontal_force": 36.4
+    }
+  ]
