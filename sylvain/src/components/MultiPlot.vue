@@ -1,10 +1,23 @@
+<template>
+  <body></body>
+</template>
+
+<script>
+// import * as d3 from "d3";
+import * as c3 from "c3";
+import Papa from "papaparse";
+
+export default {
+    name:"MultiPlot"
+}
+
 var gridplots = document.getElementById('gridplots');
 
 function iterateCSVs(){
     var divName = [];
-    var fileNames = ['data/curve001.csv','data/curve002.csv','data/curve003.csv','data/curve004.csv',
-    'data/curve005.csv','data/curve006.csv','data/curve007.csv','data/curve008.csv','data/curve009.csv'];
-
+    var directory = ''
+    var fileNames = [directory +'curve001.csv',directory +'curve002.csv',directory +'curve003.csv',directory +'curve004.csv',
+    directory +'curve005.csv',directory +'curve006.csv',directory +'curve007.csv',directory +'curve008.csv',directory +'curve009.csv'];
     for (var i = 0; i<fileNames.length; i++){
         divName.push(fileNames[i].split('/')[1].split('.')[0])
     }
@@ -13,11 +26,13 @@ function iterateCSVs(){
 }
 
 function parseData(createGraph,file,divName){
+    console.log(file)
     Papa.parse(file, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
+            console.log(results.data);
             createGraph(results.data,divName);
         }
     });
@@ -61,6 +76,9 @@ function createSubPlots(){
         parseData(createGraph, fileNames[0][i],fileNames[1][i]);
         }
 }
-
-
 createSubPlots();
+</script>
+
+<style>
+
+</style>
