@@ -25,21 +25,8 @@ export default {
   data: () => ({
     handler: new Vue(),
   }),
-  methods:{
-    getCSVData(){
-      let url = 'curve001.csv';
-      Papa.parse(url,{
-        download: true,
-        header: false,
-        complete: (results) => {
-          console.log(results)
-          this.csvData = results.data
-          }
-      })
-    }
-  },
   mounted(){
-      Papa.parse('curve001.json',{
+      Papa.parse('curve001.csv',{
         download: true,
         header: false,
         complete: (results) => {
@@ -54,7 +41,7 @@ export default {
             }
           }
           this.handler.$emit('init', options)
-          }
+        }
       })
     },
 }
