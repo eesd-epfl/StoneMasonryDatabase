@@ -1,5 +1,6 @@
 <template>
-  <body></body>
+    <body></body>
+  <!-- <div id="gridplots"></div> -->
 </template>
 
 <script>
@@ -12,27 +13,26 @@ export default {
 }
 
 var gridplots = document.getElementById('gridplots');
-
+console.log(gridplots);
 function iterateCSVs(){
-    var divName = [];
-    var directory = ''
-    var fileNames = [directory +'curve001.csv',directory +'curve002.csv',directory +'curve003.csv',directory +'curve004.csv',
+    let divName = [];
+    const directory = ''
+    const fileNames = [directory +'curve001.csv',directory +'curve002.csv',directory +'curve003.csv',directory +'curve004.csv',
     directory +'curve005.csv',directory +'curve006.csv',directory +'curve007.csv',directory +'curve008.csv',directory +'curve009.csv'];
-    for (var i = 0; i<fileNames.length; i++){
-        divName.push(fileNames[i].split('/')[1].split('.')[0])
+    console.log(fileNames);
+for (var i = 0; i<fileNames.length; i++){
+        divName.push(fileNames[i].split('.')[0])
     }
     const csvData = [fileNames,divName]
     return csvData
 }
 
 function parseData(createGraph,file,divName){
-    console.log(file)
     Papa.parse(file, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
-            console.log(results.data);
             createGraph(results.data,divName);
         }
     });
@@ -68,6 +68,8 @@ function createGraph(data,divName){
     newDiv.id = divName;
     newDiv.append(chart.element);
     gridplots.append(newDiv);
+    // console.log("gridplots element is : " + newDiv.id)
+    
 }
 
 function createSubPlots(){
@@ -78,7 +80,16 @@ function createSubPlots(){
 }
 createSubPlots();
 </script>
-
+/*
 <style>
+#gridplots div {
+    /* width:60%; */
+    /* height:60%; */
+    display: inline-block;
+    /* float:left; */
+    height: fit-content;
+    width: 300px;
 
+}
 </style>
+*/

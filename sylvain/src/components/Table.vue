@@ -40,7 +40,7 @@
         :min="ex1.min"
         thumb-label="always"
       ></v-slider>
-      <v-subheader>strenght</v-subheader>
+      <v-subheader>strength</v-subheader>
       <v-slider
         v-model="ex2.val"
         :color="ex2.color"

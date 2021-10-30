@@ -18,6 +18,7 @@
           min-width="100"
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
+          
         />
       </div>
 
@@ -32,11 +33,11 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
+    <v-main class="main"></v-main>
 
-    <v-main></v-main>
-
-    <MyTable />
-    <div id="gridplots"></div>>
+    <MyTable class="mytable"/>
+    <!-- <div id="gridplots"></div> -->
+    
     <MultiPlot />
   </v-app>
 </template>
@@ -63,3 +64,15 @@ export default {
   }),
 };
 </script>
+
+<style>
+.mytable{
+  width:40%;
+  display: inline-block;
+}
+#gridplots{
+  width: 60%;
+  height: 800px;
+  display: inline-block;
+}
+</style>
