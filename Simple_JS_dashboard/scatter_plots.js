@@ -1,3 +1,7 @@
+$('.ui.slider')
+  .slider()
+;
+
 var gridplots = document.getElementById('gridplots');
 
 function iterateCSVs(){

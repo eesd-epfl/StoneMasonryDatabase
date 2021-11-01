@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Personal Styling-->
-    <link rel="stylesheet" href="main.css"/>
+    <!-- <link rel="stylesheet" href="main.css"/> -->
 
 
     <!-- Load d3.js, c3.js -->
@@ -24,12 +24,85 @@
       crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <div id="gridplots">
 
+
+  <body>
+    <div class="ui menu">
+      <a class="item">Overview DB</a>
+      <a class="active item">Browse DB test</a>
+      <a class="item">Strength</a>
+      <a class="item">Stiffness</a>
+      <a class="item">Drift Capacity</a>
       </div>
     </div>
+    <!-- Container for web page -->
+    <div class="ui grid">
+      <!-- Sliders and Checkbox column-->
+      <div class="four wide column">
+        <div class="grouped fields">
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-a" id="check-a">
+              <label>A</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-b" id="check-b">
+              <label for="check-b">B</label>       
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-c" id="check-c">
+              <label for="check-c">C</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-d" id="check-d">
+              <label for="check-d">D</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-e1" id="check-e1">
+              <label for="check-e1">E1</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check-e2" id="check-e2">
+              <label for="check-e2">E2</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui slider" id="size-slider">
+              <div class="ui input">
+                <input type="text" id="size-input-1" disabled="">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <input type="range" name="strength">
+          </div>
+          <div class="field">
+            <input type="range" name="stiffness">
+          </div>
+        </div>
+
+   
+        </div>
+        <div class="eight wide column" id="data-table">
+          <div class="ui placeholder">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>  
+          </div>
+          <div class="four wide column">
+            <div id="gridplots"></div>
+          </div>
+      </div>
     <script src=scatter_plots.js></script>
   </body>
 </html>
