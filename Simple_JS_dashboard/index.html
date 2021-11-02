@@ -5,10 +5,10 @@
     <title>EESD Dashboard</title>
     <!-- C3 CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Semantic UI-->
+    <!-- Semantic UI CSS-->
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 
-    <!-- Personal Styling-->
+    <!-- Personal CSS-->
     <link rel="stylesheet" href="main.css"/>
 
     <!-- Load d3.js, c3.js -->
@@ -17,14 +17,14 @@
     <!-- Load Papaparse -->
     <script src="javascript/PapaParse-5.0.2/papaparse.min.js"></script>
 
-    <!-- Semantic UI-->
+    <!-- Load Semantic UI-->
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.min.js"></script>
 
-    <!-- XLS-->
+    <!-- Load XLS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
   </head>
 
@@ -39,10 +39,11 @@
       </div>
     </div>
     <!-- Container for web page -->
-    <div class="ui relaxed grid">
+    <div class="ui grid">
       <!-- Sliders and Checkbox column-->
       <div class="four wide column">
         <div class="row">
+          <!-- Checkboxes-->
           <div class="grouped fields">
             <div class="field">
               <div class="ui checkbox">
@@ -81,7 +82,7 @@
               </div>
             </div>
           </div>
-          <!--Separation between checkboxes and sliders-->
+          <!--Sliders-->
           <div class="row"> 
             <div class="field">
               <div class="ui slider" id="size-slider">
@@ -102,13 +103,15 @@
         </div>    
       </div>
 
-      <!-- data table-->
+      <!-- Data table-->
       <div class="six wide column">
         <div id="data-table">
+          <button class="sort" data-sort="ID">sort by ID
+          </button>
         </div>
       </div>
 
-      <!-- multi plots-->
+      <!-- Multi plots-->
         <div class="six wide column">
           <div id="gridplots"></div>
         </div>
@@ -117,5 +120,6 @@
     <!-- Run javascript-->
     <script src=javascript/data_table.js></script>
     <script src=javascript/scatter_plots.js></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
   </body>
 </html>
