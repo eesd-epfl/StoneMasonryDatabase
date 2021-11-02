@@ -3,6 +3,7 @@
     "fomantic-ui": "^2.8.8",
     "graceful-fs": "^4.2.8",
     "minimatch": "^3.0.4",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "xlsx": "^0.17.3"
   }
 }

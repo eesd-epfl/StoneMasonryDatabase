@@ -6,6 +6,7 @@
 }
 
 #gridplots div {
+    display: inline-flexbox;
     /* width:60%; */
     /* height:60%; */
     /* display: inline-block; */
@@ -13,4 +14,8 @@
     /* height: fit-content; */
     /* width: 50%; */
 
+} 
+
+.slider-name {
+    text-align: center;
 }
