@@ -55,6 +55,7 @@ function createGraph(data,divName){
     })
     var newDiv = document.createElement('div');
     newDiv.id = divName;
+    newDiv.className = "five wide column"
     newDiv.append(chart.element);
     gridplots.append(newDiv);
 }
