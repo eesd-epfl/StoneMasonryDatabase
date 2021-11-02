@@ -1,4 +1,7 @@
-function Display() {
+
+function dataTable() {
+
+    //Get data from Excel File:
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "data/Vanin et al. (2017) StoneMasonryDatabase.xls", true);
     xhr.responseType = "blob";
@@ -45,46 +48,8 @@ function ProcessExcel(data) {
             finalObject.push(excelObject[i]);
         }
     }
+    //Push Excel Object to create data table Function
     createTable(finalObject);
-
-    // //Create a HTML Table element.
-    // let table = document.createElement("table");
-
-    // //Add the header row.
-    // let row = table.insertRow(-1);
-
-    // //Add the header cells.
-    // let headerCell = document.createElement("TH");
-    // headerCell.innerHTML = "Id";
-    // row.appendChild(headerCell);
-
-    // headerCell = document.createElement("TH");
-    // headerCell.innerHTML = "Name";
-    // row.appendChild(headerCell);
-
-    // headerCell = document.createElement("TH");
-    // headerCell.innerHTML = "Country";
-    // row.appendChild(headerCell);
-
-    // //Add the data rows from Excel file.
-    // for (let i = 0; i < excelRows.length; i++) {
-    //     //Add the data row.
-    //     let row = table.insertRow(-1);
-
-    //     //Add the data cells.
-    //     let cell = row.insertCell(-1);
-    //     cell.innerHTML = excelRows[i].Id;
-
-    //     cell = row.insertCell(-1);
-    //     cell.innerHTML = excelRows[i].Name;
-
-    //     cell = row.insertCell(-1);
-    //     cell.innerHTML = excelRows[i].Country;
-    // }
-
-    // let datatable = document.getElementById("data-table");
-    // datatable.innerHTML = "";
-    // datatable.appendChild(table);
 };
 
 function createTable(excelArray){
@@ -97,13 +62,17 @@ function createTable(excelArray){
     const header = tbl.createTHead();
     const tblBody = tbl.createTBody();
 
+    //Create thead element in table: 
     const headerRow = header.insertRow(0);
 
     //Empty array to be filled in loop for List.JS
     let nameValues = [];
 
+    //Loop through each row and element of Excel Object:
     for (let i = 0; i < excelArray.length; i++) {
+        
         let tr;
+
         if(i != 0){
             tr = tblBody.insertRow();
         }
@@ -115,13 +84,13 @@ function createTable(excelArray){
             if(i == 0){
                 //Add headers to array for List.JS
                 nameValues.push(excelArray[i][j]);
+
+                //Add all cells to header row:        
                 const cell = headerRow.insertCell(j);
                 cell.innerHTML = excelArray[i][j];
-                //create header row
-                // const th = tr.insertCell();
-                // th.appendChild(document.createTextNode)
 
             } else {
+                //Add all rows to tBody
                 const td = tr.insertCell();
                 td.className=excelArray[0][j];
                 td.appendChild(document.createTextNode(excelArray[i][j]));
@@ -129,14 +98,18 @@ function createTable(excelArray){
         }
         }
     }
+    //Push Data table to HTML
+    dataTable.appendChild(tbl);
+
+    //give tBody a class name and create options for List.JS
     const tBody = tbl.getElementsByTagName('tbody')[0];
     tBody.className = 'list';
 
     let options= {
         valueNames: nameValues
     };
-    dataTable.appendChild(tbl);
+    //Create the table List for filtering with List.JS
     let tableList = new List('data-table',options);
 }
 
-Display();
+dataTable();
