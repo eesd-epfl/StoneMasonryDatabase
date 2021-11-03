@@ -31,6 +31,9 @@ function dataTable() {
 };
 
 function ProcessExcel(data) {
+    excelColumns = ['ID','Reference','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
+                    'Stone masonry typology','Joints','Stones','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
+                    'σ0,tot /fc','Failure type']
     //Read the Excel File data. 
     let workbook = XLS.read(data, {
         type: 'binary'
@@ -42,12 +45,29 @@ function ProcessExcel(data) {
     let excelObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet],{header:1});
 
     //Remove empty rows from array:
-    let finalObject = [];
+    let intObject = [];
+    let indexArray = [];
     for (let i = 0; i<excelObject.length; i++){
         if(excelObject[i].length!=0){
-            finalObject.push(excelObject[i]);
+            intObject.push(excelObject[i]);
         }
     }
+    //get index of wanted columns:
+    for (let i = 0; i < intObject[0].length; i++){
+        if(excelColumns.includes(intObject[0][i])){
+            // console.log(intObject[0][i]);
+            indexArray.push(i);
+        }
+    }
+    //map into new Array the final data table:
+    finalObject = intObject.map(function(row){
+        let newRow = [];
+        for (let i = 0; i<indexArray.length; i++){
+            newRow.push(row[i]);
+        }
+        return newRow;
+    });
+
     //Push Excel Object to create data table Function
     createTable(finalObject);
 };
