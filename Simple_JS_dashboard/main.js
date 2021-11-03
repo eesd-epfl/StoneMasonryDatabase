@@ -12,5 +12,5 @@ import {config} from '/javascript/config.js';
 import {dataTable} from '/javascript/data_table.js';
 import {createSubPlots} from '/javascript/scatter_plots.js';
 
-createSubPlots();
+// createSubPlots();
 dataTable(config.inputFilePath,config.excelColumns);

@@ -1,4 +1,3 @@
-
 export function dataTable(inputFilePath, excelColumns) {
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
@@ -38,44 +37,78 @@ function ProcessExcel(data,excelColumns) {
     let firstSheet = workbook.SheetNames[0];
 
     //Read all rows from First Sheet into an JSON array.
-    let excelObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet],{header:1});
-    //Remove empty rows from array:
+    let excelObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+
+    console.log(excelColumns);
+    //Data for simple-datatable or 
+    // let excelObject2 = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet], {header:1});
+
+    //Initialise arrays:
     let intObject = [];
     let indexArray = [];
     let finalObject = [];
-
+    
+    //Remove empty rows from array:
     for (let i = 0; i<excelObject.length; i++){
         if(excelObject[i].length!=0){
             intObject.push(excelObject[i]);
         }
     }
-    //get index of wanted columns:
-    for (let i = 0; i < intObject[0].length; i++){
-        if(excelColumns.includes(intObject[0][i])){
-            // console.log(intObject[0][i]);
-            indexArray.push(i);
-        }
-    }
-    //map into new Array the final data table:
-    finalObject = intObject.map(function(row){
-        let newRow = [];
-        for (let i = 0; i<indexArray.length; i++){
-            newRow.push(row[indexArray[i]]);
+
+    //Example 1 - Tabulator Version:
+    //Filter JSON object to get only wanted columns:
+    let filtered = intObject.map(function(row){
+        let newRow = {}
+        for (let i = 0; i< excelColumns.length; i++){
+            newRow[excelColumns[i]]= row[excelColumns[i]];
         }
         return newRow;
     });
+    let table = new Tabulator('#data-table3',{
+        data:filtered,
+        autoColumns:true,
+        layout:"fitColumns",
+        });
 
+    //Example 2: Simple Datatables
+    //get index of wanted columns:
+    // for (let i = 0; i < intObject[0].length; i++){
+    //     if(excelColumns.includes(intObject[0][i])){
+    //         // console.log(intObject[0][i]);
+    //         indexArray.push(i);
+    //     }
+    // }
+    //map into new Array the final data table:
+    // finalObject = intObject.map(function(row){
+    //     let newRow = [];
+    //     for (let i = 0; i<indexArray.length; i++){
+    //         newRow.push(row[indexArray[i]]);
+    //     }
+    //     return newRow;
+    // });
 
     //Simple data-tables version:
-    let dataTable = new simpleDatatables.DataTable('#data-table2');
-    let newData = {
-        headings: finalObject[0],
-        data: finalObject.slice(1)
-    }
-    dataTable.insert(newData    )
+    // let options = {
+    //     paging:false,
+    //     searchable:false,
+    //     truncatePager:true,
+    //     fixedColumns:true,
+           
+    // }
+
+    // let dataTable = new simpleDatatables.DataTable('#data-table2',options);
+    // let newData = {
+    //     headings: finalObject[0],
+    //     data: finalObject.slice(1)
+    // }
+    // dataTable.insert(newData);
     //Push Excel Object to create data table Function
     // createTable(finalObject);
 };
+
+function filterHandler(){
+
+}
 
 function createTable(excelArray){
     //Create Data table element and give it a class name
@@ -134,5 +167,5 @@ function createTable(excelArray){
         valueNames: nameValues
     };
     //Create the table List for filtering with List.JS
-    let tableList = new List('data-table',options);
+    let tableList = new List('data-table2',options);
 }
