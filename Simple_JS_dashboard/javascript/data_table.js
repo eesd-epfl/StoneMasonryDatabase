@@ -1,9 +1,8 @@
 
-function dataTable() {
-
+export function dataTable(inputFilePath, excelColumns) {
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "data/Vanin et al. (2017) StoneMasonryDatabase.xls", true);
+    xhr.open("GET", inputFilePath, true);
     xhr.responseType = "blob";
     xhr.onload = function (e) {
         let file = this.response;
@@ -11,7 +10,7 @@ function dataTable() {
         //For Browsers other than IE.
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
-                ProcessExcel(e.target.result);
+                ProcessExcel(e.target.result,excelColumns);
             };
             reader.readAsBinaryString(file);
         } else {
@@ -22,7 +21,7 @@ function dataTable() {
                 for (let i = 0; i < bytes.byteLength; i++) {
                     data += String.fromCharCode(bytes[i]);
                 }
-                ProcessExcel(data);
+                ProcessExcel(data,excelColumns);
             };
             reader.readAsArrayBuffer(file);
         }
@@ -30,10 +29,7 @@ function dataTable() {
     xhr.send();
 };
 
-function ProcessExcel(data) {
-    excelColumns = ['ID','Reference','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
-                    'Stone masonry typology','Joints','Stones','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
-                    'σ0,tot /fc','Failure type']
+function ProcessExcel(data,excelColumns) {
     //Read the Excel File data. 
     let workbook = XLS.read(data, {
         type: 'binary'
@@ -43,10 +39,11 @@ function ProcessExcel(data) {
 
     //Read all rows from First Sheet into an JSON array.
     let excelObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet],{header:1});
-
     //Remove empty rows from array:
     let intObject = [];
     let indexArray = [];
+    let finalObject = [];
+
     for (let i = 0; i<excelObject.length; i++){
         if(excelObject[i].length!=0){
             intObject.push(excelObject[i]);
@@ -63,13 +60,21 @@ function ProcessExcel(data) {
     finalObject = intObject.map(function(row){
         let newRow = [];
         for (let i = 0; i<indexArray.length; i++){
-            newRow.push(row[i]);
+            newRow.push(row[indexArray[i]]);
         }
         return newRow;
     });
 
+
+    //Simple data-tables version:
+    let dataTable = new simpleDatatables.DataTable('#data-table2');
+    let newData = {
+        headings: finalObject[0],
+        data: finalObject.slice(1)
+    }
+    dataTable.insert(newData    )
     //Push Excel Object to create data table Function
-    createTable(finalObject);
+    // createTable(finalObject);
 };
 
 function createTable(excelArray){
@@ -131,5 +136,3 @@ function createTable(excelArray){
     //Create the table List for filtering with List.JS
     let tableList = new List('data-table',options);
 }
-
-dataTable();

@@ -10,10 +10,10 @@ function iterateCSVs(){
     'data/curve005.csv','data/curve006.csv','data/curve007.csv','data/curve008.csv','data/curve009.csv'];
 
     for (var i = 0; i<fileNames.length; i++){
-        divName.push(fileNames[i].split('/')[1].split('.')[0])
+        divName.push(fileNames[i].split('/')[1].split('.')[0]);
     }
-    const csvData = [fileNames,divName]
-    return csvData
+    const csvData = [fileNames,divName];
+    return csvData;
 }
 
 function parseData(createGraph,file,divName){
@@ -60,12 +60,9 @@ function createGraph(data,divName){
     gridplots.append(newDiv);
 }
 
-function createSubPlots(){
+export function createSubPlots(){
     const fileNames = iterateCSVs();
     for (var i = 0; i<fileNames[0].length; i++){
         parseData(createGraph, fileNames[0][i],fileNames[1][i]);
         }
 }
-
-
-createSubPlots();
