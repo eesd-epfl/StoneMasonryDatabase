@@ -68,6 +68,8 @@ function ProcessExcel(data,excelColumns) {
         data:filtered,
         autoColumns:true,
         layout:"fitColumns",
+        pagination:"local",
+        paginationSize:20,
         });
 
     //Example 2: Simple Datatables
