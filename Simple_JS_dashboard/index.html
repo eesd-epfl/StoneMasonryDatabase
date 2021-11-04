@@ -58,55 +58,55 @@
           <div class="grouped fields">
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-a" id="check-a">
+                <input type="checkbox" name="check" id="check-a" value="A" checked="true">
                 <label>A</label>
               </div>
             </div>
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-b" id="check-b">
-                <label for="check-b">B</label>       
+                <input type="checkbox" name="check" id="check-b" value="B" checked="true">
+                <label>B</label>       
               </div>
             </div>
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-c" id="check-c">
-                <label for="check-c">C</label>
+                <input type="checkbox" name="check" id="check-c" value="C" checked="true">
+                <label>C</label>
               </div>
             </div>
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-d" id="check-d">
-                <label for="check-d">D</label>
+                <input type="checkbox" name="check" id="check-d" value="D" checked="true">
+                <label>D</label>
               </div>
             </div>
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-e1" id="check-e1">
-                <label for="check-e1">E1</label>
+                <input type="checkbox" name="check" id="check-e" value="E" checked="true">
+                <label>E</label>
               </div>
             </div>
             <div class="field">
               <div class="ui checkbox">
-                <input type="checkbox" name="check-e2" id="check-e2">
-                <label for="check-e2">E2</label>
+                <input type="checkbox" name="check" id="check-e1" value="E1" checked="true">
+                <label>E1</label>
               </div>
             </div>
           </div>
           <!--Sliders-->
           <div class="row"> 
             <div class="field">
-              <div class="ui slider" id="size-slider">
+              <div class="ui range" name="slider" id="size-slider">
               </div>
               <div class="slider-name"><p>size</p></div>
             </div>
             <div class="field">
-              <div class="ui slider" id="strength-slider">
+              <div class="ui slider" name="slider" id="strength-slider">
               </div>
               <div class="slider-name">strength</div>
             </div>
             <div class="field">
-              <div class="ui slider" id="stiffness-slider">
+              <div class="ui slider" name="slider" id="stiffness-slider">
               </div>
               <div class="slider-name">stiffness</div>
             </div>
@@ -132,6 +132,7 @@
     <!-- Run javascript-->
     <script type="module" src=javascript/scatter_plots.js async></script>
     <script type="module" src=javascript/data_table.js async></script>
+    <script type="module" src=javascript/filtering.js async></script>
     <script type="module" src="main.js" ></script>
   </body>
 </html>
