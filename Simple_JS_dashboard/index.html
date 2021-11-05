@@ -22,22 +22,24 @@
     src="https://code.jquery.com/jquery-3.1.1.min.js"
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
+    
     <script src="semantic/dist/semantic.min.js"></script>
     
     <!-- Load XLS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
 
-    <!-- Load List.JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-
-    <!-- Load Simple Datatables -->
-    <script src="//cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Tabulator -->
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
-  </head>
 
+    <!-- Range JS Slider -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/rangeslider-js@3.2.5/dist/rangeslider-js.min.js"></script>
+    
+  </head>
 
   <body>
     <!-- Nav bar/Menu -->
@@ -52,66 +54,67 @@
     <!-- Container for web page -->
     <div class="ui grid">
       <!-- Sliders and Checkbox column-->
-      <div class="two wide column">
+      <div class="two wide column" id="widget panel">
+        <!-- Checkboxes-->
+        <div class="row" id="checkbox-row">
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-a" value="A" checked="true">
+              <label>A</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-b" value="B" checked="true">
+              <label>B</label>       
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-c" value="C" checked="true">
+              <label>C</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-d" value="D" checked="true">
+              <label>D</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-e" value="E" checked="true">
+              <label>E</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="check" id="check-e1" value="E1" checked="true">
+              <label>E1</label>
+            </div>
+          </div>
+        </div>
         <div class="row">
-          <!-- Checkboxes-->
-          <div class="grouped fields">
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-a" value="A" checked="true">
-                <label>A</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-b" value="B" checked="true">
-                <label>B</label>       
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-c" value="C" checked="true">
-                <label>C</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-d" value="D" checked="true">
-                <label>D</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-e" value="E" checked="true">
-                <label>E</label>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui checkbox">
-                <input type="checkbox" name="check" id="check-e1" value="E1" checked="true">
-                <label>E1</label>
-              </div>
-            </div>
-          </div>
           <!--Sliders-->
-          <div class="row"> 
-            <div class="field">
-              <div class="ui range" name="slider" id="size-slider">
-              </div>
-              <div class="slider-name"><p>size</p></div>
+          <div class="center aligned column"> 
+            <div class="center aligned column">
+              <div id="size-slider" name="ui slider" >
+                <!-- <input class="size-slider" type="range"> -->
+                </div>
+              <div class="p">size</div>
             </div>
-            <div class="field">
-              <div class="ui slider" name="slider" id="strength-slider">
-              </div>
-              <div class="slider-name">strength</div>
+            <div class="centered aligned column">
+              <!-- <div class="ui slider" name="slider" id="strength-slider"></div> -->
+              <input class="size-slider" type="range">
+              <div class="p">strength</div>
             </div>
-            <div class="field">
-              <div class="ui slider" name="slider" id="stiffness-slider">
-              </div>
-              <div class="slider-name">stiffness</div>
+            <div class="centered aligned column">
+              <input class="size-slider" type="range">
+              <!-- <div class="ui slider" name="slider" id="stiffness-slider"></div> -->
+              <div class="p">stiffness</div>
             </div>
           </div>
-        </div>    
+        </div>
       </div>
 
       <!-- Data table-->
@@ -128,11 +131,10 @@
           <div id="gridplots" class="ui grid"></div>
         </div>
     </div>
-
     <!-- Run javascript-->
-    <script type="module" src=javascript/scatter_plots.js async></script>
-    <script type="module" src=javascript/data_table.js async></script>
-    <script type="module" src=javascript/filtering.js async></script>
+    <script type="module" src=javascript/data_table.js></script>
+    <script type="module" src=javascript/filtering.js></script>
+    <script type="module" src=javascript/scatter_plots.js></script>
     <script type="module" src="main.js" ></script>
   </body>
 </html>

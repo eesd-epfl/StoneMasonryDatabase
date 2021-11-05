@@ -1,84 +1,37 @@
-/* 
+
 #gridplots {
     /* width: 60%; */
-    /* height: 100%; */
     /* float:right; */
-    /* overflow: scroll; */
+    overflow: scroll;
+    height:90vh;
 }
 
-#gridplots div {
-    /* display: inline-flexbox; */
-    /* width:33%; */
-    /* height:100%; */
-    /* display: inline-block; */
-    /* float:left; */
-    /* height: fit-content; */
-    /* width: 50%; */
-
-} 
- */
-
-.slider-name {
-    text-align: center;
+.ui.grid {
+  height: 90vh;
 }
 
- .list {
-    font-family:sans-serif;
-    width:fit-content;
-  }
-  td {
-    padding:10px; 
-    border:solid 1px #eee;
-  }
-  
-  .sort {
-    padding:8px 30px;
-    border-radius: 6px;
-    border:none;
-    display:inline-block;
-    color:#fff;
-    text-decoration: none;
-    background-color: #28a8e0;
-    height:30px;
-  }
-  .sort:hover {
-    text-decoration: none;
-    background-color:#1b8aba;
-  }
-  .sort:focus {
-    outline:none;
-  }
-  .sort:after {
-    /* display:inline-block; */
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    content:"";
-    position: relative;
-    top:-10px;
-    right:-5px;
-  }
-  .sort.asc:after {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #fff;
-    content:"";
-    position: relative;
-    top:4px;
-    right:-5px;
-  }
-  .sort.desc:after {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #fff;
-    content:"";
-    position: relative;
-    top:-4px;
-    right:-5px;
-  }
+#widget.panel div{
+  /* text-align: center; */
+}
+
+.p {
+  text-align: center;
+}
+
+#checkbox-row {
+  padding-left: 1vh;
+  height:20vh;
+}
+
+.tabulator-tableholder, .tabulator-header {
+  font-size: 12px;
+}
+
+.p
+/* .size-slider {
+  margin: 0 auto;
+} */
+
+.pagination{
+  display: block;
+}

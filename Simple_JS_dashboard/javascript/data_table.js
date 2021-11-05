@@ -1,5 +1,4 @@
 export function dataTable(inputFilePath, excelColumns) {
-    
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
     xhr.open("GET", inputFilePath, true);
@@ -58,18 +57,19 @@ function ProcessExcel(data,excelColumns) {
         }
         return newRow;
     });
-
     //Create table in next function:
     createTable(filtered);
+    return filtered;
 };
 
 function createTable(data){
     let table = new Tabulator('#data-table3',{
         data:data,
         autoColumns:true,
-        layout:"fitColumns",
-        pagination:"local",
-        paginationSize:20,
+        // layout:"fitColumns",
+        pagination:"remote",
+        // paginationSize:20,
+        height:"87vh",
         });
 
     //Handle Events:
@@ -88,19 +88,32 @@ function createTable(data){
                 table.setFilter('Stone masonry typology','in',enabledSettings);
             });
         });
+
+
     
-    //2. Sliders:
+    // //2. Sliders:
     let minSize = Math.min.apply(null, data.map(item => item['H [mm]'])),
     maxSize = Math.max.apply(null, data.map(item => item['H [mm]']));
+    let sizeStep = 1
     let sizeSlider = document.getElementById('size-slider');
-    console.log(sizeSlider);
+    noUiSlider.create(sizeSlider, {
+        range: {
+            'min':minSize, 
+            'max': maxSize, 
+        },
+        step: sizeStep,
+        start: [minSize,maxSize],
+    });
 
+    // sizeSlider.style.height = '400px'
+    // sizeSlider.style.margin = '0 auto 30px'
+        // start: maxSize, 
     // $('#size-slider').range({
     //     min: minSize,
     //     max: maxSize,
     //     start: maxSize,
     //     smooth:true
     // });
-    let sliders = document.querySelectorAll("div[name=slider]");
+    // let sliders = document.querySelectorAll("div[name=slider]");
     
 }
