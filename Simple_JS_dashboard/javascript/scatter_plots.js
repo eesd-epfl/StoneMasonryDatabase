@@ -1,5 +1,9 @@
-var gridplots = document.getElementById('gridplots');
+let gridplots = document.getElementById('gridplots');
+let table = Tabulator.findTable("#data-table3"); 
+//if it works, use this instead:
+//let table = Tabulator.findTable("#data-table3")[0]; 
 
+console.log(table);
 
 function iterateCSVs(){
     let divName = [];
@@ -81,6 +85,7 @@ export function createSubPlots(){
 
 }
 
+//Pagination Function:
 (function($) {
 	var pagify = {
 		items: {},
