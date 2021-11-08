@@ -35,10 +35,9 @@
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
 
-    <!-- Range JS Slider -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/rangeslider-js@3.2.5/dist/rangeslider-js.min.js"></script>
-    
+    <!-- Sliders -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
   </head>
 
   <body>
@@ -98,19 +97,19 @@
           <!--Sliders-->
           <div class="center aligned column"> 
             <div class="center aligned column">
-              <div id="size-slider" name="ui slider" >
+              <div class="slider" id="size-slider" name="slider" >
                 <!-- <input class="size-slider" type="range"> -->
                 </div>
               <div class="p">size</div>
             </div>
             <div class="centered aligned column">
-              <!-- <div class="ui slider" name="slider" id="strength-slider"></div> -->
-              <input class="size-slider" type="range">
+              <div class="slider" id="strength-slider" name="slider"></div>
+              <!-- <input class="size-slider" type="range"> -->
               <div class="p">strength</div>
             </div>
             <div class="centered aligned column">
-              <input class="size-slider" type="range">
-              <!-- <div class="ui slider" name="slider" id="stiffness-slider"></div> -->
+              <!-- <input class="size-slider" type="range"> -->
+              <div class="slider" id="stiffness-slider" name="slider"></div>
               <div class="p">stiffness</div>
             </div>
           </div>

@@ -3,6 +3,7 @@
     "fomantic-ui": "^2.8.8",
     "graceful-fs": "^4.2.8",
     "minimatch": "^3.0.4",
+    "nouislider": "^15.5.0",
     "rangeslider-js": "^3.2.5",
     "require": "^2.4.20",
     "requirejs": "^2.3.6",

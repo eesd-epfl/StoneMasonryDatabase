@@ -16,6 +16,8 @@
 
 .p {
   text-align: center;
+  padding-bottom: 2vh;
+  padding-top: 1vh;
 }
 
 #checkbox-row {
@@ -27,11 +29,28 @@
   font-size: 12px;
 }
 
-.p
-/* .size-slider {
-  margin: 0 auto;
-} */
-
 .pagination{
+  display: block;
+}
+
+.slider {
+  height: 10px;
+}
+
+.slider .noUi-connect {
+  background: #c0392b;
+}
+.slider .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+}
+
+.noUi-tooltip {
+  display: none;
+}
+.noUi-active .noUi-tooltip {
   display: block;
 }

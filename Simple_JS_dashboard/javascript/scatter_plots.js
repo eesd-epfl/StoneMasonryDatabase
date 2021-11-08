@@ -3,8 +3,6 @@ let table = Tabulator.findTable("#data-table3");
 //if it works, use this instead:
 //let table = Tabulator.findTable("#data-table3")[0]; 
 
-console.log(table);
-
 function iterateCSVs(){
     let divName = [];
     let selectedCurvesFilePaths = ['data/curve001.csv','data/curve002.csv','data/curve003.csv','data/curve004.csv',
