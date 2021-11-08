@@ -1,3 +1,6 @@
+import {createSubPlots} from '/javascript/scatter_plots.js';
+
+let table;
 
 export function dataTable(inputFilePath, excelColumns) {
     //Get data from Excel File:
@@ -74,7 +77,6 @@ function createTable(data){
         });
 
     //Creating objects:
-
     //1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
 
@@ -140,11 +142,16 @@ function createTable(data){
             {field:'Stone masonry typology',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
         ];
         return myFilter;
-    }
+    };
 
     //Give the table current filter:
     table.setFilter(getFilterValues());
 
+    function preparePlot(data){
+        createSubPlots(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
+    }
+
+    preparePlot(data);
     //Handling Events:
     //1. Checkboxes:
     checkboxes.forEach(function(checkbox){
@@ -152,6 +159,7 @@ function createTable(data){
         checkbox.addEventListener('change',function(){
             table.clearFilter();
             table.setFilter(getFilterValues());
+            preparePlot(table.getData("active"));
             });
         });
 
@@ -161,6 +169,7 @@ function createTable(data){
             slider.noUiSlider.on('update',function(values,handle){
                 table.clearFilter();
                 table.setFilter(getFilterValues());
+
             });
         });
 }

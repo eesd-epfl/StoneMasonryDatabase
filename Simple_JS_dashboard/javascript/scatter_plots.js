@@ -1,27 +1,24 @@
 let gridplots = document.getElementById('gridplots');
-let table = Tabulator.findTable("#data-table3"); 
-//if it works, use this instead:
-//let table = Tabulator.findTable("#data-table3")[0]; 
 
-function iterateCSVs(){
+function iterateCSVs(data){
+
     let divName = [];
-    let selectedCurvesFilePaths = ['data/curve001.csv','data/curve002.csv','data/curve003.csv','data/curve004.csv',
-    'data/curve005.csv','data/curve006.csv','data/curve007.csv','data/curve008.csv','data/curve009.csv'];
+    // let selectedCurvesFilePaths = ['data/curve001.csv','data/curve002.csv','data/curve003.csv','data/curve004.csv',
+    // 'data/curve005.csv','data/curve006.csv','data/curve007.csv','data/curve008.csv','data/curve009.csv'];
 
-    // let activePlotData = table.searchData("Availability of F-Δ curve");
-    // let plotArray = [];
+    let activePlotData = data;
+    let selectedCurvesFilePaths = [];
+    //Testing loop:
+    for (let i = 0; i<10; i++){
     // for (let i = 0; i<activePlotData.length; i++){
-    //     if(activePlotData[i]['Availability of F-Δ curve']!=0){
-    //         if(activePlotData[i]['ID']>99){
-    //             plotArray.push("data/curve"+str(i)+".csv");
-    //         } else if (activePlotData[i]['ID']>9){
-    //             plotArray.push("data/curve0"+ str(i)+ ".csv");
-    //         } else{
-    //             plotArray.push("data/curve00"+ str(i)+ ".csv"); 
-    //         }
-    //     }
-    // }
-
+        if(activePlotData[i]['ID']>99){
+            selectedCurvesFilePaths.push("data/curve"+activePlotData[i]['ID'] + ".csv");
+        } else if (activePlotData[i]['ID']>9){
+            selectedCurvesFilePaths.push("data/curve0"+ activePlotData[i]['ID']+ ".csv");
+        } else{
+            selectedCurvesFilePaths.push("data/curve00"+ activePlotData[i]['ID'] + ".csv"); 
+        }
+     }
     for (let i = 0; i<selectedCurvesFilePaths.length; i++){
         divName.push(selectedCurvesFilePaths[i].split('/')[1].split('.')[0]);
     }
@@ -71,11 +68,11 @@ function createGraph(data,divName){
     newDiv.className = "five wide column"
     newDiv.append(chart.element);
     gridplots.append(newDiv);
-    $("#gridplots").pagify(3, ".five.wide.column");
+    $("#gridplots").pagify(6, ".five.wide.column");
 }
 
-export function createSubPlots(){
-    const fileNames = iterateCSVs();
+export function createSubPlots(data){
+    const fileNames = iterateCSVs(data);
     for (var i = 0; i<fileNames[0].length; i++){
         parseData(createGraph, fileNames[0][i],fileNames[1][i]);
         }
