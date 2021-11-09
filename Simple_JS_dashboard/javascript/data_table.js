@@ -93,6 +93,7 @@ function createTable(data){
         },
         step: sizeStep,
         start: [minSize,maxSize],
+        tooltips:[true,true],
         connect:true,
     });
 
@@ -108,6 +109,7 @@ function createTable(data){
         },
         step: stengthStep,
         start: [minStrength,maxStrength],
+        tooltips:[true,true],
         connect:true,
     });
 
@@ -123,6 +125,7 @@ function createTable(data){
         },
         step: stiffnessStep,
         start: [minStiffness,maxStiffness],
+        tooltips:[true,true],
         connect:true,
     });
 
@@ -150,8 +153,9 @@ function createTable(data){
     function preparePlot(data){
         createSubPlots(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
     }
-
+    //Initialise plot area
     preparePlot(data);
+    
     //Handling Events:
     //1. Checkboxes:
     checkboxes.forEach(function(checkbox){

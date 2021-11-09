@@ -1,6 +1,31 @@
+import {config} from '/javascript/config.js';
 let gridplots = document.getElementById('gridplots');
 
+export function createSubPlots(data){
+
+    //1. Randomize array
+
+    //2. Paginate full randomized array --> Check w/ Charlie if this should only be done on initial load.
+
+    //3. Plot first 6 elements of array
+
+    //4. On paginate next, empty and plot next 6
+    const fileNames = iterateCSVs(data);
+    for (let i = 0; i<fileNames[0].length; i++){
+        parseData(createGraph, fileNames[0][i],fileNames[1][i]);
+        }
+        
+
+}
 function iterateCSVs(data){
+    //Empty grid plot div container before starting:
+    function clearBox(div) {
+        while(div.firstChild) {
+            div.removeChild(div.firstChild);
+            console.log("hi")
+        }
+    }
+    clearBox(gridplots);
 
     let divName = [];
     // let selectedCurvesFilePaths = ['data/curve001.csv','data/curve002.csv','data/curve003.csv','data/curve004.csv',
@@ -8,6 +33,7 @@ function iterateCSVs(data){
 
     let activePlotData = data;
     let selectedCurvesFilePaths = [];
+
     //Testing loop:
     for (let i = 0; i<10; i++){
     // for (let i = 0; i<activePlotData.length; i++){
@@ -38,32 +64,60 @@ function parseData(createGraph,file,divName){
 }
 
 function createGraph(data,divName){
-    var force = [];
-    var displacement = [];
-    for (var i = 2; i < data.length; i++){
+    let force = [];
+    let displacement = [];
+    let title = data[0][1];
+    data[2][0] = 'top. disp. [mm]'
+    data[2][1] = 'hor. force [kN]'
+
+    for (let i = 2; i < data.length; i++){
         if((data[i][0]!='NaN' && data[i][1]!='NaN') && data[i][0]!='[mm]'){
             displacement.push(data[i][0]); //x axis
             force.push(data[i][1]); //y axis
         }
     }
-    var chart = c3.generate({
+    // console.log(data);
+    let chart = c3.generate({
         bindto: '#'+divName,
         data:{
+            names: {
+                x: 'horizontal force'
+            },
             x:displacement[0],
-            columns:[force,displacement],
+            columns:[displacement,force],
             type: 'scatter',
+        },
+        title:{
+            text:title,
+            position:"top-center"
         },
         axis:{
             y:{
-                label:'top displacement',
+                label:'hor. force [kN]',
                 
             },
             x:{
-                label:'horizontal force'
+                label: 'top. disp. [mm]',
+                tick:{
+                    format:function (x) {return x.toFixed()},
+                    culling:{
+                        max:4
+                    },
+                    fit:true,
+                    count:3
+                },
+            }
+        },
+        legend: {
+            hide:true
+        },
+        tooltip:{
+            format: {
+                title: function (x) {return 'displ. value: ' + x},
             }
         }
     })
-    var newDiv = document.createElement('div');
+    let newDiv = document.createElement('div');
     newDiv.id = divName;
     newDiv.className = "five wide column"
     newDiv.append(chart.element);
@@ -71,18 +125,9 @@ function createGraph(data,divName){
     $("#gridplots").pagify(6, ".five.wide.column");
 }
 
-export function createSubPlots(data){
-    const fileNames = iterateCSVs(data);
-    for (var i = 0; i<fileNames[0].length; i++){
-        parseData(createGraph, fileNames[0][i],fileNames[1][i]);
-        }
-        
-
-}
-
 //Pagination Function:
 (function($) {
-	var pagify = {
+	let pagify = {
 		items: {},
 		container: null,
 		totalPages: 1,
@@ -92,13 +137,13 @@ export function createSubPlots(data){
 			this.totalPages = Math.ceil(this.items.length / this.perPage);
 
 			$('.pagination', this.container.parent()).remove();
-			var pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
+			let pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
 
-			for (var i = 0; i < this.totalPages; i++) {
-				var pageElClass = "page";
+			for (let i = 0; i < this.totalPages; i++) {
+				let pageElClass = "page";
 				if (!i)
 					pageElClass = "page current";
-				var pageEl = '<a class="' + pageElClass + '" data-page="' + (
+				const pageEl = '<a class="' + pageElClass + '" data-page="' + (
 				i + 1) + '">' + (
 				i + 1) + "</a>";
 				pagination.append(pageEl);
@@ -107,16 +152,16 @@ export function createSubPlots(data){
 
 			this.container.after(pagination);
 
-			var that = this;
+			let that = this;
 			$("body").off("click", ".nav");
 			this.navigator = $("body").on("click", ".nav", function() {
-				var el = $(this);
+				let el = $(this);
 				that.navigate(el.data("next"));
 			});
 
 			$("body").off("click", ".page");
 			this.pageNavigator = $("body").on("click", ".page", function() {
-				var el = $(this);
+				let el = $(this);
 				that.goToPage(el.data("page"));
 			});
 		},
@@ -145,7 +190,7 @@ export function createSubPlots(data){
 		},
 		updateNavigation: function() {
 
-			var pages = $(".pagination .page");
+			let pages = $(".pagination .page");
 			pages.removeClass("current");
 			$('.pagination .page[data-page="' + (
 			this.currentPage + 1) + '"]').addClass("current");
@@ -164,7 +209,7 @@ export function createSubPlots(data){
 		},
 		showItems: function() {
 			this.items.hide();
-			var base = this.perPage * this.currentPage;
+			let base = this.perPage * this.currentPage;
 			this.items.slice(base, base + this.perPage).show();
 
 			this.updateNavigation();
@@ -182,8 +227,8 @@ export function createSubPlots(data){
 
 	// stuff it all into a jQuery method!
 	$.fn.pagify = function(perPage, itemSelector) {
-		var el = $(this);
-		var items = $(itemSelector, el);
+		let el = $(this);
+		let items = $(itemSelector, el);
 
 		// default perPage to 5
 		if (isNaN(perPage) || perPage === undefined) {

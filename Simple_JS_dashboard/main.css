@@ -3,54 +3,87 @@
     /* width: 60%; */
     /* float:right; */
     overflow: scroll;
-    height:90vh;
+    /* height:80vh; */
 }
 
-.ui.grid {
-  height: 90vh;
+/* Text sizing and alignment */
+#title {
+  margin: 0 auto;
+  text-align: center;
+  font-size: larger;
+  padding-top: 1vh;
+  padding-bottom: 2.5vh;
 }
 
-#widget.panel div{
-  /* text-align: center; */
+#filter-title {
+  text-align: center;
+  font-size: large;
+  padding-bottom: 1vh;
+}
+
+.widget.label {
+    text-align: center;
+    font-size: medium;
+    padding-bottom: 2.1vh;
 }
 
 .p {
   text-align: center;
-  padding-bottom: 2vh;
-  padding-top: 1vh;
+  /* padding-bottom: 2vh; */
+  padding-top: 0.5vh;
 }
 
 #checkbox-row {
-  padding-left: 1vh;
-  height:20vh;
+  padding-top:1vh;
+  padding-left: 4vh;
+  padding-bottom:2vh;
 }
 
+/* Container sizing */
+.ui.grid {
+  height: 85vh;
+}
+
+#data-table3{
+  /* height:85vh !important */
+}
+
+/* Tabulator */
 .tabulator-tableholder, .tabulator-header {
   font-size: 12px;
 }
 
+
+/* Pagination */
 .pagination{
   display: block;
   padding-top: 2vh;
 }
 
+
+/* noUiSlider */
 .slider {
   height: 10px;
+  margin-top: 2vh;
+  margin-left: 3vh;
 }
 
 .slider .noUi-connect {
   background: #c0392b;
 }
+
 .slider .noUi-handle {
-  height: 18px;
-  width: 18px;
+  height: 5px;
+  width: 1px;
   top: -5px;
   right: -9px; /* half the width */
-  border-radius: 9px;
+  border-radius: 18px;
 }
 
 .noUi-tooltip {
   display: none;
+  font-size: smaller;
+
 }
 .noUi-active .noUi-tooltip {
   display: block;

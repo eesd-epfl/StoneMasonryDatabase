@@ -48,12 +48,14 @@
       <a class="item">Strength</a>
       <a class="item">Stiffness</a>
       <a class="item">Drift Capacity</a>
-      </div>
     </div>
     <!-- Container for web page -->
+    <div class="ui row" id="title">Stone Masonry Database Overview</div>
     <div class="ui grid">
       <!-- Sliders and Checkbox column-->
-      <div class="two wide column" id="widget panel">
+      <div class="three wide column" id="widget panel">
+        <div class="row" id="filter-title">Data Table Filters</div>
+        <div class="widget label">Stone Masonry Typologies</div>
         <!-- Checkboxes-->
         <div class="row" id="checkbox-row">
           <div class="field">
@@ -96,19 +98,17 @@
         <div class="row">
           <!--Sliders-->
           <div class="center aligned column"> 
+            <div class="widget label">Slider selection</div>
             <div class="center aligned column">
               <div class="slider" id="size-slider" name="slider" >
-                <!-- <input class="size-slider" type="range"> -->
                 </div>
               <div class="p">size</div>
             </div>
             <div class="centered aligned column">
               <div class="slider" id="strength-slider" name="slider"></div>
-              <!-- <input class="size-slider" type="range"> -->
               <div class="p">strength</div>
             </div>
             <div class="centered aligned column">
-              <!-- <input class="size-slider" type="range"> -->
               <div class="slider" id="stiffness-slider" name="slider"></div>
               <div class="p">stiffness</div>
             </div>
@@ -126,7 +126,7 @@
       <!-- </div> -->
 
       <!-- Multi plots-->
-        <div class="six wide column">
+        <div class="five wide column">
           <div id="gridplots" class="ui grid"></div>
         </div>
     </div>
