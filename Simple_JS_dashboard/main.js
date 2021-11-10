@@ -10,13 +10,10 @@
 
 import {config} from '/javascript/config.js';
 import {dataTable} from '/javascript/data_table.js';
-import {createSubPlots} from '/javascript/scatter_plots.js';
-// import {checkBoxHandling} from '/javascript/filtering.js';
+import {createDivPagination} from '/javascript/scatter_plots.js';
+
 
 function makeDataTable(){
-    dataTable(config.inputFilePath,config.excelColumns);
-    // createSubPlots();
+    dataTable(config.inputFilePath ,config.excelColumns);
 }
-
 makeDataTable();
-// checkBoxHandling();

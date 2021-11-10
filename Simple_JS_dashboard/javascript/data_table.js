@@ -1,6 +1,5 @@
-import {createSubPlots} from '/javascript/scatter_plots.js';
-
-let table;
+import {createDivPagination} from '/javascript/scatter_plots.js';
+// import {paginatePlot} from '/javascript/scatter_plots.js';
 
 export function dataTable(inputFilePath, excelColumns) {
     //Get data from Excel File:
@@ -61,9 +60,9 @@ function ProcessExcel(data,excelColumns) {
         }
         return newRow;
     });
+
     //Create table in next function:
     createTable(filtered);
-    return filtered;
 };
 
 function createTable(data){
@@ -74,8 +73,8 @@ function createTable(data){
         pagination:"remote",
         // paginationSize:20,
         height:"87vh",
-        });
-
+    });
+    
     //Creating objects:
     //1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
@@ -98,20 +97,20 @@ function createTable(data){
     });
 
     //Strength slider:
-    let minStrength = Math.min.apply(null, data.map(item => item['H [mm]'])),
-        maxStrength = Math.max.apply(null, data.map(item => item['H [mm]']));
-    let stengthStep = 1;
-    let strengthSlider = document.getElementById('strength-slider');
-    noUiSlider.create(strengthSlider, {
-        range: {
-            'min':minStrength, 
-            'max': maxStrength, 
-        },
-        step: stengthStep,
-        start: [minStrength,maxStrength],
-        tooltips:[true,true],
-        connect:true,
-    });
+    // let minStrength = Math.min.apply(null, data.map(item => item['H [mm]'])),
+    //     maxStrength = Math.max.apply(null, data.map(item => item['H [mm]']));
+    // let stengthStep = 1;
+    // let strengthSlider = document.getElementById('strength-slider');
+    // noUiSlider.create(strengthSlider, {
+    //     range: {
+    //         'min':minStrength, 
+    //         'max': maxStrength, 
+    //     },
+    //     step: stengthStep,
+    //     start: [minStrength,maxStrength],
+    //     tooltips:[true,true],
+    //     connect:true,
+    // });
 
     //Stiffness slider:
     let minStiffness = Math.min.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc'])),
@@ -149,31 +148,38 @@ function createTable(data){
 
     //Give the table current filter:
     table.setFilter(getFilterValues());
-
-    function preparePlot(data){
-        createSubPlots(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
-    }
     //Initialise plot area
     preparePlot(data);
-    
-    //Handling Events:
+
     //1. Checkboxes:
     checkboxes.forEach(function(checkbox){
         //Apply new filter values to table
         checkbox.addEventListener('change',function(){
+            clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());
             preparePlot(table.getData("active"));
+            // console.log(document.querySelectorAll('.pagination').childNodes);
+            // paginatePlot();
             });
         });
-
-        let sliders = document.querySelectorAll("div[name=slider]");
-        sliders.forEach(function(slider){
-            //Apply new filter values to table
-            slider.noUiSlider.on('update',function(values,handle){
-                table.clearFilter();
-                table.setFilter(getFilterValues());
-
-            });
+    let sliders = document.querySelectorAll("div[name=slider]");
+    sliders.forEach(function(slider){
+        //Apply new filter values to table
+        slider.noUiSlider.on('change',function(){
+            clearBox(document.getElementById('gridplots'));
+            table.clearFilter();
+            table.setFilter(getFilterValues());
+            preparePlot(table.getData("active"));
+            // paginatePlot();
         });
+    });
+}
+function preparePlot(data){
+    createDivPagination(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
+}
+function clearBox(div) {
+    while(div.firstChild) {
+        div.removeChild(div.firstChild);
+    }
 }

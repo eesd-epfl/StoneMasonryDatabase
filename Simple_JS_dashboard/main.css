@@ -6,6 +6,14 @@
     /* height:80vh; */
 }
 
+#gridplots .five.wide.column{
+  height:28vh;
+}
+
+.c3 {
+  height: 28vh;
+}
+
 /* Text sizing and alignment */
 #title {
   margin: 0 auto;
@@ -42,10 +50,6 @@
 /* Container sizing */
 .ui.grid {
   height: 85vh;
-}
-
-#data-table3{
-  /* height:85vh !important */
 }
 
 /* Tabulator */
