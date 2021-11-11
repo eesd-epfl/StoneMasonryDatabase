@@ -1,19 +1,26 @@
 import {config} from '/javascript/config.js';
 let gridplots = document.getElementById('gridplots');
 
+//Final function.
+export function createDivPagination(data){
+    //Create array with filepaths and filenames:
+    const fileNames = createCSVArray(data);
+    //Create empty divs that will be paginated (hide all except 9):
+    for (let i = 0; i<fileNames[0].length; i++){
+        let newDiv = document.createElement('div');
+        newDiv.id = fileNames[1][i];
+        newDiv.className = "five wide column"
+        gridplots.append(newDiv);
+    }
+    $("#gridplots").pagify(9, ".five.wide.column");
+}
 
-//Empty grid plot div container before starting:
-// function clearBox(div) {
-//     while(div.firstChild) {
-//         div.removeChild(div.firstChild);
-//     }
-// }
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
 function createCSVArray(data){
     let divName = [];
     let activePlotData = data;
     let selectedCurvesFilePaths = [];
-
+    
     for (let i = 0; i<activePlotData.length; i++){
         if(activePlotData[i]['ID']>99){
             selectedCurvesFilePaths.push("data/curve"+activePlotData[i]['ID'] + ".csv");
@@ -22,8 +29,8 @@ function createCSVArray(data){
         } else{
             selectedCurvesFilePaths.push("data/curve00"+ activePlotData[i]['ID'] + ".csv"); 
         }
-     }
-     const randomizedCurveFilePaths = shuffle(selectedCurvesFilePaths);
+    }
+    const randomizedCurveFilePaths = shuffle(selectedCurvesFilePaths);
     for (let i = 0; i<randomizedCurveFilePaths.length; i++){
         divName.push(randomizedCurveFilePaths[i].split('/')[1].split('.')[0]);
     }
@@ -31,51 +38,20 @@ function createCSVArray(data){
     return csvData;
 }
 
-//Final function.
-export function createDivPagination(data){
-    // clearBox(gridplots);
-    //1. Randomize array
-
-    //Create array with filepaths and filenames:
-    const fileNames = createCSVArray(data);
-    //Create pagination based on number of values in array:
-    for (let i = 0; i<fileNames[0].length; i++){
-        let newDiv = document.createElement('div');
-        newDiv.id = fileNames[1][i];
-        newDiv.className = "five wide column"
-        gridplots.append(newDiv);
-    }
-    for (let i = 0; i<fileNames[0].length; i++){
-        // parseData(createGraph, fileNames[0][i],fileNames[1][i]);
-    }
-    $("#gridplots").pagify(9, ".five.wide.column");
-
-    if (fileNames[0].length>9){
-        for (let i = 0; i<9; i++){
-            parseData(createGraph, fileNames[0][i],fileNames[1][i]);
-        }
-    }else{
-        for (let i = 0; i< fileNames[0].length; i++){
-            parseData(createGraph, fileNames[0][i],fileNames[1][i]);    
-        }
-    }
-}
-
-
-//Read CSV file and send data to creatGraph function:
-function parseData(createGraph,file,divName){
-    Papa.parse(file, {
+//Read CSV file and send data to createGraph function:
+function parseData(createGraph,filePath,fileName){
+    Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
-            createGraph(results.data,divName);
+            createGraph(results.data,fileName);
         }
     });
 }
 
 //Create the plot:
-function createGraph(data,divName){
+function createGraph(data,divId){
     let force = [];
     let displacement = [];
     let title = data[0][1];
@@ -89,7 +65,7 @@ function createGraph(data,divName){
         }
     }
     let chart = c3.generate({
-        // bindto: '#'+divName,
+        // bindto: '#'+divId,
         data:{
             names: {
                 x: 'horizontal force'
@@ -124,18 +100,14 @@ function createGraph(data,divName){
         },
         tooltip:{
             format: {
-                title: function (x) {return 'displ. value: ' + x},
+                title: function (x) {return 'disp. value: ' + x},
             }
         }
     })
-    // let newDiv = document.createElement('div');
-    // newDiv.id = divName;
-    // newDiv.className = "five wide column"
-    // newDiv.append(chart.element);
-    // gridplots.append(newDiv);
-    let divId = document.getElementById(divName);
-    divId.append(chart.element);
+    //Append chart element to the div that has its Id (e.g. curve001):
+    document.getElementById(divId).append(chart.element);
 }
+
 //Randomizing function:
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -151,14 +123,12 @@ function shuffle(array) {
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-  
     return array;
-  }
+}
 
 
 //Pagination Function:
 (function($) {
-
 	let pagify = {
 		items: {},
 		container: null,
@@ -182,10 +152,6 @@ function shuffle(array) {
 				pagination.append(pageEl);
 			}
 			pagination.append('<a class="nav next" data-next="true">></a>');
-            // console.log ("Current page: " + this.currentPage + ", total pages: "+ this.totalPages);
-            // for (let i = (this.currentPage)*this.perPage; i<((this.currentPage+1)*this.perPage); i++){
-            //     parseData(createGraph, fileNames[0][i],fileNames[1][i])
-            // }
 			this.container.after(pagination);
 
 			let that = this;
@@ -244,16 +210,21 @@ function shuffle(array) {
 			this.showItems();
 		},
 		showItems: function() {
-            let table = Tabulator.findTable('#data-table3')[0];
-            const fileNames = createCSVArray(table.getData("active"));
-            if(fileNames[1][0]!=undefined){
-                for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
-                    if(i<fileNames[1].length){
-                        if(!document.getElementById(fileNames[1][i]).firstChild){
-                            parseData(createGraph, fileNames[0][i],fileNames[1][i]);
-                        }
-                    }
+            // clearBox(gridplots);
+            // let table = Tabulator.findTable('#data-table3')[0];
+            // const fileNames = createCSVArray(table.getData("active"));
+            let divArray = Array.from(gridplots.children)
+            for (let i = 0; i<divArray.length; i++){
+                let myDivNode = document.getElementById(divArray[i].id)
+                while (myDivNode.firstChild){
+                    myDivNode.removeChild(myDivNode.lastChild);
                 }
+            }
+            for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
+                console.log("value of i is:"+ i);
+                let fileName = divArray[i].id
+                let filePath = "data/"+ fileName + ".csv"
+                parseData(createGraph,filePath,fileName);
             }
             this.items.hide();
 			let base = this.perPage * this.currentPage;

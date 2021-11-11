@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Overview DB</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='overview.css'>
+        <!-- Semantic UI CSS-->
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+
+        <!-- Load Semantic UI-->
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+        <script src="semantic/dist/semantic.min.js"></script>
+        <!-- <script src='main.js'></script> -->
+        
+    </head>
+    <body>
+        <!-- Nav bar/Menu -->
+        <div class="ui menu">
+            <a class="active item">Overview DB</a>
+            <a class=" item" href="index.html">Browse DB test</a>
+            <a class="item">Strength</a>
+            <a class="item">Stiffness</a>
+            <a class="item">Drift Capacity</a>
+        </div>
+
+        <div class="ui grid">
+            <div class="four wide column">
+                <div>Typology A</div>
+                <div>Typology B</div>
+                <div>Typology C</div>
+                <div>Typology D</div>
+                <div>Typology E</div>
+                <div>Typology E1</div>
+                <div class="ui grid">
+                    <div class="two column row">
+                        <div class="column">retrofitted</div>
+                        <div class="column">unretrofitted</div>
+                    </div>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
+                    <label>A</label>
+                  </div>
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="check" id="check-unretro" value="A" checked="true">
+                    <label>A</label>
+                  </div>
+            </div>
+            <div class= "twelve wide column">
+                <div class="ui three column grid">
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a"></div>
+
+                </div>
+
+            </div>
+        </div>
+        
+    </body>
+</html>

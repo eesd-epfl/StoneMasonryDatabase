@@ -1,7 +1,8 @@
 import {createDivPagination} from '/javascript/scatter_plots.js';
 // import {paginatePlot} from '/javascript/scatter_plots.js';
 
-export function dataTable(inputFilePath, excelColumns) {
+export function dataTable(inputFilePath, excelColumns, callback) {
+    let tableData;
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
     xhr.open("GET", inputFilePath, true);
@@ -12,10 +13,13 @@ export function dataTable(inputFilePath, excelColumns) {
         //For Browsers other than IE.
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
-                ProcessExcel(e.target.result,excelColumns);
+                let data = ProcessExcel(e.target.result,excelColumns);
+                createTable(data);
+                preparePlot(data);
             };
             reader.readAsBinaryString(file);
-        } else {
+        } 
+        else {
             //For IE Browser.
             reader.onload = function (e) {
                 let data = "";
@@ -51,7 +55,6 @@ function ProcessExcel(data,excelColumns) {
             intObject.push(excelObject[i]);
         }
     };
-
     //Filter JSON object to get only wanted columns:
     let filtered = intObject.map(function(row){
         let newRow = {}
@@ -60,9 +63,9 @@ function ProcessExcel(data,excelColumns) {
         }
         return newRow;
     });
-
+    return filtered;
     //Create table in next function:
-    createTable(filtered);
+    // createTable(filtered);
 };
 
 function createTable(data){
@@ -74,15 +77,20 @@ function createTable(data){
         // paginationSize:20,
         height:"87vh",
     });
-    
-    //Creating objects:
-    //1. Checkboxes:
-    let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
 
-    // //2. Sliders:
+    table.on("tableBuilt", createWidgets(data));
+}
+
+export function createWidgets(data){
+    // let table = Tabulator.findTable('#data-table3')[0];
+
+    //Initializing objects:
+
+    //2. Sliders:
     //Size slider:
-    let minSize = Math.min.apply(null, data.map(item => item['H [mm]'])),
-        maxSize = Math.max.apply(null, data.map(item => item['H [mm]']));
+    let sizeData = data.map(item => item['H [mm]']);
+    let minSize = Math.min.apply(null, sizeData),
+        maxSize = Math.max.apply(null, sizeData);
     let sizeStep = 1
     let sizeSlider = document.getElementById('size-slider');
     noUiSlider.create(sizeSlider, {
@@ -127,57 +135,59 @@ function createTable(data){
         tooltips:[true,true],
         connect:true,
     });
-
-    //Create a function to get all filters and current values:
-    function getFilterValues(){
-        let myFilter = [
-            //Size slider:
-            {field:'H [mm]',type:'>',value:sizeSlider.noUiSlider.get()[0]},
-            {field:'H [mm]',type:'<',value:sizeSlider.noUiSlider.get()[1]},
-            //Strength slider:
-            // {field:'H [mm]',type:'>',value:strengthSlider.noUiSlider.get()[0]},
-            // {field:'H [mm]',type:'<',value:strengthSlider.noUiSlider.get()[1]},
-            //Stiffness slider:
-            {field:'σ0,tot /fc',type:'>',value:stiffnessSlider.noUiSlider.get()[0]},
-            {field:'σ0,tot /fc',type:'<',value:stiffnessSlider.noUiSlider.get()[1]},
-            //checkboxes:
-            {field:'Stone masonry typology',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
-        ];
-        return myFilter;
-    };
-
-    //Give the table current filter:
-    table.setFilter(getFilterValues());
-    //Initialise plot area
-    preparePlot(data);
-
+}
+//Create a function to get all filters and current values:
+function getFilterValues(){
     //1. Checkboxes:
+    let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
+    let sizeSlider = document.getElementById("size-slider");
+    let stiffnessSlider = document.getElementById("stiffness-slider");
+    let myFilter = [
+        //Size slider:
+        {field:'H [mm]',type:'>',value:sizeSlider.noUiSlider.get()[0]},
+        {field:'H [mm]',type:'<',value:sizeSlider.noUiSlider.get()[1]},
+        //Strength slider:
+        // {field:'H [mm]',type:'>',value:strengthSlider.noUiSlider.get()[0]},
+        // {field:'H [mm]',type:'<',value:strengthSlider.noUiSlider.get()[1]},
+        //Stiffness slider:
+        {field:'σ0,tot /fc',type:'>',value:stiffnessSlider.noUiSlider.get()[0]},
+        {field:'σ0,tot /fc',type:'<',value:stiffnessSlider.noUiSlider.get()[1]},
+        //checkboxes:
+        {field:'Stone masonry typology',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
+    ];
+    return myFilter;
+}
+
+export function filterEvents(){
+    //1. Checkboxes:
+    let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
     checkboxes.forEach(function(checkbox){
-        //Apply new filter values to table
         checkbox.addEventListener('change',function(){
+            let table = Tabulator.findTable("#data-table3")[0];
             clearBox(document.getElementById('gridplots'));
+            //Clear and Apply new filter values to table
             table.clearFilter();
             table.setFilter(getFilterValues());
+            //Add first 9 plots to table
             preparePlot(table.getData("active"));
-            // console.log(document.querySelectorAll('.pagination').childNodes);
-            // paginatePlot();
             });
         });
     let sliders = document.querySelectorAll("div[name=slider]");
     sliders.forEach(function(slider){
         //Apply new filter values to table
-        slider.noUiSlider.on('change',function(){
+        slider.noUiSlider.on('slide',function(){
             clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());
             preparePlot(table.getData("active"));
-            // paginatePlot();
         });
     });
 }
+
 function preparePlot(data){
     createDivPagination(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
 }
+
 function clearBox(div) {
     while(div.firstChild) {
         div.removeChild(div.firstChild);
