@@ -5,6 +5,7 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>Overview DB</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+
         <link rel='stylesheet' type='text/css' media='screen' href='overview.css'>
         <!-- Semantic UI CSS-->
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
@@ -36,19 +37,60 @@
                 <div>Typology D</div>
                 <div>Typology E</div>
                 <div>Typology E1</div>
+                <div class="p">fitting:</div>
                 <div class="ui grid">
                     <div class="two column row">
                         <div class="column">retrofitted</div>
                         <div class="column">unretrofitted</div>
                     </div>
                 </div>
-                <div class="ui checkbox">
-                    <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
-                    <label>A</label>
-                  </div>
+                <div class="ui three column centered grid">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
+                        <label></label>
+                      </div>
+                      <div class="column"></div>
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-unretro" checked="true">
+                        <label></label>
+                      </div>
+                </div>
+                <div class="ui three column centered grid">
+                    <div class="column">lab</div>
+                    <div class="column">in-situ</div>
+                </div>
+                <div class="ui three column centered grid">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
+                        <label></label>
+                      </div>
+                      <div class="column"></div>
+                      <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-unretro" checked="true">
+                        <label></label>
+                      </div>
+                </div>
+                <div class="ui one column centered grid">bending type:</div>
+                <div class="ui three column centered grid">
+                    <div class="column">single</div>
+                    <div class="column">double</div>
+                    <div class="column">other</div>
+                </div>
+                <div class="center aligned column">
+                    <div class="slider"></div>
+                    <div class="p">minimum size</div>
+                </div>
+                <div class="p">Test Source:</div>
+                <div class="ui one centered column">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-unretro" checked="true">
+                        <label>EPFL</label>
+                    </div>
+                    
+                </div>
                   <div class="ui checkbox">
-                    <input type="checkbox" name="check" id="check-unretro" value="A" checked="true">
-                    <label>A</label>
+                    <input type="checkbox" name="check" id="check-unretro" checked="true">
+                    <label>External</label>
                   </div>
             </div>
             <div class= "twelve wide column">
@@ -62,7 +104,6 @@
                     <div class="column" id="plot-a"></div>
                     <div class="column" id="plot-a"></div>
                     <div class="column" id="plot-a"></div>
-
                 </div>
 
             </div>

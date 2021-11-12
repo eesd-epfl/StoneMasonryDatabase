@@ -1,8 +1,8 @@
+import { eventHandler } from './filtering.js';
 import {createDivPagination} from '/javascript/scatter_plots.js';
-// import {paginatePlot} from '/javascript/scatter_plots.js';
+
 
 export function dataTable(inputFilePath, excelColumns, callback) {
-    let tableData;
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
     xhr.open("GET", inputFilePath, true);
@@ -16,6 +16,8 @@ export function dataTable(inputFilePath, excelColumns, callback) {
                 let data = ProcessExcel(e.target.result,excelColumns);
                 createTable(data);
                 preparePlot(data);
+                filterEvents();
+                eventHandler();
             };
             reader.readAsBinaryString(file);
         } 
@@ -75,7 +77,7 @@ function createTable(data){
         // layout:"fitColumns",
         pagination:"remote",
         // paginationSize:20,
-        height:"87vh",
+        height:"87vh",    
     });
 
     table.on("tableBuilt", createWidgets(data));
@@ -174,6 +176,7 @@ export function filterEvents(){
         });
     let sliders = document.querySelectorAll("div[name=slider]");
     sliders.forEach(function(slider){
+        let table = Tabulator.findTable("#data-table3")[0];
         //Apply new filter values to table
         slider.noUiSlider.on('slide',function(){
             clearBox(document.getElementById('gridplots'));
@@ -188,7 +191,7 @@ function preparePlot(data){
     createDivPagination(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
 }
 
-function clearBox(div) {
+export function clearBox(div) {
     while(div.firstChild) {
         div.removeChild(div.firstChild);
     }

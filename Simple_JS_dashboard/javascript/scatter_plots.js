@@ -16,7 +16,7 @@ export function createDivPagination(data){
 }
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
-function createCSVArray(data){
+export function createCSVArray(data){
     let divName = [];
     let activePlotData = data;
     let selectedCurvesFilePaths = [];
@@ -39,7 +39,7 @@ function createCSVArray(data){
 }
 
 //Read CSV file and send data to createGraph function:
-function parseData(createGraph,filePath,fileName){
+export function parseData(createGraph,filePath,fileName){
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
@@ -51,7 +51,7 @@ function parseData(createGraph,filePath,fileName){
 }
 
 //Create the plot:
-function createGraph(data,divId){
+export function createGraph(data,divId){
     let force = [];
     let displacement = [];
     let title = data[0][1];
@@ -221,7 +221,6 @@ function shuffle(array) {
                 }
             }
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
-                console.log("value of i is:"+ i);
                 let fileName = divArray[i].id
                 let filePath = "data/"+ fileName + ".csv"
                 parseData(createGraph,filePath,fileName);
