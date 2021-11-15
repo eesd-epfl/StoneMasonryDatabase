@@ -93,3 +93,17 @@
   display: block;
 }
 
+.pagination a {
+  display: inline-block;
+  margin: 0;
+  border-radius: 1px;
+  padding:5px 10px;
+  transition-duration: 0.4s;
+  background-color: rgb(151, 151, 151);
+  color:white;
+  text-align: center;
+}
+.pagination a:hover{
+background-color: white;
+color:rgb(151, 151, 151);
+}

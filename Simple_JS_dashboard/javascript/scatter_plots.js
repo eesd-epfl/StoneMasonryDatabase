@@ -20,7 +20,7 @@ export function createCSVArray(data){
     let divName = [];
     let activePlotData = data;
     let selectedCurvesFilePaths = [];
-    
+
     for (let i = 0; i<activePlotData.length; i++){
         if(activePlotData[i]['ID']>99){
             selectedCurvesFilePaths.push("data/curve"+activePlotData[i]['ID'] + ".csv");
@@ -52,25 +52,46 @@ export function parseData(createGraph,filePath,fileName){
 
 //Create the plot:
 export function createGraph(data,divId){
-    let force = [];
-    let displacement = [];
-    let title = data[0][1];
-    data[2][0] = 'top. disp. [mm]'
-    data[2][1] = 'hor. force [kN]'
-
-    for (let i = 2; i < data.length; i++){
-        if((data[i][0]!='NaN' && data[i][1]!='NaN') && data[i][0]!='[mm]'){
-            displacement.push(data[i][0]); //x axis
-            force.push(data[i][1]); //y axis
+    let reducedData = data.slice(0,3);
+    let remainingRows = data.slice(3,data.length);
+    if (data.length > 100000){
+        for (let i = 0; i<data.length; i += 1000){
+            reducedData.push(remainingRows[i]);
         }
     }
+    else if(data.length > 10000){
+        for (let i = 0; i<data.length; i += 100){
+            reducedData.push(remainingRows[i]);
+        }
+    }
+    else if (data.length > 1000){
+        for (let i = 0; i<data.length; i += 10){
+            reducedData.push(remainingRows[i]);
+        }
+    }else {
+        for (let i = 0; i < data.length; i++){
+            reducedData.push(remainingRows[i]);
+        }
+    }
+    let force = ["force"];
+    let displacement = ["disp"];
+    let title = reducedData[0][1];
+    reducedData[2][0] = 'top. disp. [mm]'
+    reducedData[2][1] = 'hor. force [kN]'
+    for (let i = 4; i < reducedData.length-3; i++){
+        if((reducedData[i][0]!='NaN' && reducedData[i][1]!='NaN') && reducedData[i][0]!='[mm]'){
+            displacement.push(reducedData[i][0]); //x axis
+            force.push(reducedData[i][1]); //y axis
+        }
+    }
+
     let chart = c3.generate({
         // bindto: '#'+divId,
         data:{
             names: {
                 x: 'horizontal force'
             },
-            x:displacement[0],
+            x: displacement[0],
             columns:[displacement,force],
             type: 'scatter',
         },
@@ -142,7 +163,6 @@ function shuffle(array) {
 			let pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
 
 			for (let i = 0; i < this.totalPages; i++) {
-                // console.log("page is " + i);
 				let pageElClass = "page";
 				if (!i)
 					pageElClass = "page current";
@@ -224,6 +244,9 @@ function shuffle(array) {
                 let fileName = divArray[i].id
                 let filePath = "data/"+ fileName + ".csv"
                 parseData(createGraph,filePath,fileName);
+                if(i==divArray.length-1){
+                    i+= 10;
+                }
             }
             this.items.hide();
 			let base = this.perPage * this.currentPage;

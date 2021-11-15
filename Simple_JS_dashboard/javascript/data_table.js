@@ -1,8 +1,8 @@
 import { eventHandler } from './filtering.js';
+import { allPlots } from './overview.js';
 import {createDivPagination} from '/javascript/scatter_plots.js';
 
-
-export function dataTable(inputFilePath, excelColumns, callback) {
+export function dataTable(inputFilePath, excelColumns, tab) {
     //Get data from Excel File:
     let xhr = new XMLHttpRequest();
     xhr.open("GET", inputFilePath, true);
@@ -14,10 +14,14 @@ export function dataTable(inputFilePath, excelColumns, callback) {
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
                 let data = ProcessExcel(e.target.result,excelColumns);
-                createTable(data);
-                preparePlot(data);
-                filterEvents();
-                eventHandler();
+                if(tab == 1){
+                    createTable(data);
+                    preparePlot(data);
+                    filterEvents();
+                    eventHandler();
+                }else if(tab == 0){
+                    allPlots(data);
+                }
             };
             reader.readAsBinaryString(file);
         } 
@@ -66,18 +70,16 @@ function ProcessExcel(data,excelColumns) {
         return newRow;
     });
     return filtered;
-    //Create table in next function:
-    // createTable(filtered);
 };
 
 function createTable(data){
     let table = new Tabulator('#data-table3',{
         data:data,
         autoColumns:true,
-        // layout:"fitColumns",
         pagination:"remote",
+        height:"87vh"    
+        // layout:"fitColumns",
         // paginationSize:20,
-        height:"87vh",    
     });
 
     table.on("tableBuilt", createWidgets(data));

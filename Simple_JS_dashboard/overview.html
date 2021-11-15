@@ -6,7 +6,13 @@
         <title>Overview DB</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+        <!-- Load d3.js, c3.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js" integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js" integrity="sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Load Personal CSS -->
         <link rel='stylesheet' type='text/css' media='screen' href='overview.css'>
+
         <!-- Semantic UI CSS-->
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 
@@ -16,8 +22,13 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
-        <!-- <script src='main.js'></script> -->
-        
+
+        <!-- Load XLS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
+
+        <!-- Load ECharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js" integrity="sha512-ivdGNkeO+FTZH5ZoVC4gS4ovGSiWc+6v60/hvHkccaMN2BXchfKdvEZtviy5L4xSpF8NPsfS0EVNSGf+EsUdxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     </head>
     <body>
         <!-- Nav bar/Menu -->
@@ -30,21 +41,52 @@
         </div>
 
         <div class="ui grid">
-            <div class="four wide column">
-                <div>Typology A</div>
-                <div>Typology B</div>
-                <div>Typology C</div>
-                <div>Typology D</div>
-                <div>Typology E</div>
-                <div>Typology E1</div>
-                <div class="p">fitting:</div>
+            <div class="four wide column" id="one">
                 <div class="ui grid">
-                    <div class="two column row">
-                        <div class="column">retrofitted</div>
-                        <div class="column">unretrofitted</div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typA.png"/>
+                        </div>
+                        <div class="p">Typology A</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typB.png"/>
+                        </div>
+                        <div class="p">Typology B</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typC.png"/>
+                        </div>
+                        <div class="p">Typology C</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typD.png"/>
+                        </div>
+                        <div class="p">Typology D</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typE.png"/>
+                        </div>
+                        <div class="p">Typology E</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui small image">
+                            <img src="images/typE1.png"/>
+                        </div>
+                        <div class="p">Typology E1</div>
                     </div>
                 </div>
+                <div class="p">fitting:</div>
                 <div class="ui three column centered grid">
+                    <div class="column">retrofitted</div>
+                    <div class="column">unretrofitted</div>
+                </div>
+                <div class="ui six column centered grid">
+                    <div class="column"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
                         <label></label>
@@ -54,6 +96,7 @@
                         <input type="checkbox" name="check" id="check-unretro" checked="true">
                         <label></label>
                       </div>
+                    <div class="column"></div>
                 </div>
                 <div class="ui three column centered grid">
                     <div class="column">lab</div>
@@ -76,36 +119,51 @@
                     <div class="column">double</div>
                     <div class="column">other</div>
                 </div>
+                <div class="ui three column centered grid">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
+                        <label></label>
+                    </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
+                        <label></label>
+                    </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="check" id="check-unretro" checked="true">
+                        <label></label>
+                    </div>
+                </div>
                 <div class="center aligned column">
-                    <div class="slider"></div>
+                    <div class="ui slider"></div>
                     <div class="p">minimum size</div>
                 </div>
                 <div class="p">Test Source:</div>
-                <div class="ui one centered column">
+                <div class="ui one column centered grid">
                     <div class="ui checkbox">
                         <input type="checkbox" name="check" id="check-unretro" checked="true">
                         <label>EPFL</label>
                     </div>
-                    
                 </div>
+                <div class="ui one column centered grid">
                   <div class="ui checkbox">
                     <input type="checkbox" name="check" id="check-unretro" checked="true">
                     <label>External</label>
                   </div>
+                </div>
             </div>
             <div class= "twelve wide column">
                 <div class="ui three column grid">
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
-                    <div class="column" id="plot-a"></div>
+                    <div class="column" id="plot-a" style="width:24.75vw;height:29.7vh;"></div>
+                    <div class="column" id="plot-b"></div>
+                    <div class="column" id="plot-c"></div>
+                    <div class="column" id="plot-d"></div>
+                    <div class="column" id="plot-e"></div>
+                    <div class="column" id="plot-f"></div>
+                    <div class="column" id="plot-g"></div>
+                    <div class="column" id="plot-h"></div>
+                    <div class="column" id="plot-i"></div>
                 </div>
-
+                <script type="module" src="/javascript/overview.js" ></script>
             </div>
         </div>
         
