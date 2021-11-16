@@ -1,4 +1,5 @@
 import {config} from '/javascript/config.js';
+
 let gridplots = document.getElementById('gridplots');
 
 //Final function.
@@ -86,7 +87,6 @@ export function createGraph(data,divId){
     }
 
     let chart = c3.generate({
-        // bindto: '#'+divId,
         data:{
             names: {
                 x: 'horizontal force'
@@ -125,7 +125,7 @@ export function createGraph(data,divId){
             }
         }
     })
-    //Append chart element to the div that has its Id (e.g. curve001):
+    //Append chart element to the div that has its Id (e.g. curve001):§
     document.getElementById(divId).append(chart.element);
 }
 
