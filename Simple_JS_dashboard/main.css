@@ -27,6 +27,7 @@
   text-align: center;
   font-size: large;
   padding-bottom: 1vh;
+  margin-top: 1em;
 }
 
 .widget.label {
@@ -45,6 +46,35 @@
   padding-top:1vh;
   padding-left: 4vh;
   padding-bottom:2vh;
+}
+
+#close {
+  /* padding:0; */
+  /* display: flex; */
+  /* border-color: black;
+  border-width: 0.1em;
+  border-style: solid;
+  border-radius: 0.5em; */
+  margin-right: 0;
+  float:right;
+}
+
+#plot-container {
+  border-style: solid;
+  border-radius:5px;
+  border-color: rgba(34,36,38,.15);
+  margin-top: 1em;
+}
+
+#crackmap-toggle{
+  width: 10vw;
+  display: inline-block;
+}
+
+.toggleSlider {
+  display: inline-block;
+  padding-right: 2.5vw;
+  padding-left: 2.5vw;
 }
 
 /* Container sizing */

@@ -3,10 +3,10 @@ import {dataTable} from '/javascript/data_table.js';
 
 function overviewTab(){
     let data = dataTable(config.inputFilePath ,config.excelColumns, 0);
-    // plotA(data);
 }
 
 export function allPlots(data){
+    sizeSlider(data);
     plotA(data);
     plotB(data);
     plotC(data);
@@ -26,12 +26,6 @@ function sumTyp(typ,typArray,labSitu,labSituArray){
             count++;
         }
     };
-    // let sum = typArray.reduce((accumulator,currentValue)=>{
-    //     let count = 0;
-    //     currentValue==typ? count=1:count=0;
-    //     return accumulator+count
-    // },0); 
-
     return count;
 }
 
@@ -93,6 +87,11 @@ function plotA(data){
             right: '4%',
             bottom: '3%',
             containLabel: true
+        },
+        title: {
+            text:'#Tests per Typology',
+            left:'center'
+            // textAlign: 'left'
         },
         xAxis: [
           {
@@ -265,34 +264,72 @@ function plotA(data){
 }
 
 function plotB(data){
-    let plotBEl = document.getElementById('plot-b');
-    const typ = ['A','B','C','D','E','E1'];
-    const hmin = config.hmin;
-    const nBars = config.nBars;
-    let plotData = {};
+    // let plotBEl = document.getElementById('plot-b');
+    // const typ = ['A','B','C','D','E','E1'];
+    // const hmin = config.hmin;
+    // const nBars = config.nBars;
+    // let plotData = {};
+    // let xAxisTicks = [];
 
-    for (let i = 0; i< typ.length; i++){
-        plotData[i] = {};
-        for (j = 0; j< data.length; j++){
-            if(data[j]['Stone masonry typology']==i){
-                if(data[j]['H [mm]']>){
-                    plotData[i]['h1']+=1;
-                }
+    // const series = (name,type,stack,data) => {
+    //     //name = 'A'
+    //     //stack = 'Height'
+    //     //data = h1A, h2A, h3A, h4A
+    //     return {
+    //         name:name,
+    //         type:type,
+    //         stack:stack,
+    //         data:data
+    //     }
+    // }
+
+    // for (let k = 1; k<(nBars+1); k++){
+    //     //Create the xAxis ticks
+    //     xAxisTicks.push((k-1)*0.25 + hmin);
+    // }
+    // for (let i = 0; i< typ.length; i++){
+    //     plotData[i] = {};
+    //     for (j = 0; j< data.length; j++){
+    //         if(data[j]['Stone masonry typology']==i){
+    //             if(k=nBars){
+                    
+    //             }
+    //             if(data[j]['H [mm]']>1){
+    //                 plotData[i]['h1']+=1;
+    //             }
+    //         }
+    //     }
+    // }
+    //loop through the plotData JSON:
+
+    // series = [series(),series(),series(),series(),series(),series()]
+    let plotBEl = document.getElementById('plot-b');
+    // console.log(data);
+    // let totA = 
+    const yAxis = ['A','B','C','D','E','E1'];
+    let  chart = c3.generate({
+        data: {
+            columns: [
+                ['data1', -30, 200, 200, 400, -150, 250],
+                ['data2', 130, 100, -100, 200, -150, 50],
+                ['data3', -230, 200, 200, -300, 250, 250]
+            ],
+            type: 'bar',
+            groups: [
+                ['data1', 'data2']
+            ]
+        },
+        title: {
+            text:'placeholder'
+        },
+        grid: {
+            y: {
+                lines: [{value:yAxis}]
             }
         }
-    }
 
-    const series = (name,type,stack,data) => {
-        return {
-            name:name,
-            type:type,
-            stack:stack,
-            data:data
-        }
-    }
-    
-    series = [series(),series(),series(),series(),series(),series()]
-
+    });
+    plotBEl.append(chart.element);
 }
 function plotC(data){
     let plotCEl = document.getElementById('plot-c');
@@ -310,6 +347,9 @@ function plotC(data){
             groups: [
                 ['data1', 'data2']
             ]
+        },
+        title: {
+            text:'placeholder'
         },
         grid: {
             y: {
@@ -336,6 +376,9 @@ function plotD(data){
             groups: [
                 ['data1', 'data2']
             ]
+        },
+        title: {
+            text:'placeholder'
         },
         grid: {
             y: {
@@ -364,6 +407,9 @@ function plotE(data){
                 ['data1', 'data2']
             ]
         },
+        title: {
+            text:'placeholder'
+        },
         grid: {
             y: {
                 lines: [{value:yAxis}]
@@ -390,6 +436,9 @@ function plotF(data){
             groups: [
                 ['data1', 'data2']
             ]
+        },
+        title: {
+            text:'placeholder'
         },
         grid: {
             y: {
@@ -418,6 +467,9 @@ function plotG(data){
                 ['data1', 'data2']
             ]
         },
+        title: {
+            text:'placeholder'
+        },
         grid: {
             y: {
                 lines: [{value:yAxis}]
@@ -444,6 +496,9 @@ function plotH(data){
             groups: [
                 ['data1', 'data2']
             ]
+        },
+        title: {
+            text:'placeholder'
         },
         grid: {
             y: {
@@ -472,6 +527,9 @@ function plotI(data){
                 ['data1', 'data2']
             ]
         },
+        title: {
+            text:'placeholder'
+        },
         grid: {
             y: {
                 lines: [{value:yAxis}]
@@ -480,4 +538,22 @@ function plotI(data){
 
     });
     plotIEl.append(chart.element);
+}
+
+function sizeSlider(data){
+    let sizeData = data.map(item => item['H [mm]']);
+    let minSize = Math.min.apply(null, sizeData),
+        maxSize = Math.max.apply(null, sizeData);
+    let sizeStep = 1
+    let sizeSlider = document.getElementById('overview-size-slider');
+    noUiSlider.create(sizeSlider, {
+        range: {
+            'min':1000, 
+            'max': maxSize, 
+        },
+        step: sizeStep,
+        start: [minSize,maxSize],
+        tooltips:[true,true],
+        connect:true,
+    });
 }

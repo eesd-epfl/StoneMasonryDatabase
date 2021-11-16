@@ -29,6 +29,11 @@
         <!-- Load ECharts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js" integrity="sha512-ivdGNkeO+FTZH5ZoVC4gS4ovGSiWc+6v60/hvHkccaMN2BXchfKdvEZtviy5L4xSpF8NPsfS0EVNSGf+EsUdxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <!-- Sliders -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+
+
     </head>
     <body>
         <!-- Nav bar/Menu -->
@@ -41,119 +46,142 @@
         </div>
 
         <div class="ui grid">
-            <div class="four wide column" id="one">
+            <div class="sixteen wide center aligned column" id="title">Overview DB Plots
+                <!-- <h2 class="ui header">Overview DB Plots</h2> -->
+            </div>
+            <div class="sixteen wide column" id="intro-text">        
+                The paper Vanin et al. (2017) "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature" contains a database of quasi-static cyclic tests on stone masonry walls. This database is maintained and updated as new test results become available. This web application allows to display graphs, which show the important parameters and their distribution within the database for the updated versions of the database. These plots reproduce subplots of Figure 4 in the paper.
+
+Please cite the paper and database as follows:
+Paper: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature. Bull Earthquake Eng 15, 5435–5479 (2017). <a href="https://doi.org/10.1007/s10518-017-0188-5">https://doi.org/10.1007/s10518-017-0188-5</a>
+Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature". Accessed on xx.xx.20xx <a href="http://doi.org/10.5281/zenodo.812145">http://doi.org/10.5281/zenodo.812145</a>
+            </div>
+            <!-- <div class="sixteen wide center aligned column">Access to article <a href="">here</a></div> -->
+            <div class="three wide column" id="one">
                 <div class="ui grid">
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typA.png"/>
                         </div>
-                        <div class="p">Typology A</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ A</label>
+                        </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typB.png"/>
                         </div>
-                        <div class="p">Typology B</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ B</label>
+                        </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typC.png"/>
                         </div>
-                        <div class="p">Typology C</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ C</label>
+                        </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typD.png"/>
                         </div>
-                        <div class="p">Typology D</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ D</label>
+                        </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typE.png"/>
                         </div>
-                        <div class="p">Typology E</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ E</label>
+                        </div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui small image">
+                    <div class="eight wide center aligned column">
+                        <div class="ui tiny image">
                             <img src="images/typE1.png"/>
                         </div>
-                        <div class="p">Typology E1</div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ E1</label>
+                        </div>
                     </div>
                 </div>
-                <div class="p">fitting:</div>
-                <div class="ui three column centered grid">
-                    <div class="column">retrofitted</div>
-                    <div class="column">unretrofitted</div>
-                </div>
-                <div class="ui six column centered grid">
-                    <div class="column"></div>
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
-                        <label></label>
-                      </div>
-                      <div class="column"></div>
+                <div class="ui grid">
+                    <div class="sixteen wide center aligned column">fitting:</div>
+                    <div class="eight wide column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" value="A" checked="true">
+                            <label>retrofitted</label>
+                          </div>                       
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>unretrofitted</label>
+                          </div>
+                    </div>
+                    <div class="sixteen wide center aligned column">lab vs in-situ</div>
+                    <div class="eight wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>lab</label>
+                          </div>
+                    </div>
+                    <div class="eight wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>in-situ</label>
+                          </div>
+                    </div>
+                    <div class="sixteen wide center aligned column">bending type:</div>
+                    <div class="five wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>single</label>
+                          </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>double</label>
+                          </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>other</label>
+                          </div>
+                    </div>
+                    <div class="sixteen wide center aligned column">
+                        <div class="slider" id="overview-size-slider"></div>
+                        <div class="p">minimum size</div>
+                    </div>
+                    <div class="sixteen wide center aligned column">Test Source:</div>
+                    <div class="eight wide center aligned column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>EPFL</label>
+                        </div>
+                    </div>
+                    <div class="eight wide center aligned column">
                       <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-unretro" checked="true">
-                        <label></label>
+                        <input type="checkbox" name="check" checked="true">
+                        <label>External</label>
                       </div>
-                    <div class="column"></div>
-                </div>
-                <div class="ui three column centered grid">
-                    <div class="column">lab</div>
-                    <div class="column">in-situ</div>
-                </div>
-                <div class="ui three column centered grid">
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
-                        <label></label>
-                      </div>
-                      <div class="column"></div>
-                      <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-unretro" checked="true">
-                        <label></label>
-                      </div>
-                </div>
-                <div class="ui one column centered grid">bending type:</div>
-                <div class="ui three column centered grid">
-                    <div class="column">single</div>
-                    <div class="column">double</div>
-                    <div class="column">other</div>
-                </div>
-                <div class="ui three column centered grid">
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
-                        <label></label>
                     </div>
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-retro" value="A" checked="true">
-                        <label></label>
-                    </div>
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-unretro" checked="true">
-                        <label></label>
-                    </div>
-                </div>
-                <div class="center aligned column">
-                    <div class="ui slider"></div>
-                    <div class="p">minimum size</div>
-                </div>
-                <div class="p">Test Source:</div>
-                <div class="ui one column centered grid">
-                    <div class="ui checkbox">
-                        <input type="checkbox" name="check" id="check-unretro" checked="true">
-                        <label>EPFL</label>
-                    </div>
-                </div>
-                <div class="ui one column centered grid">
-                  <div class="ui checkbox">
-                    <input type="checkbox" name="check" id="check-unretro" checked="true">
-                    <label>External</label>
-                  </div>
                 </div>
             </div>
-            <div class= "twelve wide column">
+            <div class= "thirteen wide column">
                 <div class="ui three column grid">
-                    <div class="column" id="plot-a" style="width:24.75vw;height:29.7vh;"></div>
+                    <div class="column" id="plot-a" style="width:24.75vw;height:40vh;"></div>
                     <div class="column" id="plot-b"></div>
                     <div class="column" id="plot-c"></div>
                     <div class="column" id="plot-d"></div>

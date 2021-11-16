@@ -1,4 +1,4 @@
-import { eventHandler } from './filtering.js';
+import { eventHandler } from './browseDBEventHandling.js';
 import { allPlots } from './overview.js';
 import {createDivPagination} from '/javascript/scatter_plots.js';
 
@@ -14,12 +14,12 @@ export function dataTable(inputFilePath, excelColumns, tab) {
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
                 let data = ProcessExcel(e.target.result,excelColumns);
-                if(tab == 1){
+                if(tab === 1){
                     createTable(data);
                     preparePlot(data);
                     filterEvents();
                     eventHandler();
-                }else if(tab == 0){
+                }else if(tab === 0){
                     allPlots(data);
                 }
             };
@@ -99,7 +99,7 @@ export function createWidgets(data){
     let sizeSlider = document.getElementById('size-slider');
     noUiSlider.create(sizeSlider, {
         range: {
-            'min':1000, 
+            'min':minSize, 
             'max': maxSize, 
         },
         step: sizeStep,
