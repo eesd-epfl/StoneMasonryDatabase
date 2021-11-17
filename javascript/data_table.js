@@ -97,17 +97,20 @@ export function createWidgets(data){
     let sizeData = data.map(item => item['H [mm]']);
     let minSize = Math.min.apply(null, sizeData),
         maxSize = Math.max.apply(null, sizeData);
-    let sizeStep = 1
     let sizeSlider = document.getElementById('size-slider');
     noUiSlider.create(sizeSlider, {
         range: {
             'min':minSize, 
             'max': maxSize, 
         },
-        step: sizeStep,
+        step: 50,
         start: [minSize,maxSize],
         tooltips:[true,true],
         connect:true,
+        format:{
+            to: (v) => parseFloat(v).toFixed(0),
+            from: (v) => parseFloat(v).toFixed(0)
+        }
     });
 
     //Strength slider:
@@ -126,18 +129,18 @@ export function createWidgets(data){
     //     connect:true,
     // });
 
-    //Stiffness slider:
-    let minStiffness = Math.min.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc'])),
-        maxStiffness = Math.max.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc']));
-    let stiffnessStep = 0.010;
-    let stiffnessSlider = document.getElementById('stiffness-slider');
-    noUiSlider.create(stiffnessSlider, {
+    //ALR slider:
+    let minALR = Math.min.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc'])),
+        maxALR = Math.max.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc']));
+    let ALRStep = 0.010;
+    let ALRSlider = document.getElementById('ALR-slider');
+    noUiSlider.create(ALRSlider, {
         range: {
-            'min':minStiffness, 
-            'max': maxStiffness, 
+            'min':minALR, 
+            'max': maxALR, 
         },
-        step: stiffnessStep,
-        start: [minStiffness,maxStiffness],
+        step: ALRStep,
+        start: [minALR,maxALR],
         tooltips:[true,true],
         connect:true,
     });
@@ -147,7 +150,7 @@ function getFilterValues(){
     //1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
     let sizeSlider = document.getElementById("size-slider");
-    let stiffnessSlider = document.getElementById("stiffness-slider");
+    let ALRSlider = document.getElementById("ALR-slider");
     let myFilter = [
         //Size slider:
         {field:'H [mm]',type:'>',value:sizeSlider.noUiSlider.get()[0]},
@@ -155,9 +158,9 @@ function getFilterValues(){
         //Strength slider:
         // {field:'H [mm]',type:'>',value:strengthSlider.noUiSlider.get()[0]},
         // {field:'H [mm]',type:'<',value:strengthSlider.noUiSlider.get()[1]},
-        //Stiffness slider:
-        {field:'σ0,tot /fc',type:'>',value:stiffnessSlider.noUiSlider.get()[0]},
-        {field:'σ0,tot /fc',type:'<',value:stiffnessSlider.noUiSlider.get()[1]},
+        //ALR slider:
+        {field:'σ0,tot /fc',type:'>',value:ALRSlider.noUiSlider.get()[0]},
+        {field:'σ0,tot /fc',type:'<',value:ALRSlider.noUiSlider.get()[1]},
         //checkboxes:
         {field:'Typ',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
     ];

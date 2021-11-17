@@ -1,4 +1,6 @@
-
+*{
+  font-family:Arial, Helvetica, sans-serif;
+}
 #gridplots {
     /* width: 60%; */
     /* float:right; */
