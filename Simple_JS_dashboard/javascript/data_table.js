@@ -13,14 +13,15 @@ export function dataTable(inputFilePath, excelColumns, tab) {
         //For Browsers other than IE.
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
-                let data = ProcessExcel(e.target.result,excelColumns);
+                let rawData = ProcessExcel(e.target.result,excelColumns);
+                let data = sortTableHeaders(rawData);
                 if(tab === 1){
                     createTable(data);
                     preparePlot(data);
                     filterEvents();
                     eventHandler();
                 }else if(tab === 0){
-                    allPlots(data);
+                    allPlots(rawData);
                 }
             };
             reader.readAsBinaryString(file);
@@ -58,6 +59,7 @@ function ProcessExcel(data,excelColumns) {
     //Remove empty rows from array:
     for (let i = 0; i<excelObject.length; i++){
         if(excelObject[i].length!=0){
+            // console.log(excelObject[i]);
             intObject.push(excelObject[i]);
         }
     };
@@ -157,7 +159,7 @@ function getFilterValues(){
         {field:'σ0,tot /fc',type:'>',value:stiffnessSlider.noUiSlider.get()[0]},
         {field:'σ0,tot /fc',type:'<',value:stiffnessSlider.noUiSlider.get()[1]},
         //checkboxes:
-        {field:'Stone masonry typology',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
+        {field:'Typ',type:'in',value:Array.from(checkboxes).filter(i => i.checked).map(i => i.value)}
     ];
     return myFilter;
 }
@@ -190,11 +192,34 @@ export function filterEvents(){
 }
 
 function preparePlot(data){
-    createDivPagination(data.filter(item => item['Availability of F-Δ curve']=='1'?true:false));
+    createDivPagination(data.filter(item => item['F-Δ?']=='1'?true:false));
 }
 
 export function clearBox(div) {
     while(div.firstChild) {
         div.removeChild(div.firstChild);
     }
+}
+
+function sortTableHeaders(data){
+    let shortenedData = data.map(function(row){
+        return {
+            'ID': row['ID'],
+            'Reference': row['Reference'],
+            'Name': row['Test unit name'],
+            'Cyclic': row['Cyclic / Monotonic'],
+            'Lab': row['Lab / In-situ'],
+            'Typ': row['Stone masonry typology'],
+            'Mortar': row['Joints'],
+            'H [mm]': row['H [mm]'],
+            'L [mm]': row['L [mm]'],
+            't [mm]': row['t [mm]'],
+            'H0/H': row['H0/H'],
+            'σ0,tot /fc': row['σ0,tot /fc'],
+            'Failure': row['Failure type'],
+            'F-Δ?': row['Availability of F-Δ curve'],
+            'Comment':''
+        }
+    })
+    return shortenedData;
 }

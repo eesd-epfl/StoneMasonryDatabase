@@ -75,13 +75,13 @@ export function createGraph(data,divId){
         }
     }
     let force = ["force"];
-    let displacement = ["disp"];
+    let displacement = ["drift"];
     let title = reducedData[0][1];
-    reducedData[2][0] = 'top. disp. [mm]'
+    reducedData[2][2] = 'drift [%]'
     reducedData[2][1] = 'hor. force [kN]'
     for (let i = 4; i < reducedData.length-3; i++){
-        if((reducedData[i][0]!='NaN' && reducedData[i][1]!='NaN') && reducedData[i][0]!='[mm]'){
-            displacement.push(reducedData[i][0]); //x axis
+        if((reducedData[i][2]!='NaN' && reducedData[i][1]!='NaN') && reducedData[i][2]!='[%]'){
+            displacement.push(reducedData[i][2]); //x axis
             force.push(reducedData[i][1]); //y axis
         }
     }
@@ -105,7 +105,7 @@ export function createGraph(data,divId){
                 
             },
             x:{
-                label: 'top. disp. [mm]',
+                label: 'drift [%]',
                 tick:{
                     format:function (x) {return x.toFixed()},
                     culling:{
@@ -121,7 +121,7 @@ export function createGraph(data,divId){
         },
         tooltip:{
             format: {
-                title: function (x) {return 'disp. value: ' + x},
+                title: function (x) {return 'drift value: ' + x},
             }
         }
     })

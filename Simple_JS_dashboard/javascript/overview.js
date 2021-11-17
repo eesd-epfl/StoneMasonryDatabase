@@ -63,204 +63,204 @@ function plotA(data){
 
     const xAxis = ['A','B','C','D','E','E1'];
 
-    let plotADom =document.getElementById('plot-a');
-    let myChart = echarts.init(plotADom);
-    let option;
+    // let plotADom =document.getElementById('plot-a');
+    // let myChart = echarts.init(plotADom);
+    // let option;
 
-    option = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'shadow'
-            },
-            // formatter: function(params) {
-                // if(params.encode.y[0]!=0){
-                //     params.value = params.encode.y[0];
-                // }
-            // }
-        },
-        legend: {
-            show:false
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        title: {
-            text:'#Tests per Typology',
-            left:'center'
-            // textAlign: 'left'
-        },
-        xAxis: [
-          {
-              type: 'category',
-              data: ['A', 'B', 'C', 'D', 'E', 'E1']
-          }
-        ],
-        yAxis: [
-          {
-              type: 'value'
-          }
-        ],
-        series: [
-            {
-                name: 'Lab A',
-                type: 'bar',
-                emphasis: {
-                    focus: 'series'
-                },
-                stack: 'A',
-                data: [sumALab,0,0,0,0,0]
-            },
-            {
-                name:'Situ A',
-                type:'bar',
-                stack:'A',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[sumASitu,0,0,0,0,0]
-            },
-            {
-                name:'Lab B',
-                type:'bar',
-                stack:'B',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,sumBLab,0,0,0,0]
-            },
-            {
-                name:'Situ B',
-                type:'bar',
-                stack:'B',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,sumBSitu,0,0,0,0]
-            },
-            {
-                name:'Lab C',
-                type:'bar',
-                stack:'C',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,sumCLab,0,0,0]
-            },
-            {
-                name:'Situ C',
-                type:'bar',
-                stack:'C',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,sumCSitu,0,0,0]
-            },
-            {
-                name:'Lab D',
-                type:'bar',
-                stack:'D',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,sumDLab,0,0]
-            },
-            {
-                name:'Situ D',
-                type:'bar',
-                stack:'D',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,sumDSitu,0,0]
-            },
-            {
-                name:'Lab E',
-                type:'bar',
-                stack:'E',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,0,sumELab,0]
-            },
-            {
-                name:'Situ E',
-                type:'bar',
-                stack:'E',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,0,sumESitu,0]
-            },
-            {
-                name:'Lab E1',
-                type:'bar',
-                stack:'E1',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,0,0,sumE1Lab]
-            },
-            {
-                name:'Situ E1',
-                type:'bar',
-                stack:'E1',
-                empahasis:{
-                    focus: 'series'
-                },
-                data:[0,0,0,0,0,sumE1Situ]
-            },
-        ]
-    };
-    option && myChart.setOption(option);
-
-    // let  chart = c3.generate({
-    //     data: {
-    //         columns: [
-    //             ['Lab A',sumALab,0,0,0,0,0],
-    //             ['Situ A',sumASitu,0,0,0,0,0],
-    //             ['Lab B',0,sumBLab,0,0,0,0],
-    //             ['Situ B',0,sumBSitu,0,0,0,0],
-    //             ['Lab C',0,0,sumCLab,0,0,0],
-    //             ['Situ C',0,0,sumCSitu,0,0,0],
-    //             ['Lab D',0,0,0,sumDLab,0,0],
-    //             ['Situ D',0,0,0,sumDSitu,0,0],
-    //             ['Lab E',0,0,0,0,sumELab,0],
-    //             ['Situ E',0,0,0,0,sumESitu,0],
-    //             ['Lab E1',0,0,0,0,0,sumE1Lab],
-    //             ['Situ E1',0,0,0,0,0,sumE1Situ]
-    //             // sumLabArray,
-    //             // sumInSituArray
-    //         ],
-    //         type: 'bar',
-    //         groups: [
-    //             ['Lab A','Situ A'],
-    //             ['Lab B','Situ B'],
-    //             ['Lab C','Situ C'],
-    //             ['Lab D','Situ D'],
-    //             ['Lab E','Situ E'],
-    //             ['Lab E1','Situ E1'],
-
-    //             // ['Lab', 'In-Situ']
-    //         ],
+    // option = {
+    //     tooltip: {
+    //         trigger: 'axis',
+    //         axisPointer: {
+    //             type: 'shadow'
+    //         },
+    //         // formatter: function(params) {
+    //             // if(params.encode.y[0]!=0){
+    //             //     params.value = params.encode.y[0];
+    //             // }
+    //         // }
     //     },
-    //     legend:{
+    //     legend: {
     //         show:false
     //     },
-    //     tooltip:{
-    //         grouped:false
+    //     grid: {
+    //         left: '3%',
+    //         right: '4%',
+    //         bottom: '3%',
+    //         containLabel: true
     //     },
-    //     axis:{
-    //         x:{
-    //             type:'category',
-    //             categories: xAxis
-    //         }
-    //     }
-    // });
-    // plotAEl.append(chart.element);
+    //     title: {
+    //         text:'#Tests per Typology',
+    //         left:'center'
+    //         // textAlign: 'left'
+    //     },
+    //     xAxis: [
+    //       {
+    //           type: 'category',
+    //           data: ['A', 'B', 'C', 'D', 'E', 'E1']
+    //       }
+    //     ],
+    //     yAxis: [
+    //       {
+    //           type: 'value'
+    //       }
+    //     ],
+    //     series: [
+    //         {
+    //             name: 'Lab A',
+    //             type: 'bar',
+    //             emphasis: {
+    //                 focus: 'series'
+    //             },
+    //             stack: 'A',
+    //             data: [sumALab,0,0,0,0,0]
+    //         },
+    //         {
+    //             name:'Situ A',
+    //             type:'bar',
+    //             stack:'A',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[sumASitu,0,0,0,0,0]
+    //         },
+    //         {
+    //             name:'Lab B',
+    //             type:'bar',
+    //             stack:'B',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,sumBLab,0,0,0,0]
+    //         },
+    //         {
+    //             name:'Situ B',
+    //             type:'bar',
+    //             stack:'B',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,sumBSitu,0,0,0,0]
+    //         },
+    //         {
+    //             name:'Lab C',
+    //             type:'bar',
+    //             stack:'C',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,sumCLab,0,0,0]
+    //         },
+    //         {
+    //             name:'Situ C',
+    //             type:'bar',
+    //             stack:'C',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,sumCSitu,0,0,0]
+    //         },
+    //         {
+    //             name:'Lab D',
+    //             type:'bar',
+    //             stack:'D',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,sumDLab,0,0]
+    //         },
+    //         {
+    //             name:'Situ D',
+    //             type:'bar',
+    //             stack:'D',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,sumDSitu,0,0]
+    //         },
+    //         {
+    //             name:'Lab E',
+    //             type:'bar',
+    //             stack:'E',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,0,sumELab,0]
+    //         },
+    //         {
+    //             name:'Situ E',
+    //             type:'bar',
+    //             stack:'E',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,0,sumESitu,0]
+    //         },
+    //         {
+    //             name:'Lab E1',
+    //             type:'bar',
+    //             stack:'E1',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,0,0,sumE1Lab]
+    //         },
+    //         {
+    //             name:'Situ E1',
+    //             type:'bar',
+    //             stack:'E1',
+    //             empahasis:{
+    //                 focus: 'series'
+    //             },
+    //             data:[0,0,0,0,0,sumE1Situ]
+    //         },
+    //     ]
+    // };
+    // option && myChart.setOption(option);
+
+    let  chart = c3.generate({
+        data: {
+            columns: [
+                ['Lab A',sumALab,0,0,0,0,0],
+                ['Situ A',sumASitu,0,0,0,0,0],
+                ['Lab B',0,sumBLab,0,0,0,0],
+                ['Situ B',0,sumBSitu,0,0,0,0],
+                ['Lab C',0,0,sumCLab,0,0,0],
+                ['Situ C',0,0,sumCSitu,0,0,0],
+                ['Lab D',0,0,0,sumDLab,0,0],
+                ['Situ D',0,0,0,sumDSitu,0,0],
+                ['Lab E',0,0,0,0,sumELab,0],
+                ['Situ E',0,0,0,0,sumESitu,0],
+                ['Lab E1',0,0,0,0,0,sumE1Lab],
+                ['Situ E1',0,0,0,0,0,sumE1Situ]
+                // sumLabArray,
+                // sumInSituArray
+            ],
+            type: 'bar',
+            groups: [
+                ['Lab A','Situ A'],
+                ['Lab B','Situ B'],
+                ['Lab C','Situ C'],
+                ['Lab D','Situ D'],
+                ['Lab E','Situ E'],
+                ['Lab E1','Situ E1'],
+
+                // ['Lab', 'In-Situ']
+            ],
+        },
+        legend:{
+            show:false
+        },
+        tooltip:{
+            grouped:false
+        },
+        axis:{
+            x:{
+                type:'category',
+                categories: xAxis
+            }
+        }
+    });
+    plotAEl.append(chart.element);
 }
 
 function plotB(data){
