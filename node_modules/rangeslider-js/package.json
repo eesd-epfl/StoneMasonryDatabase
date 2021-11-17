@@ -1,0 +1,113 @@
+{
+  "name": "rangeslider-js",
+  "version": "3.2.5",
+  "main": "./dist/rangeslider-js.min.js",
+  "description": "lightweight range slider",
+  "author": "Steffen Bär <stbaer.mail@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/stbaer/rangeslider-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stbaer/rangeslider-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stbaer/rangeslider-js/issues"
+  },
+  "keywords": [
+    "rangeslider",
+    "plugin",
+    "ui",
+    "range",
+    "slider"
+  ],
+  "scripts": {
+    "prelint": "echo \"running eslint...\" && exit 0",
+    "lint": "eslint -c ./.eslintrc.js --ext .js src config",
+    "lintfix": "npm run lint -- --fix",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack.config.js --env=development --progress --profile --colors --inline",
+    "prebuild": "npm run lint && rm -rf ./dist",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --env=production --progress --profile --colors",
+    "analyze": "npm run build --report",
+    "postbuild": "csso src/styles.css > dist/styles.min.css",
+    "pretest": "echo \"running tests...\" && exit 0",
+    "test": "NODE_ENV=testing ava -v",
+    "serve:docs": "docute ./docs",
+    "release": "gf-release"
+  },
+  "dependencies": {
+    "custom-event": "^1.0.1",
+    "ev-pos": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/polyfill": "7.4.4",
+    "@babel/preset-env": "7.4.4",
+    "@babel/preset-stage-2": "7.0.0",
+    "@babel/register": "7.4.4",
+    "autoprefixer": "9.5.1",
+    "ava": "1.4.1",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.6",
+    "babel-runtime": "6.26.0",
+    "browser-env": "3.2.6",
+    "css-loader": "2.1.1",
+    "csso-cli": "2.0.2",
+    "eslint": "5.16.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-loader": "2.1.2",
+    "eslint-plugin-import": "2.17.2",
+    "eslint-plugin-node": "9.0.1",
+    "eslint-plugin-promise": "4.1.1",
+    "eslint-plugin-standard": "4.0.0",
+    "file-loader": "3.0.1",
+    "friendly-errors-webpack-plugin": "1.7.0",
+    "gf-release": "1.4.5",
+    "html-webpack-plugin": "3.2.0",
+    "mkdirp": "^0.5.1",
+    "nodes-each": "1.0.3",
+    "progress-bar-webpack-plugin": "1.12.1",
+    "style-loader": "0.23.1",
+    "url-loader": "1.1.2",
+    "webpack": "4.31.0",
+    "webpack-bundle-analyzer": "3.3.2",
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "3.3.1",
+    "webpack-merge": "4.2.1"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "ava": {
+    "concurrency": 5,
+    "failFast": false,
+    "require": [
+      "./test/helpers/ava-setup.js"
+    ]
+  },
+  "releaseConfig": {
+    "buildCommand": "npm run build && git add -A && git commit -am \"updated build (--)\"; ",
+    "versionFiles": [
+      "package.json",
+      "package-lock.json"
+    ],
+    "commitMessagesExclude": [
+      "Merge tag",
+      "Merge branch 'release",
+      "Merge branch 'develop' into",
+      "bumped",
+      "bumbed",
+      "(--)",
+      "Merge branch 'feature/",
+      "updated build",
+      "bumped version"
+    ],
+    "commitBaseUrl": "https://github.com/stbaer/rangeslider-js/commits",
+    "historyFile": "History.md"
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  }
+}

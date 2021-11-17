@@ -15,6 +15,9 @@ export function createDivPagination(data){
     }
     $("#gridplots").pagify(9, ".five.wide.column");
 }
+function random(){
+    
+}
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
 export function createCSVArray(data){
@@ -31,11 +34,10 @@ export function createCSVArray(data){
             selectedCurvesFilePaths.push("data/curve00"+ activePlotData[i]['ID'] + ".csv"); 
         }
     }
-    const randomizedCurveFilePaths = shuffle(selectedCurvesFilePaths);
-    for (let i = 0; i<randomizedCurveFilePaths.length; i++){
-        divName.push(randomizedCurveFilePaths[i].split('/')[1].split('.')[0]);
+    for (let i = 0; i<selectedCurvesFilePaths.length; i++){
+        divName.push(selectedCurvesFilePaths[i].split('/')[1].split('.')[0]);
     }
-    const csvData = [randomizedCurveFilePaths,divName];
+    const csvData = [selectedCurvesFilePaths,divName];
     return csvData;
 }
 
@@ -93,7 +95,10 @@ export function createGraph(data,divId){
             },
             x: displacement[0],
             columns:[displacement,force],
-            type: 'scatter',
+            // type: 'scatter',
+        },    
+        point: {
+            show: false   
         },
         title:{
             text:title,
