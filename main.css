@@ -1,0 +1,139 @@
+
+#gridplots {
+    /* width: 60%; */
+    /* float:right; */
+    overflow: scroll;
+    /* height:80vh; */
+}
+
+#gridplots .five.wide.column{
+  height:28vh;
+}
+
+.c3 {
+  height: 28vh;
+}
+
+/* Text sizing and alignment */
+#title {
+  margin: 0 auto;
+  text-align: center;
+  font-size: larger;
+  padding-top: 1vh;
+  padding-bottom: 2.5vh;
+}
+
+#filter-title {
+  text-align: center;
+  font-size: large;
+  padding-bottom: 1vh;
+  margin-top: 1em;
+}
+
+.widget.label {
+    text-align: center;
+    font-size: medium;
+    padding-bottom: 2.1vh;
+}
+
+.p {
+  text-align: center;
+  /* padding-bottom: 2vh; */
+  padding-top: 0.5vh;
+}
+
+#checkbox-row {
+  padding-top:1vh;
+  padding-left: 4vh;
+  padding-bottom:2vh;
+}
+
+#close {
+  /* padding:0; */
+  /* display: flex; */
+  /* border-color: black;
+  border-width: 0.1em;
+  border-style: solid;
+  border-radius: 0.5em; */
+  margin-right: 0;
+  float:right;
+}
+
+#plot-container {
+  border-style: solid;
+  border-radius:5px;
+  border-color: rgba(34,36,38,.15);
+  margin-top: 1em;
+}
+
+#crackmap-toggle{
+  width: 10vw;
+  display: inline-block;
+}
+
+.toggleSlider {
+  display: inline-block;
+  padding-right: 2.5vw;
+  padding-left: 2.5vw;
+}
+
+/* Container sizing */
+.ui.grid {
+  height: 85vh;
+}
+
+/* Tabulator */
+.tabulator-tableholder, .tabulator-header {
+  font-size: 12px;
+}
+
+
+/* Pagination */
+.pagination{
+  display: block;
+  padding-top: 2vh;
+}
+
+
+/* noUiSlider */
+.slider {
+  height: 10px;
+  margin-top: 2vh;
+  margin-left: 3vh;
+}
+
+.slider .noUi-connect {
+  background: #c0392b;
+}
+
+.slider .noUi-handle {
+  height: 5px;
+  width: 1px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 18px;
+}
+
+.noUi-tooltip {
+  display: none;
+  font-size: smaller;
+
+}
+.noUi-active .noUi-tooltip {
+  display: block;
+}
+
+.pagination a {
+  display: inline-block;
+  margin: 0;
+  border-radius: 1px;
+  padding:5px 8px;
+  transition-duration: 0.4s;
+  background-color: rgb(151, 151, 151);
+  color:white;
+  text-align: center;
+}
+.pagination a:hover{
+background-color: white;
+color:rgb(151, 151, 151);
+}

@@ -1,0 +1,40 @@
+.p {
+    text-align: center;
+    /* padding-bottom: 2vh; */
+    padding-top: 0.5vh;
+    /* padding-bottom: 2vh; */
+  }
+
+  img {
+    height: 8vh;
+    margin: auto;
+    display: flex;
+  }
+
+  .ui.checkbox {
+    margin:auto;
+  }
+
+  #title {
+    text-align: center;
+    font-size: larger;
+  }
+
+  .twelve.wide.column{
+    height: 60vh;
+  }
+  .four.wide.column{
+    height: 60vh;
+  }
+
+#intro-text {
+  font-size: smaller;
+}
+
+#one>.ui.grid>.sixteen.wide.center.aligned.column {
+  padding-bottom: 0.5vh;
+}
+
+#one>.ui.grid>.eight.wide.column {
+  padding-top: 0.5vh;
+}
