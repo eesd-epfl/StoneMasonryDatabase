@@ -54,72 +54,93 @@
       <a class="item">Drift Capacity</a>
     </div>
     <!-- Container for web page -->
-    <div class="ui row" id="title">Stone Masonry Database Overview</div>
+    <div class="sixteen wide center aligned column" id="title">Stone Masonry Database Overview 
+      <i class="info circle icon" id="info-tooltip"> </i>
+      <span id="info-tooltip-text">ALR- Axial Load Ratio - More information to come</span>
+    </div>
     <div class="ui grid">
       <!-- Sliders and Checkbox column-->
       <div class="three wide column" id="widget panel">
-        <div class="row" id="filter-title">Data Table Filters</div>
-        <div class="widget label">Stone Masonry Typologies</div>
-        <!-- Checkboxes-->
-        <div class="row" id="checkbox-row">
-          <div class="field">
+        <div class="ui grid">
+          <div class="sixteen wide center aligned column" id="filter-title">Data Table Filters</div>
+          <div class="widget label">Stone Masonry Typologies</div>
+          <!-- Checkboxes-->
+          <div class="eight wide center aligned column">
+            <div class="ui tiny image">
+                <img src="images/typA.png"/>
+            </div>
             <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-a" value="A" checked="true">
-              <label>A</label>
+                <input type="checkbox" name="check" checked="true">
+                <label>Typ A</label>
             </div>
           </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-b" value="B" checked="true">
-              <label>B</label>       
-            </div>
+          <div class="eight wide center aligned column">
+              <div class="ui tiny image">
+                  <img src="images/typB.png"/>
+              </div>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="check" checked="true">
+                  <label>Typ B</label>
+              </div>
           </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-c" value="C" checked="true">
-              <label>C</label>
-            </div>
+          <div class="eight wide center aligned column">
+              <div class="ui tiny image">
+                  <img src="images/typC.png"/>
+              </div>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="check" checked="true">
+                  <label>Typ C</label>
+              </div>
           </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-d" value="D" checked="true">
-              <label>D</label>
-            </div>
+          <div class="eight wide center aligned column">
+              <div class="ui tiny image">
+                  <img src="images/typD.png"/>
+              </div>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="check" checked="true">
+                  <label>Typ D</label>
+              </div>
           </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-e" value="E" checked="true">
-              <label>E</label>
-            </div>
+          <div class="eight wide center aligned column">
+              <div class="ui tiny image">
+                  <img src="images/typE.png"/>
+              </div>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="check" checked="true">
+                  <label>Typ E</label>
+              </div>
           </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" name="check" id="check-e1" value="E1" checked="true">
-              <label>E1</label>
-            </div>
+          <div class="eight wide center aligned column">
+              <div class="ui tiny image">
+                  <img src="images/typE1.png"/>
+              </div>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="check" checked="true">
+                  <label>Typ E1</label>
+              </div>
           </div>
-        </div>
-        <div class="row">
-          <!--Sliders-->
-          <div class="center aligned column"> 
-            <div class="widget label">Slider selection</div>
-            <div class="center aligned column">
-              <div class="slider" id="size-slider" name="slider" >
-                </div>
-              <div class="p">size</div>
-            </div>
-            <!-- <div class="centered aligned column">
-              <div class="slider" id="strength-slider" name="slider"></div>
-              <div class="p">strength</div>
-            </div> -->
-            <div class="centered aligned column">
-              <div class="slider" id="ALR-slider" name="slider"></div>
-              <div class="p">ALR</div>
+          <div class="row">
+            <!--Sliders-->
+            <div class="center aligned column"> 
+              <div class="widget label">Slider selection</div>
+              <div class="center aligned column">
+                <div class="slider" id="size-slider" name="slider" >
+                  </div>
+                <div class="p">Minimum Size (H [mm])</div>
+              </div>
+              <div class="center aligned column">
+                <div class="slider" id="shear-slider" name="slider"></div>
+                <div class="p">Shear Span (H0/H)</div>
+              </div>
+              <div class="center aligned column">
+                <div class="slider" id="ALR-slider" name="slider"></div>
+                <div class="p">ALR (σ0,tot /fc)</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Data table-->
       <div class="seven wide column">
         <div id="data-table3"></div>
@@ -127,13 +148,56 @@
         <!-- <div id="data-table"> -->
           <!-- <button class="sort" data-sort="ID">sort by ID</button> -->
         </div>
-      <!-- </div> -->
-
-      <!-- Multi plots-->
+        <!-- </div> -->
+        
+        <!-- Multi plots-->
         <div class="six wide column" id="container">
-          <div id="gridplots" class="ui grid"></div>
+        <!-- <div class="ui relaxed grid"> -->
+          <div class="sixteen wide column">
+            
+            <!-- Grid that will contain the 9 plots -->
+            <div id="gridplots" class="ui grid"></div>
+            <!-- The div that will contain the selected row curve, crack map and more. Starts hidden -->
+            <div id="plot-container" class="hidden">
+              <i class="close icon" id="close"></i>
+              <div id="plotDiv" class="hidden">
+                <div id="fdCurve" class="hidden"></div>
+                <div id="crack-map" class="hidden"></div>
+                <div id="photo" class="hidden"></div>
+              </div>
+              <div id="radio-buttons" class="hidden">
+                <div class="grouped fields">
+                  <label>Select what to display:</label>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="selected-curve" checked="checked" value="fdCurve" id="fdRadioButton">
+                      <label>F-D Curve</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="selected-curve" value="crack-map">
+                      <label>Crack Map</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="selected-curve" value="photo">
+                      <label>Photo</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="reference" class="hidden">
+                <div class= "p">Reference(s)</div>
+                <div id="ref1" class>Reference 1:</div>
+                <div id="ref2"class="hidden">Reference 2:</div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> // -->
         </div>
-    </div>
+      </div>
     <!-- Run javascript-->
     <script type="module" src=javascript/data_table.js></script>
     <script type="module" src=javascript/browseDBEventHandling.js></script>

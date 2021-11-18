@@ -61,6 +61,10 @@
   float:right;
 }
 
+.hidden {
+  display: none;
+}
+
 #plot-container {
   border-style: solid;
   border-radius:5px;
@@ -138,4 +142,29 @@
 .pagination a:hover{
 background-color: white;
 color:rgb(151, 151, 151);
+}
+
+
+/* Tooltip container */
+#info-tooltip {
+  /* position: relative; */
+  /* display: inline-block; */
+  /* border-bottom: 1px dotted black; If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+#info-tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  height: 30vh;
+  width: 30vw;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
 }

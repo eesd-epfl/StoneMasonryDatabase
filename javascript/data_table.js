@@ -21,7 +21,7 @@ export function dataTable(inputFilePath, excelColumns, tab) {
                     filterEvents();
                     eventHandler();
                 }else if(tab === 0){
-                    allPlots(rawData);
+                    // allPlots(rawData);
                 }
             };
             reader.readAsBinaryString(file);
@@ -79,7 +79,7 @@ function createTable(data){
         data:data,
         autoColumns:true,
         pagination:"remote",
-        height:"87vh"    
+        height:"85vh"    
         // layout:"fitColumns",
         // paginationSize:20,
     });
@@ -113,26 +113,26 @@ export function createWidgets(data){
         }
     });
 
-    //Strength slider:
-    // let minStrength = Math.min.apply(null, data.map(item => item['H [mm]'])),
-    //     maxStrength = Math.max.apply(null, data.map(item => item['H [mm]']));
-    // let stengthStep = 1;
-    // let strengthSlider = document.getElementById('strength-slider');
-    // noUiSlider.create(strengthSlider, {
-    //     range: {
-    //         'min':minStrength, 
-    //         'max': maxStrength, 
-    //     },
-    //     step: stengthStep,
-    //     start: [minStrength,maxStrength],
-    //     tooltips:[true,true],
-    //     connect:true,
-    // });
+    //Shear Span slider:
+    let minShear = Math.min.apply(null, data.map(item => item['H0/H'])),
+        maxShear = Math.max.apply(null, data.map(item => item['H0/H']));
+    let shearStep = 0.1;
+    let shearSlider = document.getElementById('shear-slider');
+    noUiSlider.create(shearSlider, {
+        range: {
+            'min':minShear, 
+            'max': maxShear, 
+        },
+        step: shearStep,
+        start: [minShear,maxShear],
+        tooltips:[true,true],
+        connect:true,
+    });
 
     //ALR slider:
     let minALR = Math.min.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc'])),
         maxALR = Math.max.apply(null, data.filter(item => item['σ0,tot /fc'] != undefined?true:false).map(item => item['σ0,tot /fc']));
-    let ALRStep = 0.010;
+    let ALRStep = 0.05;
     let ALRSlider = document.getElementById('ALR-slider');
     noUiSlider.create(ALRSlider, {
         range: {
@@ -151,13 +151,14 @@ function getFilterValues(){
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
     let sizeSlider = document.getElementById("size-slider");
     let ALRSlider = document.getElementById("ALR-slider");
+    let shearSlider = document.getElementById("shear-slider");
     let myFilter = [
         //Size slider:
         {field:'H [mm]',type:'>',value:sizeSlider.noUiSlider.get()[0]},
         {field:'H [mm]',type:'<',value:sizeSlider.noUiSlider.get()[1]},
-        //Strength slider:
-        // {field:'H [mm]',type:'>',value:strengthSlider.noUiSlider.get()[0]},
-        // {field:'H [mm]',type:'<',value:strengthSlider.noUiSlider.get()[1]},
+        //Shear slider:
+        {field:'H0/H',type:'>',value:shearSlider.noUiSlider.get()[0]},
+        {field:'H0/H',type:'<',value:shearSlider.noUiSlider.get()[1]},
         //ALR slider:
         {field:'σ0,tot /fc',type:'>',value:ALRSlider.noUiSlider.get()[0]},
         {field:'σ0,tot /fc',type:'<',value:ALRSlider.noUiSlider.get()[1]},
