@@ -1,11 +1,6 @@
-import {config} from '/javascript/config.js';
-import {dataTable} from '/javascript/data_table.js';
-
-function overviewTab(){
-    let data = dataTable(config.inputFilePath ,config.excelColumns, 0);
-}
 
 export function allPlots(data){
+    console.log(data);
     sizeSlider(data);
     plotA(data);
     plotB(data);
@@ -18,7 +13,6 @@ export function allPlots(data){
     plotI(data);
 }
 
-overviewTab();
 function sumTyp(typ,typArray,labSitu,labSituArray){
     let count = 0;
     for (let i = 0; i<typArray.length; i++){

@@ -1,4 +1,4 @@
-import {config} from '/javascript/config.js';
+import { createCSVArray, parseData } from "./browseDBCSVHandling.js";
 
 let gridplots = document.getElementById('gridplots');
 
@@ -17,51 +17,12 @@ export function generatePlots(data){
     $("#gridplots").pagify(9, ".five.wide.column");
 }
 
-//Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
-export function createCSVArray(data){
-    let divName = [];
-    let activePlotData = data;
-    let selectedCurvesFilePaths = [];
-
-    for (let i = 0; i<activePlotData.length; i++){
-        if(activePlotData[i]['ID']>99){
-            selectedCurvesFilePaths.push("data/curve"+activePlotData[i]['ID'] + ".csv");
-        } else if (activePlotData[i]['ID']>9){
-            selectedCurvesFilePaths.push("data/curve0"+ activePlotData[i]['ID']+ ".csv");
-        } else{
-            selectedCurvesFilePaths.push("data/curve00"+ activePlotData[i]['ID'] + ".csv"); 
-        }
-    }
-    for (let i = 0; i<selectedCurvesFilePaths.length; i++){
-        divName.push(selectedCurvesFilePaths[i].split('/')[1].split('.')[0]);
-    }
-    const csvData = [selectedCurvesFilePaths,divName];
-    return csvData;
-}
-
-//Read CSV file and send data to createGraph function:
-export function parseData(createGraph,filePath,fileName){
-    Papa.parse(filePath, {
-        download: true,
-        skipEmptyLines:true,
-        header: false,
-        complete: function(results){
-            createGraph(results.data,fileName);
-        },
-        error:function(){
-            let errorMessage = "No Data to display";
-            let errorDiv = document.createElement("div");
-            errorDiv.id = "no-data";
-            errorDiv.innerHTML = errorMessage;
-            document.getElementById(fileName).append(errorDiv);
-        }
-    });
-}
-
 //Create the plot:
 export function createGraph(data,divId){
     let reducedData = data.slice(0,3);
     let remainingRows = data.slice(3,data.length);
+
+    // Reduce the number of points to plot according to total # of points in csv file:
     if (data.length > 100000){
         for (let i = 0; i<data.length; i += 1000){
             reducedData.push(remainingRows[i]);
@@ -82,24 +43,63 @@ export function createGraph(data,divId){
         }
     }
     let force = ["force"];
-    let displacement = ["drift"];
+    let drift = ["drift"];
     let title = reducedData[0][1];
     reducedData[2][2] = 'drift [%]'
     reducedData[2][1] = 'hor. force [kN]'
     for (let i = 4; i < reducedData.length-3; i++){
         if((reducedData[i][2]!='NaN' && reducedData[i][1]!='NaN') && reducedData[i][2]!='[%]'){
-            displacement.push(reducedData[i][2]); //x axis
+            drift.push(reducedData[i][2]); //x axis
             force.push(reducedData[i][1]); //y axis
         }
     }
 
+    // Getting min and max X values for ticks:
+    let maxX = Math.max(...drift.slice(1));
+    let minX = Math.min(...drift.slice(1));
+
+    let maxXTickValue = 0;
+    let minXTickValue = 0;
+    
+    if(Math.abs(minX)>maxX){
+        maxXTickValue = Math.ceil(Math.abs(minX));
+        minXTickValue = 0 - Math.ceil(Math.abs(minX));
+        
+    }else {
+        maxXTickValue = Math.ceil(maxX);
+        minXTickValue = 0 - Math.ceil(maxX);
+    }
+
+    // Getting min and max Y values for ticks:
+    let maxY = Math.max(...force.slice(1));
+    let minY = Math.min(...force.slice(1));
+    
+    let maxYTickValue = 0;
+    let minYTickValue = 0;
+
+    if(Math.abs(minY)>maxY){
+        maxYTickValue = Math.ceil(Math.abs(minY));
+        minYTickValue = 0 - Math.ceil(Math.abs(minY));
+        
+    }else {
+        maxYTickValue = Math.ceil(maxY);
+        minYTickValue = 0 - Math.ceil(maxY);
+    }
+
     let chart = c3.generate({
+        transition: {
+            duration:500
+        },
+        padding: {
+            left: 25,
+            right: 30
+        },
         data:{
             names: {
                 x: 'horizontal force'
             },
-            x: displacement[0],
-            columns:[displacement,force],
+            x: drift[0],
+            columns:[drift,force],
             // type: 'scatter',
         },
         point: {
@@ -111,19 +111,35 @@ export function createGraph(data,divId){
         },
         axis:{
             y:{
+                padding:{
+                    top:10,
+                    bottom:10
+                },
                 label:'hor. force [kN]',
-                
+                tick: {
+                    fit:true,
+                },
+                culling:{
+                    max:6
+                },
+                count:6,
+                min:minYTickValue,
+                max:maxYTickValue
             },
             x:{
                 label: 'drift [%]',
                 tick:{
                     format:function (x) {return x.toFixed()},
                     culling:{
-                        max:4
+                        max:2
                     },
+                    centered:true,
                     fit:true,
-                    count:3
+                    count:4,
+                    values:[minXTickValue,0,maxXTickValue]
                 },
+                min:minXTickValue,
+                max:maxXTickValue
             }
         },
         legend: {

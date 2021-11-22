@@ -1,12 +1,9 @@
-import { clearBox } from "./data_table.js";
-import { createCSVArray, createGraph, parseData} from "./scatter_plots.js";
+import { clearBox } from "./browseDBTable.js";
+import { createGraph} from "./browseDBScatterPlots.js";
+import { createCSVArray, parseData } from "./browseDBCSVHandling.js";
 
 
-export function eventHandler(excelRefData){
-    rowSelect(excelRefData);
-}
-
-function rowSelect(excelRefData){
+export function popUp(excelRefData){
     let table = Tabulator.findTable("#data-table3")[0];
     table.on("rowClick",function(e,row){
         // Get data from the selected row:

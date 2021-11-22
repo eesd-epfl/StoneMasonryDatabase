@@ -162,6 +162,9 @@ color:rgb(151, 151, 151);
 
 #no-data {
   height: 28vh;
+  text-align: center;
+  padding-top: 12vh;
+  padding-bottom: 12vh;
 }
 
 #crack-map{
