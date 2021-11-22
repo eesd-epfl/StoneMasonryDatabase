@@ -3,7 +3,8 @@ import {config} from '/javascript/config.js';
 let gridplots = document.getElementById('gridplots');
 
 //Final function.
-export function createDivPagination(data){
+export function generatePlots(data){
+
     //Create array with filepaths and filenames:
     const fileNames = createCSVArray(data);
     //Create empty divs that will be paginated (hide all except 9):
@@ -46,6 +47,13 @@ export function parseData(createGraph,filePath,fileName){
         header: false,
         complete: function(results){
             createGraph(results.data,fileName);
+        },
+        error:function(){
+            let errorMessage = "No Data to display";
+            let errorDiv = document.createElement("div");
+            errorDiv.id = "no-data";
+            errorDiv.innerHTML = errorMessage;
+            document.getElementById(fileName).append(errorDiv);
         }
     });
 }
@@ -213,9 +221,6 @@ export function createGraph(data,divId){
 			this.showItems();
 		},
 		showItems: function() {
-            // clearBox(gridplots);
-            // let table = Tabulator.findTable('#data-table3')[0];
-            // const fileNames = createCSVArray(table.getData("active"));
             let divArray = Array.from(gridplots.children)
             for (let i = 0; i<divArray.length; i++){
                 let myDivNode = document.getElementById(divArray[i].id)

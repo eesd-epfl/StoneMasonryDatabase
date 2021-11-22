@@ -1,6 +1,7 @@
 import { eventHandler } from './browseDBEventHandling.js';
+import {config} from './config.js';
 import { allPlots } from './overview.js';
-import {createDivPagination} from '/javascript/scatter_plots.js';
+import {generatePlots} from '/javascript/scatter_plots.js';
 
 export function dataTable(inputFilePath, excelColumns, tab) {
     //Get data from Excel File:
@@ -14,12 +15,12 @@ export function dataTable(inputFilePath, excelColumns, tab) {
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
                 let rawData = ProcessExcel(e.target.result,excelColumns);
-                let data = sortTableHeaders(rawData);
+                let data = sortTableHeaders(rawData[0]);
                 if(tab === 1){
                     createTable(data);
                     preparePlot(data);
                     filterEvents();
-                    eventHandler();
+                    eventHandler(rawData[1]);
                 }else if(tab === 0){
                     // allPlots(rawData);
                 }
@@ -49,18 +50,19 @@ function ProcessExcel(data,excelColumns) {
     });
     //Fetch the name of First Sheet.
     let firstSheet = workbook.SheetNames[0];
+    let secondSheet = workbook.SheetNames[1];
 
     //Read all rows from First Sheet into an JSON array.
-    let excelObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
-
+    let excelFirstSheetObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+    let referenceData = XLS.utils.sheet_to_row_object_array(workbook.Sheets[secondSheet]);
     //Initialise arrays:
     let intObject = [];
 
     //Remove empty rows from array:
-    for (let i = 0; i<excelObject.length; i++){
-        if(excelObject[i].length!=0){
+    for (let i = 0; i<excelFirstSheetObject.length; i++){
+        if(excelFirstSheetObject[i].length!=0){
             // console.log(excelObject[i]);
-            intObject.push(excelObject[i]);
+            intObject.push(excelFirstSheetObject[i]);
         }
     };
     //Filter JSON object to get only wanted columns:
@@ -71,28 +73,26 @@ function ProcessExcel(data,excelColumns) {
         }
         return newRow;
     });
-    return filtered;
+    const returnData = [filtered, referenceData];
+    return returnData;
 };
 
 function createTable(data){
     let table = new Tabulator('#data-table3',{
         data:data,
+        autoColumnsDefinitions:config.tableColumns,
         autoColumns:true,
         pagination:"remote",
         height:"85vh"    
         // layout:"fitColumns",
         // paginationSize:20,
     });
-
-    table.on("tableBuilt", createWidgets(data));
+    table.on("tableBuilt", createSliders(data));
 }
 
-export function createWidgets(data){
-    // let table = Tabulator.findTable('#data-table3')[0];
+export function createSliders(data){
+    //Create noUiSliders:
 
-    //Initializing objects:
-
-    //2. Sliders:
     //Size slider:
     let sizeData = data.map(item => item['H [mm]']);
     let minSize = Math.min.apply(null, sizeData),
@@ -196,7 +196,8 @@ export function filterEvents(){
 }
 
 function preparePlot(data){
-    createDivPagination(data.filter(item => item['F-Δ?']=='1'?true:false));
+    // generatePlots(data.filter(item => item['F-Δ?']=='1'?true:false));
+    generatePlots(data);
 }
 
 export function clearBox(div) {
@@ -206,24 +207,6 @@ export function clearBox(div) {
 }
 
 function sortTableHeaders(data){
-    let shortenedData = data.map(function(row){
-        return {
-            'ID': row['ID'],
-            'Reference': row['Reference'],
-            'Name': row['Test unit name'],
-            'Cyclic': row['Cyclic / Monotonic'],
-            'Lab': row['Lab / In-situ'],
-            'Typ': row['Stone masonry typology'],
-            'Mortar': row['Joints'],
-            'H [mm]': row['H [mm]'],
-            'L [mm]': row['L [mm]'],
-            't [mm]': row['t [mm]'],
-            'H0/H': row['H0/H'],
-            'σ0,tot /fc': row['σ0,tot /fc'],
-            'Failure': row['Failure type'],
-            'F-Δ?': row['Availability of F-Δ curve'],
-            'Comment':''
-        }
-    })
+    let shortenedData = data.map(row => config.sortData(row));
     return shortenedData;
 }
