@@ -3,7 +3,8 @@ import {config} from '/javascript/config.js';
 let gridplots = document.getElementById('gridplots');
 
 //Final function.
-export function createDivPagination(data){
+export function generatePlots(data){
+
     //Create array with filepaths and filenames:
     const fileNames = createCSVArray(data);
     //Create empty divs that will be paginated (hide all except 9):
@@ -49,6 +50,13 @@ export function parseData(createGraph,filePath,fileName){
         header: false,
         complete: function(results){
             createGraph(results.data,fileName);
+        },
+        error:function(){
+            let errorMessage = "No Data to display";
+            let errorDiv = document.createElement("div");
+            errorDiv.id = "no-data";
+            errorDiv.innerHTML = errorMessage;
+            document.getElementById(fileName).append(errorDiv);
         }
     });
 }
@@ -96,7 +104,7 @@ export function createGraph(data,divId){
             x: displacement[0],
             columns:[displacement,force],
             // type: 'scatter',
-        },    
+        },
         point: {
             show: false   
         },
@@ -133,25 +141,6 @@ export function createGraph(data,divId){
     //Append chart element to the div that has its Id (e.g. curve001):§
     document.getElementById(divId).append(chart.element);
 }
-
-//Randomizing function:
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-    return array;
-}
-
 
 //Pagination Function:
 (function($) {
@@ -235,9 +224,6 @@ function shuffle(array) {
 			this.showItems();
 		},
 		showItems: function() {
-            // clearBox(gridplots);
-            // let table = Tabulator.findTable('#data-table3')[0];
-            // const fileNames = createCSVArray(table.getData("active"));
             let divArray = Array.from(gridplots.children)
             for (let i = 0; i<divArray.length; i++){
                 let myDivNode = document.getElementById(divArray[i].id)
