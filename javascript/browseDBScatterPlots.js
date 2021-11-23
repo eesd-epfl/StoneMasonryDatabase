@@ -1,4 +1,5 @@
 import { createCSVArray, parseData } from "./browseDBCSVHandling.js";
+import { config } from "./config.js";
 
 let gridplots = document.getElementById('gridplots');
 
@@ -246,7 +247,7 @@ export function createGraph(data,divId){
             }
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
                 let fileName = divArray[i].id
-                let filePath = "data/"+ fileName + ".csv"
+                let filePath = config.curvesFolderPath+ fileName + ".csv"
                 parseData(createGraph,filePath,fileName);
                 if(i==divArray.length-1){
                     i+= 10;
@@ -258,7 +259,7 @@ export function createGraph(data,divId){
 			this.updateNavigation();
 		},
 		init: function(container, items, perPage) {
-			this.container = container;
+			this.container = $("#pagination");
 			this.currentPage = 0;
 			this.totalPages = 1;
 			this.perPage = perPage;

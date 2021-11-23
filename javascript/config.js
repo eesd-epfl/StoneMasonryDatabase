@@ -52,6 +52,9 @@ export let config = {
     // Relative path to the Excel file, starting from root folder:
     inputFilePath: "data/Vanin et al. (2017) StoneMasonryDatabase.xls",
 
+    //Relative path to Curves folder:
+    curvesFolderPath: "data/Curves/",
+
     // Data for the 9 plots in Overview Page:
     nbPlots: 6,
     hmin: 750,

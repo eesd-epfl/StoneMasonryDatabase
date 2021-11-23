@@ -1,4 +1,4 @@
-import { createTable, filterEvents} from "./BrowseDBTable.js";
+import { createTable, filterEvents} from "./browseDBTable.js";
 import { generatePlots } from "./browseDBScatterPlots.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";

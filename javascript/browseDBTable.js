@@ -37,7 +37,7 @@ export function filterEvents(){
     sliders.forEach(function(slider){
         let table = Tabulator.findTable("#data-table3")[0];
         //Apply new filter values to table
-        slider.noUiSlider.on('slide',function(){
+        slider.noUiSlider.on('change',function(){
             clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());

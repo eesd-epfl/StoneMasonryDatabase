@@ -59,6 +59,7 @@ export function popUp(excelRefData){
             gridplots.style.display = 'flex';
             pagination.style.display = 'block';
             plotDiv.style.display = "none";
+            plotContainer.style.display = "none";
         })        
         windowPlot.style.paddingTop = "2vh"
 
