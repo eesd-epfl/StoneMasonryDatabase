@@ -1,18 +1,14 @@
-import { clearBox } from "./data_table.js";
-import { createCSVArray, createGraph, parseData} from "./scatter_plots.js";
+import { clearBox } from "./browseDBTable.js";
+import { createGraph} from "./browseDBScatterPlots.js";
+import { createCSVArray, parseData } from "./browseDBCSVHandling.js";
 
 
-export function eventHandler(excelRefData){
-    rowSelect(excelRefData);
-}
-
-function rowSelect(excelRefData){
+export function popUp(excelRefData){
     let table = Tabulator.findTable("#data-table3")[0];
     table.on("rowClick",function(e,row){
         // Get data from the selected row:
         let rowData = [row.getData()];  
 
-        // Get and disable the plots and pagination divs:
         let gridplots = document.getElementById("gridplots");
         let pagination = document.getElementsByClassName("pagination")[0];
         let plotDiv = document.getElementById("plotDiv");
@@ -25,7 +21,9 @@ function rowSelect(excelRefData){
         let photoDiv = document.getElementById("photo");
         let ref1 = document.getElementById("ref1");
         let ref2 = document.getElementById("ref2");
-
+        
+        
+        // Disable the plots and pagination divs:
         gridplots.style.display = 'none';
         pagination.style.display = 'none';
 
@@ -35,12 +33,17 @@ function rowSelect(excelRefData){
         radioButtonsDiv.style.display = "block";
         referenceDiv.style.display = "block";
         fdCurveDiv.style.display = "block";
+
+        // Hide crack map and photo divs
         crackMapDiv.style.display = "none";
         photoDiv.style.display = "none";
 
         // Reset reference text:
         ref1.innerHTML = "";
         ref2.innerHTML = "";
+
+        // Remove fdCurve child: 
+        clearBox(fdCurveDiv);
 
         // Reset the radio button to default F-D Curve:
         fdRadioButton.checked = "true";
@@ -51,7 +54,7 @@ function rowSelect(excelRefData){
             let plotDiv = document.getElementById("plotDiv");
             const plotDivChildren = Array.from(plotDiv.children);
             plotDivChildren.forEach(child =>{
-                clearBox(child); //change function to remove children from plotDiv children (everything appended to the 3 divs)
+                clearBox(child);
             })
             gridplots.style.display = 'flex';
             pagination.style.display = 'block';

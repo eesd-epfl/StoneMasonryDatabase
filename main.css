@@ -10,6 +10,7 @@
 
 #gridplots .five.wide.column{
   height:28vh;
+  padding:0;
 }
 
 .c3 {
@@ -162,6 +163,9 @@ color:rgb(151, 151, 151);
 
 #no-data {
   height: 28vh;
+  text-align: center;
+  padding-top: 12vh;
+  padding-bottom: 12vh;
 }
 
 #crack-map{
@@ -177,4 +181,5 @@ color:rgb(151, 151, 151);
 }
 .ref {
   padding-top: 2vh;
+  padding-left: 2vw;
 }

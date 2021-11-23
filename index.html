@@ -39,8 +39,7 @@
     <!-- Tabulator -->
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
-    <link href="node_modules/tabulator-tables/dist/css/tabulator_semanticui.min.css" rel="stylesheet">
-    
+    <link href="semantic/dist/css/tabulator_semanticui.min.css" rel="stylesheet">
     <!-- Sliders -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
@@ -62,7 +61,7 @@
         Acronyms:<br>
         ALR- Axial Load Ratio<br>
         Typ - Stone Masonry Typology<br>
-        Cyclic - Cyclic or Monotonic
+        Cyclic - Cyclic or Monotonic<br>
         Lab - Laboratory or In-situ<br>
         Failure - Failure type</span>
     </div>
@@ -139,11 +138,11 @@
               </div>
               <div class="center aligned column">
                 <div class="slider" id="shear-slider" name="slider"></div>
-                <div class="p">Shear Span (H0/H)</div>
+                <div class="p">Shear Span (H<sub>0</sub>/H)</div>
               </div>
               <div class="center aligned column">
                 <div class="slider" id="ALR-slider" name="slider"></div>
-                <div class="p">ALR (σ0,tot /fc)</div>
+                <div class="p">ALR (σ<sub>0,tot</sub>/f<sub>c</sub>)</div>
               </div>
             </div>
           </div>
@@ -206,9 +205,10 @@
         </div>
       </div>
     <!-- Run javascript-->
-    <script type="module" src=javascript/data_table.js></script>
-    <script type="module" src=javascript/browseDBEventHandling.js></script>
-    <script type="module" src=javascript/scatter_plots.js></script>
-    <script type="module" src="main.js" ></script>
+    <!-- <script type="module" src=javascript/browseDBTab.js></script>
+    <script type="module" src=javascript/browseDBCSVHandling.js></script>
+    <script type="module" src=javascript/browseDBScatterPlots.js></script>
+    <script type="module" src=javascript/browseDBPopUp.js></script> -->
+    <script type="module" src="browseDBMain.js" ></script>
   </body>
 </html>
