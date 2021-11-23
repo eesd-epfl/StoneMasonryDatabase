@@ -130,6 +130,10 @@
   display: block;
 }
 
+.noUi-handle:before, .noUi-handle:after{
+  display:none;
+}
+
 .pagination a {
   display: inline-block;
   margin: 0;
