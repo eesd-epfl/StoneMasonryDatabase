@@ -1,4 +1,4 @@
-import { tooltip } from './javascript/BrowseDBTable.js';
+import { tooltip } from './javascript/browseDBTable.js';
 import { allTabs } from './javascript/crossTabFunctions.js';
 
 function app(){
