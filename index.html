@@ -37,6 +37,10 @@
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
     <link href="semantic/dist/css/tabulator_semanticui.min.css" rel="stylesheet">
+    
+    <!-- fs -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.0.2/package/lib/browser/fs.js"></script>
+
     <!-- Sliders -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
@@ -70,7 +74,7 @@
       <!-- Sliders and Checkbox column-->
       <div class="three wide column" id="widget panel">
         <div class="ui grid">
-          <div class="sixteen wide center aligned column" id="filter-title">Data Table Filters</div>
+          <div class="sixteen wide center aligned column" id="filter-title">Filters</div>
           <div class="sixteen wide center aligned column" id="widget-label">Stone Masonry Typologies</div>
           <!-- Checkboxes-->
           <div class="eight wide center aligned column">
@@ -131,7 +135,7 @@
 
             <!--Sliders-->
             <div class="center aligned column"> 
-              <div class="widget label">Slider selection</div>
+              <!-- <div class="widget label"></div> -->
               <div class="center aligned column">
                 <div class="slider" id="size-slider" name="slider" >
                   </div>
@@ -154,7 +158,6 @@
       <div class="seven wide column">
         <div id="data-table3"></div>
         </div>
-        <!-- </div> -->
         
         <!-- Multi plots-->
         <div class="six wide column" id="container">

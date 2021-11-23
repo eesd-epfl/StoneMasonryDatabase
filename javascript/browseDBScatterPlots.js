@@ -247,7 +247,7 @@ export function createGraph(data,divId){
             }
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
                 let fileName = divArray[i].id
-                let filePath = config.curvesFolderPath+ fileName + ".csv"
+                let filePath = config.curvesFolderPath+ "FD_"+fileName + ".csv"
                 parseData(createGraph,filePath,fileName);
                 if(i==divArray.length-1){
                     i+= 10;
