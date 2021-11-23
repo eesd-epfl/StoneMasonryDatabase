@@ -3,7 +3,7 @@ export let config = {
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
     'Stone masonry typology','Joints','Stone','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
-    'σ0,tot /fc','Failure type','Availability of F-Δ curve'],
+    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted','Comment'],
     
     // Use this to rename the column headers to whatever you want:
     sortData(row){
@@ -23,7 +23,8 @@ export let config = {
             'σ0,tot /fc': row['σ0,tot /fc'],
             'Failure': row['Failure type'],
             'F-Δ?': row['Availability of F-Δ curve'],
-            'Comment':''
+            'Fitting':row['Unretrofitted / Retrofitted'],
+            'Comment':row['Comment']
         }
     },
     // Use this to show only the columns that you want (needs to correspond to the columns above):
@@ -46,11 +47,15 @@ export let config = {
         {title:'H<sub>0</sub>/H', field:'H0/H',visible :true},
         {title:'σ<sub>0,tot</sub> /f<sub>c</sub>', field:'σ0,tot /fc',visible :true},
         {title:'Failure', field:'Failure',visible :true},
-        {title:'Reference', field:'Reference',visible :true},
-        {title:'Comment', field:'Comment',visible :true}],
+        {title:'Fitting',field:'Fitting',visible:true},
+        {title:'Comment', field:'Comment',visible :true},
+    ],
 
     // Relative path to the Excel file, starting from root folder:
     inputFilePath: "data/Vanin et al. (2017) StoneMasonryDatabase.xls",
+
+    //Relative path to Curves folder:
+    curvesFolderPath: "data/Curves/",
 
     // Data for the 9 plots in Overview Page:
     nbPlots: 6,

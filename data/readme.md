@@ -17,8 +17,8 @@ Data
 └─── Images
 │   │   crackmap\_{TestUnit}_{AuthorYear}.csv
 │   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.csv
-│   │   photo\_{TestUnit}_{AuthorYear}.csv
-│   │   photo\_{OtherTestUnit}_{OtherAuthorYear}.csv
+│   │   photo\_{TestUnit}_{AuthorYear}.jpg
+│   │   photo\_{OtherTestUnit}_{OtherAuthorYear}.jpg
 │   │   ...
 
 ```

@@ -114,11 +114,11 @@
 }
 
 .slider .noUi-handle {
-  height: 5px;
-  width: 1px;
+  height: 18px;
+  width: 18px;
   top: -5px;
   right: -9px; /* half the width */
-  border-radius: 18px;
+  border-radius: 9px;
 }
 
 .noUi-tooltip {

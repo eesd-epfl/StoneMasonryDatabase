@@ -1,23 +1,17 @@
+import {config} from './config.js'
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
 export function createCSVArray(data){
-    let divName = [];
-    let activePlotData = data;
-    let selectedCurvesFilePaths = [];
+    let fileNames = [];
+    let FDfilePaths = [];
 
-    for (let i = 0; i<activePlotData.length; i++){
-        if(activePlotData[i]['ID']>99){
-            selectedCurvesFilePaths.push("data/curve"+activePlotData[i]['ID'] + ".csv");
-        } else if (activePlotData[i]['ID']>9){
-            selectedCurvesFilePaths.push("data/curve0"+ activePlotData[i]['ID']+ ".csv");
-        } else{
-            selectedCurvesFilePaths.push("data/curve00"+ activePlotData[i]['ID'] + ".csv"); 
-        }
+    for (let i = 0; i<data.length; i++){
+        let FDFileName = "FD_"+makeFileName(data[i])+".csv";
+        let FDFilePath = config.curvesFolderPath + FDFileName;
+        FDfilePaths.push(FDFilePath);
+        fileNames.push(makeFileName(data[i]));
     }
-    for (let i = 0; i<selectedCurvesFilePaths.length; i++){
-        divName.push(selectedCurvesFilePaths[i].split('/')[1].split('.')[0]);
-    }
-    const csvData = [selectedCurvesFilePaths,divName];
+    const csvData = [FDfilePaths,fileNames];
     return csvData;
 }
 
@@ -38,4 +32,12 @@ export function parseData(createGraph,filePath,fileName){
             document.getElementById(fileName).append(errorDiv);
         }
     });
+}
+
+function makeFileName(data){
+    const testUnitName = data['Name'].replaceAll(".","").replaceAll("-","").replaceAll("#","").replaceAll(" ","");
+    const reference = data['Reference'].split(' ')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const year = data['Reference'].split(' ').at(-1).replace("(","").replace(")","");
+    const curveName = testUnitName+"_"+reference+year;
+    return curveName;
 }
