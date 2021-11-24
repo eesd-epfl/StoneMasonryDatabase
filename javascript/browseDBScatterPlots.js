@@ -17,12 +17,21 @@ export function generatePlots(data){
     }
     $("#gridplots").pagify(9, ".five.wide.column");
 }
-function random(){
-    
-}
 
 //Create the plot:
 export function createGraph(data,divId){
+    let testUnitName;
+    const table = Tabulator.findTable('#data-table3')[0];
+    const tableData = table.getData('active');
+
+    if(divId.includes('fdCurve')){
+        testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
+    }else{
+        testUnitName = divId.split('_')[0];
+    }
+    const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','') === testUnitName);
+    const bilinDrift = ['bilinDrift',(0-excelRowData[0]['du,- [%]']),(0-excelRowData[0]['dy,- [%]']),'0',excelRowData[0]['dy,+ [%]'], excelRowData[0]['du,+ [%]']];
+    const bilinForce = ['bilinForce',(0-excelRowData[0]['Vu,- [kN]']),(0-excelRowData[0]['Vu,- [kN]']), '0', excelRowData[0]['Vu,+ [kN]'],excelRowData[0]['Vu,+ [kN]']];
     let reducedData = data.slice(0,3);
     let remainingRows = data.slice(3,data.length);
 
@@ -89,7 +98,6 @@ export function createGraph(data,divId){
         maxYTickValue = Math.ceil(maxY);
         minYTickValue = 0 - Math.ceil(maxY);
     }
-
     let chart = c3.generate({
         transition: {
             duration:500
@@ -102,8 +110,18 @@ export function createGraph(data,divId){
             names: {
                 x: 'horizontal force'
             },
-            x: drift[0],
-            columns:[drift,force],
+            xs: {
+                'force':'drift',
+                'bilinForce':'bilinDrift'
+            },
+            // columns: columns,
+            // types: {
+            //     'force':'scatter',
+            //     // 'bilinForce':'scatter'
+            // }
+
+            // x: drift[0],
+            columns:[drift,force,bilinDrift,bilinForce],
             // type: 'scatter',
         },
         point: {

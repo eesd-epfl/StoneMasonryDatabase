@@ -3,7 +3,7 @@ export let config = {
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
     'Stone masonry typology','Joints','Stone','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
-    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted','Comment'],
+    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted','Comment','dy,+ [%]','dy,- [%]','du,+ [%]','Vu,+ [kN]','du,- [%]','Vu,- [kN]'],
     
     // Use this to rename the column headers to whatever you want:
     sortData(row){
@@ -24,7 +24,13 @@ export let config = {
             'Failure': row['Failure type'],
             'F-Δ?': row['Availability of F-Δ curve'],
             'Fitting':row['Unretrofitted / Retrofitted'],
-            'Comment':row['Comment']
+            'Comment':row['Comment'],
+            'dy,+ [%]':row['dy,+ [%]'],
+            'dy,- [%]':row['dy,- [%]'],
+            'du,+ [%]':row['du,+ [%]'],
+            'Vu,+ [kN]':row['Vu,+ [kN]'],
+            'du,- [%]':row['du,- [%]'],
+            'Vu,- [kN]':row['Vu,- [kN]']
         }
     },
     // Use this to show only the columns that you want (needs to correspond to the columns above):
@@ -33,6 +39,12 @@ export let config = {
         {title:"ID", field:"ID",visible :false},
         {title:'Reference nb', field:'Reference nb',visible :false},
         {title:'F-Δ?', field:'F-Δ?',visible :false},
+        {title:'dy,+ [%]', field:'dy,+ [%]', visible:false},
+        {title:'dy,- [%]', field:'dy,- [%]', visible:false},
+        {title:'du,+ [%]', field:'du,+ [%]', visible:false},
+        {title:'Vu,+ [kN]', field:'Vu,+ [kN]', visible:false},
+        {title:'du,- [%]', field:'du,- [%]', visible:false},
+        {title:'Vu,- [kN]', field:'Vu,- [kN]', visible:false},
 
         // All the others should be true:
         {title:'Reference', field:'Reference',visible :true},

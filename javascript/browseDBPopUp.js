@@ -8,7 +8,6 @@ export function popUp(excelRefData){
     table.on("rowClick",function(e,row){
         // Get data from the selected row:
         let rowData = [row.getData()];  
-
         let gridplots = document.getElementById("gridplots");
         let pagination = document.getElementsByClassName("pagination")[0];
         let plotDiv = document.getElementById("plotDiv");
@@ -21,6 +20,7 @@ export function popUp(excelRefData){
         let photoDiv = document.getElementById("photo");
         let ref1 = document.getElementById("ref1");
         let ref2 = document.getElementById("ref2");
+        let img = document.getElementById("image");
         
         
         // Disable the plots and pagination divs:
@@ -66,7 +66,9 @@ export function popUp(excelRefData){
         const plotData = createCSVArray(rowData);
         parseData(createGraph,plotData[0][0],"fdCurve");
         fdCurveDiv.style.display = "block";
+    
         
+
         // Placeholder for crackmap:
         crackMapDiv.style.display = "none";
         crackMapDiv.style.height = "28vh";
@@ -77,6 +79,7 @@ export function popUp(excelRefData){
         // crackMapDiv.append(crackMapImage);
         
         // Placeholder for photo:
+        // img.src = plotData
         photoDiv.innerHTML = "No photo available";
         photoDiv.style.height = "28vh";
 

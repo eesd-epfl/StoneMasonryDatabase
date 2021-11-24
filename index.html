@@ -16,15 +16,15 @@
 
     <!-- Load Papaparse -->
     <script src="javascript/PapaParse-5.0.2/papaparse.min.js"></script>
+    <!-- Load XLS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <!-- Load Semantic UI JS-->
     <script src="semantic/dist/semantic.min.js"></script>
     
-    <!-- Load XLS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Tabulator -->
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
@@ -129,7 +129,6 @@
 
             <!--Sliders-->
             <div class="center aligned column"> 
-              <!-- <div class="widget label"></div> -->
               <div class="center aligned column">
                 <div class="slider" id="size-slider" name="slider" >
                   </div>
@@ -167,7 +166,9 @@
               <div id="plotDiv" class="hidden">
                 <div id="fdCurve" class="hidden"></div>
                 <div id="crack-map" class="hidden"></div>
-                <div id="photo" class="hidden"></div>
+                <div id="photo" class="hidden">
+                  <img id="image">
+                </div>
               </div>
               <div id="radio-buttons" class="hidden">
                 <div class="grouped fields">

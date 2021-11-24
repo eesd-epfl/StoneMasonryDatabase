@@ -10,7 +10,7 @@
 
 #gridplots .five.wide.column{
   height:28vh;
-  padding:0;
+  padding: 0;
 }
 
 .c3 {
@@ -71,6 +71,7 @@
   border-radius:5px;
   border-color: rgba(34,36,38,.15);
   margin-top: 1em;
+  margin-right: 2vw;
 }
 
 #crackmap-toggle{
