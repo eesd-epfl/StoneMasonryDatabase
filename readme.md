@@ -33,8 +33,8 @@ A Python 3 HTTP Server was used.
 
 Nothing to install.
 
-
 ### How to run
+
 Using Python3:
 
 python -m http.server 8000 --bind 127.0.0.1
