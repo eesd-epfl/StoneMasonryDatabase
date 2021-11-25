@@ -10,10 +10,13 @@ Data
 └─── Curves
 │   │   FD\_{TestUnit}_{AuthorYear}.csv
 │   │   FD\_{OtherTestUnit}_{OtherAuthorYear}.csv
-│   │   bilinearisation\_{TestUnit}_{AuthorYear}.csv
-│   │   bilinearisation_{OtherTestUnit}_{OtherAuthorYear}.csv
 │   │   ...
-│   
+│   │
+└─── Envelopes
+│   │	envelope\_{TestUnit}_{AuthorYear}.csv
+│   │	envelope\_{OtherTestUnit}_{OtherAuthorYear}.csv
+│   │	...
+│   │
 └─── Images
 │   │   crackmap\_{TestUnit}_{AuthorYear}.csv
 │   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.csv

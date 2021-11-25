@@ -25,12 +25,40 @@ export function parseData(createGraph,filePath,fileName){
             createGraph(results.data,fileName);
         },
         error:function(){
-            let errorMessage = "No Data to display";
+            let errorMessage = fileName.split('_')[0] + "<br>No Data to display";
             let errorDiv = document.createElement("div");
             errorDiv.id = "no-data";
             errorDiv.innerHTML = errorMessage;
             document.getElementById(fileName).append(errorDiv);
         }
+    });
+}
+
+export function parseEnvelopeData(fileId,chart){
+    const filePath = config.envelopesFolderPath + "envelope_"+fileId + ".csv"
+    Papa.parse(filePath, {
+        download: true,
+        skipEmptyLines:true,
+        header: false,
+        complete: function(result){
+            // Format the data from csv file to append to chart:
+            const xs = {'envForce':'envDrift'};
+            let envDrift = ['envDrift'];
+            let envForce = ['envForce'];
+            for (let i = 4; i < result.data.length-3; i++){
+                if((result.data[i][2]!='NaN' && result.data[i][1]!='NaN') && result.data[i][2]!='[%]'){
+                    envDrift.push(result.data[i][2]); //x axis
+                    envForce.push(result.data[i][1]); //y axis
+                }
+            }
+            const columns = [envDrift,envForce];
+            chart.flow({
+                data:{
+                    xs:xs, 
+                    columns: columns
+                }
+            })
+        },
     });
 }
 

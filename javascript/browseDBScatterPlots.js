@@ -1,4 +1,4 @@
-import { createCSVArray, parseData } from "./browseDBCSVHandling.js";
+import { createCSVArray, parseData, parseEnvelopeData } from "./browseDBCSVHandling.js";
 import { config } from "./config.js";
 
 let gridplots = document.getElementById('gridplots');
@@ -29,7 +29,7 @@ export function createGraph(data,divId){
     }else{
         testUnitName = divId.split('_')[0];
     }
-    const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','') === testUnitName);
+    const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
     const bilinDrift = ['bilinDrift',(0-excelRowData[0]['du,- [%]']),(0-excelRowData[0]['dy,- [%]']),'0',excelRowData[0]['dy,+ [%]'], excelRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-excelRowData[0]['Vu,- [kN]']),(0-excelRowData[0]['Vu,- [kN]']), '0', excelRowData[0]['Vu,+ [kN]'],excelRowData[0]['Vu,+ [kN]']];
     let reducedData = data.slice(0,3);
@@ -112,17 +112,12 @@ export function createGraph(data,divId){
             },
             xs: {
                 'force':'drift',
-                'bilinForce':'bilinDrift'
+                'bilinForce':'bilinDrift',
+                'envForce':'envDrift'
             },
-            // columns: columns,
-            // types: {
-            //     'force':'scatter',
-            //     // 'bilinForce':'scatter'
-            // }
-
-            // x: drift[0],
             columns:[drift,force,bilinDrift,bilinForce],
             // type: 'scatter',
+            xSort: false
         },
         point: {
             show: false   
@@ -173,6 +168,8 @@ export function createGraph(data,divId){
             }
         }
     })
+    parseEnvelopeData(divId, chart)
+
     //Append chart element to the div that has its Id (e.g. curve001):§
     document.getElementById(divId).append(chart.element);
 }
