@@ -18,9 +18,8 @@ The dashboard is under active development. A first version will be available by 
 
 ## Getting started
 
-{Placeholder --> In here share commands to install and run + please share your developping environment (Anaconda yml env, or pipenv txt files)}
-
 ### Dependencies
+
 All dependencies are located in HTML files and use CDN (online sources) to fetch required JS/CSS libraries.
 
 A recent Web Browser is required (Chrome, Mozilla, Safari, etc.).
@@ -31,11 +30,13 @@ When running locally, a local server is required.
 A Python 3 HTTP Server was used.
 
 ### How to install
+
 Nothing to install.
 
 
 ### How to run
 Using Python3:
+
 python -m http.server 8000 --bind 127.0.0.1
 
 Go to http://localhost:8000/ to visualise the dashboard.
@@ -48,7 +49,9 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
 
 # Authors 
 Developer - Patrick Loeliger
+
 Project Lead - Charlotte Weil
+
 Contributors - Katrin Beyer and Ivana Bozulic
 
 # License 
