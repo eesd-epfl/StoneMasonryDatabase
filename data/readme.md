@@ -18,8 +18,8 @@ Data
 │   │	...
 │   │
 └─── Images
-│   │   crackmap\_{TestUnit}_{AuthorYear}.csv
-│   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.csv
+│   │   crackmap\_{TestUnit}_{AuthorYear}.jpg
+│   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.jpg
 │   │   photo\_{TestUnit}_{AuthorYear}.jpg
 │   │   photo\_{OtherTestUnit}_{OtherAuthorYear}.jpg
 │   │   ...

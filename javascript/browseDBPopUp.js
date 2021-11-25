@@ -77,7 +77,7 @@ export function popUp(excelRefData){
         
         const fdCurveFilePath = config.curvesFolderPath + "FD_" + fileId + ".csv";
         const imgFilePath = config.imagesFolderPath + "photo_" + fileId + ".jpg"
-        const crackmapFilePath = config.imagesFolderPath + "crackmap_" + fileId + ".jpg"
+        const crackmapFilePath = config.imagesFolderPath + "crackmap_" + fileId + ".png"
 
         function executeIfFileExist(source) {
             var xhr = new XMLHttpRequest()
@@ -102,6 +102,7 @@ export function popUp(excelRefData){
                             photoDiv.style.height = "28vh";
                             photoImage.style.height = "28vh"
                         } else if(source.includes("crackmap")){
+                            console.log("hi");
                             // Create child and append it to the div:
                             const crackmapImage = document.createElement("img");
                             crackmapImage.id = "crackmap-image";
