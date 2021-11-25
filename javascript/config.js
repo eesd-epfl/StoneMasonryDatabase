@@ -68,6 +68,7 @@ export let config = {
 
     //Relative path to Curves folder:
     curvesFolderPath: "data/Curves/",
+    imagesFolderPath: "data/Images/",   
 
     // Data for the 9 plots in Overview Page:
     nbPlots: 6,

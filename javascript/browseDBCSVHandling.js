@@ -6,10 +6,10 @@ export function createCSVArray(data){
     let FDfilePaths = [];
 
     for (let i = 0; i<data.length; i++){
-        let FDFileName = "FD_"+makeFileName(data[i])+".csv";
+        let FDFileName = "FD_"+makeFileName(data[i])[0]+".csv";
         let FDFilePath = config.curvesFolderPath + FDFileName;
         FDfilePaths.push(FDFilePath);
-        fileNames.push(makeFileName(data[i]));
+        fileNames.push(makeFileName(data[i])[0]);
     }
     const csvData = [FDfilePaths,fileNames];
     return csvData;
@@ -34,10 +34,11 @@ export function parseData(createGraph,filePath,fileName){
     });
 }
 
-function makeFileName(data){
+export function makeFileName(data){
     const testUnitName = data['Name'].replaceAll(".","").replaceAll("-","").replaceAll("#","").replaceAll(" ","");
     const reference = data['Reference'].split(' ')[0].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const year = data['Reference'].split(' ').at(-1).replace("(","").replace(")","");
     const curveName = testUnitName+"_"+reference+year;
-    return curveName;
+    const fileInfo = [curveName, testUnitName];
+    return fileInfo;
 }

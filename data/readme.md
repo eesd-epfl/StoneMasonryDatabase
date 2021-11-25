@@ -63,10 +63,6 @@ Each data file contains 4 lines of metadata:
 | horizontal\_force         | horizontal force                       | [kN] | float    |  y |
 | drift | drift               | [%]   | float   |  y |
 
-### Bilinearisation curves
-***Filename: FD\_{TestUnitName}_{AuthorYear}.csv***
-
-Same structure as Force-displacement curves.
 
 ### Crack maps
 ***Filename: crackmap\_{TestUnitName}_{AuthorYear}.{jpg/svg}***
