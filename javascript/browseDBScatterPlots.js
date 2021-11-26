@@ -19,13 +19,14 @@ export function generatePlots(data){
 }
 
 //Create the plot:
-export function createGraph(data,divId){
+export function createGraph(data,divId,fileId){
     let testUnitName;
     const table = Tabulator.findTable('#data-table3')[0];
     const tableData = table.getData('active');
 
     if(divId.includes('fdCurve')){
         testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
+        
     }else{
         testUnitName = divId.split('_')[0];
     }
@@ -168,7 +169,7 @@ export function createGraph(data,divId){
             }
         }
     })
-    parseEnvelopeData(divId, chart)
+    parseEnvelopeData(chart, fileId);
 
     //Append chart element to the div that has its Id (e.g. curve001):§
     document.getElementById(divId).append(chart.element);
@@ -266,7 +267,7 @@ export function createGraph(data,divId){
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
                 let fileName = divArray[i].id
                 let filePath = config.curvesFolderPath+ "FD_"+fileName + ".csv"
-                parseData(createGraph,filePath,fileName);
+                parseData(createGraph,filePath,fileName,fileName);
                 if(i==divArray.length-1){
                     i+= 10;
                 }

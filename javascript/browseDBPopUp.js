@@ -26,7 +26,6 @@ export function popUp(excelRefData){
         let crackmapImage = document.getElementById("crackmap-image");
         const fileId = makeFileName(rowData[0])[0];
         const testUnitName = makeFileName(rowData[0])[1];
-        
         // Disable the plots and pagination divs:
         gridplots.style.display = 'none';
         pagination.style.display = 'none';
@@ -86,7 +85,7 @@ export function popUp(excelRefData){
                 if(xhr.readyState == 4){
                     if(xhr.status == 200){
                         if(source.includes("FD_")){
-                            parseData(createGraph,plotData[0][0],"fdCurve");
+                            parseData(createGraph,plotData[0][0],"fdCurve", plotData[1][0]);
                             fdCurveDiv.style.height = "28vh";
                             fdCurveDiv.style.paddingTop = "0vh";
                             fdCurveDiv.style.paddingBottom = "0vh";
@@ -102,7 +101,6 @@ export function popUp(excelRefData){
                             photoDiv.style.height = "28vh";
                             photoImage.style.height = "28vh"
                         } else if(source.includes("crackmap")){
-                            console.log("hi");
                             // Create child and append it to the div:
                             const crackmapImage = document.createElement("img");
                             crackmapImage.id = "crackmap-image";

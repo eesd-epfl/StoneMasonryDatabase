@@ -16,13 +16,13 @@ export function createCSVArray(data){
 }
 
 //Read CSV file and send data to createGraph function:
-export function parseData(createGraph,filePath,fileName){
+export function parseData(createGraph,filePath,fileName,fileId){
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
-            createGraph(results.data,fileName);
+            createGraph(results.data,fileName,fileId);
         },
         error:function(){
             let errorMessage = fileName.split('_')[0] + "<br>No Data to display";
@@ -34,7 +34,8 @@ export function parseData(createGraph,filePath,fileName){
     });
 }
 
-export function parseEnvelopeData(fileId,chart){
+export function parseEnvelopeData(chart,fileId){
+
     const filePath = config.envelopesFolderPath + "envelope_"+fileId + ".csv"
     Papa.parse(filePath, {
         download: true,
