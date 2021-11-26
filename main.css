@@ -82,6 +82,10 @@
   margin-right: 2vw;
 }
 
+.c3-line-envForce {
+  stroke-width: 1.5px;
+}
+
 #crackmap-toggle{
   width: 10vw;
   display: inline-block;
@@ -95,7 +99,7 @@
 
 /* Container sizing */
 .ui.grid {
-  height: 85vh;
+  height: 84vh;
 }
 
 /* Tabulator */
@@ -147,7 +151,7 @@
   display: inline-block;
   margin: 0;
   margin-top: 0.2vh;
-  padding:.5em 1.0em;
+  padding:.5em 0.5em;
   line-height: 1;
   flex:0 0 auto;
   -webkit-tap-highlight-color:transparent;

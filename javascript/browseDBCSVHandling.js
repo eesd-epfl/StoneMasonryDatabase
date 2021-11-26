@@ -53,14 +53,16 @@ export function parseEnvelopeData(chart,fileId){
                 }
             }
             const columns = [envDrift,envForce];
-            chart.flow({
-                data:{
+            console.log(xs);
+            console.log(chart);
+            console.log(columns);
+            chart.load({
                     xs:xs, 
                     columns: columns
-                }
             })
         },
     });
+    chart.resize();
 }
 
 export function makeFileName(data){

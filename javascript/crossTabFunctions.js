@@ -23,7 +23,7 @@ export function allTabs(tab) {
 
                 // Browse DB Tab:
                 if(tab === 1){
-                    createTable(data);
+                    let table = createTable(data);
                     // Create empty divs, display first 9, paginate everything and create and append the first 9 plots to the divs 
                     generatePlots(data);
                     // Add Events to widgets
@@ -67,6 +67,7 @@ function ProcessExcel(data) {
 
     // Read all rows from First and Second Sheet into JSON arrays.
     let excelFirstSheetObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+    console.log(excelFirstSheetObject);
     let referenceData = XLS.utils.sheet_to_row_object_array(workbook.Sheets[secondSheet]);
 
     

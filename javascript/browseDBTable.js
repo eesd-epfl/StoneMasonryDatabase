@@ -14,6 +14,7 @@ export function createTable(data){
         // paginationSize:20,
     });
     table.on("tableBuilt", createSliders(data));
+    return table;
 }
 
 //Assign events to the widgets:

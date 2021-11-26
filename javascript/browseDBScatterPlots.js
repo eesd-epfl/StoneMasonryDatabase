@@ -30,7 +30,10 @@ export function createGraph(data,divId,fileId){
     }else{
         testUnitName = divId.split('_')[0];
     }
+
+    // Make this a function in browseDBCSVHandling
     const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
+    
     const bilinDrift = ['bilinDrift',(0-excelRowData[0]['du,- [%]']),(0-excelRowData[0]['dy,- [%]']),'0',excelRowData[0]['dy,+ [%]'], excelRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-excelRowData[0]['Vu,- [kN]']),(0-excelRowData[0]['Vu,- [kN]']), '0', excelRowData[0]['Vu,+ [kN]'],excelRowData[0]['Vu,+ [kN]']];
     let reducedData = data.slice(0,3);
@@ -138,11 +141,11 @@ export function createGraph(data,divId,fileId){
                     fit:true,
                 },
                 culling:{
-                    max:6
+                    max:4
                 },
-                count:6,
+                count:4,
                 min:minYTickValue,
-                max:maxYTickValue
+                max:maxYTickValue,
             },
             x:{
                 label: 'drift [%]',
@@ -161,7 +164,8 @@ export function createGraph(data,divId,fileId){
             }
         },
         legend: {
-            hide:true
+            position:'right'
+            // hide:true
         },
         tooltip:{
             format: {
