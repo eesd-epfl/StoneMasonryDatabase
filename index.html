@@ -46,14 +46,17 @@
 
   <body>
     <!-- Nav bar/Menu -->
-    <div class="ui menu">
+    <div class="ui seven item menu">
+      <a><img src="./images/logo-epfl-1024x576.png" id="epfl-logo"></a>
       <a class="item" href="./overview.html">Overview DB</a>
       <a class="active item">Browse DB test</a>
       <a class="item">Strength</a>
       <a class="item">Stiffness</a>
       <a class="item">Drift Capacity</a>
+      <a class="item" href="./about.html"><i class="info icon"></i></a>
     </div>
     <!-- Container for web page -->
+    <!-- <div class="four wide center aligned column"></div> -->
     <div class="sixteen wide center aligned column" id="title">Stone Masonry Database Overview 
       <i class="info circle icon" id="info-tooltip"> </i>
       <span id="info-tooltip-text">
@@ -162,7 +165,7 @@
             
             <!-- The div that will contain the selected row curve, crack map and more. Starts hidden -->
             <div id="plot-container" class="hidden">
-              <i class="close icon" id="close"></i>
+              <i class="large close icon" id="close"></i>
               <div id="plotDiv" class="hidden">
                 <div id="fdCurve" class="hidden"></div>
                 <div id="crack-map" class="hidden">
