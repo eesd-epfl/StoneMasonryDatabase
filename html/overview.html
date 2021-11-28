@@ -11,14 +11,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js" integrity="sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Load Semantic UI-->
-        <script src="semantic/dist/semantic.min.js"></script>
+        <script src="../semantic/dist/semantic.min.js"></script>
         
         <!-- Semantic UI CSS-->
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
         
         <!-- Load Personal CSS -->
-        <link rel='stylesheet' type='text/css' media='screen' href='overview.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='../css/overview.css'>
 
+        <!-- Load Common CSS -->
+        <link rel='stylesheet' type='text/css' media='screen' href='../css/common.css'>
 
         <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -40,12 +42,14 @@
     </head>
     <body>
         <!-- Nav bar/Menu -->
-        <div class="ui menu">
+        <div class="ui seven item menu">
+            <a><img src="../images/logo-epfl-1024x576.png" id="epfl-logo"></a>
             <a class="active item">Overview DB</a>
-            <a class=" item" href="index.html">Browse DB test</a>
-            <a class="item">Strength</a>
-            <a class="item">Stiffness</a>
-            <a class="item">Drift Capacity</a>
+            <a class=" item" href="../index.html">Browse DB test</a>
+            <a class="disabled item">Strength</a>
+            <a class="disabled item">Stiffness</a>
+            <a class="disabled item">Drift Capacity</a>
+            <a class="item" href="about.html"><i class="info icon"></i></a>
         </div>
 
         <div class="ui grid">
@@ -68,7 +72,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                 <div class="ui grid">
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typA.png"/>
+                            <img src="../images/typA.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">
@@ -77,7 +81,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                     </div>
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typB.png"/>
+                            <img src="../images/typB.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">
@@ -86,7 +90,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                     </div>
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typC.png"/>
+                            <img src="../images/typC.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">
@@ -95,7 +99,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                     </div>
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typD.png"/>
+                            <img src="../images/typD.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">
@@ -104,7 +108,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                     </div>
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typE.png"/>
+                            <img src="../images/typE.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">
@@ -113,7 +117,7 @@ Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estima
                     </div>
                     <div class="eight wide center aligned column">
                         <div class="ui tiny image">
-                            <img src="images/typE1.png"/>
+                            <img src="../images/typE1.png"/>
                         </div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="check" checked="true">

@@ -67,7 +67,6 @@ function ProcessExcel(data) {
 
     // Read all rows from First and Second Sheet into JSON arrays.
     let excelFirstSheetObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
-    console.log(excelFirstSheetObject);
     let referenceData = XLS.utils.sheet_to_row_object_array(workbook.Sheets[secondSheet]);
 
     

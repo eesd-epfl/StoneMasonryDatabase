@@ -11,22 +11,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <!-- Load Semantic UI JS-->
-    <script src="semantic/dist/semantic.min.js"></script>
-
+    <script src="../semantic/dist/semantic.min.js"></script>
+    
     <!-- Semantic UI CSS-->
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-
+    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+    
     <!-- Load Personal CSS -->
-    <link rel='stylesheet' type='text/css' media='screen' href='about.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/about.css'>
+
+    <!-- Load Common CSS -->
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/common.css'>
 
 </head>
 <body>
-    <div class="ui menu">
+    <div class="ui seven item menu">
+        <a><img src="../images/logo-epfl-1024x576.png" id="epfl-logo"></a>
         <a class="item" href="./overview.html">Overview DB</a>
-        <a class=" item" href="./index.html">Browse DB test</a>
-        <a class="item">Strength</a>
-        <a class="item">Stiffness</a>
-        <a class="item">Drift Capacity</a>
+        <a class="item" href="../index.html">Browse DB test</a>
+        <a class="disabled item">Strength</a>
+        <a class="disabled item">Stiffness</a>
+        <a class="disabled item">Drift Capacity</a>
         <a class="active item"><i class="info icon"></i></a>
       </div>
     <div class="main ui container">
@@ -48,7 +52,7 @@
             <!-- Katrin Beyer Card -->
             <div class="ui card">
                 <div class="image">
-                    <img src="./images/katrin-beyer.jpg">
+                    <img src="../images/katrin-beyer.jpg">
                 </div>
                 <div class="content">
                     <div class="header">Katrin Beyer</div>
@@ -63,7 +67,7 @@
             <!-- Charlotte Weil Card -->
             <div class="ui card">
                 <div class="image">
-                    <img src="">
+                    <img src="../images/charlotte-weil.jpg">
                 </div>
                 <div class="content">
                     <div class="header">Charlotte Weil</div>

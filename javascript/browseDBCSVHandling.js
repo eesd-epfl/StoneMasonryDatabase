@@ -53,9 +53,6 @@ export function parseEnvelopeData(chart,fileId){
                 }
             }
             const columns = [envDrift,envForce];
-            console.log(xs);
-            console.log(chart);
-            console.log(columns);
             chart.load({
                     xs:xs, 
                     columns: columns
