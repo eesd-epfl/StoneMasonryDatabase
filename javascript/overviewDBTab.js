@@ -1,4 +1,4 @@
-var height = 245;
+var height = 170;
 
 export function allPlots(data){
     sizeSlider(data);
