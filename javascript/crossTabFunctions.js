@@ -9,7 +9,7 @@ import { allPlots } from "./overviewDBTab.js";
 export function allTabs(tab) {
     // Get data from Excel File:
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", config.inputFilePath, true);
+    xhr.open("GET", "../"+config.inputFilePath, true);
     xhr.responseType = "blob";
     xhr.onload = function (e) {
         let file = this.response;

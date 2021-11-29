@@ -1,3 +1,7 @@
 .image img {
     height:35vh !important;
 }
+
+.ui.placeholder {
+    height:35vh;
+}

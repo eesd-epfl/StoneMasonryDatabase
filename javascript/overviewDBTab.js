@@ -1,6 +1,6 @@
+var height = 245;
 
 export function allPlots(data){
-    console.log(data);
     sizeSlider(data);
     plotA(data);
     plotB(data);
@@ -212,6 +212,10 @@ function plotA(data){
     // option && myChart.setOption(option);
 
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['Lab A',sumALab,0,0,0,0,0],
@@ -302,6 +306,10 @@ function plotB(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -331,6 +339,10 @@ function plotC(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -360,7 +372,11 @@ function plotD(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
-        data: {
+        size: {
+            height:height,
+            width: 300
+        },
+        data: { 
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
                 ['data2', 130, 100, -100, 200, -150, 50],
@@ -390,6 +406,10 @@ function plotE(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -420,6 +440,10 @@ function plotF(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -450,6 +474,10 @@ function plotG(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -480,6 +508,10 @@ function plotH(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
@@ -510,6 +542,10 @@ function plotI(data){
     // let totA = 
     const yAxis = ['A','B','C','D','E','E1'];
     let  chart = c3.generate({
+        size: {
+            height:height,
+            width: 300
+        },
         data: {
             columns: [
                 ['data1', -30, 200, 200, 400, -150, 250],
