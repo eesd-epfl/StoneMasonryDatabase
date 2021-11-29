@@ -15,10 +15,7 @@
     margin:auto;
   }
 
-  #title {
-    text-align: center;
-    font-size: larger;
-  }
+
 /* 
   .twelve.wide.column{
     height: 60vh;
@@ -42,4 +39,19 @@
 #one .ui.grid .sixteen.wide.column {
   padding-bottom: 0.5vh;
   padding-top: 0.5vh;
+}
+
+#one {
+  padding-left: 1.5vw;
+}
+
+#references {
+  padding-bottom: 0.5vh;
+}
+
+#title {
+  text-align: center;
+  font-size: larger;
+  padding-top: 0.5vh;
+  padding-bottom: 0.3vh;
 }
