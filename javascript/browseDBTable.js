@@ -9,7 +9,6 @@ export function createTable(data){
         autoColumnsDefinitions:config.tableColumns,
         autoColumns:true,
         pagination:"remote",
-        height:"85vh"    
         // layout:"fitColumns",
         // paginationSize:20,
     });
