@@ -1,4 +1,4 @@
-import { createTable, filterEvents} from "./browseDBTable.js";
+import { createSliders, createTable, filterEvents} from "./browseDBTable.js";
 import { generatePlots } from "./browseDBScatterPlots.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";
@@ -25,11 +25,18 @@ export function allTabs(tab, fileRoot) {
                 if(tab === 1){
                     let table = createTable(data);
                     // Create empty divs, display first 9, paginate everything and create and append the first 9 plots to the divs 
-                    generatePlots(data);
+
+                    // Create the plots after table is built:
+                    table.on("dataLoaded", () => generatePlots(data));
+
+                    // Add noUiSliders with table data:
+                    table.on("dataLoaded", () => createSliders(data));
                     // Add Events to widgets
-                    filterEvents();
+                    table.on("dataLoaded", () => filterEvents());
                     // Add events to row selection (pop up window with extra info)
-                    popUp(rawData[1]);
+                    table.on("rowClick", function(e,row){
+                        popUp(rawData[1],e, row,0);
+                    })
 
                 // Overview DB Tab:
                 }else if(tab === 0){

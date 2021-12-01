@@ -1,10 +1,16 @@
 .ui.grid {
-  height:79.7vh;
+  /* height:79.7vh; */
+  height: 90%;
+}
+
+#widget-container {
+  /* height:95%; */
 }
 
 #widget-panel {
   padding-left: 1.5vw;
-}
+  /* height: 98%; */
+}     
 
 /* Text sizing and alignment */
 #title {
@@ -26,6 +32,7 @@
   text-align: center;
   font-size: large;
   padding-bottom: 0.5vh;
+  padding-top: 0.5vh;
   margin-top: 1em;
 }
 
@@ -52,28 +59,54 @@
 #data-table-container {
   margin-bottom: 0;
   padding-bottom: 0;
+  height: 90%;
 }
 #data-table3 {
-  height:79.7vh;
+  height:100%;
   margin-bottom: 0;
 }
 
 /* Container sizing */
-#container{
+#container {
   padding-bottom: 0;
+  padding-top: 0;
   margin-bottom: 0;
+  height:100%;
+}
+#multi-plot-container {
+  height: 90%;
 }
 #gridplots {
-  height:79.7vh;
+  /* height:79.7vh; */
+  height: 100%;
+  padding-top: 2.5%;
 }
 /* Sizing the individual plots */
 #gridplots .five.wide.column{
   padding: 0;
   margin:0;
-}
+  height:33%
+} 
 
 .c3 {
-  height: 25vh;
+  /* height: 25vh; */
+  height: 100%;
+}
+
+.img-no-data {
+  padding-top: 12vh !important;
+  padding-bottom: 12vh !important;
+}
+
+.img-data {
+  padding-top: 0vh !important;
+  padding-bottom: 0vh !important;
+}
+
+#plotDiv div {
+  height:28vh;
+  padding-top:0vh;
+  padding-bottom: 0vh;
 }
 /* Handling the pop-up window */
 #close {
@@ -113,7 +146,8 @@
   display: inline-block;
   margin-left: 0;
   margin-right: 0;
-  padding-top: 2vh;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .pagination a {
@@ -210,4 +244,18 @@
 .ref {
   padding-top: 2vh;
   padding-left: 2vw;
+}
+
+#fd-button {
+  margin-top:5vh;
+  background-color: rgb(31, 119, 180);
+}
+
+#env-button {
+  margin-top:5vh;
+  background-color: rgb(44, 160, 44);
+}
+#bil-button {
+  margin-top:5vh;
+  background-color: rgb(255, 127, 14);
 }

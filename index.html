@@ -37,13 +37,13 @@
     <!-- Sliders -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-
+    
     <!-- Personal CSS-->
     <link rel="stylesheet" href="./css/main.css"/>
-
+    
     <!-- Load Common CSS -->
     <link rel='stylesheet' type='text/css' media='screen' href='css/common.css'>
-
+    
     
   </head>
 
@@ -60,23 +60,33 @@
     </div>
     <!-- Container for web page -->
     <!-- <div class="four wide center aligned column"></div> -->
-    <div class="sixteen wide center aligned column" id="title">
-      <h2>
-        Stone Masonry Database Overview 
-        <i class="info circle icon" id="info-tooltip"> </i>
-      </h2>
-      <span id="info-tooltip-text">
-        Acronyms:<br>
-        ALR- Axial Load Ratio<br>
-        Typ - Stone Masonry Typology<br>
-        Cyclic - Cyclic or Monotonic<br>
-        Lab - Laboratory or In-situ<br>
-        Failure - Failure type</span>
-    </div>
     <div class="ui grid">
+      <div class="row">
+        <div  class="five wide column"></div>
+        <div class="six wide center aligned column" id="title">
+          <h2>
+            Stone Masonry Database Overview 
+            <i class="info circle icon" id="info-tooltip"> </i>
+          </h2>
+          <span id="info-tooltip-text">
+            Acronyms:<br>
+            ALR- Axial Load Ratio<br>
+            Typ - Stone Masonry Typology<br>
+            Cyclic - Cyclic or Monotonic<br>
+            Lab - Laboratory or In-situ<br>
+            Failure - Failure type</span>
+        </div>
+        <div class="five wide center aligned column">
+          <div class="ui small bottom floated buttons">
+            <button class="ui button" id="fd-button" name="curveButton">FD</button>
+            <button class="ui button" id="env-button" name="curveButton">Envelope</button>
+            <button class="ui button" id="bil-button" name="curveButton">Bilinearisation</button>
+          </div>
+        </div>
+      </div>
       <!-- Sliders and Checkbox column-->
       <div class="two wide column" id="widget-panel">
-        <div class="ui grid">
+        <div class="ui grid" id="widget-container">
           <div class="sixteen wide center aligned column" id="filter-title">
             <h2>
               Filters
@@ -88,6 +98,7 @@
             </h3>
           </div>
           <!-- Checkboxes-->
+            <!-- A -->
           <div class="eight wide center aligned column">
             <div class="ui tiny image">
                 <img src="images/typA.png"/>
@@ -96,6 +107,7 @@
                 <input type="checkbox" name="check" id="check-a"value="A" checked="true">
                 <label>Typ A</label>
             </div>
+            <!-- B -->
           </div>
           <div class="eight wide center aligned column">
               <div class="ui tiny image">
@@ -106,6 +118,7 @@
                   <label>Typ B</label>
               </div>
           </div>
+            <!-- C -->
           <div class="eight wide center aligned column">
               <div class="ui tiny image">
                   <img src="images/typC.png"/>
@@ -114,6 +127,7 @@
                   <input type="checkbox" name="check" id="check-c" value="C" checked="true">
                   <label>Typ C</label>
               </div>
+            <!-- D -->
           </div>
           <div class="eight wide center aligned column">
               <div class="ui tiny image">
@@ -124,6 +138,7 @@
                   <label>Typ D</label>
               </div>
           </div>
+            <!-- E -->
           <div class="row" id="typ-E-container">
             <div class="eight wide center aligned column">
                 <div class="ui tiny image">
@@ -134,6 +149,7 @@
                     <label>Typ E</label>
                 </div>
             </div>
+            <!-- E1 -->
             <div class="eight wide center aligned column">
                 <div class="ui tiny image">
                     <img src="images/typE1.png"/>
@@ -145,6 +161,7 @@
             </div>
           </div>
           <div class="row" id="slider-container">
+
             <!--Sliders-->
             <div class="center aligned column"> 
               <div class="center aligned column">
@@ -173,7 +190,7 @@
         <!-- Multi plots-->
         <div class="six wide column" id="container">
         <!-- <div class="ui relaxed grid"> -->
-          <div class="sixteen wide column">
+          <div class="sixteen wide column" id="multi-plot-container">
             
             <!-- Grid that will contain the 9 plots -->
             <div id="gridplots" class="ui grid container"></div>
@@ -183,20 +200,25 @@
               <i class="large close icon" id="close"></i>
               <div id="plotDiv" class="hidden">
                 <div id="fdCurve" class="hidden"></div>
+                <div id="lhCurve" class="hidden"></div>
                 <div id="crack-map" class="hidden">
-                  <!-- <img class="image" id="crackmap-image"> -->
                 </div>
                 <div id="photo" class="hidden">
-                  <!-- <img class="image" id="photo-image"> -->
                 </div>
               </div>
               <div id="radio-buttons" class="hidden">
                 <div class="grouped fields">
-                  <label>Select what to display:</label>
+                  <label>Display:</label>
                   <div class="field">
                     <div class="ui radio checkbox">
                       <input type="radio" name="selected-curve" checked="checked" value="fdCurve" id="fdRadioButton">
                       <label>F-D Curve</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="selected-curve" value="lhCurve" id="lhRadioButton">
+                      <label>Load History</label>
                     </div>
                   </div>
                   <div class="field">
@@ -219,16 +241,10 @@
                 <div id="ref2" class="ref">Reference 2:</div>
               </div>
             </div>
-            <div id="pagination"></div>
           </div>
-          <!-- </div> // -->
         </div>
       </div>
     <!-- Run javascript-->
-    <!-- <script type="module" src=javascript/browseDBTab.js></script>
-    <script type="module" src=javascript/browseDBCSVHandling.js></script>
-    <script type="module" src=javascript/browseDBScatterPlots.js></script>
-    <script type="module" src=javascript/browseDBPopUp.js></script> -->
     <script type="module" src="browseDBMain.js" ></script>
   </body>
 </html>

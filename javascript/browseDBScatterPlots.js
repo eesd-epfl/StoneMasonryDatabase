@@ -1,11 +1,13 @@
 import { createCSVArray, parseData, parseEnvelopeData } from "./browseDBCSVHandling.js";
+import { popUp } from "./browseDBPopUp.js";
+import { clearBox } from "./browseDBTable.js";
 import { config } from "./config.js";
 
 let gridplots = document.getElementById('gridplots');
 
 //Final function.
 export function generatePlots(data){
-
+    clearBox(gridplots);
     //Create array with filepaths and filenames:
     const fileNames = createCSVArray(data);
     //Create empty divs that will be paginated (hide all except 9):
@@ -19,46 +21,125 @@ export function generatePlots(data){
 }
 
 //Create the plot:
-export function createGraph(data,divId,fileId){
+export function createGraph(data,divId,uniqueId){
     let testUnitName;
     const table = Tabulator.findTable('#data-table3')[0];
     const tableData = table.getData('active');
+    const reducedData = reduceDataSet(data);
 
+    // If the div ID comes from the pop up window, the name will contain "fdCurve" or "lhCurve". 
+    // If it comes from the main window, it will contain the testUnitName_AuthorYear
     if(divId.includes('fdCurve')){
         testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
-        
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId);
+    // }else if (divId.includes('lhCurve')){
+    //     testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
+    //     createLoadHistoryGraph(reducedData,divId, uniqueId);
     }else{
         testUnitName = divId.split('_')[0];
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId);
     }
+}
 
-    // Make this a function in browseDBCSVHandling
+function curveDisplay(chart){
+   let cButtons = document.querySelectorAll("button[name=curveButton]")   
+   cButtons.forEach(button => {
+       button.addEventListener("click",() => {
+           let style = getComputedStyle(button);
+           // FD Curve (blue)
+           if(style['background-color'] == "rgb(31, 119, 180)"){
+                chart.toggle('force')
+
+            // Envelope Curve (green)
+           }else if(style['background-color'] == "rgb(44, 160, 44)"){
+               chart.toggle('envForce')
+
+            // Bilinearisation Curve (orange)
+           }else {
+               chart.toggle('bilinForce')
+           }
+       });
+   });
+}
+
+export function createLoadHistoryGraph(data) {
+    const title = data[0][1];;
+    let xData = ['index'];
+    for (let i = 0; i< data.length; i++){
+        xData.push(i+1);
+    }
+    let yData = ['drift'];
+
+    for (let i = 4; i < data.length-3; i++){
+        if((data[i][2]!='NaN' && data[i][1]!='NaN') && data[i][2]!='[%]'){
+            yData.push(data[i][2]);
+        }
+    }    
+    let chart = c3.generate({
+        // padding: {
+        //     left: 25,
+        //     right: 30
+        // },
+        data:{
+            names: {
+                x: 'index'
+            },
+            xs: {
+                'drift':'index',
+            },
+            columns:[xData,yData],
+            // type: 'scatter',
+            // xSort: false
+        },
+        point: {
+            // show: false   
+        },
+        title:{
+            text:title,
+            position:"top-center",
+        },
+        axis:{
+            y:{
+                padding:{
+                    // top:0,
+                    // bottom:10
+                },
+                label:'drift [%]',
+                tick: {
+                    fit:true,
+                },
+                culling:{
+                    max:4
+                },
+                count:4,
+                // min:minYTickValue,
+                // max:maxYTickValue,
+            },
+            x:{
+                label: 'index',
+                tick:{
+                    format:function (x) {return x.toFixed()},
+                    culling:{
+                        max:4
+                    },
+                    centered:true,
+                    fit:true,
+                    count:4,
+                //     values:[minXTickValue,0,maxXTickValue]
+                },
+                // min:minXTickValue,
+                // max:maxXTickValue
+            }
+        },
+    });
+    document.getElementById("lhCurve").append(chart.element);
+}
+
+function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId) {
     const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
-    
     const bilinDrift = ['bilinDrift',(0-excelRowData[0]['du,- [%]']),(0-excelRowData[0]['dy,- [%]']),'0',excelRowData[0]['dy,+ [%]'], excelRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-excelRowData[0]['Vu,- [kN]']),(0-excelRowData[0]['Vu,- [kN]']), '0', excelRowData[0]['Vu,+ [kN]'],excelRowData[0]['Vu,+ [kN]']];
-    let reducedData = data.slice(0,3);
-    let remainingRows = data.slice(3,data.length);
-
-    // Reduce the number of points to plot according to total # of points in csv file:
-    if (data.length > 100000){
-        for (let i = 0; i<data.length; i += 1000){
-            reducedData.push(remainingRows[i]);
-        }
-    }
-    else if(data.length > 10000){
-        for (let i = 0; i<data.length; i += 100){
-            reducedData.push(remainingRows[i]);
-        }
-    }
-    else if (data.length > 1000){
-        for (let i = 0; i<data.length; i += 10){
-            reducedData.push(remainingRows[i]);
-        }
-    }else {
-        for (let i = 0; i < data.length; i++){
-            reducedData.push(remainingRows[i]);
-        }
-    }
+    
     let force = ["force"];
     let drift = ["drift"];
     let title = reducedData[0][1];
@@ -128,13 +209,13 @@ export function createGraph(data,divId,fileId){
         },
         title:{
             text:title,
-            position:"top-center"
+            position:"top-center",
         },
         axis:{
             y:{
                 padding:{
-                    top:10,
-                    bottom:10
+                    // top:0,
+                    // bottom:10
                 },
                 label:'hor. force [kN]',
                 tick: {
@@ -164,8 +245,7 @@ export function createGraph(data,divId,fileId){
             }
         },
         legend: {
-            position:'right'
-            // hide:true
+            hide:true
         },
         tooltip:{
             format: {
@@ -173,10 +253,40 @@ export function createGraph(data,divId,fileId){
             }
         }
     })
-    parseEnvelopeData(chart, fileId);
+    
+    // Add Envelope Data:
+    const minValues = [minXTickValue, maxXTickValue, minYTickValue, maxYTickValue]
 
-    //Append chart element to the div that has its Id (e.g. curve001):§
-    document.getElementById(divId).append(chart.element);
+    parseEnvelopeData(chart, uniqueId, minValues);
+    
+    // Hide the legends again:
+    chart.legend.hide()
+    
+    //Add Button Event Handling to toggle curves on/off:
+    curveDisplay(chart);
+    
+    // Append Chart element to div:
+    document.getElementById(fileId).append(chart.element);
+
+    let child = document.getElementById(fileId).getElementsByClassName("c3")[0].children[0].getElementsByClassName("c3-title")[0]
+    child.addEventListener("click", (e) => {
+        popUp(excelRowData,e,excelRowData,1);
+    })
+}
+
+
+function reduceDataSet(data){
+    let reducedData = data.slice(0,3);
+    let remainingRows = data.slice(3,data.length);
+    const totalPoints = data.length;
+    const nbPointsToKeep = 100;
+    const ratio = Math.ceil(totalPoints/nbPointsToKeep);
+    // Reduce the number of points to plot according to total # of points in csv file:
+
+    for (let i= 0; i < totalPoints; i += ratio ) {
+        reducedData.push(remainingRows[i]);
+    }
+    return reducedData;
 }
 
 //Pagination Function:
@@ -282,7 +392,7 @@ export function createGraph(data,divId,fileId){
 			this.updateNavigation();
 		},
 		init: function(container, items, perPage) {
-			this.container = $("#pagination");
+			this.container = $("#multi-plot-container");
 			this.currentPage = 0;
 			this.totalPages = 1;
 			this.perPage = perPage;
@@ -300,7 +410,7 @@ export function createGraph(data,divId,fileId){
 		// default perPage to 5
 		if (isNaN(perPage) || perPage === undefined) {
 			perPage = 9;
-		}
+		} 
 
 		// don't fire if fewer items than perPage
 		// if (items.length <= perPage) {

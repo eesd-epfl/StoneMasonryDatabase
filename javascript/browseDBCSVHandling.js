@@ -1,3 +1,4 @@
+import { createLoadHistoryGraph } from './browseDBScatterPlots.js';
 import {config} from './config.js'
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
@@ -34,8 +35,7 @@ export function parseData(createGraph,filePath,fileName,fileId){
     });
 }
 
-export function parseEnvelopeData(chart,fileId){
-
+export function parseEnvelopeData(chart,fileId, minValues){
     const filePath = config.envelopesFolderPath + "envelope_"+fileId + ".csv"
     Papa.parse(filePath, {
         download: true,
@@ -55,11 +55,21 @@ export function parseEnvelopeData(chart,fileId){
             const columns = [envDrift,envForce];
             chart.load({
                     xs:xs, 
-                    columns: columns
+                    columns: columns,
+                    axis: {
+                        y:{
+                            min:minValues[2],
+                            max: minValues[3]
+                        },
+                        x: {
+                            min:minValues[0],
+                            max:minValues[1]
+                        }
+                    }
             })
+            chart.legend.hide();
         },
     });
-    chart.resize();
 }
 
 export function makeFileName(data){
@@ -69,4 +79,15 @@ export function makeFileName(data){
     const curveName = testUnitName+"_"+reference+year;
     const fileInfo = [curveName, testUnitName];
     return fileInfo;
+}
+
+export function loadHistoryPlot (filePath, uniqueId) {
+    Papa.parse(filePath, {
+        download: true,
+        skipEmptyLines:true,
+        header: false,
+        complete: function(results){
+            createLoadHistoryGraph(results.data);
+        },
+    });
 }

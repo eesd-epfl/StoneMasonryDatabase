@@ -9,15 +9,16 @@ export function createTable(data){
         autoColumnsDefinitions:config.tableColumns,
         autoColumns:true,
         pagination:"remote",
+        // height:"    
         // layout:"fitColumns",
         // paginationSize:20,
     });
-    table.on("tableBuilt", createSliders(data));
     return table;
 }
 
 //Assign events to the widgets:
 export function filterEvents(){
+    let table = Tabulator.findTable("#data-table3")[0];
     // 1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
     checkboxes.forEach(function(checkbox){
@@ -34,10 +35,9 @@ export function filterEvents(){
 
     // 2. Sliders
     let sliders = document.querySelectorAll("div[name=slider]");
-    sliders.forEach(function(slider){
-        let table = Tabulator.findTable("#data-table3")[0];
+    sliders.forEach((slider) => {
         //Apply new filter values to table
-        slider.noUiSlider.on('change',function(){
+        slider.noUiSlider.on('change',()=>{
             clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());
@@ -47,9 +47,8 @@ export function filterEvents(){
 }
 
 //Creating the slider widgets
-function createSliders(data){
+export function createSliders(data){
     // Create noUiSliders:
-
     // 1. Size slider:
     let sizeData = data.map(item => item['H [mm]']);
     let minSize = Math.min.apply(null, sizeData),
