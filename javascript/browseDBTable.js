@@ -17,7 +17,7 @@ export function createTable(data){
 }
 
 //Assign events to the widgets:
-export function filterEvents(){
+export function filterEvents(excelRefData){
     let table = Tabulator.findTable("#data-table3")[0];
     // 1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
@@ -29,7 +29,7 @@ export function filterEvents(){
             table.clearFilter();
             table.setFilter(getFilterValues());
             //Add first 9 plots to table
-            generatePlots(table.getData("active"));
+            generatePlots(table.getData("active"),excelRefData);
             });
         });
 
@@ -41,7 +41,7 @@ export function filterEvents(){
             clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());
-            generatePlots(table.getData("active"));
+            generatePlots(table.getData("active"),excelRefData);
         });
     });
 }

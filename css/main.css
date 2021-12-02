@@ -1,17 +1,9 @@
 .ui.grid {
-  /* height:79.7vh; */
   height: 90%;
 }
 
-#widget-container {
-  /* height:95%; */
-}
 
-#widget-panel {
-  padding-left: 1.5vw;
-  /* height: 98%; */
-}     
-
+/* Header row */
 /* Text sizing and alignment */
 #title {
   margin: 0 auto;
@@ -21,12 +13,21 @@
   padding-bottom: 2.5vh;
 }
 
+#header-row {
+  height:5em;
+}
+
+/* Left Side Column */
+#widget-panel {
+  padding-left: 1.5vw;
+  height: 90%;
+}     
+
 /* Left column with filters and checkboxes */
-#widget-label {
+#typology-title{
   padding-bottom: 0.5vh;
   padding-top: 0.5vh;
 }
-
 
 #filter-title {
   text-align: center;
@@ -64,6 +65,7 @@
 #data-table3 {
   height:100%;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 /* Container sizing */
@@ -71,13 +73,12 @@
   padding-bottom: 0;
   padding-top: 0;
   margin-bottom: 0;
-  height:100%;
+  height:90%;
 }
 #multi-plot-container {
-  height: 90%;
+  height: 95%;
 }
 #gridplots {
-  /* height:79.7vh; */
   height: 100%;
   padding-top: 2.5%;
 }
@@ -89,7 +90,6 @@
 } 
 
 .c3 {
-  /* height: 25vh; */
   height: 100%;
 }
 
@@ -108,6 +108,11 @@
   padding-top:0vh;
   padding-bottom: 0vh;
 }
+
+#plotDiv img {
+  height:28vh;
+}
+
 /* Handling the pop-up window */
 #close {
   margin-right: 0;
@@ -125,6 +130,7 @@
   border-color: rgba(34,36,38,.15);
   margin-top: 1em;
   margin-right: 2vw;
+  height: 100%;
 }
 
 .c3-line-envForce {
@@ -244,18 +250,28 @@
 .ref {
   padding-top: 2vh;
   padding-left: 2vw;
+  padding-right: 2vw;
+  text-align: justify;
 }
 
+#export-row {
+  padding-right: 2em;
+  padding-top: 1em;
+}
+
+#button-container {
+  padding-right: 5em;
+}
 #fd-button {
-  margin-top:5vh;
+  margin-top:1em;
   background-color: rgb(31, 119, 180);
 }
 
 #env-button {
-  margin-top:5vh;
+  margin-top:1em;
   background-color: rgb(44, 160, 44);
 }
 #bil-button {
-  margin-top:5vh;
+  margin-top:1em;
   background-color: rgb(255, 127, 14);
 }

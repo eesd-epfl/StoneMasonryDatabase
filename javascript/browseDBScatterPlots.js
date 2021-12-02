@@ -1,4 +1,4 @@
-import { createCSVArray, parseData, parseEnvelopeData } from "./browseDBCSVHandling.js";
+import { CSVNamesArray, parseData, parseEnvelopeData } from "./browseDBCSVHandling.js";
 import { popUp } from "./browseDBPopUp.js";
 import { clearBox } from "./browseDBTable.js";
 import { config } from "./config.js";
@@ -6,10 +6,11 @@ import { config } from "./config.js";
 let gridplots = document.getElementById('gridplots');
 
 //Final function.
-export function generatePlots(data){
+export function generatePlots(data,excelRefData){
     clearBox(gridplots);
     //Create array with filepaths and filenames:
-    const fileNames = createCSVArray(data);
+    const fileNames = CSVNamesArray(data);
+
     //Create empty divs that will be paginated (hide all except 9):
     for (let i = 0; i<fileNames[0].length; i++){
         let newDiv = document.createElement('div');
@@ -17,31 +18,27 @@ export function generatePlots(data){
         newDiv.className = "five wide column"
         gridplots.append(newDiv);
     }
-    $("#gridplots").pagify(9, ".five.wide.column");
+    $("#gridplots").pagify(9, ".five.wide.column",excelRefData);
 }
 
 //Create the plot:
-export function createGraph(data,divId,uniqueId){
+export function createGraph(data,divId,uniqueId,excelRefData){
     let testUnitName;
     const table = Tabulator.findTable('#data-table3')[0];
     const tableData = table.getData('active');
     const reducedData = reduceDataSet(data);
-
     // If the div ID comes from the pop up window, the name will contain "fdCurve" or "lhCurve". 
     // If it comes from the main window, it will contain the testUnitName_AuthorYear
     if(divId.includes('fdCurve')){
         testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
-        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId);
-    // }else if (divId.includes('lhCurve')){
-    //     testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
-    //     createLoadHistoryGraph(reducedData,divId, uniqueId);
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,excelRefData);
     }else{
         testUnitName = divId.split('_')[0];
-        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId);
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,excelRefData);
     }
 }
 
-function curveDisplay(chart){
+function curveDisplayButtonEvents(chart){
    let cButtons = document.querySelectorAll("button[name=curveButton]")   
    cButtons.forEach(button => {
        button.addEventListener("click",() => {
@@ -135,10 +132,10 @@ export function createLoadHistoryGraph(data) {
     document.getElementById("lhCurve").append(chart.element);
 }
 
-function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId) {
-    const excelRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
-    const bilinDrift = ['bilinDrift',(0-excelRowData[0]['du,- [%]']),(0-excelRowData[0]['dy,- [%]']),'0',excelRowData[0]['dy,+ [%]'], excelRowData[0]['du,+ [%]']];
-    const bilinForce = ['bilinForce',(0-excelRowData[0]['Vu,- [kN]']),(0-excelRowData[0]['Vu,- [kN]']), '0', excelRowData[0]['Vu,+ [kN]'],excelRowData[0]['Vu,+ [kN]']];
+function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,excelRefData) {
+    const tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
+    const bilinDrift = ['bilinDrift',(0-tableRowData[0]['du,- [%]']),(0-tableRowData[0]['dy,- [%]']),'0',tableRowData[0]['dy,+ [%]'], tableRowData[0]['du,+ [%]']];
+    const bilinForce = ['bilinForce',(0-tableRowData[0]['Vu,- [kN]']),(0-tableRowData[0]['Vu,- [kN]']), '0', tableRowData[0]['Vu,+ [kN]'],tableRowData[0]['Vu,+ [kN]']];
     
     let force = ["force"];
     let drift = ["drift"];
@@ -263,17 +260,16 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId) {
     chart.legend.hide()
     
     //Add Button Event Handling to toggle curves on/off:
-    curveDisplay(chart);
+    curveDisplayButtonEvents(chart);
     
     // Append Chart element to div:
     document.getElementById(fileId).append(chart.element);
 
     let child = document.getElementById(fileId).getElementsByClassName("c3")[0].children[0].getElementsByClassName("c3-title")[0]
     child.addEventListener("click", (e) => {
-        popUp(excelRowData,e,excelRowData,1);
+        popUp(excelRefData,e,tableRowData,1);
     })
 }
-
 
 function reduceDataSet(data){
     let reducedData = data.slice(0,3);
@@ -281,8 +277,8 @@ function reduceDataSet(data){
     const totalPoints = data.length;
     const nbPointsToKeep = 100;
     const ratio = Math.ceil(totalPoints/nbPointsToKeep);
-    // Reduce the number of points to plot according to total # of points in csv file:
 
+    // Reduce the number of points to plot according to total # of points in csv file:
     for (let i= 0; i < totalPoints; i += ratio ) {
         reducedData.push(remainingRows[i]);
     }
@@ -370,7 +366,7 @@ function reduceDataSet(data){
 				$(".pagination .nav.prev").addClass("disabled");
 			this.showItems();
 		},
-		showItems: function() {
+		showItems: function(excelRefData) {
             let divArray = Array.from(gridplots.children)
             for (let i = 0; i<divArray.length; i++){
                 let myDivNode = document.getElementById(divArray[i].id)
@@ -379,9 +375,9 @@ function reduceDataSet(data){
                 }
             }
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
-                let fileName = divArray[i].id
-                let filePath = config.curvesFolderPath+ "FD_"+fileName + ".csv"
-                parseData(createGraph,filePath,fileName,fileName);
+                let uniqueId = divArray[i].id
+                let filePath = config.curvesFolderPath+ "FD_"+uniqueId + ".csv"
+                parseData(createGraph,filePath,uniqueId,uniqueId,excelRefData);
                 if(i==divArray.length-1){
                     i+= 10;
                 }
@@ -391,19 +387,19 @@ function reduceDataSet(data){
 			this.items.slice(base, base + this.perPage).show();
 			this.updateNavigation();
 		},
-		init: function(container, items, perPage) {
+		init: function(items, perPage,excelRefData) {
 			this.container = $("#multi-plot-container");
 			this.currentPage = 0;
 			this.totalPages = 1;
 			this.perPage = perPage;
 			this.items = items;
 			this.createNavigation();
-			this.showItems();
+			this.showItems(excelRefData);
 		}
 	};
 
 	// stuff it all into a jQuery method!
-	$.fn.pagify = function(perPage, itemSelector) {
+	$.fn.pagify = function(perPage, itemSelector,excelRefData) {
 		let el = $(this);
 		let items = $(itemSelector, el);
 
@@ -416,7 +412,6 @@ function reduceDataSet(data){
 		// if (items.length <= perPage) {
 		// 	return true;
 		// }
-
-		pagify.init(el, items, perPage);
+		pagify.init(items, perPage,excelRefData);
 	};
 })(jQuery);

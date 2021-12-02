@@ -1,7 +1,8 @@
 import { clearBox} from "./browseDBTable.js";
 import { createGraph} from "./browseDBScatterPlots.js";
-import { createCSVArray, loadHistoryPlot, makeFileName, parseData } from "./browseDBCSVHandling.js";
+import { CSVNamesArray, loadHistoryPlot, makeFileName, parseData } from "./browseDBCSVHandling.js";
 import { config } from "./config.js";
+import { downloadCurveData } from "./fileDownload.js";
 
 export function popUp(excelRefData,e, row, calledFrom){
     // Get data from the selected row:
@@ -19,6 +20,7 @@ export function popUp(excelRefData,e, row, calledFrom){
     let plotContainer = document.getElementById("plot-container");
     let windowPlot = document.getElementById("plotDiv");
     let fdCurveDiv = document.getElementById("fdCurve");
+    let lhCurveDiv = document.getElementById("lhCurve");
     let crackMapDiv = document.getElementById("crack-map");
     let photoDiv = document.getElementById("photo");
     let ref1 = document.getElementById("ref1");
@@ -40,18 +42,19 @@ export function popUp(excelRefData,e, row, calledFrom){
     // Hide crack map and photo divs
     crackMapDiv.style.display = "none";
     photoDiv.style.display = "none";
+    lhCurveDiv.style.display = "none";
     // Reset reference text:
     ref1.innerHTML = "";
     ref2.innerHTML = "";
     
-    // Remove fdCurve, crackmap and photo child: 
-    clearBox(fdCurveDiv);
-    clearBox(photoDiv);
-    clearBox(crackMapDiv);
+    // Remove fdCurve, crackmap and photo child:
+    const plotDivChildren = Array.from(plotDiv.children);
+    plotDivChildren.forEach(child =>{
+        clearBox(child);
+    })
 
     // Reset the radio button to default F-D Curve:
     fdRadioButton.checked = "true";
-
 
     //Give functionality to the close icon:
     let windowsCloseIcon = document.getElementById("close");
@@ -71,7 +74,7 @@ export function popUp(excelRefData,e, row, calledFrom){
     windowPlot.style.paddingTop = "2vh"
 
     // Get the data of the selected row:
-    const plotData = createCSVArray(rowData);
+    const plotData = CSVNamesArray(rowData);
     const filePath = plotData[0][0];
     const uniqueId = plotData[1][0];
 
@@ -97,8 +100,6 @@ export function popUp(excelRefData,e, row, calledFrom){
                         photoImage.id = "photo-image";
                         photoImage.src = imgFilePath;
                         photoDiv.append(photoImage);
-                        // Fix CSS:
-                        photoImage.style.height = "28vh"
                     } else if(source.includes("crackmap")){
                         // Create child and append it to the div:
                         const crackmapImage = document.createElement("img");
@@ -106,29 +107,18 @@ export function popUp(excelRefData,e, row, calledFrom){
                         crackmapImage.id = "crackmap-image";
                         crackmapImage.src = crackmapFilePath;
                         crackMapDiv.append(crackmapImage);
-                        // Fix CSS:
-                        crackmapImage.style.height = "28vh"
                     }
                 }else {
                     if(source.includes("photo_")){
                         photoDiv.className = "img-no-data";
                         photoDiv.innerHTML = "No photo available";
-                        // photoDiv.style.height = "28vh";
-                        // photoDiv.style.paddingTop = "12vh";
-                        // photoDiv.style.paddingBottom = "12vh";
                     }else if(source.includes("FD_")){
                         fdCurveDiv.className = "no-data";
                         fdCurveDiv.innerHTML = testUnitName + " - No FD-Curve available";
-                        // fdCurveDiv.style.height = "28vh";
-                        // fdCurveDiv.style.paddingTop = "12vh";
-                        // fdCurveDiv.style.paddingBottom = "12vh";
                         fdCurveDiv.style.textAlign = "center"
                     }else if(source.includes("crackmap")){
                         crackMapDiv.className = "img-no-data";
                         crackMapDiv.innerHTML = "No crackmap available";
-                        // crackMapDiv.style.height = "28vh";
-                        // crackMapDiv.style.paddingTop = "12vh";
-                        // crackMapDiv.style.paddingBottom = "12vh";
                     }
                 }
             }
@@ -138,6 +128,7 @@ export function popUp(excelRefData,e, row, calledFrom){
     executeIfFileExist(fdCurveFilePath);
     executeIfFileExist(imgFilePath);
     executeIfFileExist(crackmapFilePath);
+
     loadHistoryPlot(filePath);
 
     //Change div according to the radio buttons:
@@ -167,7 +158,13 @@ export function popUp(excelRefData,e, row, calledFrom){
             }
         }
     }
-    //TODO - Remove all child nodes when CLOSE icon is clicked (plot-container div persists atm)
-    //TODO - If another row is selected while first plot is open, remove all divs first (stacking plots atm).
+    let downloadButton = document.getElementById("export-curve");
+    
+    downloadButton.addEventListener("click",() => onClickEvent(uniqueId,downloadButton));
     e.preventDefault();
+}
+
+export function onClickEvent(uniqueId,downloadButton){
+    downloadCurveData(uniqueId,downloadButton);
+    // downloadButton.removeEventListener("click", onClickEvent(uniqueId,downloadButton));
 }

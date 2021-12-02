@@ -2,7 +2,7 @@ import { createLoadHistoryGraph } from './browseDBScatterPlots.js';
 import {config} from './config.js'
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
-export function createCSVArray(data){
+export function CSVNamesArray(data){
     let fileNames = [];
     let FDfilePaths = [];
 
@@ -17,13 +17,13 @@ export function createCSVArray(data){
 }
 
 //Read CSV file and send data to createGraph function:
-export function parseData(createGraph,filePath,fileName,fileId){
+export function parseData(createGraph,filePath,fileName,uniqueId,excelRefData){
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
-            createGraph(results.data,fileName,fileId);
+            createGraph(results.data,fileName,uniqueId,excelRefData);
         },
         error:function(){
             let errorMessage = fileName.split('_')[0] + "<br>No Data to display";
@@ -35,8 +35,8 @@ export function parseData(createGraph,filePath,fileName,fileId){
     });
 }
 
-export function parseEnvelopeData(chart,fileId, minValues){
-    const filePath = config.envelopesFolderPath + "envelope_"+fileId + ".csv"
+export function parseEnvelopeData(chart,uniqueId, minValues){
+    const filePath = config.envelopesFolderPath + "envelope_"+uniqueId + ".csv"
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
@@ -81,7 +81,7 @@ export function makeFileName(data){
     return fileInfo;
 }
 
-export function loadHistoryPlot (filePath, uniqueId) {
+export function loadHistoryPlot (filePath) {
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,

@@ -19,6 +19,7 @@ export function allTabs(tab, fileRoot) {
             reader.onload = function (e) {
                 // Process Excel data:
                 let rawData = ProcessExcel(e.target.result);
+                const referenceData = rawData[1];
                 let data = renameTableHeaders(rawData[0]);
 
                 // Browse DB Tab:
@@ -27,15 +28,15 @@ export function allTabs(tab, fileRoot) {
                     // Create empty divs, display first 9, paginate everything and create and append the first 9 plots to the divs 
 
                     // Create the plots after table is built:
-                    table.on("dataLoaded", () => generatePlots(data));
+                    table.on("dataLoaded", () => generatePlots(data,referenceData));
 
                     // Add noUiSliders with table data:
                     table.on("dataLoaded", () => createSliders(data));
                     // Add Events to widgets
-                    table.on("dataLoaded", () => filterEvents());
+                    table.on("dataLoaded", () => filterEvents(referenceData));
                     // Add events to row selection (pop up window with extra info)
                     table.on("rowClick", function(e,row){
-                        popUp(rawData[1],e, row,0);
+                        popUp(referenceData,e, row,0);
                     })
 
                 // Overview DB Tab:
