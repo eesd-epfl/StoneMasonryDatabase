@@ -85,7 +85,7 @@ export function createLoadHistoryGraph(data) {
                 'drift':'index',
             },
             columns:[xData,yData],
-            // type: 'scatter',
+            type: 'spline',
             // xSort: false
         },
         point: {
@@ -198,7 +198,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
                 'envForce':'envDrift'
             },
             columns:[drift,force,bilinDrift,bilinForce],
-            // type: 'scatter',
+            type: 'spline',
             xSort: false
         },
         point: {

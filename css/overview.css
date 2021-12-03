@@ -28,6 +28,11 @@
   font-size: smaller;
 }
 
+#parcoords {
+  height:60vh;
+  width: 30vw;
+}
+
 #one>.ui.grid>.sixteen.wide.center.aligned.column {
   padding-bottom: 0.5vh;
 }

@@ -1,8 +1,10 @@
+
 var height = 170;
+var parcoords;
 
 export function allPlots(data){
     sizeSlider(data);
-    parCoords(data);
+    // parCoords(data);
     // plotA(data);
     // plotB(data);
     // plotC(data);
@@ -23,8 +25,9 @@ function sumTyp(typ,typArray,labSitu,labSituArray){
     };
     return count;
 }
+
 function parCoords(data){
-    let pc = d3.parcoords()('#parcoords')
+    parcoords = d3.parcoords()('#parcoords')
     .data(data)
     .render()
 
