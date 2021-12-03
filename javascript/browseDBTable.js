@@ -20,10 +20,10 @@ export function createTable(data){
 export function filterEvents(excelRefData){
     let table = Tabulator.findTable("#data-table3")[0];
     // 1. Checkboxes:
-    let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
+    const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
     checkboxes.forEach(function(checkbox){
         checkbox.addEventListener('change',function(){
-            let table = Tabulator.findTable("#data-table3")[0];
+            table = Tabulator.findTable("#data-table3")[0];
             clearBox(document.getElementById('gridplots'));
             //Clear and Apply new filter values to table
             table.clearFilter();
@@ -141,4 +141,24 @@ export function tooltip(){
         tooltipText.style.visibility = "hidden";
     }
 
+}
+
+export function searchBar() {
+    let table = Tabulator.findTable("#data-table3")[0];
+    const input = document.getElementById("filter");
+    input.addEventListener("keyup", function(){
+        var filters = [];
+        var columns = table.getColumns();
+        var search = input.value;
+
+        columns.forEach(function(column){
+            filters.push({
+                field:column.getField(),
+                type:"like",
+                value:search,
+            });
+        });
+
+        table.setFilter([filters]);
+    })
 }

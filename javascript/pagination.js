@@ -1,3 +1,7 @@
+import { parseData } from "./browseDBCSVHandling.js";
+import { createGraph } from "./browseDBScatterPlots.js";
+import { config } from "./config.js";
+
 //Pagination Function:
 (function($) {
 	let pagify = {
@@ -79,7 +83,7 @@
 				$(".pagination .nav.prev").addClass("disabled");
 			this.showItems();
 		},
-		showItems: function() {
+		showItems: function(excelRefData) {
             let divArray = Array.from(gridplots.children)
             for (let i = 0; i<divArray.length; i++){
                 let myDivNode = document.getElementById(divArray[i].id)
@@ -90,7 +94,7 @@
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
                 let fileName = divArray[i].id
                 let filePath = config.curvesFolderPath+ "FD_"+fileName + ".csv"
-                parseData(createGraph,filePath,fileName,fileName);
+                parseData(createGraph,filePath,fileName,fileName,excelRefData);
                 if(i==divArray.length-1){
                     i+= 10;
                 }
@@ -100,18 +104,18 @@
 			this.items.slice(base, base + this.perPage).show();
 			this.updateNavigation();
 		},
-		init: function(container, items, perPage) {
+		init: function(container, items, perPage,excelRefData) {
 			this.container = $("#multi-plot-container");
 			this.currentPage = 0;
 			this.totalPages = 1;
 			this.perPage = perPage;
 			this.items = items;
 			this.createNavigation();
-			this.showItems();
+			this.showItems(excelRefData);
 		}
 	};
 	// stuff it all into a jQuery method!
-	$.fn.pagify = function(perPage, itemSelector) {
+	$.fn.pagify = function(perPage, itemSelector,excelRefData) {
 		let el = $(this);
 		let items = $(itemSelector, el);
 
@@ -125,6 +129,6 @@
 		// 	return true;
 		// }
 
-		pagify.init(el, items, perPage);
+		pagify.init(el, items, perPage,excelRefData);
 	};
 })(jQuery);

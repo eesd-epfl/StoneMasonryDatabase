@@ -2,15 +2,16 @@ var height = 170;
 
 export function allPlots(data){
     sizeSlider(data);
-    plotA(data);
-    plotB(data);
-    plotC(data);
-    plotD(data);
-    plotE(data);
-    plotF(data);
-    plotG(data);
-    plotH(data);
-    plotI(data);
+    parCoords(data);
+    // plotA(data);
+    // plotB(data);
+    // plotC(data);
+    // plotD(data);
+    // plotE(data);
+    // plotF(data);
+    // plotG(data);
+    // plotH(data);
+    // plotI(data);
 }
 
 function sumTyp(typ,typArray,labSitu,labSituArray){
@@ -22,7 +23,12 @@ function sumTyp(typ,typArray,labSitu,labSituArray){
     };
     return count;
 }
+function parCoords(data){
+    let pc = d3.parcoords()('#parcoords')
+    .data(data)
+    .render()
 
+}
 function plotA(data){
     const laboratoryName = 'Laboratory';
     const inSituName = 'In-situ';

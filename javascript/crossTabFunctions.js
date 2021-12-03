@@ -1,4 +1,4 @@
-import { createSliders, createTable, filterEvents} from "./browseDBTable.js";
+import { createSliders, createTable, filterEvents, searchBar} from "./browseDBTable.js";
 import { generatePlots } from "./browseDBScatterPlots.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";
@@ -30,6 +30,7 @@ export function allTabs(tab, fileRoot) {
                     // Create the plots after table is built:
                     table.on("dataLoaded", () => generatePlots(data,referenceData));
 
+                    table.on("dataLoaded", () => searchBar());
                     // Add noUiSliders with table data:
                     table.on("dataLoaded", () => createSliders(data));
                     // Add Events to widgets

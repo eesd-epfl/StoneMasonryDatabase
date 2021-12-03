@@ -18,8 +18,8 @@ Data
 │   │	...
 │   │
 └─── Images
-│   │   crackmap\_{TestUnit}_{AuthorYear}.jpg
-│   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.jpg
+│   │   crackmap\_{TestUnit}_{AuthorYear}.png
+│   │   crackmap\_{OtherTestUnit}_{OtherAuthorYear}.png
 │   │   photo\_{TestUnit}_{AuthorYear}.jpg
 │   │   photo\_{OtherTestUnit}_{OtherAuthorYear}.jpg
 │   │   ...
@@ -46,7 +46,7 @@ with:
 	* Bilinearisation (Bilinearisation curves) in CSV, 
 	* crackmap (Crack maps) in JPEG or SVG, 
 	* photo (Photo of the crack) in JPEG)
-* TestUnitName = Test Unit Name with all punctuation removed
+* TestUnitName = Test Unit Name with all punctuation and special characters removed
 * AuthorYear = First Author's lastname (utf-8) concatenated with year of publication.
 
 
@@ -68,7 +68,7 @@ Each data file contains 4 lines of metadata:
 
 
 ### Crack maps
-***Filename: crackmap\_{TestUnitName}_{AuthorYear}.{jpg/svg}***
+***Filename: crackmap\_{TestUnitName}_{AuthorYear}.{png}***
 
 ### Photo
 ***Filename: photo\_{TestUnitName}_{AuthorYear}.jpg***

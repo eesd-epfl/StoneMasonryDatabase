@@ -27,6 +27,7 @@
 
     <!-- Load JSZip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js" integrity="sha512-xQBQYt9UcgblF6aCMrwU1NkVA7HCXaSN2oq0so80KO+y68M+n64FOcqgav4igHe6D5ObBLIf68DWv+gfBowczg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js" integrity="sha512-3WaCYjK/lQuL0dVIRt1thLXr84Z/4Yppka6u40yEJT1QulYm9pCxguF6r8V84ndP5K03koI9hV1+zo/bUbgMtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Load FileSaver -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -89,6 +90,7 @@
         </div>
       </div>
       <!-- Sliders and Checkbox column-->
+      <div class="row" id="dashboard">
       <div class="two wide column" id="widget-panel">
         <div class="ui grid" id="widget-container">
           <div class="sixteen wide center aligned column" id="filter-title">
@@ -187,8 +189,21 @@
       </div>
       
       <!-- Data table-->
-      <div class="eight wide column" id="data-table-container">
-        <div id="data-table3"></div>
+      <div class="eight wide right aligned column">
+        <div class="row">
+          <div class="ui search">
+            <div class="ui icon input">
+              <input class="prompt" type="text" id="filter" placeholder="search table">
+              <i class="search icon"></i>
+            </div>
+
+          </div>
+        </div>
+        <div class = "row" id="row-data-table">
+          <div id="data-table-container">
+            <div id="data-table3"></div>
+          </div>
+        </div>
       </div>
         <!-- Multi plots-->
         <div class="six wide column" id="container">
@@ -249,7 +264,9 @@
           </div>
         </div>
       </div>
+    </div>
     <!-- Run javascript-->
-    <script type="module" src="browseDBMain.js" ></script>
+    <script type="module" src="browseDBMain.js"></script>
+    <script type="module" src="./javascript/pagination.js"></script>
   </body>
 </html>

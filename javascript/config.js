@@ -1,4 +1,6 @@
-export let config = {
+export const dataFolderPath = "data/"
+
+export const config = {
 
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
@@ -64,13 +66,12 @@ export let config = {
     ],
 
     // Relative path to the Excel file, starting from root folder:
-    inputFilePath: "data/Vanin et al. (2017) StoneMasonryDatabase.xls",
-
+    inputFilePath: dataFolderPath+"Vanin et al. (2017) StoneMasonryDatabase.xls",
     //Relative path to Curves folder:
-    curvesFolderPath: "data/Curves/",
-    imagesFolderPath: "data/Images/",   
-    envelopesFolderPath: "data/Envelopes/",   
-
+    curvesFolderPath: dataFolderPath+"Curves/",
+    imagesFolderPath: dataFolderPath+"Images/",   
+    envelopesFolderPath: dataFolderPath+"Envelopes/",   
+    bibName: "Database.bib",
     // Data for the 9 plots in Overview Page:
     nbPlots: 6,
     hmin: 750,

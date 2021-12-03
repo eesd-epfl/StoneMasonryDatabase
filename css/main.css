@@ -2,7 +2,9 @@
   height: 90%;
 }
 
-
+#dashboard {
+  height:90%
+}
 /* Header row */
 /* Text sizing and alignment */
 #title {
@@ -60,7 +62,7 @@
 #data-table-container {
   margin-bottom: 0;
   padding-bottom: 0;
-  height: 90%;
+  height: 100%;
 }
 #data-table3 {
   height:100%;
@@ -68,12 +70,16 @@
   margin-top: 0;
 }
 
+#row-data-table {
+  height:90%;
+  margin-top: 2vh;
+}
 /* Container sizing */
 #container {
   padding-bottom: 0;
   padding-top: 0;
   margin-bottom: 0;
-  height:90%;
+  height:100%;
 }
 #multi-plot-container {
   height: 95%;
@@ -113,6 +119,10 @@
   height:28vh;
 }
 
+#plotDiv {
+  padding-top: 2vh;
+}
+
 /* Handling the pop-up window */
 #close {
   margin-right: 0;
@@ -137,6 +147,9 @@
   stroke-width: 1.5px;
 }
 
+.c3-title:hover {
+  font-weight: bold;
+}
 #crackmap-toggle{
   width: 10vw;
   display: inline-block;
@@ -231,10 +244,8 @@
 }
 
 #no-data {
-  height: 28vh;
+  margin-top: 8vh;
   text-align: center;
-  padding-top: 12vh;
-  padding-bottom: 12vh;
 }
 
 #crack-map{
@@ -256,7 +267,6 @@
 
 #export-row {
   padding-right: 2em;
-  padding-top: 1em;
 }
 
 #button-container {
