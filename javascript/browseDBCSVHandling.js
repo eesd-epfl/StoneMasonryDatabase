@@ -1,5 +1,6 @@
 import { createLoadHistoryGraph } from './browseDBScatterPlots.js';
 import {config} from './config.js'
+import { processExcel } from './crossTabFunctions.js';
 
 //Take active, filtered data from table and create an array with the name and filepath of each csv file to display 
 export function CSVNamesArray(data){
@@ -35,7 +36,7 @@ export function parseData(createGraph,filePath,fileName,uniqueId,excelRefData){
     });
 }
 
-export function parseEnvelopeData(chart,uniqueId, minValues){
+export function parseEnvelopeData(chart,uniqueId, ticks){
     const filePath = config.envelopesFolderPath + "envelope_"+uniqueId + ".csv"
     Papa.parse(filePath, {
         download: true,
@@ -53,17 +54,38 @@ export function parseEnvelopeData(chart,uniqueId, minValues){
                 }
             }
             const columns = [envDrift,envForce];
+            const intTickValue = Math.ceil(Math.abs(ticks.maxY)/2)
             chart.load({
                     xs:xs, 
                     columns: columns,
                     axis: {
                         y:{
-                            min:minValues[2],
-                            max: minValues[3]
+                            tick: {
+                                count:5,
+                                fit:true,
+                                values:[ticks.minY, 0-intTickValue,0,intTickValue,ticks.maxY]
+                            },
+                            culling:{
+                                max:4
+                            },
+                            min:ticks.minY,
+                            max: ticks.maxY
                         },
                         x: {
-                            min:minValues[0],
-                            max:minValues[1]
+                            tick:{
+                                format:function (x) {
+                                    return x.toFixed()
+                                },
+                                culling:{
+                                    max:2
+                                },
+                                centered:true,
+                                fit:true,
+                                count:4,
+                                values:[ticks.minX,0,ticks.maxX]
+                            },
+                            min:ticks.minX,
+                            max:ticks.maxX
                         }
                     }
             })
@@ -90,4 +112,42 @@ export function loadHistoryPlot (filePath) {
             createLoadHistoryGraph(results.data);
         },
     });
+}
+
+// Pop up window Excel Reference Data:
+export function popUpGetExcelRefData(fileRoot, rowData){
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", fileRoot+config.inputFilePath, true);
+    xhr.responseType = "blob";
+    xhr.onload = function () {
+        let file = this.response;
+        let reader = new FileReader();
+        // For Browsers other than IE.
+        if (reader.readAsBinaryString) {
+            reader.onload = function (e) {
+                // Process Excel data:
+                let rawData = processExcel(e.target.result);
+                const excelRefData = rawData[1];
+                fillRefDivs(rowData,excelRefData);
+            }
+            reader.readAsBinaryString(file);
+        }
+    }
+    xhr.send();
+}
+
+export function fillRefDivs(rowData,excelRefData){
+    let ref1 = document.getElementById("ref1");
+    let ref2 = document.getElementById("ref2");
+    for (let i = 0; i< excelRefData.length; i++){
+        if(excelRefData[i]['Number'] == rowData[0]['Reference nb']){
+            ref1.innerHTML = excelRefData[i]['Reference 1'];
+            if(excelRefData[i]['Reference 2'] != undefined){
+                ref2.innerHTML = excelRefData[i]['Reference 2'];
+            }else {
+                ref2.innerHTML = "";
+            }
+        }
+    }
+
 }

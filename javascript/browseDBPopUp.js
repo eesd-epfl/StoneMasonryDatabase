@@ -1,30 +1,37 @@
 import { clearBox} from "./browseDBTable.js";
 import { createGraph} from "./browseDBScatterPlots.js";
-import { CSVNamesArray, loadHistoryPlot, makeFileName, parseData } from "./browseDBCSVHandling.js";
+import { CSVNamesArray, fillRefDivs, loadHistoryPlot, makeFileName, parseData, popUpGetExcelRefData } from "./browseDBCSVHandling.js";
 import { config, dataFolderPath } from "./config.js";
 
-let gridplots = document.getElementById("gridplots");
-let plotDiv = document.getElementById("plotDiv");
-let radioButtonsDiv = document.getElementById("radio-buttons");
-let referenceDiv = document.getElementById("reference");
-let plotContainer = document.getElementById("plot-container");
-let windowPlot = document.getElementById("plotDiv");
-let fdCurveDiv = document.getElementById("fdCurve");
-let lhCurveDiv = document.getElementById("lhCurve");
-let crackMapDiv = document.getElementById("crack-map");
-let photoDiv = document.getElementById("photo");
-let ref1 = document.getElementById("ref1");
-let ref2 = document.getElementById("ref2");
+const gridplots = document.getElementById("gridplots");
+const plotDiv = document.getElementById("plotDiv");
+const radioButtonsDiv = document.getElementById("radio-buttons");
+const referenceDiv = document.getElementById("reference");
+const plotContainer = document.getElementById("plot-container");
+const fdCurveDiv = document.getElementById("fdCurve");
+const lhCurveDiv = document.getElementById("lhCurve");
+const crackMapDiv = document.getElementById("crack-map");
+const photoDiv = document.getElementById("photo");
+const crackRadioBtn = document.getElementById("crack-radio");
+const photoRadioBtn = document.getElementById("photo-radio");
 
 export function popUp(excelRefData,e, row, calledFrom){
     $("#export-curve").replaceWith($('#export-curve').clone());
     let pagination = document.getElementsByClassName("pagination")[0];
     // Get data from the selected row:
     let rowData = [];
+    // If the call comes from clicking on a row:
     if(calledFrom === 0){
-        rowData = [row.getData()];  
+        rowData = [row.getData()];
+        // Add reference information to the window
+        // Add the selected row's reference:
+        fillRefDivs(rowData,excelRefData);
+
+    // If the call comes from the plot title:  
     }else if (calledFrom === 1){
         rowData = row;
+        popUpGetExcelRefData("",rowData)
+
     }
     const fileId = makeFileName(rowData[0])[0];
     const testUnitName = makeFileName(rowData[0])[1];
@@ -45,8 +52,8 @@ export function popUp(excelRefData,e, row, calledFrom){
     photoDiv.style.display = "none";
     lhCurveDiv.style.display = "none";
     // Reset reference text:
-    ref1.innerHTML = "";
-    ref2.innerHTML = "";
+    // ref1.innerHTML = "";
+    // ref2.innerHTML = "";
     
     // Remove fdCurve, crackmap and photo child:
     const plotDivChildren = Array.from(plotDiv.children);
@@ -101,16 +108,6 @@ export function popUp(excelRefData,e, row, calledFrom){
         })
     })
 
-    // Add reference information to the window
-    // Add the selected row's reference:
-    for (let i = 0; i< excelRefData.length; i++){
-        if(excelRefData[i]['Number'] == rowData[0]['Reference nb']){
-            ref1.innerHTML = excelRefData[i]['Reference 1'];
-            if(excelRefData[i]['Reference 2'] != undefined){
-                ref2.innerHTML = excelRefData[i]['Reference 2'];
-            }
-        }
-    }
     let downloadButton = document.getElementById("export-curve");
     downloadButton.addEventListener("click",() => zip.generateAsync({type:"blob"}).then((content)=> saveAs(content, uniqueId+".zip")));
 
@@ -159,7 +156,7 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
                     photoImage.id = "photo-image";
                     photoImage.src = source;
                     photoDiv.append(photoImage);
-
+                    photoRadioBtn.disabled = false;
                     // Add file to ZIP
                     JSZipUtils.getBinaryContent(source, (err,data) => {
                         if(err){
@@ -168,7 +165,6 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
                             zip.file("photo_"+uniqueId+".jpg", data, {binary:true});
                         }
                     });
-
                 } else if(source.includes("crackmap")){
                     // Create child and append it to the div:
                     const crackmapImage = document.createElement("img");
@@ -176,7 +172,7 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
                     crackmapImage.id = "crackmap-image";
                     crackmapImage.src = source;
                     crackMapDiv.append(crackmapImage);
-
+                    crackRadioBtn.disabled = false;
                     // Add file to ZIP
                     JSZipUtils.getBinaryContent(source, (err,data) => {
                         if(err){
@@ -192,6 +188,7 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
                 if(source.includes("photo_")){
                     photoDiv.className = "img-no-data";
                     photoDiv.innerHTML = "No photo available";
+                    photoRadioBtn.disabled = true;
                 }else if(source.includes("FD_")){
                     fdCurveDiv.className = "no-data";
                     fdCurveDiv.innerHTML = testUnitName + " - No FD-Curve available";
@@ -199,6 +196,7 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
                 }else if(source.includes("crackmap")){
                     crackMapDiv.className = "img-no-data";
                     crackMapDiv.innerHTML = "No crackmap available";
+                    crackRadioBtn.disabled = true;
                 }
             }
         }

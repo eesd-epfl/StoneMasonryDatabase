@@ -18,7 +18,7 @@ export function allTabs(tab, fileRoot) {
         if (reader.readAsBinaryString) {
             reader.onload = function (e) {
                 // Process Excel data:
-                let rawData = ProcessExcel(e.target.result);
+                let rawData = processExcel(e.target.result);
                 const referenceData = rawData[1];
                 let data = renameTableHeaders(rawData[0]);
 
@@ -55,7 +55,7 @@ export function allTabs(tab, fileRoot) {
                 for (let i = 0; i < bytes.byteLength; i++) {
                     data += String.fromCharCode(bytes[i]);
                 }
-                ProcessExcel(data);
+                processExcel(data);
             };
             reader.readAsArrayBuffer(file);
         }
@@ -65,7 +65,7 @@ export function allTabs(tab, fileRoot) {
 
 
 // General function that extracts only required data from Excel File:
-function ProcessExcel(data) {
+export function processExcel(data) {
     // Read the Excel File data. 
     let workbook = XLS.read(data, {
         type: 'binary'

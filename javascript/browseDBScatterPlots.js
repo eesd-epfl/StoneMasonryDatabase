@@ -43,15 +43,16 @@ function curveDisplayButtonEvents(chart){
    cButtons.forEach(button => {
        button.addEventListener("click",() => {
            let style = getComputedStyle(button);
-           // FD Curve (blue)
-           if(style['background-color'] == "rgb(31, 119, 180)"){
+           console.log(style['backgroundColor']);
+           // FD Curve
+           if(style['background-color'] == "rgb(253, 231, 37)"){
                 chart.toggle('force')
 
-            // Envelope Curve (green)
-           }else if(style['background-color'] == "rgb(44, 160, 44)"){
+            // Envelope Curve
+           }else if(style['background-color'] == "rgb(35, 138, 141)"){
                chart.toggle('envForce')
 
-            // Bilinearisation Curve (orange)
+            // Bilinearisation Curve
            }else {
                chart.toggle('bilinForce')
            }
@@ -122,7 +123,7 @@ export function createLoadHistoryGraph(data) {
                     centered:true,
                     fit:true,
                     count:4,
-                //     values:[minXTickValue,0,maxXTickValue]
+                    // values:[minXTickValue,0,maxXTickValue]
                 },
                 // min:minXTickValue,
                 // max:maxXTickValue
@@ -133,7 +134,14 @@ export function createLoadHistoryGraph(data) {
 }
 
 function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,excelRefData) {
-    const tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
+    let tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
+
+    // Change NaN values to 0 to remove errors:
+    for (const item in tableRowData[0]){
+        if (tableRowData[0][item] == "NaN"){
+            tableRowData[0][item] = 0
+        }
+    }
     const bilinDrift = ['bilinDrift',(0-tableRowData[0]['du,- [%]']),(0-tableRowData[0]['dy,- [%]']),'0',tableRowData[0]['dy,+ [%]'], tableRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-tableRowData[0]['Vu,- [kN]']),(0-tableRowData[0]['Vu,- [kN]']), '0', tableRowData[0]['Vu,+ [kN]'],tableRowData[0]['Vu,+ [kN]']];
     
@@ -148,38 +156,9 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             force.push(reducedData[i][1]); //y axis
         }
     }
-
-    // Getting min and max X values for ticks:
-    let maxX = Math.max(...drift.slice(1));
-    let minX = Math.min(...drift.slice(1));
-
-    let maxXTickValue = 0;
-    let minXTickValue = 0;
-    
-    if(Math.abs(minX)>maxX){
-        maxXTickValue = Math.ceil(Math.abs(minX));
-        minXTickValue = 0 - Math.ceil(Math.abs(minX));
-        
-    }else {
-        maxXTickValue = Math.ceil(maxX);
-        minXTickValue = 0 - Math.ceil(maxX);
-    }
-
-    // Getting min and max Y values for ticks:
-    let maxY = Math.max(...force.slice(1));
-    let minY = Math.min(...force.slice(1));
-    
-    let maxYTickValue = 0;
-    let minYTickValue = 0;
-
-    if(Math.abs(minY)>maxY){
-        maxYTickValue = Math.ceil(Math.abs(minY));
-        minYTickValue = 0 - Math.ceil(Math.abs(minY));
-        
-    }else {
-        maxYTickValue = Math.ceil(maxY);
-        minYTickValue = 0 - Math.ceil(maxY);
-    }
+    const ticks = getMaxAndMins(force,drift);
+    const intYTickValue = Math.round((Math.ceil(Math.abs(ticks.maxY)/2))/10)*10
+    const intXTickValue =Math.round((Math.ceil(Math.abs(ticks.maxX)/2))/10)*10
     let chart = c3.generate({
         transition: {
             duration:500
@@ -198,8 +177,18 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
                 'envForce':'envDrift'
             },
             columns:[drift,force,bilinDrift,bilinForce],
-            type: 'spline',
-            xSort: false
+            // type: 'spline',
+            types:{
+                'force':'spline',
+                'bilinForce':'line',
+                'envForce':'line'
+            },
+            xSort: false,
+            colors:{
+                'force':'#fde725FF',
+                'envForce':'#238a8dFF',
+                'bilinForce':'#453781FF',
+            }
         },
         point: {
             show: false   
@@ -217,28 +206,31 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
                 label:'hor. force [kN]',
                 tick: {
                     fit:true,
+                    values:[ticks.minY, 0-intYTickValue, 0, intYTickValue, ticks.maxY]
+                    // count:4,
+                    // format:function (x) {return Math.ceil(x).toFixed()}
                 },
                 culling:{
                     max:4
                 },
-                count:4,
-                min:minYTickValue,
-                max:maxYTickValue,
+                count:2,
+                min: ticks.minY,
+                max: ticks.maxY,
             },
             x:{
                 label: 'drift [%]',
                 tick:{
-                    format:function (x) {return x.toFixed()},
+                    // format:function (x) {return x.toFixed()},
                     culling:{
-                        max:2
+                        max:5
                     },
                     centered:true,
                     fit:true,
-                    count:4,
-                    values:[minXTickValue,0,maxXTickValue]
+                    // count:4,
+                    values:[ticks.minX, 0-intXTickValue, 0, intXTickValue, ticks.maxX]
                 },
-                min:minXTickValue,
-                max:maxXTickValue
+                min: ticks.minX,
+                max: ticks.maxX
             }
         },
         legend: {
@@ -252,9 +244,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     })
     
     // Add Envelope Data:
-    const minValues = [minXTickValue, maxXTickValue, minYTickValue, maxYTickValue]
-
-    parseEnvelopeData(chart, uniqueId, minValues);
+    parseEnvelopeData(chart, uniqueId, ticks);
     
     // Hide the legends again:
     chart.legend.hide()
@@ -283,4 +273,45 @@ function reduceDataSet(data){
         reducedData.push(remainingRows[i]);
     }
     return reducedData;
+}
+
+function getMaxAndMins(force,drift){
+        // Getting min and max X values for ticks:
+        let maxX = Math.max(...drift.slice(1));
+        let minX = Math.min(...drift.slice(1));
+    
+        let maxXTickValue = 0;
+        let minXTickValue = 0;
+        
+        if(Math.abs(minX)>maxX){
+            maxXTickValue = Math.ceil(Math.abs(minX));
+            minXTickValue = 0 - Math.ceil(Math.abs(minX));
+            
+        }else {
+            maxXTickValue = Math.ceil(maxX);
+            minXTickValue = 0 - Math.ceil(maxX);
+        }
+    
+        // Getting min and max Y values for ticks:
+        let maxY = Math.max(...force.slice(1));
+        let minY = Math.min(...force.slice(1));
+        
+        let maxYTickValue = 0;
+        let minYTickValue = 0;
+    
+        if(Math.abs(minY)>maxY){
+            maxYTickValue = Math.round((Math.ceil(Math.abs(minY)))/10)*10;
+            minYTickValue = 0 - Math.round((Math.ceil(Math.abs(minY))/10))*10;
+            
+        }else {
+            maxYTickValue = Math.round((Math.ceil(maxY))/10)*10;
+            minYTickValue = 0 - Math.round((Math.ceil(maxY))/10)*10;
+        }
+        let maxMinTicks = {
+            minX: minXTickValue,
+            maxX: maxXTickValue,
+            minY: minYTickValue,
+            maxY: maxYTickValue
+        }
+        return maxMinTicks;
 }

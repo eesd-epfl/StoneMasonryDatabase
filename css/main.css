@@ -147,6 +147,10 @@
   stroke-width: 1.5px;
 }
 
+.c3-line-bilinForce {
+  stroke-width: 1.5px;
+}
+
 .c3-title:hover {
   font-weight: bold;
 }
@@ -230,8 +234,8 @@
 /* Tooltip text */
 #info-tooltip-text {
   visibility: hidden;
-  background: #ECF0F1;
-  color: #607D8B;
+  background: #238a8dFF;
+  color: black;
   border-radius: .25em;
   overflow: auto;
   padding: 1em 2.5em;
@@ -265,23 +269,19 @@
   text-align: justify;
 }
 
-#export-row {
-  padding-right: 2em;
-}
-
 #button-container {
   padding-right: 5em;
 }
 #fd-button {
   margin-top:1em;
-  background-color: rgb(31, 119, 180);
+  background-color: #fde725FF;
 }
 
 #env-button {
   margin-top:1em;
-  background-color: rgb(44, 160, 44);
+  background-color: #238a8dFF;
 }
 #bil-button {
   margin-top:1em;
-  background-color: rgb(255, 127, 14);
+  background-color: #453781FF;
 }
