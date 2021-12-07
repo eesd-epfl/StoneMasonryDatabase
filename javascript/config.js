@@ -1,7 +1,8 @@
+
+// Relative path from root to data folder:
 export const dataFolderPath = "data/"
 
 export const config = {
-
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
     'Stone masonry typology','Joints','Stone','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
@@ -64,16 +65,33 @@ export const config = {
         {title:'Fitting',field:'Fitting',visible:true},
         {title:'Comment', field:'Comment',visible :true},
     ],
-
     // Relative path to the Excel file, starting from root folder:
     inputFilePath: dataFolderPath+"Vanin et al. (2017) StoneMasonryDatabase.xls",
-    //Relative path to Curves folder:
+
+    //Relative path to Curves folder from the Data folder:
     curvesFolderPath: dataFolderPath+"Curves/",
     imagesFolderPath: dataFolderPath+"Images/",   
     envelopesFolderPath: dataFolderPath+"Envelopes/",   
     bibName: "Database.bib",
-    // Data for the 9 plots in Overview Page:
-    nbPlots: 6,
-    hmin: 750,
-    nBars: 7
+    fdColor: "rgb(253, 213, 37)",
+    envColor: "rgb(192, 57, 43)",
+    bilinColor:"rgb(69, 55, 129)",
+}
+
+export function setCurveColors(){
+    //Choosing the color of the curves
+    let cButtons = document.querySelectorAll("button[name=curveButton]");
+    cButtons.forEach(button => {
+        switch (button.id){
+            case 'fd-button':
+                button.style.backgroundColor = config.fdColor;
+                break;
+            case 'env-button':
+                button.style.backgroundColor = config.envColor;
+                break;
+            case 'bil-button':
+                button.style.backgroundColor = config.bilinColor;
+                break;
+        }
+    })    
 }

@@ -1,32 +1,37 @@
-import { CSVNamesArray, parseData, parseEnvelopeData } from "./browseDBCSVHandling.js";
+import { CSVNamesArray } from "./browseDBCSVHandling.js";
 import { popUp } from "./browseDBPopUp.js";
-import { clearBox } from "./browseDBTable.js";
+import { clearBox, curveDisplayButtonEvents } from "./browseDBWidgets.js";
 import { config } from "./config.js";
 
 let gridplots = document.getElementById('gridplots');
 
-//Final function.
+// Get all the rows from table and make empty divs for each. Afterwards, run the pagination function to add the graphs.
 export function generatePlots(data,excelRefData){
+    // Clear all contents of the divs:
     clearBox(gridplots);
-    //Create array with filepaths and filenames:
+
+    // Create array with filepaths and filenames:
     const fileNames = CSVNamesArray(data);
 
-    //Create empty divs that will be paginated (hide all except 9):
+    // Create empty divs that will be paginated (hide all except 9):
     for (let i = 0; i<fileNames[0].length; i++){
         let newDiv = document.createElement('div');
         newDiv.id = fileNames[1][i];
         newDiv.className = "five wide column"
         gridplots.append(newDiv);
     }
+
+    // Use JQuery function from pagination.js to paginate all the divs and plot the 9 visible.
     $("#gridplots").pagify(9, ".five.wide.column",excelRefData);
 }
 
-//Create the plot:
+// Create the FD Graph:
 export function createGraph(data,divId,uniqueId,excelRefData){
     let testUnitName;
     const table = Tabulator.findTable('#data-table3')[0];
     const tableData = table.getData('active');
     const reducedData = reduceDataSet(data);
+
     // If the div ID comes from the pop up window, the name will contain "fdCurve" or "lhCurve". 
     // If it comes from the main window, it will contain the testUnitName_AuthorYear
     if(divId.includes('fdCurve')){
@@ -38,28 +43,7 @@ export function createGraph(data,divId,uniqueId,excelRefData){
     }
 }
 
-function curveDisplayButtonEvents(chart){
-   let cButtons = document.querySelectorAll("button[name=curveButton]")   
-   cButtons.forEach(button => {
-       button.addEventListener("click",() => {
-           let style = getComputedStyle(button);
-           console.log(style['backgroundColor']);
-           // FD Curve
-           if(style['background-color'] == "rgb(253, 231, 37)"){
-                chart.toggle('force')
-
-            // Envelope Curve
-           }else if(style['background-color'] == "rgb(35, 138, 141)"){
-               chart.toggle('envForce')
-
-            // Bilinearisation Curve
-           }else {
-               chart.toggle('bilinForce')
-           }
-       });
-   });
-}
-
+// Load History Plot:
 export function createLoadHistoryGraph(data) {
     const title = data[0][1];;
     let xData = ['index'];
@@ -74,10 +58,6 @@ export function createLoadHistoryGraph(data) {
         }
     }    
     let chart = c3.generate({
-        // padding: {
-        //     left: 25,
-        //     right: 30
-        // },
         data:{
             names: {
                 x: 'index'
@@ -87,10 +67,8 @@ export function createLoadHistoryGraph(data) {
             },
             columns:[xData,yData],
             type: 'spline',
-            // xSort: false
         },
         point: {
-            // show: false   
         },
         title:{
             text:title,
@@ -99,8 +77,6 @@ export function createLoadHistoryGraph(data) {
         axis:{
             y:{
                 padding:{
-                    // top:0,
-                    // bottom:10
                 },
                 label:'drift [%]',
                 tick: {
@@ -110,8 +86,6 @@ export function createLoadHistoryGraph(data) {
                     max:4
                 },
                 count:4,
-                // min:minYTickValue,
-                // max:maxYTickValue,
             },
             x:{
                 label: 'index',
@@ -123,16 +97,14 @@ export function createLoadHistoryGraph(data) {
                     centered:true,
                     fit:true,
                     count:4,
-                    // values:[minXTickValue,0,maxXTickValue]
                 },
-                // min:minXTickValue,
-                // max:maxXTickValue
             }
         },
     });
     document.getElementById("lhCurve").append(chart.element);
 }
 
+// Create the FD Graph:
 function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,excelRefData) {
     let tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
 
@@ -142,6 +114,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             tableRowData[0][item] = 0
         }
     }
+
     const bilinDrift = ['bilinDrift',(0-tableRowData[0]['du,- [%]']),(0-tableRowData[0]['dy,- [%]']),'0',tableRowData[0]['dy,+ [%]'], tableRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-tableRowData[0]['Vu,- [kN]']),(0-tableRowData[0]['Vu,- [kN]']), '0', tableRowData[0]['Vu,+ [kN]'],tableRowData[0]['Vu,+ [kN]']];
     
@@ -160,6 +133,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     const intYTickValue = Math.round((Math.ceil(Math.abs(ticks.maxY)/2))/10)*10
     const intXTickValue =Math.round((Math.ceil(Math.abs(ticks.maxX)/2))/10)*10
     let chart = c3.generate({
+        bindTo: "#"+fileId,
         transition: {
             duration:500
         },
@@ -177,7 +151,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
                 'envForce':'envDrift'
             },
             columns:[drift,force,bilinDrift,bilinForce],
-            // type: 'spline',
             types:{
                 'force':'spline',
                 'bilinForce':'line',
@@ -185,9 +158,9 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             },
             xSort: false,
             colors:{
-                'force':'#fde725FF',
-                'envForce':'#238a8dFF',
-                'bilinForce':'#453781FF',
+                'force': config.fdColor,
+                'envForce':config.envColor,
+                'bilinForce':config.bilinColor,
             }
         },
         point: {
@@ -199,16 +172,10 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
         },
         axis:{
             y:{
-                padding:{
-                    // top:0,
-                    // bottom:10
-                },
                 label:'hor. force [kN]',
                 tick: {
                     fit:true,
                     values:[ticks.minY, 0-intYTickValue, 0, intYTickValue, ticks.maxY]
-                    // count:4,
-                    // format:function (x) {return Math.ceil(x).toFixed()}
                 },
                 culling:{
                     max:4
@@ -220,7 +187,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             x:{
                 label: 'drift [%]',
                 tick:{
-                    // format:function (x) {return x.toFixed()},
                     culling:{
                         max:5
                     },
@@ -248,19 +214,81 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     
     // Hide the legends again:
     chart.legend.hide()
-    
+
+    $("#"+fileId).data('c3-chart', chart);
     //Add Button Event Handling to toggle curves on/off:
     curveDisplayButtonEvents(chart);
     
     // Append Chart element to div:
     document.getElementById(fileId).append(chart.element);
 
+    // Get titles from all plots and add the pop up function to the title names.
     let child = document.getElementById(fileId).getElementsByClassName("c3")[0].children[0].getElementsByClassName("c3-title")[0]
     child.addEventListener("click", (e) => {
         popUp(excelRefData,e,tableRowData,1);
     })
 }
 
+// Add the envelope data to the FD Graph:
+function parseEnvelopeData(chart,uniqueId, ticks){
+    const filePath = config.envelopesFolderPath + "envelope_"+uniqueId + ".csv"
+    Papa.parse(filePath, {
+        download: true,
+        skipEmptyLines:true,
+        header: false,
+        complete: function(result){
+            // Format the data from csv file to append to chart:
+            const xs = {'envForce':'envDrift'};
+            let envDrift = ['envDrift'];
+            let envForce = ['envForce'];
+            for (let i = 4; i < result.data.length-3; i++){
+                if((result.data[i][2]!='NaN' && result.data[i][1]!='NaN') && result.data[i][2]!='[%]'){
+                    envDrift.push(result.data[i][2]); //x axis
+                    envForce.push(result.data[i][1]); //y axis
+                }
+            }
+            const columns = [envDrift,envForce];
+            const intTickValue = Math.ceil(Math.abs(ticks.maxY)/2)
+            chart.load({
+                    xs:xs, 
+                    columns: columns,
+                    axis: {
+                        y:{
+                            tick: {
+                                count:5,
+                                fit:true,
+                                values:[ticks.minY, 0-intTickValue,0,intTickValue,ticks.maxY]
+                            },
+                            culling:{
+                                max:4
+                            },
+                            min:ticks.minY,
+                            max: ticks.maxY
+                        },
+                        x: {
+                            tick:{
+                                format:function (x) {
+                                    return x.toFixed()
+                                },
+                                culling:{
+                                    max:2
+                                },
+                                centered:true,
+                                fit:true,
+                                count:4,
+                                values:[ticks.minX,0,ticks.maxX]
+                            },
+                            min:ticks.minX,
+                            max:ticks.maxX
+                        }
+                    }
+            })
+            chart.legend.hide();
+        },
+    });
+}
+
+// Reduces the number of points to plot:
 function reduceDataSet(data){
     let reducedData = data.slice(0,3);
     let remainingRows = data.slice(3,data.length);
@@ -275,6 +303,7 @@ function reduceDataSet(data){
     return reducedData;
 }
 
+// Function that returns an object with the max and min of the X and Y axis.
 function getMaxAndMins(force,drift){
         // Getting min and max X values for ticks:
         let maxX = Math.max(...drift.slice(1));

@@ -1,52 +1,27 @@
 import {config} from './config.js';
-import {generatePlots} from './browseDBScatterPlots.js';
+import {generatePlots} from './browseDBGraphs.js';
 
+// This Script contains all the items that appear on the Browse DB Tab.
+// 1. Tab
+// 2. Sliders
+// 3. Filter Events
+// 4. Clear contents of divs fct.
+// 5. Tooltip icon information
+// 6. Search bar
+// 7. FD/Env/Bilin Curve display buttons
 
-//Create table and sliders:
+// 1. Table:
 export function createTable(data){
     let table = new Tabulator('#data-table3',{
         data:data,
         autoColumnsDefinitions:config.tableColumns,
         autoColumns:true,
         pagination:"remote",
-        // height:"    
-        // layout:"fitColumns",
-        // paginationSize:20,
     });
     return table;
 }
 
-//Assign events to the widgets:
-export function filterEvents(excelRefData){
-    let table = Tabulator.findTable("#data-table3")[0];
-    // 1. Checkboxes:
-    const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
-    checkboxes.forEach(function(checkbox){
-        checkbox.addEventListener('change',function(){
-            table = Tabulator.findTable("#data-table3")[0];
-            clearBox(document.getElementById('gridplots'));
-            //Clear and Apply new filter values to table
-            table.clearFilter();
-            table.setFilter(getFilterValues());
-            //Add first 9 plots to table
-            generatePlots(table.getData("active"),excelRefData);
-            });
-        });
-
-    // 2. Sliders
-    let sliders = document.querySelectorAll("div[name=slider]");
-    sliders.forEach((slider) => {
-        //Apply new filter values to table
-        slider.noUiSlider.on('change',()=>{
-            clearBox(document.getElementById('gridplots'));
-            table.clearFilter();
-            table.setFilter(getFilterValues());
-            generatePlots(table.getData("active"),excelRefData);
-        });
-    });
-}
-
-//Creating the slider widgets
+// 2.Slider widgets
 export function createSliders(data){
     // Create noUiSliders:
     // 1. Size slider:
@@ -102,7 +77,7 @@ export function createSliders(data){
     });
 }
 
-//Create a function to get all filters and current values:
+// 3a. Get all filters and current values:
 function getFilterValues(){
     //1. Checkboxes:
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
@@ -125,12 +100,44 @@ function getFilterValues(){
     return myFilter;
 }
 
+// 4b. Assign events to the widgets:
+export function filterEvents(excelRefData){
+    let table = Tabulator.findTable("#data-table3")[0];
+    // 1. Checkboxes:
+    const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
+    checkboxes.forEach(function(checkbox){
+        checkbox.addEventListener('change',function(){
+            table = Tabulator.findTable("#data-table3")[0];
+            clearBox(document.getElementById('gridplots'));
+            //Clear and Apply new filter values to table
+            table.clearFilter();
+            table.setFilter(getFilterValues());
+            //Add first 9 plots to table
+            generatePlots(table.getData("active"),excelRefData);
+            });
+        });
+
+    // 2. Sliders
+    let sliders = document.querySelectorAll("div[name=slider]");
+    sliders.forEach((slider) => {
+        //Apply new filter values to table
+        slider.noUiSlider.on('change',()=>{
+            clearBox(document.getElementById('gridplots'));
+            table.clearFilter();
+            table.setFilter(getFilterValues());
+            generatePlots(table.getData("active"),excelRefData);
+        });
+    });
+}
+
+// 4. Clear contents of child divs:
 export function clearBox(div) {
     while(div.firstChild) {
         div.removeChild(div.firstChild);
     }
 }
 
+// 5. Tooltip icon:
 export function tooltip(){
     let tooltipText = document.getElementById("info-tooltip-text");
     let tooltip = document.getElementById("info-tooltip");
@@ -143,6 +150,8 @@ export function tooltip(){
 
 }
 
+
+// 6. Search bar:
 export function searchBar() {
     let table = Tabulator.findTable("#data-table3")[0];
     const input = document.getElementById("filter");
@@ -162,3 +171,37 @@ export function searchBar() {
         table.setFilter([filters]);
     })
 }
+
+// 7. Toggle on/off the curves through the buttons:
+export function curveDisplayButtonEvents(chart){
+    let cButtons = document.querySelectorAll("button[name=curveButton]")   
+    cButtons.forEach(button => {
+        button.addEventListener("click",() => {
+            let style = getComputedStyle(button);
+            switch (style['background-color']){
+                case config.fdColor:
+                    chart.toggle('force');
+                    break;
+                case config.envColor:
+                    chart.toggle('envForce');
+                    break;
+                case config.bilinColor:
+                    chart.toggle('bilinForce');
+                    break;
+            }
+            // // FD Curve
+            // if(style['background-color'] == config.fdColor){
+            //      chart.toggle('force')
+ 
+            //  // Envelope Curve
+            // }else if(style['background-color'] == config.envColor){
+            //     chart.toggle('envForce')
+ 
+            //  // Bilinearisation Curve
+            // }else {
+            //     chart.toggle('bilinForce')
+            // }
+            // Change value of button:
+        });
+    });
+ }

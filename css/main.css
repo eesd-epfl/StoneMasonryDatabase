@@ -153,6 +153,7 @@
 
 .c3-title:hover {
   font-weight: bold;
+  cursor:pointer  ;
 }
 #crackmap-toggle{
   width: 10vw;
@@ -274,14 +275,18 @@
 }
 #fd-button {
   margin-top:1em;
-  background-color: #fde725FF;
+  background-color: rgb(253, 213, 37);
 }
 
 #env-button {
   margin-top:1em;
-  background-color: #238a8dFF;
+  background-color: #c0392b;
 }
 #bil-button {
   margin-top:1em;
   background-color: #453781FF;
+}
+
+.button-disabled {
+  color:gray
 }

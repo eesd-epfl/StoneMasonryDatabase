@@ -1,10 +1,9 @@
-import { createSliders, createTable, filterEvents, searchBar} from "./browseDBTable.js";
-import { generatePlots } from "./browseDBScatterPlots.js";
+import { createSliders, createTable, filterEvents, searchBar} from "./browseDBWidgets.js";
+import { generatePlots } from "./browseDBGraphs.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";
 import { allPlots } from "./overviewDBTab.js";
-
-
+import { processExcel } from "./browseDBCSVHandling.js";
 
 export function allTabs(tab, fileRoot) {
     // Get data from Excel File:
@@ -25,16 +24,19 @@ export function allTabs(tab, fileRoot) {
                 // Browse DB Tab:
                 if(tab === 1){
                     let table = createTable(data);
-                    // Create empty divs, display first 9, paginate everything and create and append the first 9 plots to the divs 
 
                     // Create the plots after table is built:
                     table.on("dataLoaded", () => generatePlots(data,referenceData));
-
+                    
+                    // Add the search bar:
                     table.on("dataLoaded", () => searchBar());
+
                     // Add noUiSliders with table data:
                     table.on("dataLoaded", () => createSliders(data));
+
                     // Add Events to widgets
                     table.on("dataLoaded", () => filterEvents(referenceData));
+
                     // Add events to row selection (pop up window with extra info)
                     table.on("rowClick", function(e,row){
                         popUp(referenceData,e, row,0);
@@ -49,56 +51,14 @@ export function allTabs(tab, fileRoot) {
         } 
         else {
             //For IE Browser.
-            reader.onload = function (e) {
-                let data = "";
-                let bytes = new Uint8Array(e.target.result);
-                for (let i = 0; i < bytes.byteLength; i++) {
-                    data += String.fromCharCode(bytes[i]);
-                }
-                processExcel(data);
-            };
+            // alert
             reader.readAsArrayBuffer(file);
         }
     };
     xhr.send();
 };
 
-
-// General function that extracts only required data from Excel File:
-export function processExcel(data) {
-    // Read the Excel File data. 
-    let workbook = XLS.read(data, {
-        type: 'binary'
-    });
-    // Fetch the name of First Sheet.
-    let firstSheet = workbook.SheetNames[0];
-    let secondSheet = workbook.SheetNames[1];
-
-    // Read all rows from First and Second Sheet into JSON arrays.
-    let excelFirstSheetObject = XLS.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
-    let referenceData = XLS.utils.sheet_to_row_object_array(workbook.Sheets[secondSheet]);
-
-    
-    // Remove empty rows from array:
-    let intObject = [];
-    for (let i = 0; i<excelFirstSheetObject.length; i++){
-        if(excelFirstSheetObject[i].length!=0){
-            intObject.push(excelFirstSheetObject[i]);
-        }
-    };
-
-    // Use config file variable "excelColumns" to get only the columns we want to keep for processing:
-    let filtered = intObject.map(function(row){
-        let newRow = {}
-        for (let i = 0; i< config.excelColumns.length; i++){
-            newRow[config.excelColumns[i]]= row[config.excelColumns[i]];
-        }
-        return newRow;
-    });
-    const returnData = [filtered, referenceData];
-    return returnData;
-};
-
+//Changes the data to a JSON object with the headers renamed:
 function renameTableHeaders(data){
     let shortenedData = data.map(row => config.sortData(row));
     return shortenedData;

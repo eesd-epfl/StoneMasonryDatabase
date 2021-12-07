@@ -1,5 +1,5 @@
 import { parseData } from "./browseDBCSVHandling.js";
-import { createGraph } from "./browseDBScatterPlots.js";
+import { createGraph } from "./browseDBGraphs.js";
 import { config } from "./config.js";
 
 //Pagination Function:
@@ -12,10 +12,8 @@ import { config } from "./config.js";
 		currentPage: 0,
 		createNavigation: function() {
 			this.totalPages = Math.ceil(this.items.length / this.perPage);
-
 			$('.pagination', this.container.parent()).remove();
 			let pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
-
 			for (let i = 0; i < this.totalPages; i++) {
 				let pageElClass = "page";
 				if (!i)
@@ -42,7 +40,6 @@ import { config } from "./config.js";
 			});
 		},
 		navigate: function(next) {
-			// default perPage to 5
 			if (isNaN(next) || next === undefined) {
 				next = true;
 			}
@@ -61,7 +58,6 @@ import { config } from "./config.js";
 				if (this.currentPage == 0)
 					$(".pagination .nav.prev").addClass("disabled");
 				}
-
 			this.showItems();
 		},
 		updateNavigation: function() {
@@ -72,9 +68,7 @@ import { config } from "./config.js";
 			this.currentPage + 1) + '"]').addClass("current");
 		},
 		goToPage: function(page) {
-
 			this.currentPage = page - 1;
-
 			$(".pagination .nav").removeClass("disabled");
 			if (this.currentPage == (this.totalPages - 1))
 				$(".pagination .nav.next").addClass("disabled");
@@ -125,12 +119,6 @@ import { config } from "./config.js";
 		if (isNaN(perPage) || perPage === undefined) {
 			perPage = 9;
 		} 
-
-		// don't fire if fewer items than perPage
-		// if (items.length <= perPage) {
-		// 	return true;
-		// }
-
 		pagify.init(el, items, perPage,excelRefData);
 	};
 })(jQuery);

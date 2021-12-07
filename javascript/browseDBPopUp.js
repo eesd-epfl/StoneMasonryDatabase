@@ -1,6 +1,6 @@
-import { clearBox} from "./browseDBTable.js";
-import { createGraph} from "./browseDBScatterPlots.js";
-import { CSVNamesArray, fillRefDivs, loadHistoryPlot, makeFileName, parseData, popUpGetExcelRefData } from "./browseDBCSVHandling.js";
+import { clearBox} from "./browseDBWidgets.js";
+import { createGraph} from "./browseDBGraphs.js";
+import { fillRefDivs, getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./browseDBCSVHandling.js";
 import { config, dataFolderPath } from "./config.js";
 
 const gridplots = document.getElementById("gridplots");
@@ -15,26 +15,23 @@ const photoDiv = document.getElementById("photo");
 const crackRadioBtn = document.getElementById("crack-radio");
 const photoRadioBtn = document.getElementById("photo-radio");
 
+// This function handles all the one-test selection pop up window functionalities.
+// Data is handled differently according to where the call came from:
+// 1. Call came directly from clicking on the row -> We have the row data, reference data, etc.
+// 2. Call comes from clicking on the plot title -> We need to get the data
+
+// Code is separated in the following sections:
+// 1. Reset divs/contents on new pop up
+// 2. Add Ref data
+// 3. Display the plots
+// 4. Add file data to zip for export
+// 5. Radio button functionality (switch between plots/images)
 export function popUp(excelRefData,e, row, calledFrom){
-    $("#export-curve").replaceWith($('#export-curve').clone());
     let pagination = document.getElementsByClassName("pagination")[0];
-    // Get data from the selected row:
+    const plotDivChildren = Array.from(plotDiv.children);
     let rowData = [];
-    // If the call comes from clicking on a row:
-    if(calledFrom === 0){
-        rowData = [row.getData()];
-        // Add reference information to the window
-        // Add the selected row's reference:
-        fillRefDivs(rowData,excelRefData);
-
-    // If the call comes from the plot title:  
-    }else if (calledFrom === 1){
-        rowData = row;
-        popUpGetExcelRefData("",rowData)
-
-    }
-    const fileId = makeFileName(rowData[0])[0];
-    const testUnitName = makeFileName(rowData[0])[1];
+    console.log(document.getElementsByClassName("c3")[0])
+    // 1. Remove contents, reset display and divs:
 
     // Disable the plots and pagination divs:
     gridplots.style.display = 'none';
@@ -51,79 +48,82 @@ export function popUp(excelRefData,e, row, calledFrom){
     crackMapDiv.style.display = "none";
     photoDiv.style.display = "none";
     lhCurveDiv.style.display = "none";
-    // Reset reference text:
-    // ref1.innerHTML = "";
-    // ref2.innerHTML = "";
     
     // Remove fdCurve, crackmap and photo child:
-    const plotDivChildren = Array.from(plotDiv.children);
     plotDivChildren.forEach(child =>{
         clearBox(child);
     })
 
     // Reset the radio button to default F-D Curve:
     fdRadioButton.checked = "true";
-
-    // Get the data of the selected row:
-    const plotData = CSVNamesArray(rowData);
-    const filePath = plotData[0][0];
-    const uniqueId = plotData[1][0];
-
-    // 1. Display the F-D Curve:
-    fdCurveDiv.style.display = "block";
     
-    let zip = new JSZip();    
-    const fdCurveFilePath = config.curvesFolderPath + "FD_" + fileId + ".csv";
-    const imgFilePath = config.imagesFolderPath + "photo_" + fileId + ".jpg"
-    const crackmapFilePath = config.imagesFolderPath + "crackmap_" + fileId + ".png"
+    // Reinitialise the download test data button on pop up:
+    $("#export-curve").replaceWith($('#export-curve').clone());
 
-    executeIfFileExist(fdCurveFilePath,filePath,uniqueId,zip,testUnitName,excelRefData);
-    executeIfFileExist(imgFilePath,filePath,uniqueId,zip,testUnitName,excelRefData);
-    executeIfFileExist(crackmapFilePath,filePath,uniqueId,zip,testUnitName,excelRefData);
+    // 2. Fill Reference Data:
+    // If the call comes from clicking on a row:
+    if(calledFrom === 0){
+        rowData = [row.getData()];
+        // Add the selected row's reference:
+        fillRefDivs(rowData,excelRefData);
+
+    // If the call comes from the plot title:  
+    }else if (calledFrom === 1){
+        rowData = row;
+        popUpGetExcelRefData("",rowData)
+
+    }
+
+    // Variables Preparation:
+    const uniqueId = getUniqueIdFromData(rowData[0])[0];
+    const testUnitName = getUniqueIdFromData(rowData[0])[1];
+    const allFilePaths = createPopUpFilePaths(uniqueId);
+    let zip = new JSZip();
+
+    // 3. Display all the plots
+    // 4a. Add the files to zip (1st part is inside the displayPlots fct):
+    for (const file in allFilePaths){
+        displayPlots(allFilePaths[file],uniqueId,zip,testUnitName,excelRefData);
+    }
     
-    loadHistoryPlot(filePath);
-    
-    // Get Envelope data and send to zip:
+    // 4b. Second part of zip files to add:
+    // Envelope data:
     let dataBlob = fetch(config.envelopesFolderPath+"envelope_"+uniqueId+".csv").then(resp => resp.blob());
     zip.file("envelope_"+uniqueId+".csv", dataBlob);
 
-    // Get Bibtex Citation and send to zip:
+    // Bibtex Citation:
     dataBlob = fetch(dataFolderPath+ config.bibName).then(resp => resp.blob());
     zip.file(config.bibName, dataBlob);
 
-    //Change div according to the radio buttons:
+    // 5. Radio buttons functionality:
     let radios = document.getElementsByName('selected-curve');
     radios.forEach((button)=>{
         button.addEventListener("change", function(event){
             //Start by hiding all the divs inside plotDiv:
-            const plotDivChildren = Array.from(plotDiv.children);
             plotDivChildren.forEach(child => {
                 child.style.display = "none";
             })
             // Radio button value = ID of div to display.
             // Only change the display of the selected radio button by using this:
-            let divId = event.target.value;
-            let myDivToDisplay = document.getElementById(divId);
-            myDivToDisplay.style.display = "block";
+            document.getElementById(event.target.value).style.display = "block";
         })
     })
 
-    let downloadButton = document.getElementById("export-curve");
-    downloadButton.addEventListener("click",() => zip.generateAsync({type:"blob"}).then((content)=> saveAs(content, uniqueId+".zip")));
+    // 6. Add functionality to download test data button:
+    document.getElementById("export-curve").addEventListener("click",() => 
+        zip.generateAsync({type:"blob"}).then((content) => 
+            saveAs(content, uniqueId+".zip")));
 
-    //Give functionality to the close icon:
+    // 7. Add functionality to the close icon:
     let windowsCloseIcon = document.getElementById("close");
     windowsCloseIcon.addEventListener("click",function(){
         // Remove event listener on button:
         $("#export-curve").replaceWith($('#export-curve').clone());
 
         // Clear all the contents of the pop-up window
-        let plotDiv = document.getElementById("plotDiv");
-        const plotDivChildren = Array.from(plotDiv.children);
         plotDivChildren.forEach(child =>{
             clearBox(child);
         })
-
         // Display hidden divs:
         gridplots.style.display = 'flex';
         pagination.style.display = 'block';
@@ -136,17 +136,19 @@ export function popUp(excelRefData,e, row, calledFrom){
     e.preventDefault();
 }
 
-function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefData) {
+// Get and display file data and add to zip
+function displayPlots(source,uniqueId,zip,testUnitName,excelRefData) {
     let dataBlob;
     var xhr = new XMLHttpRequest()
     xhr.open('GET', source, true);
     xhr.onreadystatechange = function(e){
         if(xhr.readyState == 4){
             if(xhr.status == 200){
-                // Get and display FD Curve
+                // Get and display FD Curve + Load History Plot
                 if(source.includes("FD_")){
-                    parseData(createGraph,filePath,"fdCurve",uniqueId,excelRefData);
-                    dataBlob = fetch(filePath).then(resp => resp.blob());
+                    parseData(createGraph,source,"fdCurve",uniqueId,excelRefData);
+                    getLoadHistoryData(source);
+                    dataBlob = fetch(source).then(resp => resp.blob());
                     zip.file("FD_"+uniqueId+".csv", dataBlob);
 
                     // Get and display Photo:
@@ -202,4 +204,14 @@ function executeIfFileExist(source,filePath,uniqueId,zip,testUnitName,excelRefDa
         }
     }
     xhr.send(null);
+}
+
+// Creates an object with the file paths of the FD, photo and crackmap files:
+function createPopUpFilePaths(uniqueId){
+    const allFilePaths = {
+        fdCurveFilePath:config.curvesFolderPath + "FD_" + uniqueId + ".csv",
+        imgFilePath:config.imagesFolderPath + "photo_" + uniqueId + ".jpg",
+        crackmapFilePath: config.imagesFolderPath + "crackmap_" + uniqueId + ".png"
+    }
+    return allFilePaths;
 }

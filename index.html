@@ -66,11 +66,12 @@
     </div>
     <!-- Container for web page -->
     <div class="ui grid">
+
+      <!-- Header Row -->
       <div class="row" id="header-row">
         <div  class="five wide column"></div>
         <div class="six wide center aligned column" id="title">
-          <h2>
-            Stone Masonry Database Overview 
+          <h2>Stone Masonry Database Overview 
             <i class="info circle icon" id="info-tooltip"> </i>
           </h2>
           <span id="info-tooltip-text">
@@ -81,11 +82,13 @@
             Lab - Laboratory or In-situ<br>
             Failure - Failure type</span>
         </div>
+
+        <!-- Curve Display Buttons -->
         <div class="five wide center aligned column" id="button-container">
           <div class="ui small floated buttons">
-            <button class="ui button" id="fd-button" name="curveButton">FD</button>
-            <button class="ui button" id="env-button" name="curveButton">Envelope</button>
-            <button class="ui button" id="bil-button" name="curveButton">Bilinearisation</button>
+            <button class="ui button" id="fd-button" name="curveButton" value="on">FD</button>
+            <button class="ui button" id="env-button" name="curveButton" value="on">Envelope</button>
+            <button class="ui button" id="bil-button" name="curveButton" value="on">Bilinearisation</button>
           </div>
         </div>
       </div>
@@ -278,7 +281,7 @@
     </div>
     
     <!-- Run javascript-->
-    <script type="module" src="browseDBMain.js"></script>
+    <script type="module" src="./javascript/browseDBMain.js"></script>
     <script type="module" src="./javascript/pagination.js"></script>
   </body>
 </html>
