@@ -59,6 +59,9 @@ export function popUp(excelRefData,e, row, calledFrom){
     // Reinitialise the download test data button on pop up:
     $("#export-curve").replaceWith($('#export-curve').clone());
 
+    // Reset the curve buttons:
+    resetCurveButtons();
+
     // 2. Fill Reference Data:
     // If the call comes from clicking on a row:
     if(calledFrom === 0){
@@ -128,6 +131,9 @@ export function popUp(excelRefData,e, row, calledFrom){
         pagination.style.display = 'block';
         plotDiv.style.display = "none";
         plotContainer.style.display = "none";
+
+        // Reset Curve Buttons:
+        resetCurveButtons();
 
         // Force a windows resize to call the c3 resize function on the graphs (otherwise the SVG element overflows on its parent's container)
         window.dispatchEvent(new Event('resize'));
@@ -213,4 +219,19 @@ function createPopUpFilePaths(uniqueId){
         crackmapFilePath: config.imagesFolderPath + "crackmap_" + uniqueId + ".png"
     }
     return allFilePaths;
+}
+
+function resetCurveButtons(){
+    let cButtons = document.querySelectorAll("button[name=curveButton]")   
+    cButtons.forEach(button => {
+        button.value = "0";
+        button.className = "ui button"
+        if(button.id == "fd-button"){
+            button.backgroundColor = config.fdColor;
+        }else if (button.id == "env-button"){
+            button.backgroundColor = config.envColor;
+        } else {
+            button.backgroundColor = config.bilinColor;
+        }
+    });
 }

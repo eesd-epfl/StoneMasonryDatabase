@@ -177,31 +177,44 @@ export function curveDisplayButtonEvents(chart){
     let cButtons = document.querySelectorAll("button[name=curveButton]")   
     cButtons.forEach(button => {
         button.addEventListener("click",() => {
-            let style = getComputedStyle(button);
-            switch (style['background-color']){
-                case config.fdColor:
-                    chart.toggle('force');
-                    break;
-                case config.envColor:
-                    chart.toggle('envForce');
-                    break;
-                case config.bilinColor:
-                    chart.toggle('bilinForce');
-                    break;
-            }
-            // // FD Curve
-            // if(style['background-color'] == config.fdColor){
-            //      chart.toggle('force')
- 
-            //  // Envelope Curve
-            // }else if(style['background-color'] == config.envColor){
-            //     chart.toggle('envForce')
- 
-            //  // Bilinearisation Curve
-            // }else {
-            //     chart.toggle('bilinForce')
+            // let style = getComputedStyle(button);
+            // switch (style['background-color']){
+            //     case config.fdColor:
+            //         chart.toggle('force');
+            //         break;
+            //     case config.envColor:
+            //         chart.toggle('envForce');
+            //         break;
+            //     case config.bilinColor:
+            //         chart.toggle('bilinForce');
+            //         break;
             // }
-            // Change value of button:
+            
+            if(button.id == "fd-button"){
+                chart.toggle('force');
+                
+            }else if(button.id == "env-button"){
+                chart.toggle('envForce');
+                
+            } else {
+                chart.toggle('bilinForce');
+            }
+            button.value = parseInt(button.value)+1;
+            
+            if(parseInt(button.value) == 9){
+                button.className =  "ui button hidden";
+                
+            }else if (parseInt(button.value) == 18){
+                button.className = "ui button"   
+                if(button.id == "fd-button"){
+                    button.backgroundColor = config.fdColor;
+                }else if (button.id == "env-button"){
+                    button.backgroundColor = config.envColor;
+                } else {
+                    button.backgroundColor = config.bilinColor;
+                }
+                button.value = 0;
+            }
         });
     });
- }
+}

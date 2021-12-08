@@ -130,6 +130,13 @@
 
 }
 
+#display {
+  padding-left: 2vw;
+}
+
+#radio-container {
+  border-width: 0,3em;
+}
 .hidden {
   display: none;
 }
@@ -275,18 +282,19 @@
 }
 #fd-button {
   margin-top:1em;
-  background-color: rgb(253, 213, 37);
+  /* background-color: rgb(253, 213, 37); */
 }
 
 #env-button {
   margin-top:1em;
-  background-color: #c0392b;
+  /* background-color: #c0392b; */
 }
 #bil-button {
   margin-top:1em;
-  background-color: #453781FF;
+  /* background-color: rgb(125, 115, 172); */
 }
 
-.button-disabled {
-  color:gray
+.ui.button.hidden {
+  background-color:rgb(122, 120, 120) !important;
+  opacity: 0.45;
 }

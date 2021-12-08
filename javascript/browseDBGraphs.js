@@ -17,7 +17,7 @@ export function generatePlots(data,excelRefData){
     for (let i = 0; i<fileNames[0].length; i++){
         let newDiv = document.createElement('div');
         newDiv.id = fileNames[1][i];
-        newDiv.className = "five wide column"
+        newDiv.className = "five wide column";
         gridplots.append(newDiv);
     }
 
@@ -208,7 +208,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             }
         }
     })
-    
     // Add Envelope Data:
     parseEnvelopeData(chart, uniqueId, ticks);
     
@@ -226,7 +225,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     child.addEventListener("click", (e) => {
         popUp(excelRefData,e,tableRowData,1);
     })
-    return chart;
 }
 
 // Add the envelope data to the FD Graph:

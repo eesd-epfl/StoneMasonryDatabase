@@ -27,7 +27,20 @@ Using Internet Explorer will most likely result in errors.
 
 When running locally, a local server is required.
 
-A Python 3 HTTP Server was used.
+A Python 3 HTTP Server was used to run the website locally.
+
+HTML Javascript modules and versions are:
+- C3 v0.7.20
+- D3 v5.16.0
+- Papaparse v5.3.1
+- XLS v0.7.6
+- JQuery v3.6.0
+- Semantic UI v2.4.1
+- JSZip v3.7.1
+- JSZip Utils v0.1.0
+- FileSaver v2.0.5
+- Tabulator v5.0.7
+- noUiSlider v15.5.0
 
 ### How to install
 
@@ -57,7 +70,7 @@ Contributors - Katrin Beyer and Ivana Bozulic
 # License 
 MIT License
 
-Copyright (c) 2021 EESD Department
+Copyright (c) 2021 Earthquake Engineering and Structural Dynamics Laboratory. Ecole Polytechnique Fédérale de Lausanne (EPFL)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -75,7 +75,7 @@ export const config = {
     bibName: "Database.bib",
     fdColor: "rgb(253, 213, 37)",
     envColor: "rgb(192, 57, 43)",
-    bilinColor:"rgb(69, 55, 129)",
+    bilinColor:"rgb(125, 111, 181)",
 }
 
 export function setCurveColors(){
