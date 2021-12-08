@@ -1,4 +1,4 @@
-import { parseData } from "./browseDBCSVHandling.js";
+import { parseData } from "./dataExtraction.js";
 import { createGraph } from "./browseDBGraphs.js";
 import { config } from "./config.js";
 

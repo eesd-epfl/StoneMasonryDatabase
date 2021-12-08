@@ -3,7 +3,7 @@ import { generatePlots } from "./browseDBGraphs.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";
 import { allPlots } from "./overviewDBTab.js";
-import { processExcel } from "./browseDBCSVHandling.js";
+import { processExcel } from "./dataExtraction.js";
 
 export function allTabs(tab, fileRoot) {
     // Get data from Excel File:

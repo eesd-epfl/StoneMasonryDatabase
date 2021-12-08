@@ -1,6 +1,6 @@
 import { clearBox} from "./browseDBWidgets.js";
 import { createGraph} from "./browseDBGraphs.js";
-import { fillRefDivs, getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./browseDBCSVHandling.js";
+import { fillRefDivs, getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./dataExtraction.js";
 import { config, dataFolderPath } from "./config.js";
 
 const gridplots = document.getElementById("gridplots");
@@ -30,7 +30,6 @@ export function popUp(excelRefData,e, row, calledFrom){
     let pagination = document.getElementsByClassName("pagination")[0];
     const plotDivChildren = Array.from(plotDiv.children);
     let rowData = [];
-    console.log(document.getElementsByClassName("c3")[0])
     // 1. Remove contents, reset display and divs:
 
     // Disable the plots and pagination divs:
@@ -117,7 +116,7 @@ export function popUp(excelRefData,e, row, calledFrom){
     // 7. Add functionality to the close icon:
     let windowsCloseIcon = document.getElementById("close");
     windowsCloseIcon.addEventListener("click",function(){
-        // Remove event listener on button:
+        // Remove event listener on download button:
         $("#export-curve").replaceWith($('#export-curve').clone());
 
         // Clear all the contents of the pop-up window

@@ -1,4 +1,4 @@
-import { CSVNamesArray } from "./browseDBCSVHandling.js";
+import { CSVNamesArray } from "./dataExtraction.js";
 import { popUp } from "./browseDBPopUp.js";
 import { clearBox, curveDisplayButtonEvents } from "./browseDBWidgets.js";
 import { config } from "./config.js";
@@ -215,7 +215,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     // Hide the legends again:
     chart.legend.hide()
 
-    $("#"+fileId).data('c3-chart', chart);
     //Add Button Event Handling to toggle curves on/off:
     curveDisplayButtonEvents(chart);
     
@@ -227,6 +226,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     child.addEventListener("click", (e) => {
         popUp(excelRefData,e,tableRowData,1);
     })
+    return chart;
 }
 
 // Add the envelope data to the FD Graph:
@@ -293,7 +293,7 @@ function reduceDataSet(data){
     let reducedData = data.slice(0,3);
     let remainingRows = data.slice(3,data.length);
     const totalPoints = data.length;
-    const nbPointsToKeep = 100;
+    const nbPointsToKeep = 500;
     const ratio = Math.ceil(totalPoints/nbPointsToKeep);
 
     // Reduce the number of points to plot according to total # of points in csv file:
