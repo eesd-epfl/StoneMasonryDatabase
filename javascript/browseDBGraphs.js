@@ -6,7 +6,7 @@ import { config } from "./config.js";
 let gridplots = document.getElementById('gridplots');
 
 // Get all the rows from table and make empty divs for each. Afterwards, run the pagination function to add the graphs.
-export function generatePlots(data,excelRefData){
+export function generatePlots(data){
     // Clear all contents of the divs:
     clearBox(gridplots);
 
@@ -22,11 +22,11 @@ export function generatePlots(data,excelRefData){
     }
 
     // Use JQuery function from pagination.js to paginate all the divs and plot the 9 visible.
-    $("#gridplots").pagify(9, ".five.wide.column",excelRefData);
+    $("#gridplots").pagify(9, ".five.wide.column");
 }
 
 // Create the FD Graph:
-export function createGraph(data,divId,uniqueId,excelRefData){
+export function createGraph(data,divId,uniqueId,increment){
     let testUnitName;
     const table = Tabulator.findTable('#data-table3')[0];
     const tableData = table.getData('active');
@@ -36,10 +36,10 @@ export function createGraph(data,divId,uniqueId,excelRefData){
     // If it comes from the main window, it will contain the testUnitName_AuthorYear
     if(divId.includes('fdCurve')){
         testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
-        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,excelRefData);
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,increment);
     }else{
         testUnitName = divId.split('_')[0];
-        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,excelRefData);
+        createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,increment);
     }
 }
 
@@ -57,6 +57,7 @@ export function createLoadHistoryGraph(data) {
             yData.push(data[i][2]);
         }
     }    
+
     let chart = c3.generate({
         data:{
             names: {
@@ -66,13 +67,19 @@ export function createLoadHistoryGraph(data) {
                 'drift':'index',
             },
             columns:[xData,yData],
-            type: 'spline',
+            types: {
+                'drift':'line',
+            }
         },
         point: {
+            show:false,
         },
         title:{
             text:title,
             position:"top-center",
+        },
+        legend: {
+            hide:true
         },
         axis:{
             y:{
@@ -80,32 +87,38 @@ export function createLoadHistoryGraph(data) {
                 },
                 label:'drift [%]',
                 tick: {
+                    format: function(x) {return x.toFixed(1)},
                     fit:true,
+                    culling:{
+                        max:8
+                    },
+                    count:8,
                 },
-                culling:{
-                    max:4
-                },
-                count:4,
             },
             x:{
+                min:0,
+                padding:{
+                    left:0,
+                    right:20
+                },
                 label: 'index',
                 tick:{
-                    format:function (x) {return x.toFixed()},
+                    format:function (x) {return Math.ceil((Math.round(x/10))*10).toFixed()},
                     culling:{
-                        max:4
+                        max:16
                     },
                     centered:true,
-                    fit:true,
-                    count:4,
+                    // fit:true,
+                    count:10,
                 },
-            }
+            },
         },
     });
     document.getElementById("lhCurve").append(chart.element);
 }
 
 // Create the FD Graph:
-function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,excelRefData) {
+function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId, increment) {
     let tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
 
     // Change NaN values to 0 to remove errors:
@@ -114,7 +127,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
             tableRowData[0][item] = 0
         }
     }
-
     const bilinDrift = ['bilinDrift',(0-tableRowData[0]['du,- [%]']),(0-tableRowData[0]['dy,- [%]']),'0',tableRowData[0]['dy,+ [%]'], tableRowData[0]['du,+ [%]']];
     const bilinForce = ['bilinForce',(0-tableRowData[0]['Vu,- [kN]']),(0-tableRowData[0]['Vu,- [kN]']), '0', tableRowData[0]['Vu,+ [kN]'],tableRowData[0]['Vu,+ [kN]']];
     
@@ -135,7 +147,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     let chart = c3.generate({
         bindTo: "#"+fileId,
         transition: {
-            duration:500
+            // duration:500
         },
         padding: {
             left: 25,
@@ -192,7 +204,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
                     },
                     centered:true,
                     fit:true,
-                    // count:4,
                     values:[ticks.minX, 0-intXTickValue, 0, intXTickValue, ticks.maxX]
                 },
                 min: ticks.minX,
@@ -215,7 +226,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     chart.legend.hide()
 
     //Add Button Event Handling to toggle curves on/off:
-    curveDisplayButtonEvents(chart);
+    curveDisplayButtonEvents(chart, increment);
     
     // Append Chart element to div:
     document.getElementById(fileId).append(chart.element);
@@ -223,7 +234,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId,exce
     // Get titles from all plots and add the pop up function to the title names.
     let child = document.getElementById(fileId).getElementsByClassName("c3")[0].children[0].getElementsByClassName("c3-title")[0]
     child.addEventListener("click", (e) => {
-        popUp(excelRefData,e,tableRowData,1);
+        popUp(e,tableRowData,1);
     })
 }
 
@@ -239,7 +250,7 @@ function parseEnvelopeData(chart,uniqueId, ticks){
             const xs = {'envForce':'envDrift'};
             let envDrift = ['envDrift'];
             let envForce = ['envForce'];
-            for (let i = 4; i < result.data.length-3; i++){
+            for (let i = 4; i < result.data.length; i++){
                 if((result.data[i][2]!='NaN' && result.data[i][1]!='NaN') && result.data[i][2]!='[%]'){
                     envDrift.push(result.data[i][2]); //x axis
                     envForce.push(result.data[i][1]); //y axis

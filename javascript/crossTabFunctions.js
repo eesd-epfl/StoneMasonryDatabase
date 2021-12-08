@@ -26,7 +26,7 @@ export function allTabs(tab, fileRoot) {
                     let table = createTable(data);
 
                     // Create the plots after table is built:
-                    table.on("dataLoaded", () => generatePlots(data,referenceData));
+                    table.on("dataLoaded", () => generatePlots(data));
                     
                     // Add the search bar:
                     table.on("dataLoaded", () => searchBar());
@@ -35,11 +35,11 @@ export function allTabs(tab, fileRoot) {
                     table.on("dataLoaded", () => createSliders(data));
 
                     // Add Events to widgets
-                    table.on("dataLoaded", () => filterEvents(referenceData));
+                    table.on("dataLoaded", () => filterEvents());
 
                     // Add events to row selection (pop up window with extra info)
                     table.on("rowClick", function(e,row){
-                        popUp(referenceData,e, row,0);
+                        popUp(e, row,0);
                     })
 
                 // Overview DB Tab:

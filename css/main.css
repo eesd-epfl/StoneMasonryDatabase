@@ -158,6 +158,9 @@
   stroke-width: 1.5px;
 }
 
+.c3-line-drift {
+  stroke-width: 1.5px;
+}
 .c3-title:hover {
   font-weight: bold;
   cursor:pointer  ;
@@ -238,6 +241,9 @@
   pointer-events: none;
 }
 
+i{
+  font-family: Icons !important;
+}
 
 /* Tooltip text */
 #info-tooltip-text {

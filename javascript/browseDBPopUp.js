@@ -1,6 +1,6 @@
 import { clearBox} from "./browseDBWidgets.js";
-import { createGraph} from "./browseDBGraphs.js";
-import { fillRefDivs, getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./dataExtraction.js";
+import { createGraph, generatePlots} from "./browseDBGraphs.js";
+import { getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./dataExtraction.js";
 import { config, dataFolderPath } from "./config.js";
 
 const gridplots = document.getElementById("gridplots");
@@ -26,7 +26,7 @@ const photoRadioBtn = document.getElementById("photo-radio");
 // 3. Display the plots
 // 4. Add file data to zip for export
 // 5. Radio button functionality (switch between plots/images)
-export function popUp(excelRefData,e, row, calledFrom){
+export function popUp(e, row, calledFrom){
     let pagination = document.getElementsByClassName("pagination")[0];
     const plotDivChildren = Array.from(plotDiv.children);
     let rowData = [];
@@ -53,6 +53,9 @@ export function popUp(excelRefData,e, row, calledFrom){
         clearBox(child);
     })
 
+    // Clear gridplot
+    clearBox(gridplots);
+
     // Reset the radio button to default F-D Curve:
     fdRadioButton.checked = "true";
     
@@ -62,20 +65,17 @@ export function popUp(excelRefData,e, row, calledFrom){
     // Reset the curve buttons:
     resetCurveButtons();
 
-    // 2. Fill Reference Data:
-    // If the call comes from clicking on a row:
+    // Get the row data:
     if(calledFrom === 0){
         rowData = [row.getData()];
-        // Add the selected row's reference:
-        fillRefDivs(rowData,excelRefData);
-
-    // If the call comes from the plot title:  
+        // If the call comes from the plot title:  
     }else if (calledFrom === 1){
-        rowData = row;
-        popUpGetExcelRefData("",rowData)
-
+        rowData = row;        
     }
-
+    
+    // 2. Fill Reference Data:
+    popUpGetExcelRefData("",rowData);
+    
     // Variables Preparation:
     const uniqueId = getUniqueIdFromData(rowData[0])[0];
     const testUnitName = getUniqueIdFromData(rowData[0])[1];
@@ -85,7 +85,7 @@ export function popUp(excelRefData,e, row, calledFrom){
     // 3. Display all the plots
     // 4a. Add the files to zip (1st part is inside the displayPlots fct):
     for (const file in allFilePaths){
-        displayPlots(allFilePaths[file],uniqueId,zip,testUnitName,excelRefData);
+        displayPlots(allFilePaths[file],uniqueId,zip,testUnitName);
     }
     
     // 4b. Second part of zip files to add:
@@ -134,7 +134,8 @@ export function popUp(excelRefData,e, row, calledFrom){
 
         // Reset Curve Buttons:
         resetCurveButtons();
-
+        const table = Tabulator.findTable('#data-table3')[0];
+        generatePlots(table.getData("active"))
         // Force a windows resize to call the c3 resize function on the graphs (otherwise the SVG element overflows on its parent's container)
         window.dispatchEvent(new Event('resize'));
     })        
@@ -142,7 +143,7 @@ export function popUp(excelRefData,e, row, calledFrom){
 }
 
 // Get and display file data and add to zip
-function displayPlots(source,uniqueId,zip,testUnitName,excelRefData) {
+function displayPlots(source,uniqueId,zip,testUnitName) {
     let dataBlob;
     var xhr = new XMLHttpRequest()
     xhr.open('GET', source, true);
@@ -151,7 +152,7 @@ function displayPlots(source,uniqueId,zip,testUnitName,excelRefData) {
             if(xhr.status == 200){
                 // Get and display FD Curve + Load History Plot
                 if(source.includes("FD_")){
-                    parseData(createGraph,source,"fdCurve",uniqueId,excelRefData);
+                    parseData(createGraph,source,"fdCurve",uniqueId,9);
                     getLoadHistoryData(source);
                     dataBlob = fetch(source).then(resp => resp.blob());
                     zip.file("FD_"+uniqueId+".csv", dataBlob);
@@ -224,6 +225,7 @@ function createPopUpFilePaths(uniqueId){
 function resetCurveButtons(){
     let cButtons = document.querySelectorAll("button[name=curveButton]")   
     cButtons.forEach(button => {
+        $("#"+button.id).replaceWith($("#"+button.id).clone());
         button.value = "0";
         button.className = "ui button"
         if(button.id == "fd-button"){

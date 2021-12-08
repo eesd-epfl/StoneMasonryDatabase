@@ -101,7 +101,7 @@ function getFilterValues(){
 }
 
 // 4b. Assign events to the widgets:
-export function filterEvents(excelRefData){
+export function filterEvents(){
     let table = Tabulator.findTable("#data-table3")[0];
     // 1. Checkboxes:
     const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
@@ -113,7 +113,7 @@ export function filterEvents(excelRefData){
             table.clearFilter();
             table.setFilter(getFilterValues());
             //Add first 9 plots to table
-            generatePlots(table.getData("active"),excelRefData);
+            generatePlots(table.getData("active"));
             });
         });
 
@@ -125,7 +125,7 @@ export function filterEvents(excelRefData){
             clearBox(document.getElementById('gridplots'));
             table.clearFilter();
             table.setFilter(getFilterValues());
-            generatePlots(table.getData("active"),excelRefData);
+            generatePlots(table.getData("active"));
         });
     });
 }
@@ -173,7 +173,7 @@ export function searchBar() {
 }
 
 // 7. Toggle on/off the curves through the buttons:
-export function curveDisplayButtonEvents(chart){
+export function curveDisplayButtonEvents(chart,increment){
     let cButtons = document.querySelectorAll("button[name=curveButton]")   
     cButtons.forEach(button => {
         button.addEventListener("click",() => {
@@ -199,7 +199,7 @@ export function curveDisplayButtonEvents(chart){
             } else {
                 chart.toggle('bilinForce');
             }
-            button.value = parseInt(button.value)+1;
+            button.value = parseInt(button.value)+increment;
             
             if(parseInt(button.value) == 9){
                 button.className =  "ui button hidden";

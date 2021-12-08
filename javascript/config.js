@@ -39,7 +39,6 @@ export const config = {
     // Use this to show only the columns that you want (needs to correspond to the columns above):
     tableColumns: [
         // All the columns that shouldn't be displayed must be set to visible:false
-        {title:"ID", field:"ID",visible :false},
         {title:'Reference nb', field:'Reference nb',visible :false},
         {title:'F-Δ?', field:'F-Δ?',visible :false},
         {title:'dy,+ [%]', field:'dy,+ [%]', visible:false},
@@ -48,8 +47,9 @@ export const config = {
         {title:'Vu,+ [kN]', field:'Vu,+ [kN]', visible:false},
         {title:'du,- [%]', field:'du,- [%]', visible:false},
         {title:'Vu,- [kN]', field:'Vu,- [kN]', visible:false},
-
+        
         // All the others should be true:
+        {title:"ID", field:"ID",visible :true},
         {title:'Reference', field:'Reference',visible :true},
         {title:'Name', field:'Name',visible :true},
         {title:'Cyclic', field:'Cyclic',visible :true},

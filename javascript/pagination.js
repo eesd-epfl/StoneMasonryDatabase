@@ -77,7 +77,7 @@ import { config } from "./config.js";
 				$(".pagination .nav.prev").addClass("disabled");
 			this.showItems();
 		},
-		showItems: function(excelRefData) {
+		showItems: function() {
             let divArray = Array.from(gridplots.children)
             for (let i = 0; i<divArray.length; i++){
                 let myDivNode = document.getElementById(divArray[i].id)
@@ -88,7 +88,7 @@ import { config } from "./config.js";
             for (let i = (this.currentPage*this.perPage); i < (this.currentPage+1)*this.perPage; i++){
                 let fileName = divArray[i].id
                 let filePath = config.curvesFolderPath+ "FD_"+fileName + ".csv"
-                parseData(createGraph,filePath,fileName,fileName,excelRefData);
+                parseData(createGraph,filePath,fileName,fileName,1);
                 if(i==divArray.length-1){
                     i+= 10;
                 }
@@ -100,18 +100,18 @@ import { config } from "./config.js";
 			window.dispatchEvent(new Event('resize'));
 
 		},
-		init: function(container, items, perPage,excelRefData) {
+		init: function(container, items, perPage) {
 			this.container = $("#multi-plot-container");
 			this.currentPage = 0;
 			this.totalPages = 1;
 			this.perPage = perPage;
 			this.items = items;
 			this.createNavigation();
-			this.showItems(excelRefData);
+			this.showItems();
 		}
 	};
 	// stuff it all into a jQuery method!
-	$.fn.pagify = function(perPage, itemSelector,excelRefData) {
+	$.fn.pagify = function(perPage, itemSelector) {
 		let el = $(this);
 		let items = $(itemSelector, el);
 
@@ -119,6 +119,6 @@ import { config } from "./config.js";
 		if (isNaN(perPage) || perPage === undefined) {
 			perPage = 9;
 		} 
-		pagify.init(el, items, perPage,excelRefData);
+		pagify.init(el, items, perPage);
 	};
 })(jQuery);

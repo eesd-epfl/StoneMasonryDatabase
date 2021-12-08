@@ -17,13 +17,13 @@ export function CSVNamesArray(data){
 }
 
 //Read CSV file and send data to createGraph function:
-export function parseData(createGraph,filePath,fileName,uniqueId,excelRefData){
+export function parseData(createGraph,filePath,fileName,uniqueId,increment){
     Papa.parse(filePath, {
         download: true,
         skipEmptyLines:true,
         header: false,
         complete: function(results){
-            createGraph(results.data,fileName,uniqueId,excelRefData);
+            createGraph(results.data,fileName,uniqueId,increment);
         },
         error:function(){
             let errorDiv = document.createElement("div");
