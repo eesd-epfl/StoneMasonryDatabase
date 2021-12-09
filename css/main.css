@@ -248,7 +248,7 @@ i{
 /* Tooltip text */
 #info-tooltip-text {
   visibility: hidden;
-  background: #238a8dFF;
+  background: rgb(125, 111, 181);
   color: black;
   border-radius: .25em;
   overflow: auto;

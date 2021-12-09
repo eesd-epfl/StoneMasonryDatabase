@@ -121,6 +121,7 @@ export function popUp(e, row, calledFrom){
     windowsCloseIcon.addEventListener("click",function(){
         // Remove event listener on download button:
         $("#export-curve").replaceWith($('#export-curve').clone());
+        $("#close").replaceWith($('#close').clone());
 
         // Clear all the contents of the pop-up window
         plotDivChildren.forEach(child =>{
@@ -138,7 +139,6 @@ export function popUp(e, row, calledFrom){
         generatePlots(table.getData("active"))
         // Force a windows resize to call the c3 resize function on the graphs (otherwise the SVG element overflows on its parent's container)
         window.dispatchEvent(new Event('resize'));
-        $("#close").replaceWith($('#close').clone());
 
     })        
     e.preventDefault();
@@ -154,8 +154,6 @@ function displayPlots(source,uniqueId,zip,testUnitName) {
             if(xhr.status == 200){
                 // Get and display FD Curve + Load History Plot
                 if(source.includes("FD_")){
-                    console.log(source);
-                    console.log(uniqueId)
                     parseData(createGraph,source,"fdCurve",uniqueId,9);
                     getLoadHistoryData(source);
                     dataBlob = fetch(source).then(resp => resp.blob());
