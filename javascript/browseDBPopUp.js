@@ -61,6 +61,7 @@ export function popUp(e, row, calledFrom){
     
     // Reinitialise the download test data button on pop up:
     $("#export-curve").replaceWith($('#export-curve').clone());
+    $("#close").replaceWith($('#close').clone());
 
     // Reset the curve buttons:
     resetCurveButtons();
@@ -75,11 +76,10 @@ export function popUp(e, row, calledFrom){
     
     // 2. Fill Reference Data:
     popUpGetExcelRefData("",rowData);
-    
     // Variables Preparation:
     const uniqueId = getUniqueIdFromData(rowData[0])[0];
     const testUnitName = getUniqueIdFromData(rowData[0])[1];
-    const allFilePaths = createPopUpFilePaths(uniqueId);
+    const allFilePaths = createPopUpFilePaths(uniqueId,rowData);
     let zip = new JSZip();
 
     // 3. Display all the plots
@@ -121,7 +121,6 @@ export function popUp(e, row, calledFrom){
     windowsCloseIcon.addEventListener("click",function(){
         // Remove event listener on download button:
         $("#export-curve").replaceWith($('#export-curve').clone());
-        $("#close").replaceWith($('#close').clone());
 
         // Clear all the contents of the pop-up window
         plotDivChildren.forEach(child =>{
@@ -215,11 +214,31 @@ function displayPlots(source,uniqueId,zip,testUnitName) {
 }
 
 // Creates an object with the file paths of the FD, photo and crackmap files:
-function createPopUpFilePaths(uniqueId){
+function createPopUpFilePaths(uniqueId,rowData){
+    // Create crack map unique IDs (add percentage between test unit name and author):
+    const testUnitName = uniqueId.split('_')[0];
+    const authorYear = uniqueId.split('_')[1];
+    const photoDriftString = rowData[0]['Photo drifts'];
+    const crackMapDriftString = rowData[0]['Crack map drifts']
+    let crackMapFileName; 
+    let photoFileName;
+    if(crackMapDriftString != undefined){
+        const crackMapDriftArray = crackMapDriftString.slice(1).slice(0,-1).split(',');
+        const crackMapDriftValue = crackMapDriftArray.at(-1);
+
+        crackMapFileName = makeDriftFilePath("crackmap", testUnitName,crackMapDriftValue,authorYear)
+    }
+    if(photoDriftString != undefined){
+        const photoDriftArray = photoDriftString.slice(1).slice(0,-1).split(',');
+        const photoDriftValue = photoDriftArray.at(-1);
+        photoFileName = makeDriftFilePath("photo", testUnitName,photoDriftValue,authorYear)
+
+    }
+
     const allFilePaths = {
         fdCurveFilePath:config.curvesFolderPath + "FD_" + uniqueId + ".csv",
-        imgFilePath:config.imagesFolderPath + "photo_" + uniqueId + ".jpg",
-        crackmapFilePath: config.imagesFolderPath + "crackmap_" + uniqueId + ".png"
+        imgFilePath:config.imagesFolderPath + testUnitName + "/"+  photoFileName,
+        crackmapFilePath: config.imagesFolderPath + testUnitName+ "/" + crackMapFileName
     }
     return allFilePaths;
 }
@@ -241,4 +260,15 @@ function resetCurveButtons(){
         }
         $("#"+button.id).replaceWith($("#"+button.id).clone());
     });
+}
+
+function makeDriftFilePath(imgType, testUnitName,driftPercentage,authorYear){
+    const driftfilePercentage = driftPercentage.replaceAll('.','p');
+    let fileExtension;
+    if(imgType == "photo"){
+        fileExtension = ".jpg"
+    }else{
+        fileExtension = ".png"
+    }
+    return imgType + "_"+ testUnitName + "_D" + driftfilePercentage + "_" + authorYear + fileExtension
 }

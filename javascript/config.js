@@ -6,7 +6,9 @@ export const config = {
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
     'Stone masonry typology','Joints','Stone','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
-    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted','Comment','dy,+ [%]','dy,- [%]','du,+ [%]','Vu,+ [kN]','du,- [%]','Vu,- [kN]'],
+    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted',
+    'Comment','dy,+ [%]','dy,- [%]','du,+ [%]','Vu,+ [kN]','du,- [%]','Vu,- [kN]',
+    'Drift at which the photo was taken [%]','Drift at which the crack map was taken [%]'], 
     
     // Use this to rename the column headers to whatever you want:
     sortData(row){
@@ -33,7 +35,9 @@ export const config = {
             'du,+ [%]':row['du,+ [%]'],
             'Vu,+ [kN]':row['Vu,+ [kN]'],
             'du,- [%]':row['du,- [%]'],
-            'Vu,- [kN]':row['Vu,- [kN]']
+            'Vu,- [kN]':row['Vu,- [kN]'],
+            'Photo drifts':row['Drift at which the photo was taken [%]'],
+            'Crack map drifts':row['Drift at which the crack map was taken [%]']
         }
     },
     // Use this to show only the columns that you want (needs to correspond to the columns above):
@@ -47,6 +51,9 @@ export const config = {
         {title:'Vu,+ [kN]', field:'Vu,+ [kN]', visible:false},
         {title:'du,- [%]', field:'du,- [%]', visible:false},
         {title:'Vu,- [kN]', field:'Vu,- [kN]', visible:false},
+        {title:'Photo drifts', field:'Photo drifts',visible:false},
+        {title:'Crack map drifts', field:'Crack map drifts',visible:false},
+
         
         // All the others should be true:
         {title:"ID", field:"ID",visible :true},
