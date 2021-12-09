@@ -97,7 +97,7 @@ import { config } from "./config.js";
 			let base = this.perPage * this.currentPage;
 			this.items.slice(base, base + this.perPage).show();
 			this.updateNavigation();
-			window.dispatchEvent(new Event('resize'));
+			
 
 		},
 		init: function(container, items, perPage) {

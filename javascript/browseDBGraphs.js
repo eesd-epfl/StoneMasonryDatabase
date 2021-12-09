@@ -23,6 +23,7 @@ export function generatePlots(data){
 
     // Use JQuery function from pagination.js to paginate all the divs and plot the 9 visible.
     $("#gridplots").pagify(9, ".five.wide.column");
+    
 }
 
 // Create the FD Graph:
@@ -35,7 +36,7 @@ export function createGraph(data,divId,uniqueId,increment){
     // If the div ID comes from the pop up window, the name will contain "fdCurve" or "lhCurve". 
     // If it comes from the main window, it will contain the testUnitName_AuthorYear
     if(divId.includes('fdCurve')){
-        testUnitName = data[0][1].replaceAll('.','').replaceAll('-','').replaceAll(' ','');
+        testUnitName = data[0][1];
         createFDGraph(reducedData,tableData,testUnitName,divId,uniqueId,increment);
     }else{
         testUnitName = divId.split('_')[0];
@@ -119,8 +120,12 @@ export function createLoadHistoryGraph(data) {
 
 // Create the FD Graph:
 function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId, increment) {
-    let tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','') === testUnitName);
-
+    let tableRowData;
+    if(fileId == "fdCurve"){
+        tableRowData = tableData.filter(row => row['Name'] === testUnitName);
+    } else {
+        tableRowData = tableData.filter(row => row['Name'].replaceAll('.','').replaceAll('-','').replaceAll(' ','').replaceAll('#','').replaceAll('_','').replaceAll('+','') === testUnitName);
+    }
     // Change NaN values to 0 to remove errors:
     for (const item in tableRowData[0]){
         if (tableRowData[0][item] == "NaN"){
@@ -136,7 +141,7 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId, inc
     reducedData[2][2] = 'drift [%]'
     reducedData[2][1] = 'hor. force [kN]'
     for (let i = 4; i < reducedData.length-3; i++){
-        if((reducedData[i][2]!='NaN' && reducedData[i][1]!='NaN') && reducedData[i][2]!='[%]'){
+        if((reducedData[i][2]!='NaN' && reducedData[i][1]!='NaN' && reducedData[i][2]!='#VALUE!' && reducedData[i][1]!='#VALUE!') && reducedData[i][2]!='[%]'){
             drift.push(reducedData[i][2]); //x axis
             force.push(reducedData[i][1]); //y axis
         }
@@ -147,7 +152,6 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId, inc
     let chart = c3.generate({
         bindTo: "#"+fileId,
         transition: {
-            // duration:500
         },
         padding: {
             left: 25,
@@ -217,14 +221,15 @@ function createFDGraph(reducedData,tableData, testUnitName, fileId,uniqueId, inc
             format: {
                 title: function (x) {return 'drift value: ' + x},
             }
-        }
+        },
     })
     // Add Envelope Data:
-    parseEnvelopeData(chart, uniqueId, ticks);
+    setTimeout(() => {
+        parseEnvelopeData(chart, uniqueId, ticks);
+    }, 500);
     
     // Hide the legends again:
     chart.legend.hide()
-
     //Add Button Event Handling to toggle curves on/off:
     curveDisplayButtonEvents(chart, increment);
     
@@ -251,7 +256,7 @@ function parseEnvelopeData(chart,uniqueId, ticks){
             let envDrift = ['envDrift'];
             let envForce = ['envForce'];
             for (let i = 4; i < result.data.length; i++){
-                if((result.data[i][2]!='NaN' && result.data[i][1]!='NaN') && result.data[i][2]!='[%]'){
+                if((result.data[i][2]!='NaN' && result.data[i][1]!='NaN' && result.data[i][2]!='#VALUE!' && result.data[i][1]!='#VALUE!' ) && result.data[i][2]!='[%]'){
                     envDrift.push(result.data[i][2]); //x axis
                     envForce.push(result.data[i][1]); //y axis
                 }

@@ -131,7 +131,6 @@ export function popUp(e, row, calledFrom){
         pagination.style.display = 'block';
         plotDiv.style.display = "none";
         plotContainer.style.display = "none";
-        console.log("hi")
 
         // Reset Curve Buttons:
         resetCurveButtons();
@@ -155,6 +154,8 @@ function displayPlots(source,uniqueId,zip,testUnitName) {
             if(xhr.status == 200){
                 // Get and display FD Curve + Load History Plot
                 if(source.includes("FD_")){
+                    console.log(source);
+                    console.log(uniqueId)
                     parseData(createGraph,source,"fdCurve",uniqueId,9);
                     getLoadHistoryData(source);
                     dataBlob = fetch(source).then(resp => resp.blob());

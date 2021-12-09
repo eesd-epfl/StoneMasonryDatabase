@@ -41,6 +41,7 @@ export function allTabs(tab, fileRoot) {
                     table.on("rowClick", function(e,row){
                         popUp(e, row,0);
                     })
+                    
 
                 // Overview DB Tab:
                 }else if(tab === 0){
