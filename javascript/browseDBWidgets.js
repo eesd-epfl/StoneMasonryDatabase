@@ -177,19 +177,6 @@ export function curveDisplayButtonEvents(chart,increment){
     let cButtons = document.querySelectorAll("button[name=curveButton]")   
     cButtons.forEach(button => {
         button.addEventListener("click",() => {
-            // let style = getComputedStyle(button);
-            // switch (style['background-color']){
-            //     case config.fdColor:
-            //         chart.toggle('force');
-            //         break;
-            //     case config.envColor:
-            //         chart.toggle('envForce');
-            //         break;
-            //     case config.bilinColor:
-            //         chart.toggle('bilinForce');
-            //         break;
-            // }
-            
             if(button.id == "fd-button"){
                 chart.toggle('force');
                 
@@ -202,10 +189,15 @@ export function curveDisplayButtonEvents(chart,increment){
             button.value = parseInt(button.value)+increment;
             
             if(parseInt(button.value) == 9){
-                button.className =  "ui button hidden";
-                
-            }else if (parseInt(button.value) == 18){
-                button.className = "ui button"   
+                if(button.className == "ui button display"){
+                    button.classList.remove("ui","button", "display");
+                    button.classList.add("ui","button","hidden")
+                }
+            }else if (parseInt(button.value) == 18 || parseInt(button.value) == 0){
+                if(button.className == "ui button hidden"){
+                    button.classList.remove("ui","button", "hidden");
+                    button.classList.add("ui","button","display")
+                } 
                 if(button.id == "fd-button"){
                     button.backgroundColor = config.fdColor;
                 }else if (button.id == "env-button"){

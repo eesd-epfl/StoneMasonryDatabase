@@ -131,6 +131,7 @@ export function popUp(e, row, calledFrom){
         pagination.style.display = 'block';
         plotDiv.style.display = "none";
         plotContainer.style.display = "none";
+        console.log("hi")
 
         // Reset Curve Buttons:
         resetCurveButtons();
@@ -138,6 +139,8 @@ export function popUp(e, row, calledFrom){
         generatePlots(table.getData("active"))
         // Force a windows resize to call the c3 resize function on the graphs (otherwise the SVG element overflows on its parent's container)
         window.dispatchEvent(new Event('resize'));
+        $("#close").replaceWith($('#close').clone());
+
     })        
     e.preventDefault();
 }
@@ -224,10 +227,12 @@ function createPopUpFilePaths(uniqueId){
 
 function resetCurveButtons(){
     let cButtons = document.querySelectorAll("button[name=curveButton]")   
-    cButtons.forEach(button => {
-        $("#"+button.id).replaceWith($("#"+button.id).clone());
+    cButtons.forEach(button => {        
         button.value = "0";
-        button.className = "ui button"
+        if(button.className == "ui button hidden"){
+            button.classList.remove("ui","button", "hidden");
+            button.classList.add("ui","button","display")
+        }
         if(button.id == "fd-button"){
             button.backgroundColor = config.fdColor;
         }else if (button.id == "env-button"){
@@ -235,5 +240,6 @@ function resetCurveButtons(){
         } else {
             button.backgroundColor = config.bilinColor;
         }
+        $("#"+button.id).replaceWith($("#"+button.id).clone());
     });
 }
