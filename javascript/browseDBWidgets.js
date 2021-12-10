@@ -1,7 +1,7 @@
 import {config} from './config.js';
 import {generatePlots} from './browseDBGraphs.js';
 
-// This Script contains all the items that appear on the Browse DB Tab.
+// This script contains all the items that appear on the Browse DB Tab.
 // 1. Tab
 // 2. Sliders
 // 3. Filter Events
@@ -11,8 +11,8 @@ import {generatePlots} from './browseDBGraphs.js';
 // 7. FD/Env/Bilin Curve display buttons
 
 // 1. Table:
-export function createTable(data){
-    let table = new Tabulator('#data-table3',{
+export function createTable(data, tableId){
+    let table = new Tabulator(tableId,{
         data:data,
         autoColumnsDefinitions:config.tableColumns,
         autoColumns:true,
