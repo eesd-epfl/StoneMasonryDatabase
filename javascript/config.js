@@ -41,7 +41,7 @@ export const config = {
             'fc [MPa]':row['fc [MPa]']
         }
     },
-    // Use this to show only the columns that you want (needs to correspond to the columns above):
+    // Use this to show only the columns that you want (needs to correspond to the columns names from sortData function above):
     tableColumns: [
         // All the columns that shouldn't be displayed must be set to visible:false
         {title:'Reference nb', field:'Reference nb',visible :false},
