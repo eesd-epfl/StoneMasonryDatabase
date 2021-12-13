@@ -47,8 +47,36 @@
     
     <!-- Load Common CSS -->
     <link rel='stylesheet' type='text/css' media='screen' href='css/common.css'>
-    
-    
+
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+                /* Make an HTTP request using the attribute value as the file name: */
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                        if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                        /* Remove the attribute, and call this function once more: */
+                        elmnt.removeAttribute("w3-include-html");
+                        includeHTML();
+                        }
+                    }
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /* Exit the function: */
+                return;
+            }
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -72,14 +100,10 @@
           <h2>Stone Masonry Database Overview 
             <i class="info circle icon" id="info-tooltip"> </i>
           </h2>
-          <span id="info-tooltip-text">
-            Acronyms:<br>
-            ALR- Axial Load Ratio<br>
-            Typ - Stone Masonry Typology<br>
-            Cyclic - Cyclic or Monotonic<br>
-            Lab - Laboratory or In-situ<br>
-            Failure - Failure type<br>
-          </span>
+            <div w3-include-html="../html/tooltip.html"></div>
+            <script>
+              includeHTML();
+            </script>
         </div>
 
         <!-- Curve Display Buttons -->
@@ -286,8 +310,10 @@
       </div>
     </div>
     
-    <!-- Run javascript-->
+    <!-- Run javascript-->  
+    <!-- <script src="./javascript/includeHTML.js"></script> -->
     <script type="module" src="./javascript/browseDBMain.js"></script>
     <script type="module" src="./javascript/pagination.js"></script>
+
   </body>
 </html>
