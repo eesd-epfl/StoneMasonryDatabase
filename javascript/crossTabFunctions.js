@@ -18,20 +18,18 @@ export function allTabs(tab, fileRoot) {
             reader.onload = function (e) {
                 // Process Excel data:
                 let rawData = processExcel(e.target.result);
-                const referenceData = rawData[1];
                 let data = renameTableHeaders(rawData[0]);
-
+                let table;
                 // Browse DB Tab:
                 if(tab === 1){
-                    let table = createTable(data);
-
+                    table = createTable(data, "#data-table3");
                     // Create the plots after table is built:
                     table.on("dataLoaded", () => generatePlots(data));
                     
                     // Add the search bar:
                     table.on("dataLoaded", () => searchBar());
 
-                    // Add noUiSliders with table data:
+                    // Add snoUiSliders with table data:
                     table.on("dataLoaded", () => createSliders(data));
 
                     // Add Events to widgets
@@ -45,7 +43,10 @@ export function allTabs(tab, fileRoot) {
 
                 // Overview DB Tab:
                 }else if(tab === 0){
-                    allPlots(rawData[0]);
+                    // table = createTable(data, "#hidden-table");
+
+                    allPlots(data);
+                    // table.on("dataLoaded", () => createSliders(data));
                 }
             };
             reader.readAsBinaryString(file);
@@ -64,3 +65,4 @@ function renameTableHeaders(data){
     let shortenedData = data.map(row => config.sortData(row));
     return shortenedData;
 }
+

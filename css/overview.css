@@ -1,14 +1,6 @@
 .p {
     text-align: center;
-    /* padding-bottom: 2vh; */
     padding-top: 0.5vh;
-    /* padding-bottom: 2vh; */
-  }
-
-  img {
-    height: 8vh;
-    margin: auto;
-    display: flex;
   }
 
   .ui.checkbox {
@@ -29,9 +21,9 @@
 }
 
 
-#parcoords {
-  height:60vh;
-  width: 30vw;
+#main {
+  height:85vh;
+  width: 70vw;
 }
 
 #one>.ui.grid>.sixteen.wide.center.aligned.column {

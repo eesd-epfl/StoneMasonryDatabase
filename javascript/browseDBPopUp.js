@@ -227,12 +227,15 @@ function createPopUpFilePaths(uniqueId,rowData){
         const crackMapDriftValue = crackMapDriftArray.at(-1);
 
         crackMapFileName = makeDriftFilePath("crackmap", testUnitName,crackMapDriftValue,authorYear)
+    } else{
+        crackMapFileName = "crackmap_"
     }
     if(photoDriftString != undefined){
         const photoDriftArray = photoDriftString.slice(1).slice(0,-1).split(',');
         const photoDriftValue = photoDriftArray.at(-1);
         photoFileName = makeDriftFilePath("photo", testUnitName,photoDriftValue,authorYear)
-
+    }else {
+        photoFileName = "photo_"
     }
 
     const allFilePaths = {

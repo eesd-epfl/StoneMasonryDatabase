@@ -2,12 +2,16 @@
   font-family:Arial, Helvetica, sans-serif !important;
 }
 
+i{
+  font-family: Icons !important;
+}
+
+
 #epfl-logo {
     height:2vh;
     margin-top: 1.5vh;
     margin-right: 2vw;
   }
-  
   
 #eesd{
   margin-top: 1.5vh;

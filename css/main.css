@@ -241,10 +241,6 @@
   pointer-events: none;
 }
 
-i{
-  font-family: Icons !important;
-}
-
 /* Tooltip text */
 #info-tooltip-text {
   visibility: hidden;
