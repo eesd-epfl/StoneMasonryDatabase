@@ -1,0 +1,58 @@
+*{
+  font-family:Arial, Helvetica, sans-serif !important;
+}
+
+i{
+  font-family: Icons !important;
+}
+
+
+#epfl-logo {
+    height:2vh;
+    margin-top: 1.5vh;
+    margin-right: 2vw;
+  }
+  
+#eesd{
+  margin-top: 1.5vh;
+  height:2vh;
+}
+
+/* noUiSlider */
+.slider {
+  height: 10px;
+  margin-top: 2vh;
+  margin-left: 3vh;
+}
+
+.slider .noUi-connect {
+  background: #c0392b;
+}
+
+.slider .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+}
+
+.noUi-tooltip {
+  display: none;
+  font-size: smaller;
+
+}
+.noUi-active .noUi-tooltip {
+  display: block;
+}
+
+.noUi-handle:before, .noUi-handle:after{
+  display:none;
+}
+
+
+.toggleSlider {
+  display: inline-block;
+  padding-right: 2.5vw;
+  padding-left: 2.5vw;
+}

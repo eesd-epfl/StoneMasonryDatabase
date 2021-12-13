@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Overview DB</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <!-- Load d3.js, c3.js -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js" integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <script src="../javascript/lib/d3.js"></script>
+        <script src="../javascript/lib/d3.parcoords.js"></script>
+        <script src="../javascript/lib/d3.queue.js"></script>
+
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <!-- Load Semantic UI JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Semantic UI CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+        <!-- Sliders -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js" integrity="sha512-7i2V4phHspcYYpLujbQU0Ur1NjN6h0oWic1YVo8V1gLtBzOziltT3XX/5XaAmhbvtx3QjyANL/MIyuTpXh/Ndw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+        
+        <!-- Load XLS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
+
+        <!-- Load ECharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js" integrity="sha512-ivdGNkeO+FTZH5ZoVC4gS4ovGSiWc+6v60/hvHkccaMN2BXchfKdvEZtviy5L4xSpF8NPsfS0EVNSGf+EsUdxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        
+
+        <!-- Load Parcoords CSS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/d3.parcoords.css">
+
+        <!-- Load Personal CSS -->
+        <link rel='stylesheet' type='text/css' media='screen' href='../css/overview.css'>
+
+        <!-- Load Common CSS -->
+        <link rel='stylesheet' type='text/css' media='screen' href='../css/common.css'>
+
+    </head>
+    <body>
+        <!-- Nav bar/Menu -->
+        <div class="ui four item menu">
+            <a><img src="../images/logo-epfl-1024x576.png" id="epfl-logo"><img src="../images/EESD.png" id="eesd"></a>
+            <a class="active item">Overview DB</a>
+            <a class=" item" href="../index.html">Browse DB test</a>
+            <!-- <a class="disabled item">Strength</a> -->
+            <!-- <a class="disabled item">Stiffness</a> -->
+            <!-- <a class="disabled item">Drift Capacity</a> -->
+            <a class="item" href="about.html">About</a>
+        </div>
+
+        <div class="ui grid">
+            <div class="sixteen wide center aligned column" id="title">
+                <h2>
+                    Overview DB Plots
+                </h2>
+            </div>
+            <!-- <div class="sixteen wide center aligned column" id="references">
+                <a href="https://doi.org/10.1007/s10518-017-0188-5">Vanin et al. (2017)</a>, 
+                <a href="http://doi.org/10.5281/zenodo.812145">Database (123 quasi-static cyclic tests)</a>
+            </div> -->
+            <div class="four wide centered column" id="one">
+                <div class="ui grid" id="typology-container">
+                    <div class="sixteen wide center aligned column" id="filter-title">
+                        <h3>Filters</h3>
+                    </div>
+                    <div class="sixteen wide center aligned column" id="widget-label">
+                        <h4>
+                            Stone Masonry Typologies
+                        </h4>
+                    </div>  
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typA.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ A</label>
+                        </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typB.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ B</label>
+                        </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typC.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ C</label>
+                        </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typD.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ D</label>
+                        </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typE.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ E</label>
+                        </div>
+                    </div>
+                    <div class="five wide center aligned column">
+                        <div class="ui tiny image">
+                            <img src="../images/typE1.png"/>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>Typ E1</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui grid" id="filter-container">
+                    <div class="eight wide column">
+                        <div class="sixteen wide center aligned column">
+                            <h4>Fitting</h4>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" value="A" checked="true">
+                                <label>retrofitted</label>
+                              </div>                       
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>unretrofitted</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="sixteen wide center aligned column">
+                            <h4>
+                                Lab vs in-situ
+                            </h4>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>lab</label>
+                              </div>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>in-situ</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="sixteen wide center aligned column">
+                            <h4>
+                                Bending type
+                            </h4>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>single</label>
+                              </div>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>double</label>
+                              </div>
+                        </div>
+                        <div class="sixteen wide column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>other</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="sixteen wide center aligned column">
+                            <h4>
+                                Test Source
+                            </h4>
+                        </div>
+                        <div class="eight wide center aligned column">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="check" checked="true">
+                                <label>EPFL</label>
+                            </div>
+                        </div>
+                        <div class="eight wide center aligned column">
+                          <div class="ui checkbox">
+                            <input type="checkbox" name="check" checked="true">
+                            <label>External</label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide center aligned column">
+                        <div class="slider" id="overview-size-slider" name="slider"></div>
+                        <div class="p">
+                            Minimum size
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class= "twelve wide column" id="plot-container">
+                <div class="column" id="main"></div>
+                <div class="ui three column grid">
+                    <!-- <div class="column" id="plot-a" style="width:24.75vw;height:40vh;"></div> -->
+                    <!-- <div class="column" id="plot-a"></div> -->
+                    <!-- <div class="column" id="plot-b"></div>
+                    <div class="column" id="plot-c"></div>
+                    <div class="column" id="plot-d"></div>
+                    <div class="column" id="plot-e"></div>
+                    <div class="column" id="plot-f"></div>
+                    <div class="column" id="plot-g"></div>
+                    <div class="column" id="plot-h"></div>
+                    <div class="column" id="plot-i"></div> -->
+                </div>
+                
+            </div>
+        </div>        
+        <script type="module" src="../javascript/overviewDBMain.js" ></script>
+    </body>
+</html>

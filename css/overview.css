@@ -1,0 +1,57 @@
+.p {
+    text-align: center;
+    padding-top: 0.5vh;
+  }
+
+  .ui.checkbox {
+    margin:auto;
+  }
+
+
+/* 
+  .twelve.wide.column{
+    height: 60vh;
+  }
+  .four.wide.column{
+    height: 60vh;
+  } */
+
+#intro-text {
+  font-size: smaller;
+}
+
+
+#main {
+  height:85vh;
+  width: 70vw;
+}
+
+#one>.ui.grid>.sixteen.wide.center.aligned.column {
+  padding-bottom: 0.5vh;
+}
+
+#one>.ui.grid>.eight.wide.column {
+  padding-top: 0.5vh;
+}
+
+#one .ui.grid .sixteen.wide.column {
+  padding-bottom: 0.5vh;
+  padding-top: 0.5vh;
+}
+
+#one {
+  padding-left: 1.5vw;
+  padding-right: 0.2vw;
+  height:80vh;
+}
+
+#references {
+  padding-bottom: 0.5vh;
+}
+
+#title {
+  text-align: center;
+  font-size: larger;
+  padding-top: 0.5vh;
+  padding-bottom: 0.3vh;
+}

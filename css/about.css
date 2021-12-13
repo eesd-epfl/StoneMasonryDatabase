@@ -1,0 +1,11 @@
+.image img {
+    height:20vh !important;
+}
+
+.ui.placeholder {
+    height:20vh;
+}
+
+p {
+    text-align: justify;
+}

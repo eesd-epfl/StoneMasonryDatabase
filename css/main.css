@@ -1,0 +1,302 @@
+.ui.grid {
+  height: 90%;
+}
+
+#dashboard {
+  height:90%
+}
+/* Header row */
+/* Text sizing and alignment */
+#title {
+  margin: 0 auto;
+  text-align: center;
+  font-size: larger;
+  padding-top: 1vh;
+  padding-bottom: 2.5vh;
+}
+
+#header-row {
+  height:5em;
+}
+
+/* Left Side Column */
+#widget-panel {
+  padding-left: 1.5vw;
+  height: 90%;
+}     
+
+/* Left column with filters and checkboxes */
+#typology-title{
+  padding-bottom: 0.5vh;
+  padding-top: 0.5vh;
+}
+
+#filter-title {
+  text-align: center;
+  font-size: large;
+  padding-bottom: 0.5vh;
+  padding-top: 0.5vh;
+  margin-top: 1em;
+}
+
+.p {
+  text-align: center;
+  padding-top: 1.2vh;
+}
+
+#checkbox-row {
+  padding-top:1vh;
+  padding-left: 4vh;
+  padding-bottom:2vh;
+}
+
+#typ-E-container {
+ padding-bottom: 0%;
+}
+
+#slider-container {
+  padding-top: 0.5vh;
+  padding-bottom: 0;
+}
+/* Data table */ 
+#data-table-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 100%;
+}
+#data-table3 {
+  height:100%;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+#row-data-table {
+  height:90%;
+  margin-top: 2vh;
+}
+/* Container sizing */
+#container {
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  height:100%;
+}
+#multi-plot-container {
+  height: 100%;
+}
+#gridplots {
+  height: 100%;
+  padding-top: 2.5%;
+}
+/* Sizing the individual plots */
+#gridplots .five.wide.column{
+  padding: 0;
+  margin:0;
+  height:33%
+} 
+
+.c3 {
+  height: 100%;
+}
+
+.img-no-data {
+  padding-top: 12vh !important;
+  padding-bottom: 12vh !important;
+}
+
+.img-data {
+  padding-top: 0vh !important;
+  padding-bottom: 0vh !important;
+}
+
+#plotDiv div {
+  height:28vh;
+  padding-top:0vh;
+  padding-bottom: 0vh;
+}
+
+#plotDiv img {
+  height:28vh;
+}
+
+#plotDiv {
+  padding-top: 2vh;
+}
+
+/* Handling the pop-up window */
+#close {
+  margin-right: 0;
+  float:right;
+
+}
+
+#display {
+  padding-left: 2vw;
+}
+
+#radio-container {
+  border-width: 0,3em;
+}
+.hidden {
+  display: none;
+}
+
+#plot-container {
+  border-style: solid;
+  border-radius:5px;
+  border-color: rgba(34,36,38,.15);
+  margin-top: 1em;
+  margin-right: 2vw;
+  height: 100%;
+}
+
+.c3-line-envForce {
+  stroke-width: 1.5px;
+}
+
+.c3-line-bilinForce {
+  stroke-width: 1.5px;
+}
+
+.c3-line-drift {
+  stroke-width: 1.5px;
+}
+.c3-title:hover {
+  font-weight: bold;
+  cursor:pointer  ;
+}
+#crackmap-toggle{
+  width: 10vw;
+  display: inline-block;
+}
+
+/* Tabulator */
+.tabulator-tableholder, .tabulator-header {
+  font-size: 12px;
+}
+
+/* Pagination */
+.pagination{
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.pagination a {
+  /* display: inline-block; */
+  margin: 0;
+  margin-top: 0.2vh;
+  padding:.5em 0.5em;
+  line-height: 1;
+  flex:0 0 auto;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-box-flex:0;
+  transition: background .1s ease,box-shadow .1s ease,color .1s ease,-webkit-box-shadow .1s ease;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  text-transform: none;
+  vertical-align: middle;
+  background-color: 0 0;
+  color:rgba(0,0,0,0.87);
+  border: 1px solid rgba(34, 36, 38, 0.349);
+  box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+}
+.pagination a:hover{
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.171);
+  color: rgba(0,0,0,.95);
+  
+}
+
+.pagination .page.current{
+  background-color: rgba(0, 0, 0, 0.185)
+}
+
+.pagination .nav.prev{
+  border-radius: .28571429rem 0 0 .28571429rem;
+}
+
+.pagination .nav.prev.disabled {
+  border-radius: .28571429rem 0 0 .28571429rem;
+  cursor:default!important;
+  background-color: transparent!important;
+  color: rgba(40,40,40,.3)!important;
+  pointer-events: none;
+}
+
+.pagination .nav.next {
+  border-radius: 0 .28571429rem .28571429rem 0;
+}
+
+.pagination .nav.next.disabled {
+  border-radius: 0 .28571429rem .28571429rem 0;
+  cursor:default!important;
+  background-color: transparent!important;
+  color: rgba(40,40,40,.3)!important;
+  pointer-events: none;
+}
+
+/* Tooltip text */
+#info-tooltip-text {
+  visibility: hidden;
+  background: rgb(125, 111, 181);
+  color: black;
+  border-radius: .25em;
+  overflow: auto;
+  padding: 1em 2.5em;
+  text-align: justify;
+  width: fit-content;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+#no-data {
+  margin-top: 8vh;
+  text-align: center;
+}
+
+#crack-map{
+  text-align: center;
+  padding-top: 12vh;
+  padding-bottom: 12vh;
+}
+
+#photo{
+  text-align: center;
+}
+
+.ref {
+  padding-top: 2vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  text-align: justify;
+}
+
+#button-container {
+  padding-right: 5em;
+}
+#fd-button {
+  margin-top:1em;
+  /* background-color: rgb(253, 213, 37); */
+}
+
+#env-button {
+  margin-top:1em;
+  /* background-color: #c0392b; */
+}
+#bil-button {
+  margin-top:1em;
+  /* background-color: rgb(125, 115, 172); */
+}
+
+.ui.button.hidden {
+  background-color:rgb(122, 120, 120) !important;
+  opacity: 0.45;
+}
