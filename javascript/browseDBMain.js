@@ -1,4 +1,4 @@
-import { tooltip } from './browseDBWidgets.js';
+import { tooltip } from './widgets.js';
 import { setCurveColors } from './config.js';
 import { allTabs } from './crossTabFunctions.js';
 

@@ -56,3 +56,7 @@ i{
   padding-right: 2.5vw;
   padding-left: 2.5vw;
 }
+
+.hidden {
+  display: none;
+}

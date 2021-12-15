@@ -28,6 +28,11 @@
         <!-- Load XLS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.6/xls.min.js"></script>
 
+        <!-- Tabulator -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.0.7/js/tabulator.min.js" integrity="sha512-Xak2I6+wZChRIsrNus8RfDM3Li6RTk7oNceRwrYUGvLOFPFbiSd70GvtJnNJvtsohNQ3hyScX2F3GLQUlxqr0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.0.7/css/tabulator.min.css" integrity="sha512-icPIPd8ECoTVfmBnGAo0u87EV4CFh9hk3oef4x3pitYxXOZg4NAlPv/5rm/BzgI7eeazl795eeSYbCmGqhp6mA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.0.7/css/tabulator_semanticui.min.css" integrity="sha512-eml2m9pb/JsEI+bQpaOoRSVtz8gET3qqH479OPmDrfW1RB6DpPpSVwyJy1AuFMrpGylTkgnfBlTgljO+yYY/FA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <!-- Load ECharts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js" integrity="sha512-ivdGNkeO+FTZH5ZoVC4gS4ovGSiWc+6v60/hvHkccaMN2BXchfKdvEZtviy5L4xSpF8NPsfS0EVNSGf+EsUdxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        
 
@@ -78,7 +83,7 @@
                             <img src="../images/typA.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="A">
                             <label>Typ A</label>
                         </div>
                     </div>
@@ -87,7 +92,7 @@
                             <img src="../images/typB.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="B">
                             <label>Typ B</label>
                         </div>
                     </div>
@@ -96,7 +101,7 @@
                             <img src="../images/typC.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="C">
                             <label>Typ C</label>
                         </div>
                     </div>
@@ -105,7 +110,7 @@
                             <img src="../images/typD.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="D">
                             <label>Typ D</label>
                         </div>
                     </div>
@@ -114,7 +119,7 @@
                             <img src="../images/typE.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="E">
                             <label>Typ E</label>
                         </div>
                     </div>
@@ -123,7 +128,7 @@
                             <img src="../images/typE1.png"/>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" name="check" checked="true">
+                            <input type="checkbox" name="typ-check" checked="true" value="E1">
                             <label>Typ E1</label>
                         </div>
                     </div>
@@ -135,13 +140,13 @@
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" value="A" checked="true">
+                                <input type="checkbox" name="fitting-check" value="0" checked="true">
                                 <label>retrofitted</label>
                               </div>                       
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="fitting-check" checked="true">
                                 <label>unretrofitted</label>
                               </div>
                         </div>
@@ -154,13 +159,13 @@
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="lab-check" checked="true">
                                 <label>lab</label>
                               </div>
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="lab-check" checked="true">
                                 <label>in-situ</label>
                               </div>
                         </div>
@@ -173,19 +178,19 @@
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="bend-check" checked="true" value="0.5">
                                 <label>single</label>
                               </div>
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="bend-check" checked="true" value="1.0">
                                 <label>double</label>
                               </div>
                         </div>
                         <div class="sixteen wide column">
                             <div class="ui checkbox">
-                                <input type="checkbox" name="check" checked="true">
+                                <input type="checkbox" name="bend-check" checked="true" value="0.25">
                                 <label>other</label>
                               </div>
                         </div>
@@ -210,7 +215,7 @@
                         </div>
                     </div>
                     <div class="sixteen wide center aligned column">
-                        <div class="slider" id="overview-size-slider" name="slider"></div>
+                        <div class="slider" id="size-slider" name="slider"></div>
                         <div class="p">
                             Minimum size
                         </div>
@@ -220,20 +225,8 @@
             </div>
             <div class= "twelve wide column" id="plot-container">
                 <div class="column" id="main"></div>
-                <div class="ui three column grid">
-                    <!-- <div class="column" id="plot-a" style="width:24.75vw;height:40vh;"></div> -->
-                    <!-- <div class="column" id="plot-a"></div> -->
-                    <!-- <div class="column" id="plot-b"></div>
-                    <div class="column" id="plot-c"></div>
-                    <div class="column" id="plot-d"></div>
-                    <div class="column" id="plot-e"></div>
-                    <div class="column" id="plot-f"></div>
-                    <div class="column" id="plot-g"></div>
-                    <div class="column" id="plot-h"></div>
-                    <div class="column" id="plot-i"></div> -->
-                </div>
-                
             </div>
+            <div id="hidden-table" class="hidden"></div>
         </div>        
         <script type="module" src="../javascript/overviewDBMain.js" ></script>
     </body>

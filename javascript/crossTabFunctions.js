@@ -1,4 +1,4 @@
-import { createSliders, createTable, filterEvents, searchBar} from "./browseDBWidgets.js";
+import { createSliders, createTable, filterEvents, searchBar} from "./widgets.js";
 import { generatePlots } from "./browseDBGraphs.js";
 import { popUp } from "./browseDBPopUp.js";
 import { config } from "./config.js";
@@ -20,20 +20,22 @@ export function allTabs(tab, fileRoot) {
                 let rawData = processExcel(e.target.result);
                 let data = renameTableHeaders(rawData[0]);
                 let table;
+                let tableId;
                 // Browse DB Tab:
                 if(tab === 1){
-                    table = createTable(data, "#data-table3");
+                    tableId = document.getElementById('data-table3')
+                    table = createTable(data, tableId);
                     // Create the plots after table is built:
                     table.on("dataLoaded", () => generatePlots(data));
                     
                     // Add the search bar:
                     table.on("dataLoaded", () => searchBar());
 
-                    // Add snoUiSliders with table data:
-                    table.on("dataLoaded", () => createSliders(data));
+                    // Add noUiSliders with table data:
+                    table.on("dataLoaded", () => createSliders(data,1));
 
                     // Add Events to widgets
-                    table.on("dataLoaded", () => filterEvents());
+                    table.on("dataLoaded", () => filterEvents(1, tableId));
 
                     // Add events to row selection (pop up window with extra info)
                     table.on("rowClick", function(e,row){
@@ -43,10 +45,18 @@ export function allTabs(tab, fileRoot) {
 
                 // Overview DB Tab:
                 }else if(tab === 0){
-                    // table = createTable(data, "#hidden-table");
+                    tableId = document.getElementById('hidden-table')
 
+                    // Create hidden table element that will handle filtering
+                    table = createTable(data, tableId);
+
+                    // Add noUiSliders with table data:
+                    table.on("dataLoaded", () => createSliders(data,0));
+
+                    // Add Events to widgets
+                    table.on("dataLoaded", () => filterEvents(0,tableId));
+                    
                     allPlots(data);
-                    // table.on("dataLoaded", () => createSliders(data));
                 }
             };
             reader.readAsBinaryString(file);

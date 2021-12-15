@@ -1,6 +1,6 @@
 import { CSVNamesArray } from "./dataExtraction.js";
 import { popUp } from "./browseDBPopUp.js";
-import { clearBox, curveDisplayButtonEvents } from "./browseDBWidgets.js";
+import { clearBox, curveDisplayButtonEvents } from "./widgets.js";
 import { config } from "./config.js";
 
 let gridplots = document.getElementById('gridplots');

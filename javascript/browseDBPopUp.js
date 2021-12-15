@@ -1,4 +1,4 @@
-import { clearBox} from "./browseDBWidgets.js";
+import { clearBox} from "./widgets.js";
 import { createGraph, generatePlots} from "./browseDBGraphs.js";
 import { getLoadHistoryData, getUniqueIdFromData, parseData, popUpGetExcelRefData } from "./dataExtraction.js";
 import { config, dataFolderPath } from "./config.js";
