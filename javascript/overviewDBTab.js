@@ -1,12 +1,13 @@
 import { config } from "../javascript/config.js"
+import { clearBox } from "./widgets.js";
 
 export function allPlots(data){
-    sizeSlider(data);
     parCoords(data);
 }
 
-function parCoords(data){
+export function parCoords(data){
     var chartDom = document.getElementById('main');
+    // clearBox(chartDom);
     var myChart = echarts.init(chartDom);
     var option;
     
@@ -76,23 +77,23 @@ function parallelAxis(headers){
     return parallelAxisArray;
 }
 
-function sizeSlider(data){
-    let sizeData = data.map(item => item['H [mm]']);
-    let minSize = Math.min.apply(null, sizeData),
-        maxSize = Math.max.apply(null, sizeData);
-    let sizeStep = 1
-    let sizeSlider = document.getElementById('overview-size-slider');
-    noUiSlider.create(sizeSlider, {
-        range: {
-            'min':minSize, 
-            'max': maxSize, 
-        },
-        step: sizeStep,
-        start: [minSize,maxSize],
-        tooltips:[true,true],
-        connect:true,
-    });
-}
+// function sizeSlider(data){
+//     let sizeData = data.map(item => item['H [mm]']);
+//     let minSize = Math.min.apply(null, sizeData),
+//         maxSize = Math.max.apply(null, sizeData);
+//     let sizeStep = 1
+//     let sizeSlider = document.getElementById('overview-size-slider');
+//     noUiSlider.create(sizeSlider, {
+//         range: {
+//             'min':minSize, 
+//             'max': maxSize, 
+//         },
+//         step: sizeStep,
+//         start: [minSize,maxSize],
+//         tooltips:[true,true],
+//         connect:true,
+//     });
+// }
 
 function checkBoxes(){
     const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");

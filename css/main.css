@@ -137,9 +137,6 @@
 #radio-container {
   border-width: 0,3em;
 }
-.hidden {
-  display: none;
-}
 
 #plot-container {
   border-style: solid;
