@@ -63,7 +63,7 @@ export function allTabs(tab, fileRoot) {
         } 
         else {
             //For IE Browser.
-            // alert
+            window.alert("This Browser is not supported. Please use Chrome/Firefox.")
             reader.readAsArrayBuffer(file);
         }
     };

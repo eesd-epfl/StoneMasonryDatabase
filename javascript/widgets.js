@@ -83,15 +83,26 @@ export function createSliders(data,tab){
 
 // 3a. Get all filters and current values:
 function getFilterValues(tab){
-    let myFilter;
     //1. Checkboxes:
     const typCheckboxes = document.querySelectorAll("input[type=checkbox][name=typ-check]");
     const sizeSlider = document.getElementById("size-slider");
     const sizeSliderMin = {field:'H [mm]',type:'>',value:parseInt(sizeSlider.noUiSlider.get()[0])};
     const sizeSliderMax = {field:'H [mm]',type:'<',value:parseInt(sizeSlider.noUiSlider.get()[1])};
-    const typCheckObject = {field:'Typ',type:'in',value:Array.from(typCheckboxes).filter(i => i.checked).map(i => i.value)}
+    const checkedTypCheckboxes = Array.from(typCheckboxes).filter(i => i.checked).map(i => i.value);
+    let typCheckObject;
+    
+    if(checkedTypCheckboxes.length > 0){
+        typCheckObject= {field:'Typ',type:'in',value:checkedTypCheckboxes}
+    }else{
+        typCheckObject= {field:'H0/H',type:'<',value:0}
+    }
+    
+    // Common filters across both tabs:
+    let myFilter = [sizeSliderMin, sizeSliderMax, typCheckObject];
 
+    // Filters to add for Browse DB Tab:
     if(tab==1){
+        //Get elements we need values/information from:
         const ALRSlider = document.getElementById("ALR-slider");
         const shearSlider = document.getElementById("shear-slider");
         const shearSliderMin = {field:'H0/H',type:'>',value:shearSlider.noUiSlider.get()[0]};
@@ -99,32 +110,42 @@ function getFilterValues(tab){
         const ALRSliderMin = {field:'σ0,tot /fc',type:'>',value:ALRSlider.noUiSlider.get()[0]};
         const ALRSliderMax = {field:'σ0,tot /fc',type:'<',value:ALRSlider.noUiSlider.get()[1]};
 
-        myFilter = [sizeSliderMin,
-                        sizeSliderMax,
-                        shearSliderMin,
-                        shearSliderMax,
-                        ALRSliderMin,
-                        ALRSliderMax,
-                        typCheckObject];
+        myFilter.push(sizeSliderMin, sizeSliderMax, shearSliderMin, shearSliderMax, ALRSliderMin, ALRSliderMax, typCheckObject);
+
+    // Filters to add for Overview DB Tab:
     }else if (tab == 0){
-        myFilter = [sizeSliderMin, sizeSliderMax, typCheckObject];
+
+        //Get elements we need values/information from:
         const fittingCheckboxes = document.querySelectorAll("input[type=checkbox][name=fitting-check]");
         const bendCheckboxes = document.querySelectorAll("input[type=checkbox][name=bend-check]");
+
+        // Laboratory checkboxes:
         const labCheckboxes = document.querySelectorAll("input[type=checkbox][name=lab-check]");
+        const checkedLabCheckboxes = Array.from(labCheckboxes).filter(i => i.checked).map(i => i.value)
+        let labCheckboxObject;
+        if(checkedLabCheckboxes.length > 0){
+             labCheckboxObject = {field:'Lab',type:'in',value:checkedLabCheckboxes}
+        }else{
+            labCheckboxObject = {field:'H0/H',type:'<',value:0}
+        }
+        myFilter.push(labCheckboxObject);
+
         let bendCheckedArray = [];
-        // const fittingCheckObject = {field:'Typ',type:'in',value:Array.from(fittingCheckboxes).filter(i => i.checked).map(i =>i.value)}
         for (let i = 0; i<bendCheckboxes.length; i++){
             if(bendCheckboxes[i].checked == true){
                 if(bendCheckboxes[i].value == "0.5"){
                     bendCheckedArray.push({field:'H0/H',type:'=',value:'0.50'})
                 }else if(bendCheckboxes[i].value == "1.0"){
                     bendCheckedArray.push({field:'H0/H',type:'>=',value:'0.95'});
-                    bendCheckedArray.push({field:'H0/H',type:'<=',value:'1.15'});
-                }else if(bendCheckboxes[i].value == '0.25'){
-                    bendCheckedArray.push({field:'H0/H',type:'<',value:'0.50'});
-                    bendCheckedArray.push({field:'H0/H',type:'>',value:'1.15'});
+                    // bendCheckedArray.push([{field:'H0/H',type:'<=',value:'1.15'}]);
+                // }else if(bendCheckboxes[i].value == '0.25'){
+                    // bendCheckedArray.push({field:'H0/H',type:'>',value:'1.15'});
+                    // bendCheckedArray.push({field:'H0/H',type:'>',value:'1.15'});
                 }
             }
+        }
+        if(bendCheckedArray.length == 0){
+            bendCheckedArray.push({field:'H0/H',type:'<',value:'0'})
         }
         myFilter.push(bendCheckedArray);
     }
@@ -134,9 +155,9 @@ function getFilterValues(tab){
 // 4b. Assign events to the widgets:
 export function filterEvents(tab,tableId){
     let table = Tabulator.findTable(tableId)[0];
-    // 1. Checkboxes:
-    const checkboxes = document.querySelectorAll("input[type=checkbox][name=typ-check]");
-    checkboxes.forEach(function(checkbox){
+    // 1a.  Checkboxes:
+    const typCheckboxes = document.querySelectorAll("input[type=checkbox]");
+    typCheckboxes.forEach(function(checkbox){
         checkbox.addEventListener('change',function(){
             table = Tabulator.findTable(tableId)[0];
             //Clear and Apply new filter values to table
@@ -152,7 +173,7 @@ export function filterEvents(tab,tableId){
             }
         });
     });
-
+   
     // 2. Sliders
     let sliders = document.querySelectorAll("div[name=slider]");
     sliders.forEach((slider) => {

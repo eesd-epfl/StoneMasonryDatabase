@@ -41,8 +41,8 @@ function filterHeaders(){
     let headersToKeep = [];
     const tableColumns = config.tableColumns;
     for (let i= 0; i<tableColumns.length; i++){
-        if(tableColumns[i].visible == true){
-            headersToKeep.push(tableColumns[i].title)
+        if(tableColumns[i].visible == true && tableColumns[i].field != 'Comment' && tableColumns[i].field !='Name' && tableColumns[i].field != 'Reference'){
+            headersToKeep.push(tableColumns[i].field)
         }
     }
     headersToKeep.push("fc [MPa]")
@@ -59,47 +59,37 @@ function parallelAxis(headers){
             name
         }
     };
+    const headerStringObject = (dim,name,type,data) =>{
+        return {
+            dim,
+            name,
+            type,
+            data
+        }
+    };
     let parallelAxisArray = [];
     for (let i = 0; i<headers.length; i++){
-        if(headers[i] == 'H<sub>0</sub>/H'){
+        if(headers[i] == 'H0/H'){
             // ECharts doesn't accept HTML subscript. Use unicode char for 0 instead:
             parallelAxisArray.push(headerObject(i,'H'+String.fromCharCode(0x2080) +'/H'));
-
-        } else if (headers[i] == 'σ<sub>0,tot</sub> /f<sub>c</sub>'){
+        } else if (headers[i] == 'σ0,tot /fc'){
             // No unicode for subscript letters ", t" so just simplify the column name:
             parallelAxisArray.push(headerObject(i,'σ/f'));
-        }else if(headers[i] == 'Comment') {
-            // Ignore the comment Column
-        }else {
+        }else if(headers[i] == 'Cyclic'){
+            parallelAxisArray.push(headerStringObject(i,headers[i],'category',['Cyclic','Monotonic']));
+
+        }else if (headers[i] == 'Lab'){
+            parallelAxisArray.push(headerStringObject(i,headers[i],'category',['Laboratory','In-situ']));
+
+        }else if (headers[i] == 'Typ'){
+            parallelAxisArray.push(headerStringObject(i,headers[i],'category',['A','B','C','D','E','E1']));
+        }else if (headers[i] == 'Mortar'){
+            parallelAxisArray.push(headerStringObject(i,headers[i],'category',['Air lime mortar','Cement mortar','Clay mortar','Dry','Hydraulic lime mortar']));
+
+        }
+        else {
             parallelAxisArray.push(headerObject(i,headers[i]));
         }
     }
     return parallelAxisArray;
-}
-
-// function sizeSlider(data){
-//     let sizeData = data.map(item => item['H [mm]']);
-//     let minSize = Math.min.apply(null, sizeData),
-//         maxSize = Math.max.apply(null, sizeData);
-//     let sizeStep = 1
-//     let sizeSlider = document.getElementById('overview-size-slider');
-//     noUiSlider.create(sizeSlider, {
-//         range: {
-//             'min':minSize, 
-//             'max': maxSize, 
-//         },
-//         step: sizeStep,
-//         start: [minSize,maxSize],
-//         tooltips:[true,true],
-//         connect:true,
-//     });
-// }
-
-function checkBoxes(){
-    const checkboxes = document.querySelectorAll("input[type=checkbox][name=check]");
-    checkboxes.forEach(function(checkbox){
-        checkbox.addEventListener('change',function(){
-
-        });
-    });
 }

@@ -57,11 +57,11 @@ export const config = {
 
         // All the others should be true:
         {title:"ID", field:"ID",visible :true},
+        {title:'Typ', field:'Typ',visible :true},
         {title:'Reference', field:'Reference',visible :true},
         {title:'Name', field:'Name',visible :true},
         {title:'Cyclic', field:'Cyclic',visible :true},
         {title:'Lab', field:'Lab',visible :true},
-        {title:'Typ', field:'Typ',visible :true},
         {title:'Mortar', field:'Mortar',visible :true},
         {title:'H [mm]', field:'H [mm]',visible :true},
         {title:'L [mm]', field:'L [mm]',visible :true},
