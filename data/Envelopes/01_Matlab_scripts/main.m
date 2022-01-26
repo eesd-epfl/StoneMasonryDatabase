@@ -1,0 +1,129 @@
+% This file computes new envelope curves. Original envelope curves, included in the data set published with the paper, do not
+% always seem to reach to the end of the load history
+% Katrin Beyer, Jan 26, 2022
+
+clear all
+close all
+clc
+
+folder_curves='../../Curves/'; % folder in which hysteretic curves are saved (to be read)
+folder_new_envelopes='../'; % folder to which envelope curves will be written
+folder_database='../../'
+
+plot_figures=0 % 0: Do not plot figures with hystereses and envelopes; 1: Plot figures
+
+%% Read database
+filename_database = dir(fullfile(folder_database, '*.xls'))
+[~,~,dat]=xlsread(strcat(folder_database,filename_database.name),'Database');
+cyclic_vs_monotonic=[dat(2:end,5)];
+ID_vec=cell2mat([dat(2:end,1)]);
+Reference_vec=[dat(2:end,2)];
+Test_unit_vec=[dat(2:end,4)];
+FD_curve_available_vec=cell2mat([dat(2:end,66)]);
+
+Ntests=nanmax(ID_vec);
+
+for k=1:Ntests
+    % Construct filename
+    i1=strfind(Reference_vec{k},' ')-1;
+    i2=strfind(Reference_vec{k},'(')+1; i3=strfind(Reference_vec{k},')')-1;
+    Test_unit_simplified=erase(erase(erase(erase(erase(Test_unit_vec{k},'.'),'-'),'#'),' '),'_');
+    Reference_simplified=strrep(Reference_vec{k}(1:i1),'ç','c');
+    Reference_year=Reference_vec{k}(i2:i3)
+
+    FD_filenames{k}=strcat('FD_',Test_unit_simplified,'_',Reference_simplified,Reference_year,'.csv')
+
+    % Check whether it is a monotonic test
+    if isempty(strfind(cyclic_vs_monotonic{k},'onotonic'))==0
+        monotonic(k)=1;
+    else
+        monotonic(k)=0;
+    end
+end
+
+
+%% Write envelope curves for those specimens for which FD curves are available (hysteretic curves)
+
+for k=1:Ntests
+    if FD_curve_available_vec(k)==1
+
+        %% Read FD curve (hysteretic curve)
+
+        filename=FD_filenames{k};
+        filename_with_folder=strcat([folder_curves, filename])
+
+        data=csvread(filename_with_folder,4,0);
+        x1=data(:,1); % Displacement
+        x2=data(:,3); % Drift
+        y=data(:,2); % Force
+
+        %% Calculate envelope
+        % Loup through the first displacement vector (here x2=Drift) and always take the displacement when
+        % the magnitude of this displacement was reached the first time; do
+        % this in the positive and negative direction
+        % No resampling for the moment
+        [x2_env, x1_env, y_env]=fcn_envelope(x2,x1,y);
+
+
+        %% Treatment of special cases
+
+        % For tests that are monotonic, set the envelope curve to the FD curve
+        if monotonic(k)==1
+            x1_env=x1;
+            x2_env=x2;
+            y_env=y;
+        end
+
+        % FD curves Almeida 2014 contain already the positive and negative envelope and not the
+        % hysteretic curves; therefore overwrite envelope curves.
+        if isempty(strfind(filename,'Almeida2014'))==0
+            x1_env=x1;
+            x2_env=x2;
+            y_env=y;
+        end
+
+        % FD curves by Vasconcelos 2009 are a bit irregular. Remove kinks
+        if isempty(strfind(filename,'Vasconcelos2009'))==0
+            nn=[];
+            for k=2:length(y_env)-1
+                if abs(y_env(k-1))>abs(y_env(k)) & abs(y_env(k+1))>abs(y_env(k))
+                    nn=[nn k];
+                end
+            end
+            x1_env(nn)=[]; y_env(nn)=[]; x2_env(nn)=[];
+        end
+        % Further: for WS2.100 Vasconcelos 2009 delete some points in the positive
+        % branch that result from irregular loading
+        if isempty(strfind(filename,'WS2100_Vasconcelos2009'))==0
+            nn=[37:40];
+            x1_env(nn)=[]; y_env(nn)=[]; x2_env(nn)=[];
+        end
+
+        %% Visual check
+        if plot_figures==1
+            figure('units','normalized','outerposition',[0 0 1 1])
+            subplot(1,2,1)
+            plot(x2,y,'b-'); hold on
+            plot(x2_env,y_env,'gx-','linewidth',1.0); hold on
+            xlabel('Drift'); ylabel('Force'); title(['Test ', num2str(k),': ',strrep(filename,'_','\_')]);
+            subplot(1,2,2)
+            plot(x1,y,'b-'); hold on
+            plot(x1_env,y_env,'gx-','linewidth',1.0); hold on
+            xlabel('Displacement'); ylabel('Force'); title(['Test ', num2str(k),': ',strrep(filename,'_','\_')]);
+        end
+
+        %% Write envelope file
+        fid_read=fopen(filename_with_folder,'r');
+        env_filename=strrep(filename,'FD','envelope');
+        env_filename_with_folder=strcat(folder_new_envelopes,env_filename);
+        fid_write=fopen(env_filename_with_folder,'w');
+        for nn=1:4 % header has 4 lines
+            header=fgetl(fid_read);
+            fprintf(fid_write,'%s\n',header);
+        end
+        fclose(fid_read); fclose(fid_write);
+        dlmwrite(env_filename_with_folder,[x1_env y_env x2_env],'-append');
+
+    end
+
+end
