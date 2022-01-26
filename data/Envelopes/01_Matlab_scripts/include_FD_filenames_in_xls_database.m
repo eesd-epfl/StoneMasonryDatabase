@@ -1,0 +1,45 @@
+% Include FD filenames in xls-database
+% Katrin Beyer, Jan 26, 2022
+
+clear all
+close all
+clc
+
+folder_curves='../../Curves/'; % folder in which hysteretic curves are saved (to be read)
+folder_new_envelopes='../'; % folder to which envelope curves will be written
+folder_database='../../'
+
+plot_figures=0 % 0: Do not plot figures with hystereses and envelopes; 1: Plot figures
+
+%% Read database
+filename_database = dir(fullfile(folder_database, '*.xls'))
+[~,~,dat]=xlsread(strcat(folder_database,filename_database.name),'Database');
+cyclic_vs_monotonic=[dat(2:end,5)];
+ID_vec=cell2mat([dat(2:end,1)]);
+Reference_vec=[dat(2:end,2)];
+Test_unit_vec=[dat(2:end,4)];
+FD_curve_available_vec=cell2mat([dat(2:end,66)]);
+
+Ntests=nanmax(ID_vec);
+
+for k=1:Ntests
+    % Construct filename
+    i1=strfind(Reference_vec{k},' ')-1;
+    i2=strfind(Reference_vec{k},'(')+1; i3=strfind(Reference_vec{k},')')-1;
+    Test_unit_simplified=erase(erase(erase(erase(erase(Test_unit_vec{k},'.'),'-'),'#'),' '),'_');
+    Reference_simplified=strrep(Reference_vec{k}(1:i1),'ç','c');
+    Reference_year=Reference_vec{k}(i2:i3)
+
+    FD_filenames{k,1}=strcat('FD_',Test_unit_simplified,'_',Reference_simplified,Reference_year,'.csv')
+
+    if FD_curve_available_vec(k)==0 % if curve is not available, replace by "hysteretic curve not available"
+        FD_filenames{k,1}='Hysteretic curve not available';
+    end
+end
+
+
+%% Overwrite column which previously just contained 1/0 to indicate whether force-displacement curve was available
+filename_database_with_folder=strcat(folder_database,filename_database.name);
+xlswrite(filename_database_with_folder, {'Filename of force-displacement curve'}, 1, 'BN1')
+xlswrite(filename_database_with_folder, FD_filenames, 1, 'BN2')
+
