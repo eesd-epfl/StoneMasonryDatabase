@@ -82,7 +82,7 @@
   height:100%;
 }
 #multi-plot-container {
-  height: 95%;
+  height: 100%;
 }
 #gridplots {
   height: 100%;
@@ -130,8 +130,12 @@
 
 }
 
-.hidden {
-  display: none;
+#display {
+  padding-left: 2vw;
+}
+
+#radio-container {
+  border-width: 0,3em;
 }
 
 #plot-container {
@@ -151,6 +155,9 @@
   stroke-width: 1.5px;
 }
 
+.c3-line-drift {
+  stroke-width: 1.5px;
+}
 .c3-title:hover {
   font-weight: bold;
   cursor:pointer  ;
@@ -231,11 +238,10 @@
   pointer-events: none;
 }
 
-
 /* Tooltip text */
 #info-tooltip-text {
   visibility: hidden;
-  background: #238a8dFF;
+  background: rgb(125, 111, 181);
   color: black;
   border-radius: .25em;
   overflow: auto;
@@ -275,18 +281,19 @@
 }
 #fd-button {
   margin-top:1em;
-  background-color: rgb(253, 213, 37);
+  /* background-color: rgb(253, 213, 37); */
 }
 
 #env-button {
   margin-top:1em;
-  background-color: #c0392b;
+  /* background-color: #c0392b; */
 }
 #bil-button {
   margin-top:1em;
-  background-color: #453781FF;
+  /* background-color: rgb(125, 115, 172); */
 }
 
-.button-disabled {
-  color:gray
+.ui.button.hidden {
+  background-color:rgb(122, 120, 120) !important;
+  opacity: 0.45;
 }

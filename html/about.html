@@ -11,11 +11,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <!-- Load Semantic UI JS-->
-    <script src="../semantic/dist/semantic.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Semantic UI CSS-->
-    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Load Personal CSS -->
     <link rel='stylesheet' type='text/css' media='screen' href='../css/about.css'>
 
@@ -24,13 +24,13 @@
 
 </head>
 <body>
-    <div class="ui seven item menu">
-        <a><img src="../images/logo-epfl-1024x576.png" id="epfl-logo"></a>
+    <div class="ui four item menu">
+        <a><img src="../images/logo-epfl-1024x576.png" id="epfl-logo"><img src="../images/EESD.png" id="eesd"></a>
         <a class="item" href="./overview.html">Overview DB</a>
         <a class="item" href="../index.html">Browse DB test</a>
-        <a class="disabled item">Strength</a>
-        <a class="disabled item">Stiffness</a>
-        <a class="disabled item">Drift Capacity</a>
+        <!-- <a class="disabled item">Strength</a> -->
+        <!-- <a class="disabled item">Stiffness</a> -->
+        <!-- <a class="disabled item">Drift Capacity</a> -->
         <a class="active item">About</i></a>
       </div>
     <div class="main ui container">
@@ -44,8 +44,9 @@
             <a href="https://doi.org/10.1007/s10518-017-0188-5">https://doi.org/10.1007/s10518-017-0188-5</a><br><br>
         </p>
             <h3 class="ui dividing header">Database</h3> 
-            <p> TBD - 
-                <a href="http://doi.org/10.5281/zenodo.812145">Database (123 quasi-static cyclic tests)</a>
+            <p> Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) Database of quasi-static cyclic tests on
+                stone masonry walls. <br>
+                Database of : <a href="http://doi.org/10.5281/zenodo.812145">http://doi.org/10.5281/zenodo.812145</a>
             </p>
         <h2 class="ui dividing header">Contributors</h2>
         <div class="ui six cards">
@@ -70,7 +71,7 @@
                 <img src="../images/ivana-bozulic.jpg">
             </div>
             <div class="content">
-                <div class="header">Ivana Bozulic</div>
+                <div class="header">Ivana Bo&zcaron;uli&cacute;</div>
                 <div class="meta">
                     <span class="date">
                         
@@ -116,21 +117,21 @@
         <h2 class="ui dividing header">Bilinearisation calculation</h2>
         <p>
             The bilinear approximation of the envelope curves was computed as described below. 
-            The maximum recorded strength Vmax was identified. The effective stiffness was then defined as the secant stiffness at 70%Vmax. 
-            The ultimate drift δu was determined as the drift at which the strength had dropped to 80%Vmax. If such a large drop was not attained, 
-            the largest drift that was reached during the test was taken as δu. 
-            The ultimate strength Vu was defined as the strength that yields for the bilinear approximation the same area below the curve as the actual envelope up to δu.
+            The maximum recorded strength Vmax was identified. The effective stiffness was then defined as the secant stiffness at 70%V<sub>max</sub>. 
+            The ultimate drift δ<sub>u</sub> was determined as the drift at which the strength had dropped to 80%V<sub>max</sub>. If such a large drop was not attained, 
+            the largest drift that was reached during the test was taken as δ<sub>u</sub>. 
+            The ultimate strength V<sub>u</sub> was defined as the strength that yields for the bilinear approximation the same area below the curve as the actual envelope up to δ<sub>u</sub>.
              For cyclic tests, bilinear approximations were computed for the envelopes in the positive and negative loading direction. 
              The final envelope curve was derived as follows: The final effective stiffness and ultimate strength correspond to the average of the values for the two directions. 
              For the ultimate drift, however, the minimum value of the ultimate drift in the positive and negative direction was taken. 
-             When the force drop was only attained in one direction, the corresponding ultimate drift was considered for the final envelope. (Vanin et al. (2020))
+             When the force drop was only attained in one direction, the corresponding ultimate drift was considered for the final envelope. (Vanin et al. (2017))
         </p>
         <h2 class="ui dividing header">Bug report</h2>
         <p>Please report any bugs in the <a href="https://github.com/eesd-epfl/eesd-dashboard/issues">github</a> page.</p>
         <h2 class="ui dividing header">Licence</h2>
         <p>
             <h4>MIT License</h4>
-            Copyright <i class="copyright outline icon"></i> 2021 EESD Department <br><br>
+            Copyright <i class="copyright outline icon"></i> Earthquake Engineering and Structural Dynamics Laboratory. Ecole Polytechnique Fédérale de Lausanne (EPFL) <br><br>
 
             Permission is hereby granted, free of charge, to any person obtaining a copy
             of this software and associated documentation files (the "Software"), to deal

@@ -5,16 +5,13 @@ The data consists of quasi-static cyclic tests on stone masonry walls and the gr
 
 The database can also be accessed [here](https://zenodo.org/record/812146#.YXaBUJ5ByUl). This database is maintained and updated as new test results become available. 
 
-The first tab consists of plots that correspond to the subplots of Figure 4 in the paper, which represents the database of shear-compression tests on the stone masonry walls.
-![Fig 4](./images/fig4_paper.png)
-
-The second tab shows the actual data of the database in a filterable data table, along with the corresponding force-displacement response curves for each line.
+The Browse DB tab shows the actual data of the database in a filterable data table, along with the corresponding force-displacement response curves for each row.
 ![example DB tests](./images/DB_tests_sample.png)
 ## Project status
-The dashboard is under active development. A first version will be available by Dec 2021.
+The second prototype has been finished and further development is on hold, although data will continue to be uploaded and the database expanded.
 
 * Prototype v.1 running at [eesd-stone-masonry.herokuapp.com](https://eesd-stone-masonry.herokuapp.com/)
-* Prototype v.2 is running at [https://eesd-epfl.github.io/eesd-dashboard/](https://eesd-epfl.github.io/eesd-dashboard/)
+* The latest version v.2 is running at [https://eesd-epfl.github.io/eesd-dashboard/](https://eesd-epfl.github.io/eesd-dashboard/)
 
 ## Getting started
 
@@ -27,13 +24,23 @@ Using Internet Explorer will most likely result in errors.
 
 When running locally, a local server is required.
 
-A Python 3 HTTP Server was used.
+A Python 3 HTTP Server was used to run the website locally.
 
-### How to install
+The Dashboard has been built entirely with Vanilla Javascript, using the following modules:
 
-Nothing to install.
+- C3 v0.7.20
+- D3 v5.16.0
+- Papaparse v5.3.1
+- XLS v0.7.6
+- JQuery v3.6.0
+- Semantic UI v2.4.1
+- JSZip v3.7.1
+- JSZip Utils v0.1.0
+- FileSaver v2.0.5
+- Tabulator v5.0.7
+- noUiSlider v15.5.0
 
-### How to run
+### How to run locally
 
 Using Python3:
 
@@ -45,19 +52,20 @@ Go to http://localhost:8000/ to visualise the dashboard.
 Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature. Bull Earthquake Eng 15, 5435–5479 (2017). [https://doi.org/10.1007/s10518-017-0188-5](https://doi.org/10.1007/s10518-017-0188-5)]
 
 ## Data
-Database: Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Data set to "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature". [http://doi.org/10.5281/zenodo.812145](http://doi.org/10.5281/zenodo.812145)]
+Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) Database of quasi-static cyclic tests on stone masonry walls.
+Database of: [http://doi.org/10.5281/zenodo.812145](http://doi.org/10.5281/zenodo.812145)]
 
 # Authors 
 Developer - Patrick Loeliger
 
 Project Lead - Charlotte Weil
 
-Contributors - Katrin Beyer and Ivana Bozulic
+Contributors - Katrin Beyer and Ivana Bo&zcaron;uli&cacute;
 
 # License 
 MIT License
 
-Copyright (c) 2021 EESD Department
+Copyright (c) 2021 Earthquake Engineering and Structural Dynamics Laboratory. Ecole Polytechnique Fédérale de Lausanne (EPFL)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

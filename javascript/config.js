@@ -6,7 +6,9 @@ export const config = {
     // Raw columns to take from Excel:
     excelColumns: ['ID','Reference','Reference nb','Test unit name', 'Cyclic / Monotonic', 'Lab / In-situ',
     'Stone masonry typology','Joints','Stone','H [mm]', 'L [mm]', 't [mm]', 'H0/H',
-    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted','Comment','dy,+ [%]','dy,- [%]','du,+ [%]','Vu,+ [kN]','du,- [%]','Vu,- [kN]'],
+    'σ0,tot /fc','Failure type','Availability of F-Δ curve','Unretrofitted / Retrofitted',
+    'Comment','dy,+ [%]','dy,- [%]','du,+ [%]','Vu,+ [kN]','du,- [%]','Vu,- [kN]',
+    'Drift at which the photo was taken [%]','Drift at which the crack map was taken [%]','fc [MPa]'], 
     
     // Use this to rename the column headers to whatever you want:
     sortData(row){
@@ -33,13 +35,15 @@ export const config = {
             'du,+ [%]':row['du,+ [%]'],
             'Vu,+ [kN]':row['Vu,+ [kN]'],
             'du,- [%]':row['du,- [%]'],
-            'Vu,- [kN]':row['Vu,- [kN]']
+            'Vu,- [kN]':row['Vu,- [kN]'],
+            'Photo drifts':row['Drift at which the photo was taken [%]'],
+            'Crack map drifts':row['Drift at which the crack map was taken [%]'],
+            'fc [MPa]':row['fc [MPa]']
         }
     },
-    // Use this to show only the columns that you want (needs to correspond to the columns above):
+    // Use this to show only the columns that you want (needs to correspond to the columns names from sortData function above):
     tableColumns: [
         // All the columns that shouldn't be displayed must be set to visible:false
-        {title:"ID", field:"ID",visible :false},
         {title:'Reference nb', field:'Reference nb',visible :false},
         {title:'F-Δ?', field:'F-Δ?',visible :false},
         {title:'dy,+ [%]', field:'dy,+ [%]', visible:false},
@@ -48,13 +52,16 @@ export const config = {
         {title:'Vu,+ [kN]', field:'Vu,+ [kN]', visible:false},
         {title:'du,- [%]', field:'du,- [%]', visible:false},
         {title:'Vu,- [kN]', field:'Vu,- [kN]', visible:false},
+        {title:'Photo drifts', field:'Photo drifts',visible:false},
+        {title:'Crack map drifts', field:'Crack map drifts',visible:false},
 
         // All the others should be true:
+        {title:"ID", field:"ID",visible :true},
+        {title:'Typ', field:'Typ',visible :true},
         {title:'Reference', field:'Reference',visible :true},
         {title:'Name', field:'Name',visible :true},
         {title:'Cyclic', field:'Cyclic',visible :true},
         {title:'Lab', field:'Lab',visible :true},
-        {title:'Typ', field:'Typ',visible :true},
         {title:'Mortar', field:'Mortar',visible :true},
         {title:'H [mm]', field:'H [mm]',visible :true},
         {title:'L [mm]', field:'L [mm]',visible :true},
@@ -75,7 +82,7 @@ export const config = {
     bibName: "Database.bib",
     fdColor: "rgb(253, 213, 37)",
     envColor: "rgb(192, 57, 43)",
-    bilinColor:"rgb(69, 55, 129)",
+    bilinColor:"rgb(125, 111, 181)",
 }
 
 export function setCurveColors(){
