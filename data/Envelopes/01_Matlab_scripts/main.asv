@@ -33,7 +33,7 @@ end
 
 %% Write envelope curves for those specimens for which FD curves are available (hysteretic curves)
  
-for k=80% 1:Ntests
+for k=52% 1:Ntests
     if isempty(strfind(FD_filenames{k},'not available'))==1 % check whether FD curve available
 
         %% Read FD curve (hysteretic curve)
@@ -122,17 +122,11 @@ for k=80% 1:Ntests
                               % BT04OR_Borri2001: Monotonic test - delete curve after
                               % reaching max displacement
         if isempty(strfind(filename,'BT04OR_Borri2001'))==0
-            ii=find(x2_env==max(x2_env));
+            ii=find(x2_env=max(x2_env));
             nn=[ii+1:length(x2_env)];
-            x1_env(nn)=[]; y_env(nn)=[]; x2_env(nn)=[];
+            
         end
   
-       % SW301_Lourenco2005: Monotonic test that increases again after
-       % reaching 1.424% drift --> do not consider this part for envelope
-        if isempty(strfind(filename,'SW301_Lourenco2005'))==0
-            nn=find(x2_env>1.424);
-            x1_env(nn)=[]; y_env(nn)=[]; x2_env(nn)=[];
-        end
 
         %% Visual check
         if plot_figures==1
