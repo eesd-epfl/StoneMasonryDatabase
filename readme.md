@@ -52,7 +52,7 @@ Go to http://localhost:8000/ to visualise the dashboard.
 Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature. Bull Earthquake Eng 15, 5435–5479 (2017). [https://doi.org/10.1007/s10518-017-0188-5](https://doi.org/10.1007/s10518-017-0188-5)]
 
 ## Data
-Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) Database of quasi-static cyclic tests on stone masonry walls.
+Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) European database of shear-compression tests on stone masonry walls.
 Database of: [http://doi.org/10.5281/zenodo.812145](http://doi.org/10.5281/zenodo.812145)]
 
 # Authors 
