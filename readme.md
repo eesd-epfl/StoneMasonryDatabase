@@ -11,7 +11,7 @@ The Browse DB tab shows the actual data of the database in a filterable data tab
 The second prototype has been finished and further development is on hold, although data will continue to be uploaded and the database expanded.
 
 * Prototype v.1 running at [eesd-stone-masonry.herokuapp.com](https://eesd-stone-masonry.herokuapp.com/)
-* The latest version v.2 is running at [https://eesd-epfl.github.io/eesd-dashboard/](https://eesd-epfl.github.io/StoneMasonryDatabase/)
+* The latest version v.2 is running at [https://eesd-epfl.github.io/StoneMasonryDatabase/](https://eesd-epfl.github.io/StoneMasonryDatabase/)
 
 ## Getting started
 
