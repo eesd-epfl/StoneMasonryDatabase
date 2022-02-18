@@ -1,4 +1,4 @@
-# EESD Stone Masonry Database Dashboard
+# EPFL Stone Masonry Database Dashboard
 The aim of this web application is to give an interactive and intuitive representation of the database from the paper [Vanin et al. (2017) "Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature"](https://doi.org/10.1007/s10518-017-0188-5).
 
 The data consists of quasi-static cyclic tests on stone masonry walls and the graphs show the important parameters and their distribution within the database.
@@ -11,7 +11,7 @@ The Browse DB tab shows the actual data of the database in a filterable data tab
 The second prototype has been finished and further development is on hold, although data will continue to be uploaded and the database expanded.
 
 * Prototype v.1 running at [eesd-stone-masonry.herokuapp.com](https://eesd-stone-masonry.herokuapp.com/)
-* The latest version v.2 is running at [https://eesd-epfl.github.io/eesd-dashboard/](https://eesd-epfl.github.io/eesd-dashboard/)
+* The latest version v.2 is running at [https://eesd-epfl.github.io/eesd-dashboard/](https://eesd-epfl.github.io/StoneMasonryDatabase/)
 
 ## Getting started
 
@@ -52,7 +52,7 @@ Go to http://localhost:8000/ to visualise the dashboard.
 Vanin F., Zaganelli D., Penna A., Beyer K. (2017). Estimates for the stiffness, strength and drift capacity of stone masonry walls based on 123 quasi-static cyclic tests reported in the literature. Bull Earthquake Eng 15, 5435–5479 (2017). [https://doi.org/10.1007/s10518-017-0188-5](https://doi.org/10.1007/s10518-017-0188-5)]
 
 ## Data
-Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) European database of shear-compression tests on stone masonry walls.
+Vanin F, Bozulic I, Loeliger P, Weil C, Penna A, Beyer K (2021) Database of shear-compression tests on stone masonry walls.
 Database of: [http://doi.org/10.5281/zenodo.812145](http://doi.org/10.5281/zenodo.812145)]
 
 # Authors 
